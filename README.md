@@ -29,7 +29,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Unk3wn/AdvancedSoftwareEngineering">
-    <img src="Documentation/config/layout/WhiskeyOClock_transparent.png" alt="Logo" width="200" height="200">
+    <img src="Documentation/config/layout/header.png" alt="Logo" width="768" height="384">
   </a>
 
 <h3 align="center">Whiskey o' clock</h3>
