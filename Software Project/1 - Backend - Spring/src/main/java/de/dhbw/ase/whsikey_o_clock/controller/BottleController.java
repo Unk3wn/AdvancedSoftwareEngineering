@@ -16,7 +16,7 @@ public class BottleController{
     @Autowired
     BottleService bottleService;
 
-    @GetMapping
+    @GetMapping("")
     public List<Bottle> getAllBottles() {
         return bottleService.getBottles();
     }
