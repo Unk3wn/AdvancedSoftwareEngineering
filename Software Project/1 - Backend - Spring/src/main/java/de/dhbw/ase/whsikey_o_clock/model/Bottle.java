@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EntityListeners(BottleListener.class)
 @Table(name = "bottles")
 public class Bottle {
 
