@@ -1,12 +1,17 @@
 package de.dhbw.ase.whsikey_o_clock.model;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 
-@Data
+@ToString
+@RequiredArgsConstructor
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,15 +33,27 @@ public class Series {
     private String label;
 
     @ElementCollection
-    @CollectionTable(name="bottle_series_set")
+    @CollectionTable(name = "bottle_series_set")
     private Set<Bottle> bottleList = new HashSet<>();
 
-    public Series(String label){
+    public Series(String label) {
         this.label = label;
     }
 
-    public void addBottle(Bottle bottle){
+    public void addBottle(Bottle bottle) {
         this.bottleList.add(bottle);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Series series = (Series) o;
+        return uuid != null && Objects.equals(uuid, series.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
