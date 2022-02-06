@@ -27,7 +27,6 @@ public class CountryServiceImpl implements CountryService {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-
     @Override
     public Country saveCountry(CountryDTO countryDTO) {
         return saveCountry(countryDTO.getCountryAbbreviation(), countryDTO.getCountryName());
@@ -53,7 +52,6 @@ public class CountryServiceImpl implements CountryService {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
-
     @Override
     public Country getCountryByAbbreviation(String abbreviation) {
         return countryRepository.getCountryByAbbreviation(abbreviation);
@@ -76,7 +74,6 @@ public class CountryServiceImpl implements CountryService {
               | |
               |_|
     */
-
     @Override
     public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
         if (null != countryRepository.getCountryByUuid(countryUUID)) {
@@ -98,7 +95,6 @@ public class CountryServiceImpl implements CountryService {
         | |__| |  __/ |  __/ ||  __/
         |_____/ \___|_|\___|\__\___|
     */
-
     @Override
     public void deleteCountry(String abbreviation) {
         countryRepository.deleteByAbbreviation(abbreviation);

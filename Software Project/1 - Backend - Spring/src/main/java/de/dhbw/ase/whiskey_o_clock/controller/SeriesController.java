@@ -1,14 +1,9 @@
 package de.dhbw.ase.whiskey_o_clock.controller;
 
-import de.dhbw.ase.whiskey_o_clock.model.Bottle;
-import de.dhbw.ase.whiskey_o_clock.service.BottleService;
 import de.dhbw.ase.whiskey_o_clock.service.SeriesService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController

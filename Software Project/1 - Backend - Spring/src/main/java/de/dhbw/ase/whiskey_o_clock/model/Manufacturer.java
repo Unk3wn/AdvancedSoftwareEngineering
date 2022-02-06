@@ -49,11 +49,11 @@ public class Manufacturer {
         return getClass().hashCode();
     }
 
-    public void updateFromDTO(ManufacturerDTO manufacturerDTO,Country originCountry) {
-        if(manufacturerDTO.getManufacturerName() != null){
+    public void updateFromDTO(ManufacturerDTO manufacturerDTO, Country originCountry) {
+        if (manufacturerDTO.getManufacturerName() != null) {
             this.name = manufacturerDTO.getManufacturerName();
         }
-        if(originCountry != null){
+        if (originCountry != null) {
             this.originCountry = originCountry;
         }
     }

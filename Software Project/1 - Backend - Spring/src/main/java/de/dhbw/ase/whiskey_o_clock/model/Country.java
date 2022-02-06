@@ -49,10 +49,10 @@ public class Country {
     }
 
     public void updateFromDTO(CountryDTO countryDTO) {
-        if(countryDTO.getCountryName() != null){
+        if (countryDTO.getCountryName() != null) {
             this.name = countryDTO.getCountryName();
         }
-        if(countryDTO.getCountryAbbreviation() != null){
+        if (countryDTO.getCountryAbbreviation() != null) {
             this.abbreviation = countryDTO.getCountryAbbreviation();
         }
     }

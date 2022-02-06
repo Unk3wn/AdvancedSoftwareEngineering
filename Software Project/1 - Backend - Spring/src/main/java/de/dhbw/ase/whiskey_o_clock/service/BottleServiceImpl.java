@@ -3,7 +3,6 @@ package de.dhbw.ase.whiskey_o_clock.service;
 import de.dhbw.ase.whiskey_o_clock.helper.BottleBooleanType;
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
-import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,38 +31,37 @@ public class BottleServiceImpl implements BottleService {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-
     @Override
     public Bottle createBottle(BottleDTO bottleDTO) {
-        return createBottle(bottleDTO.getLabel(),bottleDTO.getPrice(),bottleDTO.getYearOfManufacture(),bottleDTO.getManufacturerName());
+        return createBottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), bottleDTO.getManufacturerName());
     }
 
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName) {
-        return createBottle(label,price,yearOfManufacture,manufacturerName,false);
+        return createBottle(label, price, yearOfManufacture, manufacturerName, false);
     }
 
     @Override
-    public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName,boolean isForSale) {
-        return createBottle(label,price,yearOfManufacture,manufacturerName,false,false);
+    public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale) {
+        return createBottle(label, price, yearOfManufacture, manufacturerName, false, false);
     }
 
     @Override
-    public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName,boolean isForSale,boolean isFavorite) {
-        return createBottle(label,price,yearOfManufacture,manufacturerName,false,false,false);
+    public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite) {
+        return createBottle(label, price, yearOfManufacture, manufacturerName, false, false, false);
     }
 
     @Override
-    public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName,boolean isForSale,boolean isFavorite,boolean isUnsaleable) {
+    public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
         if (null != getBottlesByLabel(label)) {
-            if(null != getBottleByLabelAndManufacturer(label,manufacturerName)){
-                throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!",label, manufacturerName));
+            if (null != getBottleByLabelAndManufacturer(label, manufacturerName)) {
+                throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!", label, manufacturerName));
             }
-            Bottle targetBottle = getBottleByLabelAndManufacturer(label,manufacturerName);
-            if(null != targetBottle && targetBottle.getYearOfManufacture() == yearOfManufacture){
-                throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' and the Year of Manufactoring '%d' is already in the Database!", targetBottle.getLabel(), manufacturerName,targetBottle.getYearOfManufacture()));
+            Bottle targetBottle = getBottleByLabelAndManufacturer(label, manufacturerName);
+            if (null != targetBottle && targetBottle.getYearOfManufacture() == yearOfManufacture) {
+                throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' and the Year of Manufactoring '%d' is already in the Database!", targetBottle.getLabel(), manufacturerName, targetBottle.getYearOfManufacture()));
             }
-            Bottle newBottle = new Bottle(label,price,yearOfManufacture, manufacturerRepository.getManufacturerByName(manufacturerName), isForSale,isFavorite,isUnsaleable);
+            Bottle newBottle = new Bottle(label, price, yearOfManufacture, manufacturerRepository.getManufacturerByName(manufacturerName), isForSale, isFavorite, isUnsaleable);
             bottleRepository.save(newBottle);
             return newBottle;
         }
@@ -79,7 +77,6 @@ public class BottleServiceImpl implements BottleService {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
-
     @Override
     public List<Bottle> getBottles() {
         return bottleRepository.findAll();
@@ -111,12 +108,11 @@ public class BottleServiceImpl implements BottleService {
               | |
               |_|
     */
-
     @Override
     public Bottle updateBottle(UUID bottleUUID, BottleDTO bottleDTO) {
         if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-            foundBottle.updateFromDTO(bottleDTO,manufacturerRepository.getManufacturerByName(bottleDTO.getManufacturerName()));
+            foundBottle.updateFromDTO(bottleDTO, manufacturerRepository.getManufacturerByName(bottleDTO.getManufacturerName()));
             bottleRepository.save(foundBottle);
             return foundBottle;
         }
@@ -124,31 +120,31 @@ public class BottleServiceImpl implements BottleService {
     }
 
     @Override
-    public Bottle updateBottleForSale(UUID bottleUUID,Boolean isForSale) {
-        return updateBooleanBottleValue(bottleUUID,isForSale,BottleBooleanType.FORSALE);
+    public Bottle updateBottleForSale(UUID bottleUUID, Boolean isForSale) {
+        return updateBooleanBottleValue(bottleUUID, isForSale, BottleBooleanType.FORSALE);
     }
 
     @Override
-    public Bottle updateBottleFavorite(UUID bottleUUID,Boolean isFavorite) {
-        return updateBooleanBottleValue(bottleUUID,isFavorite,BottleBooleanType.FAVORITE);
+    public Bottle updateBottleFavorite(UUID bottleUUID, Boolean isFavorite) {
+        return updateBooleanBottleValue(bottleUUID, isFavorite, BottleBooleanType.FAVORITE);
     }
 
     @Override
-    public Bottle updateBottleUnsaleable(UUID bottleUUID,Boolean isUnsaleable) {
-        return updateBooleanBottleValue(bottleUUID,isUnsaleable,BottleBooleanType.UNSALEABLE);
+    public Bottle updateBottleUnsaleable(UUID bottleUUID, Boolean isUnsaleable) {
+        return updateBooleanBottleValue(bottleUUID, isUnsaleable, BottleBooleanType.UNSALEABLE);
     }
 
-    private Bottle updateBooleanBottleValue(UUID bottleUUID,Boolean value, BottleBooleanType type){
+    private Bottle updateBooleanBottleValue(UUID bottleUUID, Boolean value, BottleBooleanType type) {
         if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
 
-            if(type.equals(BottleBooleanType.FORSALE)){
+            if (type.equals(BottleBooleanType.FORSALE)) {
                 foundBottle.setForSale(value);
             }
-            if(type.equals(BottleBooleanType.FAVORITE)){
+            if (type.equals(BottleBooleanType.FAVORITE)) {
                 foundBottle.setFavorite(value);
             }
-            if(type.equals(BottleBooleanType.UNSALEABLE)){
+            if (type.equals(BottleBooleanType.UNSALEABLE)) {
                 foundBottle.setUnsaleable(value);
             }
 
@@ -156,7 +152,6 @@ public class BottleServiceImpl implements BottleService {
             return foundBottle;
         }
         throw new ValidationException("UUID is not known");
-
 
 
     }
@@ -170,7 +165,6 @@ public class BottleServiceImpl implements BottleService {
         | |__| |  __/ |  __/ ||  __/
         |_____/ \___|_|\___|\__\___|
     */
-
     @Override
     public void deleteBottleByUUID(UUID bottleUUID) {
         bottleRepository.delete(getBottleByUUID(bottleUUID));

@@ -44,7 +44,7 @@ public class Bottle {
     private boolean unsaleable;
 
     public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer) {
-        this(label,price,yearOfManufacture,manufacturer,false,false,false);
+        this(label, price, yearOfManufacture, manufacturer, false, false, false);
     }
 
     public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
@@ -70,17 +70,17 @@ public class Bottle {
         return getClass().hashCode();
     }
 
-    public void updateFromDTO(BottleDTO bottleDTO,Manufacturer updatedManufacturer){
-        if(bottleDTO.getLabel() != null){
+    public void updateFromDTO(BottleDTO bottleDTO, Manufacturer updatedManufacturer) {
+        if (bottleDTO.getLabel() != null) {
             this.label = bottleDTO.getLabel();
         }
-        if(bottleDTO.getPrice() != 0){
+        if (bottleDTO.getPrice() != 0) {
             this.price = bottleDTO.getPrice();
         }
-        if(bottleDTO.getYearOfManufacture() != 0){
+        if (bottleDTO.getYearOfManufacture() != 0) {
             this.yearOfManufacture = bottleDTO.getYearOfManufacture();
         }
-        if(updatedManufacturer != null){
+        if (updatedManufacturer != null) {
             this.manufacturer = updatedManufacturer;
         }
     }

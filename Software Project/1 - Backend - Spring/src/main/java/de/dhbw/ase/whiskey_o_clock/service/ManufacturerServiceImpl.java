@@ -32,11 +32,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-
     @Override
     public Manufacturer createManufacturer(ManufacturerDTO manufacturerDTO) {
         return createManufacturer(manufacturerDTO.getManufacturerName(), manufacturerDTO.getOriginCountryAbbreviation());
     }
+
     @Override
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
         if (null == (countryService.getCountryByAbbreviation(countryAbbreviation))) {
@@ -60,7 +60,6 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
-
     @Override
     public Manufacturer getManufacturerByName(String name) {
         return manufacturerRepository.getManufacturerByName(name);
@@ -82,12 +81,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
               | |
               |_|
     */
-
     @Override
     public Manufacturer updateManufacturer(UUID manufacturerUUID, ManufacturerDTO manufacturerDTO) {
         if (null != manufacturerRepository.getManufacturerByUuid(manufacturerUUID)) {
             Manufacturer foundManufacturer = manufacturerRepository.getManufacturerByUuid(manufacturerUUID);
-            foundManufacturer.updateFromDTO(manufacturerDTO,countryService.getCountryByAbbreviation(manufacturerDTO.getOriginCountryAbbreviation()));
+            foundManufacturer.updateFromDTO(manufacturerDTO, countryService.getCountryByAbbreviation(manufacturerDTO.getOriginCountryAbbreviation()));
             manufacturerRepository.save(foundManufacturer);
             return foundManufacturer;
         }
@@ -103,7 +101,6 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         | |__| |  __/ |  __/ ||  __/
         |_____/ \___|_|\___|\__\___|
     */
-
     @Override
     public void deleteManufacturerByName(String name) {
         manufacturerRepository.deleteByName(name);

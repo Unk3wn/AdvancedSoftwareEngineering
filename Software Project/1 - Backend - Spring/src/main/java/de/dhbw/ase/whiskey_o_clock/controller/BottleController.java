@@ -2,8 +2,6 @@ package de.dhbw.ase.whiskey_o_clock.controller;
 
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
-import de.dhbw.ase.whiskey_o_clock.model.Country;
-import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.service.BottleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,15 +26,14 @@ public class BottleController {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-
     @PutMapping(value = "")
     public Bottle createBottle(@RequestBody BottleDTO handoverBottle) {
         return bottleService.createBottle(handoverBottle);
     }
 
-    @PutMapping(value = "/new", params = {"bottleLabel", "bottlePrice","yearOfManufacture","manufacturerName"})
-    public Bottle newCountry(@RequestParam String bottleLabel, @RequestParam double bottlePrice,@RequestParam int yearOfManufacture,@RequestParam String manufacturerName) {
-        return bottleService.createBottle(bottleLabel, bottlePrice,yearOfManufacture,manufacturerName);
+    @PutMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
+    public Bottle newCountry(@RequestParam String bottleLabel, @RequestParam double bottlePrice, @RequestParam int yearOfManufacture, @RequestParam String manufacturerName) {
+        return bottleService.createBottle(bottleLabel, bottlePrice, yearOfManufacture, manufacturerName);
     }
 
     /************************************************************************************************************************************/
@@ -48,7 +45,6 @@ public class BottleController {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
-
     @GetMapping("")
     public List<Bottle> getAllBottles() {
         return bottleService.getBottles();
@@ -60,17 +56,14 @@ public class BottleController {
     }
 
     @GetMapping("/read/labelManufacturer")
-    public Bottle getBottleByLabelAndManufacturer(@RequestParam String label,@RequestParam String manufacturerName) {
-        return bottleService.getBottleByLabelAndManufacturer(label,manufacturerName);
+    public Bottle getBottleByLabelAndManufacturer(@RequestParam String label, @RequestParam String manufacturerName) {
+        return bottleService.getBottleByLabelAndManufacturer(label, manufacturerName);
     }
 
     @GetMapping("/read/uuid")
     public Bottle getBottleByUUID(@RequestParam UUID bottleUUID) {
         return bottleService.getBottleByUUID(bottleUUID);
     }
-
-
-
 
 
     /************************************************************************************************************************************/

@@ -25,7 +25,6 @@ public class CountryController {
      | |____| | |  __/ (_| | ||  __/
       \_____|_|  \___|\__,_|\__\___|
      */
-
     @PutMapping(value = "")
     public Country newCountry(@RequestBody CountryDTO handoverCountry) {
         return countryService.saveCountry(handoverCountry);
@@ -45,7 +44,6 @@ public class CountryController {
      | | \ \  __/ (_| | (_| |
      |_|  \_\___|\__,_|\__,_|
      */
-
     @GetMapping("")
     public List<Country> getAllCountrys() {
         return countryService.getAllCountrys();
@@ -62,10 +60,9 @@ public class CountryController {
             | |
             |_|
      */
-
     @PatchMapping(value = "/edit")
-    public Country updateCountry(@RequestParam UUID countryUUID,CountryDTO handOverCountryDTO){
-        return countryService.updateCountry(countryUUID,handOverCountryDTO);
+    public Country updateCountry(@RequestParam UUID countryUUID, CountryDTO handOverCountryDTO) {
+        return countryService.updateCountry(countryUUID, handOverCountryDTO);
     }
 
     /************************************************************************************************************************************/
@@ -77,7 +74,6 @@ public class CountryController {
      | |__| |  __/ |  __/ ||  __/
      |_____/ \___|_|\___|\__\___|
      */
-
     @DeleteMapping("")
     public void delteCountry(@RequestParam String abbreviation) {
         countryService.deleteCountry(abbreviation);

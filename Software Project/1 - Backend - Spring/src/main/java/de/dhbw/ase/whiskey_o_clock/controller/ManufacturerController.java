@@ -1,12 +1,8 @@
 package de.dhbw.ase.whiskey_o_clock.controller;
 
-import de.dhbw.ase.whiskey_o_clock.model.Country;
-import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.model.ManufacturerDTO;
-import de.dhbw.ase.whiskey_o_clock.service.CountryService;
 import de.dhbw.ase.whiskey_o_clock.service.ManufacturerService;
-import de.dhbw.ase.whiskey_o_clock.service.ManufacturerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +25,6 @@ public class ManufacturerController {
      | |____| | |  __/ (_| | ||  __/
       \_____|_|  \___|\__,_|\__\___|
      */
-
     @PutMapping(value = "")
     public Manufacturer createManufacturer(@RequestBody ManufacturerDTO manufacturerDTO) {
         return manufacturerService.createManufacturer(manufacturerDTO);
@@ -49,7 +44,6 @@ public class ManufacturerController {
      | | \ \  __/ (_| | (_| |
      |_|  \_\___|\__,_|\__,_|
      */
-
     @GetMapping("")
     public List<Manufacturer> getAllCountrys() {
         return manufacturerService.getAllManufacturers();
@@ -66,10 +60,9 @@ public class ManufacturerController {
             | |
             |_|
      */
-
     @PatchMapping(value = "/edit")
-    public Manufacturer updateCountry(@RequestParam UUID countryUUID,ManufacturerDTO handOverManufacturerDTO){
-        return manufacturerService.updateManufacturer(countryUUID,handOverManufacturerDTO);
+    public Manufacturer updateCountry(@RequestParam UUID countryUUID, ManufacturerDTO handOverManufacturerDTO) {
+        return manufacturerService.updateManufacturer(countryUUID, handOverManufacturerDTO);
     }
 
     /************************************************************************************************************************************/
@@ -81,7 +74,6 @@ public class ManufacturerController {
      | |__| |  __/ |  __/ ||  __/
      |_____/ \___|_|\___|\__\___|
      */
-
     @DeleteMapping("")
     public void deleteManufacturer(@RequestParam String name) {
         manufacturerService.deleteManufacturerByName(name);
