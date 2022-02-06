@@ -1,0 +1,50 @@
+package de.dhbw.ase.whsikey_o_clock.service;
+
+import de.dhbw.ase.whsikey_o_clock.model.Country;
+import de.dhbw.ase.whsikey_o_clock.model.Manufacturer;
+import de.dhbw.ase.whsikey_o_clock.repository.ManufacturerRepository;
+import org.hibernate.NonUniqueObjectException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.validation.ValidationException;
+import java.util.List;
+
+@Service
+public class ManufacturerServiceImpl implements ManufacturerService {
+
+    @Autowired
+    ManufacturerRepository manufacturerRepository;
+
+    @Autowired
+    CountryService countryService;
+
+    @Override
+    public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
+        if (null == (countryService.getCountryByAbbreviation(countryAbbreviation))) {
+            throw new ValidationException("Abbreviation is not valid!");
+        }
+        Country targetCountry = countryService.getCountryByAbbreviation(countryAbbreviation);
+        if (null == (getManufacturerByName(name)) && targetCountry.equals(getManufacturerByName(name).getOriginCountry())) {
+            Manufacturer newManufacturer = new Manufacturer(name, countryService.getCountryByAbbreviation(countryAbbreviation));
+            manufacturerRepository.save(newManufacturer);
+        }
+        throw new ValidationException(String.format("Manufacturer '%s' with the origin Country '%s' is already in the Database!", name, targetCountry.getName()));
+    }
+
+    @Override
+    public void deleteManufacturerByName(String name) {
+        manufacturerRepository.deleteByName(name);
+    }
+
+    @Override
+    public Manufacturer getManufacturerByName(String name) {
+        return manufacturerRepository.getManufacturerByName(name);
+    }
+
+    @Override
+    public List<Manufacturer> getAllManufacturers() {
+        return manufacturerRepository.findAll();
+    }
+
+}
