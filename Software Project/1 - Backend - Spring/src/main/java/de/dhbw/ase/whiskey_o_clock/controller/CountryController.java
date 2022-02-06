@@ -26,7 +26,7 @@ public class CountryController {
       \_____|_|  \___|\__,_|\__\___|
      */
 
-    @PutMapping(value = "", params = {"newCountry"})
+    @PutMapping(value = "")
     public Country newCountry(@RequestBody CountryDTO handoverCountry) {
         return countryService.saveCountry(handoverCountry);
     }

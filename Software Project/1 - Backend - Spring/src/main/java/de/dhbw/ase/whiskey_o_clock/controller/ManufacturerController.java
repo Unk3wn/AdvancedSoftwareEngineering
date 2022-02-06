@@ -30,7 +30,7 @@ public class ManufacturerController {
       \_____|_|  \___|\__,_|\__\___|
      */
 
-    @PutMapping(value = "", params = {"manufacturerDTO"})
+    @PutMapping(value = "")
     public Manufacturer createManufacturer(@RequestBody ManufacturerDTO manufacturerDTO) {
         return manufacturerService.createManufacturer(manufacturerDTO);
     }
