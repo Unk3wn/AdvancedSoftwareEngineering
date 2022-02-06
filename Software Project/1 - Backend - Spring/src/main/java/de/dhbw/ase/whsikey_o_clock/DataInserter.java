@@ -31,17 +31,25 @@ public class DataInserter implements ApplicationListener<ApplicationReadyEvent> 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
 
-        Country country = new Country("PAD","Patricks Länd");
+        Country country = new Country("PAD", "Patricks Länd");
         countryRepository.save(country);
 
-        Manufacturer manufacturer = new Manufacturer("Paddys Whiskey Manufaktur",country);
+        Manufacturer manufacturer = new Manufacturer("Paddys Whiskey Manufaktur", country);
         manufacturerRepository.save(manufacturer);
 
-        Bottle bottle = new Bottle("Paddys Special Brand",69.42,2022,manufacturer);
+        Bottle bottle = new Bottle("Paddys Special Brand", 69.42, 2022, manufacturer);
         bottleRepository.save(bottle);
+
+        Bottle bottle2 = new Bottle("Paddys Special Brand 2", 69.42, 2022, manufacturer);
+        bottleRepository.save(bottle2);
+
+        Bottle bottle3 = new Bottle("Paddys Special Brand 3", 69.42, 2022, manufacturer);
+        bottleRepository.save(bottle3);
 
         Series series = new Series("Paddys Best Selection");
         series.addBottle(bottle);
+        series.addBottle(bottle2);
+        series.addBottle(bottle3);
         seriesRepository.save(series);
 
     }
