@@ -12,7 +12,7 @@ public class BottleDTO implements Serializable {
     private String label;
     private double price;
     private int yearOfManufacture;
-    private ManufacturerDTO manufacturer;
+    private Manufacturer manufacturer;
     private boolean forSale;
     private boolean favorite;
     private boolean unsaleable;

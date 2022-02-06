@@ -30,7 +30,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country saveCountry(CountryDTO countryDTO) {
-        return saveCountry(countryDTO.getAbbreviation(), countryDTO.getName());
+        return saveCountry(countryDTO.getCountryAbbreviation(), countryDTO.getCountryName());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country getCountryByAbbreviation(String abbreviation) {
-        return countryRepository.findCountryByAbbreviation(abbreviation);
+        return countryRepository.getCountryByAbbreviation(abbreviation);
     }
 
     @Override
@@ -79,8 +79,8 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
-        if (null != countryRepository.findCountryByUuid(countryUUID)) {
-            Country foundCountry = countryRepository.findCountryByUuid(countryUUID);
+        if (null != countryRepository.getCountryByUuid(countryUUID)) {
+            Country foundCountry = countryRepository.getCountryByUuid(countryUUID);
             foundCountry.updateFromDTO(countryDTO);
             countryRepository.save(foundCountry);
             return foundCountry;
