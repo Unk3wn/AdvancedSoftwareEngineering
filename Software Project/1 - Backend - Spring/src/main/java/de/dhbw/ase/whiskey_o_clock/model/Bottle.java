@@ -1,6 +1,6 @@
-package de.dhbw.ase.whsikey_o_clock.model;
+package de.dhbw.ase.whiskey_o_clock.model;
 
-import de.dhbw.ase.whsikey_o_clock.model.listener.BottleListener;
+import de.dhbw.ase.whiskey_o_clock.model.listener.BottleListener;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
@@ -14,7 +14,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @EntityListeners(BottleListener.class)
 @Table(name = "bottles")

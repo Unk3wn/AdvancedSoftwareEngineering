@@ -1,4 +1,4 @@
-package de.dhbw.ase.whsikey_o_clock.model;
+package de.dhbw.ase.whiskey_o_clock.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -8,15 +8,14 @@ import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+@Getter
+@Setter
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
-@Table(name = "country")
-public class Country {
+@Table(name = "manufacturer")
+public class Manufacturer {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -26,22 +25,23 @@ public class Country {
     )
     @Column(name = "id", updatable = false, nullable = false)
     private UUID uuid;
-    @Column(name = "abbreviation", length = 3)
-    private String abbreviation;
     @Column(name = "name")
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "originCountryId")
+    private Country originCountry;
 
-    public Country(String abbreviation, String name) {
-        this.abbreviation = abbreviation;
+    public Manufacturer(String name, Country originCountry) {
         this.name = name;
+        this.originCountry = originCountry;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Country country = (Country) o;
-        return uuid != null && Objects.equals(uuid, country.uuid);
+        Manufacturer that = (Manufacturer) o;
+        return uuid != null && Objects.equals(uuid, that.uuid);
     }
 
     @Override

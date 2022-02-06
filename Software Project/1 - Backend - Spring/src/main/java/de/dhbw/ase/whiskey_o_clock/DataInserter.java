@@ -1,13 +1,13 @@
-package de.dhbw.ase.whsikey_o_clock;
+package de.dhbw.ase.whiskey_o_clock;
 
-import de.dhbw.ase.whsikey_o_clock.model.Bottle;
-import de.dhbw.ase.whsikey_o_clock.model.Country;
-import de.dhbw.ase.whsikey_o_clock.model.Manufacturer;
-import de.dhbw.ase.whsikey_o_clock.model.Series;
-import de.dhbw.ase.whsikey_o_clock.repository.BottleRepository;
-import de.dhbw.ase.whsikey_o_clock.repository.CountryRepository;
-import de.dhbw.ase.whsikey_o_clock.repository.ManufacturerRepository;
-import de.dhbw.ase.whsikey_o_clock.repository.SeriesRepository;
+import de.dhbw.ase.whiskey_o_clock.model.Bottle;
+import de.dhbw.ase.whiskey_o_clock.model.Country;
+import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
+import de.dhbw.ase.whiskey_o_clock.model.Series;
+import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
+import de.dhbw.ase.whiskey_o_clock.repository.CountryRepository;
+import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
+import de.dhbw.ase.whiskey_o_clock.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;

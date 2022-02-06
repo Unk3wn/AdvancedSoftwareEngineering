@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.dhbw.ase</groupId>
-    <artifactId>whsikey_o_clock</artifactId>
+    <artifactId>whiskey_o_clock</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>whsikey o clock</name>
+    <name>whiskey o clock</name>
     <description>Project for the course Advanced Software Engineering @ DHBW Karlsruhe</description>
     <properties>
         <java.version>11</java.version>

@@ -1,8 +1,8 @@
-package de.dhbw.ase.whsikey_o_clock.controller;
+package de.dhbw.ase.whiskey_o_clock.controller;
 
-import de.dhbw.ase.whsikey_o_clock.model.Country;
-import de.dhbw.ase.whsikey_o_clock.model.CountryDTO;
-import de.dhbw.ase.whsikey_o_clock.service.CountryService;
+import de.dhbw.ase.whiskey_o_clock.model.Country;
+import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
+import de.dhbw.ase.whiskey_o_clock.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

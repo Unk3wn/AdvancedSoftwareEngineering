@@ -1,6 +1,6 @@
-package de.dhbw.ase.whsikey_o_clock.model.listener;
+package de.dhbw.ase.whiskey_o_clock.model.listener;
 
-import de.dhbw.ase.whsikey_o_clock.model.Bottle;
+import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 

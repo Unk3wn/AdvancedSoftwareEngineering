@@ -1,7 +1,9 @@
-package de.dhbw.ase.whsikey_o_clock.model;
+package de.dhbw.ase.whiskey_o_clock.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+// DTO PATTERN
 
 @Data
 @AllArgsConstructor

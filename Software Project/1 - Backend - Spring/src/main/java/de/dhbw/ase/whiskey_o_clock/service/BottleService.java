@@ -1,6 +1,6 @@
-package de.dhbw.ase.whsikey_o_clock.service;
+package de.dhbw.ase.whiskey_o_clock.service;
 
-import de.dhbw.ase.whsikey_o_clock.model.Bottle;
+import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 
 import java.util.List;
 

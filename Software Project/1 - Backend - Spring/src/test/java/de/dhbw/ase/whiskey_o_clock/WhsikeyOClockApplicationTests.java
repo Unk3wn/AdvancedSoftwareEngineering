@@ -1,4 +1,4 @@
-package de.dhbw.ase.whsikey_o_clock;
+package de.dhbw.ase.whiskey_o_clock;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

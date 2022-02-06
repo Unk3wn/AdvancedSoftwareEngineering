@@ -1,7 +1,7 @@
-package de.dhbw.ase.whsikey_o_clock.service;
+package de.dhbw.ase.whiskey_o_clock.service;
 
-import de.dhbw.ase.whsikey_o_clock.model.Country;
-import de.dhbw.ase.whsikey_o_clock.model.CountryDTO;
+import de.dhbw.ase.whiskey_o_clock.model.Country;
+import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
 
 import java.util.List;
 
