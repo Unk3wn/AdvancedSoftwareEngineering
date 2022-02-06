@@ -2,9 +2,11 @@ package de.dhbw.ase.whiskey_o_clock.repository;
 
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.Country;
+import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Transactional
@@ -14,6 +16,9 @@ public interface BottleRepository extends JpaRepository<Bottle, UUID> {
     /** CREATE **/
 
     /** READ **/
+    List<Bottle> getBottlesByLabel(String label);
+    Bottle getBottleByLabelAndManufacturer(String label, Manufacturer manufacturer);
+    Bottle getBottleByUuid(UUID bottleUUID);
 
     /** UPDATE **/
 
