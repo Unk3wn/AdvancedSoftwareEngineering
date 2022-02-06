@@ -1,12 +1,10 @@
-package de.dhbw.ase.whsikey_o_clock.model.Listener;
+package de.dhbw.ase.whsikey_o_clock.model.listener;
 
 import de.dhbw.ase.whsikey_o_clock.model.Bottle;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 
 import javax.persistence.PrePersist;
-import javax.persistence.PreRemove;
-import javax.persistence.PreUpdate;
 
 public class BottleListener {
 

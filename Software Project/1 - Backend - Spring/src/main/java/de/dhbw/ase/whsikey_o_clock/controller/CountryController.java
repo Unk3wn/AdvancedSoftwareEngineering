@@ -1,33 +1,37 @@
 package de.dhbw.ase.whsikey_o_clock.controller;
 
-import de.dhbw.ase.whsikey_o_clock.model.Bottle;
 import de.dhbw.ase.whsikey_o_clock.model.Country;
-import de.dhbw.ase.whsikey_o_clock.service.BottleService;
+import de.dhbw.ase.whsikey_o_clock.model.CountryDTO;
 import de.dhbw.ase.whsikey_o_clock.service.CountryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/country")
 public class CountryController {
 
-    @Autowired
-    CountryService countryService;
+    private final CountryService countryService;
 
     @GetMapping("")
-    public List<Country> getAllCountrys(){
+    public List<Country> getAllCountrys() {
         return countryService.getAllCountrys();
     }
 
-    @PostMapping("")
-    public Country newCountry(@RequestBody Country newCountry) {
-        return countryService.createCountry(newCountry.getAbbreviation(), newCountry.getName());
+    @PutMapping(value = "", params = {"newCountry"})
+    public Country newCountry(@RequestBody CountryDTO handoverCountry) {
+        return countryService.saveCountry(handoverCountry);
+    }
+
+    @PutMapping(value = "/new", params = {"countryAbbreviation", "countryName"})
+    public Country newCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
+        return countryService.saveCountry(countryAbbreviation, countryName);
     }
 
     @DeleteMapping("")
-    public void delteCountry(@RequestParam String abbreviation){
+    public void delteCountry(@RequestParam String abbreviation) {
         countryService.deleteCountry(abbreviation);
     }
 }

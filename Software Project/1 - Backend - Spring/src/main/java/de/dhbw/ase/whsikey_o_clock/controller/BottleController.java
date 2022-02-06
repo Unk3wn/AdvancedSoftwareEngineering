@@ -2,19 +2,19 @@ package de.dhbw.ase.whsikey_o_clock.controller;
 
 import de.dhbw.ase.whsikey_o_clock.model.Bottle;
 import de.dhbw.ase.whsikey_o_clock.service.BottleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/bottle")
-public class BottleController{
+public class BottleController {
 
-    @Autowired
-    BottleService bottleService;
+    private final BottleService bottleService;
 
     @GetMapping("")
     public List<Bottle> getAllBottles() {
