@@ -34,16 +34,10 @@
 
 <h3 align="center">Whiskey o' clock</h3>
   <p align="center">
-    project_description
+    Project for the course Advanced Software Engineering @ DHBW Karlsruhe
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
 </div>
 
@@ -87,17 +81,10 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
+* [Spring Boot](https://spring.io/projects/spring-boot)
 * [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
@@ -108,27 +95,25 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+ - IDE, which supports Maven Projects for the Backend
+ - IDE, which supports NPM for the Frontend
 
-### Installation
+### Installation - Backend
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Unk3wn/AdvancedSoftwareEngineering.git
    ```
-3. Install NPM packages
+2. Navigate in the Folder /1 - Backend - Spring/
+3. Download the needed Maven Dependencys to run the Project
    ```sh
-   npm install
+   mvn install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+4. Start the Backend in your IDE by Executing the main Method in the Class 'WhsikeyOClockApplication.java'
+
+### Installation - Frontend
+
+TBD
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -136,17 +121,14 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+TBD
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -154,9 +136,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/Unk3wn/AdvancedSoftwareEngineering/](https://github.com/Unk3wn/AdvancedSoftwareEngineering/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
