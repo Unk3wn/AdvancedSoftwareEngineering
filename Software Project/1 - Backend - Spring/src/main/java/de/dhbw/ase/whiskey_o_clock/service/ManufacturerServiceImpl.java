@@ -2,6 +2,7 @@ package de.dhbw.ase.whiskey_o_clock.service;
 
 import de.dhbw.ase.whiskey_o_clock.model.Country;
 import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
+import de.dhbw.ase.whiskey_o_clock.model.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
 import org.hibernate.NonUniqueObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.ValidationException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ManufacturerServiceImpl implements ManufacturerService {
@@ -18,6 +20,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Autowired
     CountryService countryService;
+
 
     /************************************************************************************************************************************/
 
@@ -31,14 +34,19 @@ public class ManufacturerServiceImpl implements ManufacturerService {
      */
 
     @Override
+    public Manufacturer createManufacturer(ManufacturerDTO manufacturerDTO) {
+        return createManufacturer(manufacturerDTO.getManufacturerName(), manufacturerDTO.getOriginCountryAbbreviation());
+    }
+    @Override
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
         if (null == (countryService.getCountryByAbbreviation(countryAbbreviation))) {
-            throw new ValidationException("Abbreviation is not valid!");
+            throw new ValidationException("Country-Abbreviation is not valid!");
         }
         Country targetCountry = countryService.getCountryByAbbreviation(countryAbbreviation);
-        if (null == (getManufacturerByName(name)) && targetCountry.equals(getManufacturerByName(name).getOriginCountry())) {
+        if (null == (getManufacturerByName(name)) || !targetCountry.equals(getManufacturerByName(name).getOriginCountry())) {
             Manufacturer newManufacturer = new Manufacturer(name, countryService.getCountryByAbbreviation(countryAbbreviation));
             manufacturerRepository.save(newManufacturer);
+            return newManufacturer;
         }
         throw new ValidationException(String.format("Manufacturer '%s' with the origin Country '%s' is already in the Database!", name, targetCountry.getName()));
     }
@@ -75,6 +83,16 @@ public class ManufacturerServiceImpl implements ManufacturerService {
               |_|
     */
 
+    @Override
+    public Manufacturer updateManufacturer(UUID manufacturerUUID, ManufacturerDTO manufacturerDTO) {
+        if (null != manufacturerRepository.getManufacturerByUuid(manufacturerUUID)) {
+            Manufacturer foundManufacturer = manufacturerRepository.getManufacturerByUuid(manufacturerUUID);
+            foundManufacturer.updateFromDTO(manufacturerDTO,countryService.getCountryByAbbreviation(manufacturerDTO.getOriginCountryAbbreviation()));
+            manufacturerRepository.save(foundManufacturer);
+            return foundManufacturer;
+        }
+        throw new ValidationException("UUID is not known");
+    }
 
     /************************************************************************************************************************************/
     /*
