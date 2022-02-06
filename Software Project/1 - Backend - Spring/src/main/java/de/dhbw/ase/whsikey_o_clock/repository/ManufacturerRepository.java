@@ -7,4 +7,9 @@ import java.util.UUID;
 
 public interface ManufacturerRepository extends JpaRepository<Manufacturer, UUID> {
     // intentionally left blank, see JpaRepository interface definition
+
+    Manufacturer getManufacturerByName(String name);
+
+    void deleteByName(String name);
+
 }
