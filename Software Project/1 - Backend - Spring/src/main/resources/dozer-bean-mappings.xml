@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <mapping map-id="person">
+        <class-a>de.dhbw.ase.whiskey_o_clock.model.Country</class-a>
+        <class-b>de.dhbw.ase.whiskey_o_clock.model.CountryDTO</class-b>
+        <field>
+            <a>abbreviation</a>
+            <b>name</b>
+        </field>
+        <field>
+            <a>abbreviation</a>
+            <b>name</b>
+        </field>
+    </mapping>
+</mappings>

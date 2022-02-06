@@ -12,5 +12,7 @@ public interface CountryRepository extends JpaRepository<Country, UUID> {
 
     Country findCountryByAbbreviation(String abbreviation);
 
+    Country findCountryByUuid(UUID uuid);
+
     void deleteByAbbreviation(String abbreviation);
 }

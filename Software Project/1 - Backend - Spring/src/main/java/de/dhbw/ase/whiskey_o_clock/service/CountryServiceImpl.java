@@ -3,12 +3,14 @@ package de.dhbw.ase.whiskey_o_clock.service;
 import de.dhbw.ase.whiskey_o_clock.model.Country;
 import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.repository.CountryRepository;
+import org.dozer.DozerBeanMapper;
 import org.hibernate.NonUniqueObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ValidationException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CountryServiceImpl implements CountryService {
@@ -29,6 +31,17 @@ public class CountryServiceImpl implements CountryService {
             return countryToCreate;
         }
         throw new ValidationException("Abbreviation is not unique");
+    }
+
+    @Override
+    public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
+        if (null != countryRepository.findCountryByUuid(countryUUID)) {
+            Country foundCountry = countryRepository.findCountryByUuid(countryUUID);
+            foundCountry = new DozerBeanMapper().map(countryDTO,Country.class);
+            countryRepository.save(foundCountry);
+            return foundCountry;
+        }
+        throw new ValidationException("UUID is not known");
     }
 
 

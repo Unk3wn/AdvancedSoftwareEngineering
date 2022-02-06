@@ -11,9 +11,9 @@ import java.util.UUID;
 
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 @Entity
 @EntityListeners(BottleListener.class)
 @Table(name = "bottles")

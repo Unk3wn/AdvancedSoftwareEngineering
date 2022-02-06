@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -28,6 +29,11 @@ public class CountryController {
     @PutMapping(value = "/new", params = {"countryAbbreviation", "countryName"})
     public Country newCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
         return countryService.saveCountry(countryAbbreviation, countryName);
+    }
+
+    @PatchMapping(value = "/edit")
+    public Country updateCountry(@RequestParam UUID countryUUID,CountryDTO handOverCountryDTO){
+        return countryService.updateCountry(countryUUID,handOverCountryDTO);
     }
 
     @DeleteMapping("")
