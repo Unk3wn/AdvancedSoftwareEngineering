@@ -7,4 +7,13 @@ import java.util.UUID;
 
 public interface SeriesRepository extends JpaRepository<Series, UUID> {
     // intentionally left blank, see JpaRepository interface definition
+
+    /** CREATE **/
+
+    /** READ **/
+
+    /** UPDATE **/
+
+    /** DELETE **/
+
 }

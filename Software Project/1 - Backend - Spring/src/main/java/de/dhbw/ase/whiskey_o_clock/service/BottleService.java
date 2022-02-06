@@ -6,6 +6,13 @@ import java.util.List;
 
 public interface BottleService {
 
+    /** CREATE **/
+
+    /** READ **/
     List<Bottle> getBottles();
+
+    /** UPDATE **/
+
+    /** DELETE **/
 
 }
