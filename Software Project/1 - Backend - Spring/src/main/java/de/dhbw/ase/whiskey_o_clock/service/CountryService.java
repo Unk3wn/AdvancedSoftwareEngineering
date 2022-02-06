@@ -8,15 +8,13 @@ import java.util.UUID;
 
 public interface CountryService {
 
+    List<Country> getAllCountrys();
+    Country getCountryByAbbreviation(String abbreviation);
+
     Country saveCountry(final CountryDTO country);
     Country saveCountry(String abbreviation, String name);
 
     Country updateCountry(UUID countryUUID, CountryDTO countryDTO);
 
     void deleteCountry(String abbreviation);
-
-    Country getCountryByAbbreviation(String abbreviation);
-
-    List<Country> getAllCountrys();
-
 }

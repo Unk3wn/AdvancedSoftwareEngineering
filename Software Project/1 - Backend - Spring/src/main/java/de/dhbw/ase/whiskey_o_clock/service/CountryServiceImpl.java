@@ -17,6 +17,17 @@ public class CountryServiceImpl implements CountryService {
     @Autowired
     CountryRepository countryRepository;
 
+    /************************************************************************************************************************************/
+
+    /*
+         _____                _
+        / ____|              | |
+        | |     _ __ ___  __ _| |_ ___
+        | |    | '__/ _ \/ _` | __/ _ \
+        | |____| | |  __/ (_| | ||  __/
+        \_____|_|  \___|\__,_|\__\___|
+     */
+
     @Override
     public Country saveCountry(CountryDTO countryDTO) {
         return saveCountry(countryDTO.getAbbreviation(), countryDTO.getName());
@@ -32,22 +43,16 @@ public class CountryServiceImpl implements CountryService {
         throw new ValidationException("Abbreviation is not unique");
     }
 
-    @Override
-    public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
-        if (null != countryRepository.findCountryByUuid(countryUUID)) {
-            Country foundCountry = countryRepository.findCountryByUuid(countryUUID);
-            foundCountry.updateFromDTO(countryDTO);
-            countryRepository.save(foundCountry);
-            return foundCountry;
-        }
-        throw new ValidationException("UUID is not known");
-    }
 
-
-    @Override
-    public void deleteCountry(String abbreviation) {
-        countryRepository.deleteByAbbreviation(abbreviation);
-    }
+    /************************************************************************************************************************************/
+    /*
+         _____                _
+        |  __ \              | |
+        | |__) |___  __ _  __| |
+        |  _  // _ \/ _` |/ _` |
+        | | \ \  __/ (_| | (_| |
+        |_|  \_\___|\__,_|\__,_|
+    */
 
     @Override
     public Country getCountryByAbbreviation(String abbreviation) {
@@ -60,4 +65,44 @@ public class CountryServiceImpl implements CountryService {
     }
 
 
+    /************************************************************************************************************************************/
+    /*
+         _    _           _       _
+        | |  | |         | |     | |
+        | |  | |_ __   __| | __ _| |_ ___
+        | |  | | '_ \ / _` |/ _` | __/ _ \
+        | |__| | |_) | (_| | (_| | ||  __/
+        \____/| .__/ \__,_|\__,_|\__\___|
+              | |
+              |_|
+    */
+
+    @Override
+    public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
+        if (null != countryRepository.findCountryByUuid(countryUUID)) {
+            Country foundCountry = countryRepository.findCountryByUuid(countryUUID);
+            foundCountry.updateFromDTO(countryDTO);
+            countryRepository.save(foundCountry);
+            return foundCountry;
+        }
+        throw new ValidationException("UUID is not known");
+    }
+
+
+    /************************************************************************************************************************************/
+    /*
+         _____       _      _
+        |  __ \     | |    | |
+        | |  | | ___| | ___| |_ ___
+        | |  | |/ _ \ |/ _ \ __/ _ \
+        | |__| |  __/ |  __/ ||  __/
+        |_____/ \___|_|\___|\__\___|
+    */
+
+    @Override
+    public void deleteCountry(String abbreviation) {
+        countryRepository.deleteByAbbreviation(abbreviation);
+    }
+
+    /************************************************************************************************************************************/
 }

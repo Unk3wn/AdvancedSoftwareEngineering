@@ -19,6 +19,17 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     @Autowired
     CountryService countryService;
 
+    /************************************************************************************************************************************/
+
+    /*
+         _____                _
+        / ____|              | |
+        | |     _ __ ___  __ _| |_ ___
+        | |    | '__/ _ \/ _` | __/ _ \
+        | |____| | |  __/ (_| | ||  __/
+        \_____|_|  \___|\__,_|\__\___|
+     */
+
     @Override
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
         if (null == (countryService.getCountryByAbbreviation(countryAbbreviation))) {
@@ -32,10 +43,15 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         throw new ValidationException(String.format("Manufacturer '%s' with the origin Country '%s' is already in the Database!", name, targetCountry.getName()));
     }
 
-    @Override
-    public void deleteManufacturerByName(String name) {
-        manufacturerRepository.deleteByName(name);
-    }
+    /************************************************************************************************************************************/
+    /*
+         _____                _
+        |  __ \              | |
+        | |__) |___  __ _  __| |
+        |  _  // _ \/ _` |/ _` |
+        | | \ \  __/ (_| | (_| |
+        |_|  \_\___|\__,_|\__,_|
+    */
 
     @Override
     public Manufacturer getManufacturerByName(String name) {
@@ -47,4 +63,31 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         return manufacturerRepository.findAll();
     }
 
+    /************************************************************************************************************************************/
+    /*
+         _    _           _       _
+        | |  | |         | |     | |
+        | |  | |_ __   __| | __ _| |_ ___
+        | |  | | '_ \ / _` |/ _` | __/ _ \
+        | |__| | |_) | (_| | (_| | ||  __/
+        \____/| .__/ \__,_|\__,_|\__\___|
+              | |
+              |_|
+    */
+    /************************************************************************************************************************************/
+    /*
+         _____       _      _
+        |  __ \     | |    | |
+        | |  | | ___| | ___| |_ ___
+        | |  | |/ _ \ |/ _ \ __/ _ \
+        | |__| |  __/ |  __/ ||  __/
+        |_____/ \___|_|\___|\__\___|
+    */
+
+    @Override
+    public void deleteManufacturerByName(String name) {
+        manufacturerRepository.deleteByName(name);
+    }
+
+    /************************************************************************************************************************************/
 }

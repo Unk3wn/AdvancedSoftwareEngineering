@@ -16,10 +16,15 @@ public class CountryController {
 
     private final CountryService countryService;
 
-    @GetMapping("")
-    public List<Country> getAllCountrys() {
-        return countryService.getAllCountrys();
-    }
+    /************************************************************************************************************************************/
+    /*
+       _____                _
+      / ____|              | |
+     | |     _ __ ___  __ _| |_ ___
+     | |    | '__/ _ \/ _` | __/ _ \
+     | |____| | |  __/ (_| | ||  __/
+      \_____|_|  \___|\__,_|\__\___|
+     */
 
     @PutMapping(value = "", params = {"newCountry"})
     public Country newCountry(@RequestBody CountryDTO handoverCountry) {
@@ -31,10 +36,47 @@ public class CountryController {
         return countryService.saveCountry(countryAbbreviation, countryName);
     }
 
+    /************************************************************************************************************************************/
+    /*
+      _____                _
+     |  __ \              | |
+     | |__) |___  __ _  __| |
+     |  _  // _ \/ _` |/ _` |
+     | | \ \  __/ (_| | (_| |
+     |_|  \_\___|\__,_|\__,_|
+     */
+
+    @GetMapping("")
+    public List<Country> getAllCountrys() {
+        return countryService.getAllCountrys();
+    }
+
+    /************************************************************************************************************************************/
+    /*
+      _    _           _       _
+     | |  | |         | |     | |
+     | |  | |_ __   __| | __ _| |_ ___
+     | |  | | '_ \ / _` |/ _` | __/ _ \
+     | |__| | |_) | (_| | (_| | ||  __/
+      \____/| .__/ \__,_|\__,_|\__\___|
+            | |
+            |_|
+     */
+
     @PatchMapping(value = "/edit")
     public Country updateCountry(@RequestParam UUID countryUUID,CountryDTO handOverCountryDTO){
         return countryService.updateCountry(countryUUID,handOverCountryDTO);
     }
+
+    /************************************************************************************************************************************/
+    /*
+      _____       _      _
+     |  __ \     | |    | |
+     | |  | | ___| | ___| |_ ___
+     | |  | |/ _ \ |/ _ \ __/ _ \
+     | |__| |  __/ |  __/ ||  __/
+     |_____/ \___|_|\___|\__\___|
+     */
 
     @DeleteMapping("")
     public void delteCountry(@RequestParam String abbreviation) {
