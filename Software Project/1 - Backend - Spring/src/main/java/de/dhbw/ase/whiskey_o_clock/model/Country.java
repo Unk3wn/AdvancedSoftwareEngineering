@@ -47,4 +47,13 @@ public class Country {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+    public void updateFromDTO(CountryDTO countryDTO) {
+        if(countryDTO.getName() != null){
+            this.name = countryDTO.getName();
+        }
+        if(countryDTO.getAbbreviation() != null){
+            this.abbreviation = countryDTO.getAbbreviation();
+        }
+    }
 }

@@ -3,7 +3,6 @@ package de.dhbw.ase.whiskey_o_clock.service;
 import de.dhbw.ase.whiskey_o_clock.model.Country;
 import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.repository.CountryRepository;
-import org.dozer.DozerBeanMapper;
 import org.hibernate.NonUniqueObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,7 @@ public class CountryServiceImpl implements CountryService {
     public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
         if (null != countryRepository.findCountryByUuid(countryUUID)) {
             Country foundCountry = countryRepository.findCountryByUuid(countryUUID);
-            foundCountry = new DozerBeanMapper().map(countryDTO,Country.class);
+            foundCountry.updateFromDTO(countryDTO);
             countryRepository.save(foundCountry);
             return foundCountry;
         }

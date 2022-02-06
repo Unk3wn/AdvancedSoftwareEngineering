@@ -65,19 +65,6 @@
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
             <version>1.6.4</version>
         </dependency>
-
-        <!-- dozer library -->
-        <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer</artifactId>
-            <version>5.5.1</version>
-        </dependency>
-        <!-- dozer-spring library -->
-        <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer-spring</artifactId>
-            <version>5.5.1</version>
-        </dependency>
     </dependencies>
 
     <build>
