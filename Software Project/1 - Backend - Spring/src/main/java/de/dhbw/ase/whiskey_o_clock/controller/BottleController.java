@@ -2,6 +2,8 @@ package de.dhbw.ase.whiskey_o_clock.controller;
 
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
+import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
+import de.dhbw.ase.whiskey_o_clock.model.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.service.BottleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -77,6 +79,26 @@ public class BottleController {
               | |
               |_|
     */
+    @PutMapping(value = "/edit")
+    public Bottle updateBottle(@RequestParam UUID uuid, BottleDTO handOverBottleDTO) {
+        return bottleService.updateBottle(uuid,handOverBottleDTO);
+    }
+
+    @PutMapping(value = "/edit/forSale")
+    public Bottle updateBottleForSale(@RequestParam UUID uuid,@RequestParam boolean newValue) {
+        return bottleService.updateBottleForSale(uuid,newValue);
+    }
+
+    @PutMapping(value = "/edit/favorite")
+    public Bottle updateBottleFavorite(@RequestParam UUID uuid,@RequestParam boolean newValue) {
+        return bottleService.updateBottleFavorite(uuid,newValue);
+    }
+
+    @PutMapping(value = "/edit/unsaleable")
+    public Bottle updateBottleUnsaleable(@RequestParam UUID uuid,@RequestParam boolean newValue) {
+        return bottleService.updateBottleUnsaleable(uuid,newValue);
+    }
+
     /************************************************************************************************************************************/
     /*
          _____       _      _
@@ -86,5 +108,10 @@ public class BottleController {
         | |__| |  __/ |  __/ ||  __/
         |_____/ \___|_|\___|\__\___|
     */
+    @DeleteMapping("")
+    public void deleteBottle(@RequestParam UUID uuid) {
+        bottleService.deleteBottleByUUID(uuid);
+    }
+
     /************************************************************************************************************************************/
 }
