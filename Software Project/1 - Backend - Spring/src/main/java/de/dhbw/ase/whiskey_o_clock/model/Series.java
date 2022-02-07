@@ -5,10 +5,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @ToString
 @RequiredArgsConstructor
@@ -33,14 +30,24 @@ public class Series {
 
     @ElementCollection
     @CollectionTable(name = "bottle_series_set")
-    private Set<Bottle> bottleList = new HashSet<>();
+    private List<Bottle> bottleList = new LinkedList<>();
 
     public Series(String label) {
         this.label = label;
+        this.bottleList = new LinkedList<>();
+    }
+
+    public Series(String label, List<Bottle> bottleList) {
+        this.label = label;
+        this.bottleList = bottleList;
     }
 
     public void addBottle(Bottle bottle) {
         this.bottleList.add(bottle);
+    }
+
+    public void removeBottle(Bottle bottle){
+        this.bottleList.remove(bottle);
     }
 
     @Override
@@ -54,5 +61,14 @@ public class Series {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public void updateFromDTO(SeriesDTO seriesDTO) {
+        if(seriesDTO.getSeriesLabel() != null){
+            this.label = seriesDTO.getSeriesLabel();
+        }
+        if(seriesDTO.getSeriesBottleList() != null){
+            this.bottleList = seriesDTO.getSeriesBottleList();
+        }
     }
 }
