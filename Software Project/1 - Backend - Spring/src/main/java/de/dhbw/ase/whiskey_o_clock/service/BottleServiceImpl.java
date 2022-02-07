@@ -33,35 +33,31 @@ public class BottleServiceImpl implements BottleService {
      */
     @Override
     public Bottle createBottle(BottleDTO bottleDTO) {
-        return createBottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), bottleDTO.getManufacturerName());
+        return createBottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()).getName());
     }
-
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName) {
         return createBottle(label, price, yearOfManufacture, manufacturerName, false);
     }
-
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale) {
         return createBottle(label, price, yearOfManufacture, manufacturerName, false, false);
     }
-
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite) {
         return createBottle(label, price, yearOfManufacture, manufacturerName, false, false, false);
     }
-
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
         if (null != getBottlesByLabel(label)) {
             if (null != getBottleByLabelAndManufacturer(label, manufacturerName)) {
                 throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!", label, manufacturerName));
             }
-            Bottle targetBottle = bottleRepository.getFirstBottleByLabelAndManufacturer(label, manufacturerRepository.getManufacturerByName(manufacturerName));
+            Bottle targetBottle = bottleRepository.getFirstBottleByLabelAndManufacturer(label, manufacturerRepository.getFirstManufacturerByName(manufacturerName));
             if (null != targetBottle && targetBottle.getYearOfManufacture() == yearOfManufacture) {
                 throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' and the Year of Manufactoring '%d' is already in the Database!", targetBottle.getLabel(), manufacturerName, targetBottle.getYearOfManufacture()));
             }
-            Bottle newBottle = new Bottle(label, price, yearOfManufacture, manufacturerRepository.getManufacturerByName(manufacturerName), isForSale, isFavorite, isUnsaleable);
+            Bottle newBottle = new Bottle(label, price, yearOfManufacture, manufacturerRepository.getFirstManufacturerByName(manufacturerName), isForSale, isFavorite, isUnsaleable);
             bottleRepository.save(newBottle);
             return newBottle;
         }
@@ -78,23 +74,20 @@ public class BottleServiceImpl implements BottleService {
         |_|  \_\___|\__,_|\__,_|
     */
     @Override
+    public Bottle getBottleByUUID(UUID uuid) {
+        return bottleRepository.getBottleByUuid(uuid);
+    }
+    @Override
     public List<Bottle> getBottles() {
         return bottleRepository.findAll();
     }
-
     @Override
     public List<Bottle> getBottlesByLabel(String label) {
         return bottleRepository.getBottlesByLabel(label);
     }
-
     @Override
     public List<Bottle> getBottleByLabelAndManufacturer(String label, String manufacturerName) {
-        return bottleRepository.getBottlesByLabelAndManufacturer(label, manufacturerRepository.getManufacturerByName(manufacturerName));
-    }
-
-    @Override
-    public Bottle getBottleByUUID(UUID uuid) {
-        return bottleRepository.getBottleByUuid(uuid);
+        return bottleRepository.getBottlesByLabelAndManufacturer(label, manufacturerRepository.getFirstManufacturerByName(manufacturerName));
     }
 
     /************************************************************************************************************************************/
@@ -112,28 +105,24 @@ public class BottleServiceImpl implements BottleService {
     public Bottle updateBottle(UUID bottleUUID, BottleDTO bottleDTO) {
         if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-            foundBottle.updateFromDTO(bottleDTO, manufacturerRepository.getManufacturerByName(bottleDTO.getManufacturerName()));
+            foundBottle.updateFromDTO(bottleDTO, manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
             bottleRepository.save(foundBottle);
             return foundBottle;
         }
         throw new ValidationException("UUID is not known");
     }
-
     @Override
     public Bottle updateBottleForSale(UUID bottleUUID, Boolean isForSale) {
         return updateBooleanBottleValue(bottleUUID, isForSale, BottleBooleanType.FORSALE);
     }
-
     @Override
     public Bottle updateBottleFavorite(UUID bottleUUID, Boolean isFavorite) {
         return updateBooleanBottleValue(bottleUUID, isFavorite, BottleBooleanType.FAVORITE);
     }
-
     @Override
     public Bottle updateBottleUnsaleable(UUID bottleUUID, Boolean isUnsaleable) {
         return updateBooleanBottleValue(bottleUUID, isUnsaleable, BottleBooleanType.UNSALEABLE);
     }
-
     private Bottle updateBooleanBottleValue(UUID bottleUUID, Boolean value, BottleBooleanType type) {
         if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);

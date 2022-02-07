@@ -3,6 +3,7 @@ package de.dhbw.ase.whiskey_o_clock.repository;
 import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface ManufacturerRepository extends JpaRepository<Manufacturer, UUID> {
@@ -13,7 +14,8 @@ public interface ManufacturerRepository extends JpaRepository<Manufacturer, UUID
     /**
      * READ
      **/
-    Manufacturer getManufacturerByName(String name);
+    List<Manufacturer> getManufacturerByName(String name);
+    Manufacturer getFirstManufacturerByName(String name);
     Manufacturer getManufacturerByUuid(UUID uuid);
 
     /** UPDATE **/

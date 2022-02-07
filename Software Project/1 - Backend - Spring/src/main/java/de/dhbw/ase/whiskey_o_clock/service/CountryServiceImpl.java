@@ -34,7 +34,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country saveCountry(String abbreviation, String name) throws NonUniqueObjectException {
-        if (null == getCountryByAbbreviation(abbreviation)) {
+        if (null == countryRepository.getCountryByAbbreviation(abbreviation)) {
             Country countryToCreate = new Country(abbreviation, name);
             countryRepository.save(countryToCreate);
             return countryToCreate;
@@ -52,11 +52,6 @@ public class CountryServiceImpl implements CountryService {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
-    @Override
-    public Country getCountryByAbbreviation(String abbreviation) {
-        return countryRepository.getCountryByAbbreviation(abbreviation);
-    }
-
     @Override
     public List<Country> getAllCountrys() {
         return countryRepository.findAll();

@@ -44,7 +44,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
             throw new ValidationException("Country-Abbreviation is not valid!");
         }
         Country targetCountry = countryRepository.getCountryByAbbreviation(countryAbbreviation);
-        if (null == (getManufacturerByName(name)) || !targetCountry.equals(getManufacturerByName(name).getOriginCountry())) {
+        if (null == (manufacturerRepository.getManufacturerByName(name)) || !targetCountry.equals(manufacturerRepository.getManufacturerByName(name))) {
             Manufacturer newManufacturer = new Manufacturer(name, countryRepository.getCountryByAbbreviation(countryAbbreviation));
             manufacturerRepository.save(newManufacturer);
             return newManufacturer;
@@ -52,7 +52,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         throw new ValidationException(String.format("Manufacturer '%s' with the origin Country '%s' is already in the Database!", name, targetCountry.getName()));
     }
 
-    /************************************************************************************************************************************/
+    /**
+     * @return**********************************************************************************************************************************/
     /*
          _____                _
         |  __ \              | |
@@ -61,11 +62,10 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
-    @Override
-    public Manufacturer getManufacturerByName(String name) {
-        return manufacturerRepository.getManufacturerByName(name);
-    }
 
+    public Manufacturer getManufacturerByUUID(UUID uuid){
+        return manufacturerRepository.getManufacturerByUuid(uuid);
+    }
     @Override
     public List<Manufacturer> getAllManufacturers() {
         return manufacturerRepository.findAll();

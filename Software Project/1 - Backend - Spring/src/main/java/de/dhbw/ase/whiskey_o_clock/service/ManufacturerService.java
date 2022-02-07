@@ -19,8 +19,6 @@ public interface ManufacturerService {
     /**
      * READ
      **/
-    Manufacturer getManufacturerByName(String name);
-
     List<Manufacturer> getAllManufacturers();
 
     /**
