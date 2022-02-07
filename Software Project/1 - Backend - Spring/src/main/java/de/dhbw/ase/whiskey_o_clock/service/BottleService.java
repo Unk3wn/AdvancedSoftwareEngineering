@@ -28,7 +28,7 @@ public interface BottleService {
 
     List<Bottle> getBottlesByLabel(String label);
 
-    Bottle getBottleByLabelAndManufacturer(String label, String manufacturer);
+    List<Bottle> getBottleByLabelAndManufacturer(String label, String manufacturer);
 
     Bottle getBottleByUUID(UUID uuid);
 

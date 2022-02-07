@@ -57,7 +57,7 @@ public class BottleServiceImpl implements BottleService {
             if (null != getBottleByLabelAndManufacturer(label, manufacturerName)) {
                 throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!", label, manufacturerName));
             }
-            Bottle targetBottle = getBottleByLabelAndManufacturer(label, manufacturerName);
+            Bottle targetBottle = bottleRepository.getFirstBottleByLabelAndManufacturer(label, manufacturerRepository.getManufacturerByName(manufacturerName));
             if (null != targetBottle && targetBottle.getYearOfManufacture() == yearOfManufacture) {
                 throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' and the Year of Manufactoring '%d' is already in the Database!", targetBottle.getLabel(), manufacturerName, targetBottle.getYearOfManufacture()));
             }
@@ -88,8 +88,8 @@ public class BottleServiceImpl implements BottleService {
     }
 
     @Override
-    public Bottle getBottleByLabelAndManufacturer(String label, String manufacturerName) {
-        return bottleRepository.getBottleByLabelAndManufacturer(label, manufacturerRepository.getManufacturerByName(manufacturerName));
+    public List<Bottle> getBottleByLabelAndManufacturer(String label, String manufacturerName) {
+        return bottleRepository.getBottlesByLabelAndManufacturer(label, manufacturerRepository.getManufacturerByName(manufacturerName));
     }
 
     @Override
@@ -137,17 +137,11 @@ public class BottleServiceImpl implements BottleService {
     private Bottle updateBooleanBottleValue(UUID bottleUUID, Boolean value, BottleBooleanType type) {
         if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-
-            if (type.equals(BottleBooleanType.FORSALE)) {
-                foundBottle.setForSale(value);
+            switch(type){
+                case FORSALE: foundBottle.setForSale(value); break;
+                case FAVORITE: foundBottle.setFavorite(value); break;
+                case UNSALEABLE: foundBottle.setUnsaleable(value); break;
             }
-            if (type.equals(BottleBooleanType.FAVORITE)) {
-                foundBottle.setFavorite(value);
-            }
-            if (type.equals(BottleBooleanType.UNSALEABLE)) {
-                foundBottle.setUnsaleable(value);
-            }
-
             bottleRepository.save(foundBottle);
             return foundBottle;
         }

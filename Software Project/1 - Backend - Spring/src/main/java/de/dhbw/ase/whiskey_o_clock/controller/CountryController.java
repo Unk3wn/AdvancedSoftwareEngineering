@@ -25,12 +25,12 @@ public class CountryController {
      | |____| | |  __/ (_| | ||  __/
       \_____|_|  \___|\__,_|\__\___|
      */
-    @PutMapping(value = "")
+    @PostMapping(value = "")
     public Country newCountry(@RequestBody CountryDTO handoverCountry) {
         return countryService.saveCountry(handoverCountry);
     }
 
-    @PutMapping(value = "/new", params = {"countryAbbreviation", "countryName"})
+    @PostMapping(value = "/new", params = {"countryAbbreviation", "countryName"})
     public Country newCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
         return countryService.saveCountry(countryAbbreviation, countryName);
     }
@@ -60,7 +60,7 @@ public class CountryController {
             | |
             |_|
      */
-    @PatchMapping(value = "/edit")
+    @PutMapping(value = "/edit")
     public Country updateCountry(@RequestParam UUID countryUUID, CountryDTO handOverCountryDTO) {
         return countryService.updateCountry(countryUUID, handOverCountryDTO);
     }

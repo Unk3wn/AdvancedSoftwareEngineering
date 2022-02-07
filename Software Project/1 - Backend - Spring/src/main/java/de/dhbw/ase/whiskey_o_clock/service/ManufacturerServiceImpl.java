@@ -3,6 +3,7 @@ package de.dhbw.ase.whiskey_o_clock.service;
 import de.dhbw.ase.whiskey_o_clock.model.Country;
 import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.model.ManufacturerDTO;
+import de.dhbw.ase.whiskey_o_clock.repository.CountryRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
 import org.hibernate.NonUniqueObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     ManufacturerRepository manufacturerRepository;
 
     @Autowired
-    CountryService countryService;
+    CountryRepository countryRepository;
 
 
     /************************************************************************************************************************************/
@@ -39,12 +40,12 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
-        if (null == (countryService.getCountryByAbbreviation(countryAbbreviation))) {
+        if (null == (countryRepository.getCountryByAbbreviation(countryAbbreviation))) {
             throw new ValidationException("Country-Abbreviation is not valid!");
         }
-        Country targetCountry = countryService.getCountryByAbbreviation(countryAbbreviation);
+        Country targetCountry = countryRepository.getCountryByAbbreviation(countryAbbreviation);
         if (null == (getManufacturerByName(name)) || !targetCountry.equals(getManufacturerByName(name).getOriginCountry())) {
-            Manufacturer newManufacturer = new Manufacturer(name, countryService.getCountryByAbbreviation(countryAbbreviation));
+            Manufacturer newManufacturer = new Manufacturer(name, countryRepository.getCountryByAbbreviation(countryAbbreviation));
             manufacturerRepository.save(newManufacturer);
             return newManufacturer;
         }
@@ -85,7 +86,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     public Manufacturer updateManufacturer(UUID manufacturerUUID, ManufacturerDTO manufacturerDTO) {
         if (null != manufacturerRepository.getManufacturerByUuid(manufacturerUUID)) {
             Manufacturer foundManufacturer = manufacturerRepository.getManufacturerByUuid(manufacturerUUID);
-            foundManufacturer.updateFromDTO(manufacturerDTO, countryService.getCountryByAbbreviation(manufacturerDTO.getOriginCountryAbbreviation()));
+            foundManufacturer.updateFromDTO(manufacturerDTO, countryRepository.getCountryByAbbreviation(manufacturerDTO.getOriginCountryAbbreviation()));
             manufacturerRepository.save(foundManufacturer);
             return foundManufacturer;
         }

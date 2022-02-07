@@ -23,7 +23,7 @@ public class Country {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "uuid", updatable = false, nullable = false)
     private UUID uuid;
     @Column(name = "abbreviation", length = 3)
     private String abbreviation;

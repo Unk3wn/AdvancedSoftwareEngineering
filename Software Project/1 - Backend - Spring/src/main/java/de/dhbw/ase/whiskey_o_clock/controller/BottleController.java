@@ -19,20 +19,20 @@ public class BottleController {
     /************************************************************************************************************************************/
 
     /*
-         _____                _
-        / ____|              | |
+          _____                _
+         / ____|              | |
         | |     _ __ ___  __ _| |_ ___
         | |    | '__/ _ \/ _` | __/ _ \
         | |____| | |  __/ (_| | ||  __/
-        \_____|_|  \___|\__,_|\__\___|
-     */
-    @PutMapping(value = "")
+         \_____|_|  \___|\__,_|\__\___|
+    */
+    @PostMapping(value = "")
     public Bottle createBottle(@RequestBody BottleDTO handoverBottle) {
         return bottleService.createBottle(handoverBottle);
     }
 
-    @PutMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
-    public Bottle newCountry(@RequestParam String bottleLabel, @RequestParam double bottlePrice, @RequestParam int yearOfManufacture, @RequestParam String manufacturerName) {
+    @PostMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
+    public Bottle createBottle(@RequestParam String bottleLabel, @RequestParam double bottlePrice, @RequestParam int yearOfManufacture, @RequestParam String manufacturerName) {
         return bottleService.createBottle(bottleLabel, bottlePrice, yearOfManufacture, manufacturerName);
     }
 
@@ -56,7 +56,7 @@ public class BottleController {
     }
 
     @GetMapping("/read/labelManufacturer")
-    public Bottle getBottleByLabelAndManufacturer(@RequestParam String label, @RequestParam String manufacturerName) {
+    public List<Bottle> getBottleByLabelAndManufacturer(@RequestParam String label, @RequestParam String manufacturerName) {
         return bottleService.getBottleByLabelAndManufacturer(label, manufacturerName);
     }
 
