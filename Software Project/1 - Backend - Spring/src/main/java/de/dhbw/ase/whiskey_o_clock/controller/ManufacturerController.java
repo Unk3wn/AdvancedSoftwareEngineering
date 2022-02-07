@@ -45,7 +45,7 @@ public class ManufacturerController {
      |_|  \_\___|\__,_|\__,_|
      */
     @GetMapping("")
-    public List<Manufacturer> getAllCountrys() {
+    public List<Manufacturer> getAllManufacturers() {
         return manufacturerService.getAllManufacturers();
     }
 
@@ -61,8 +61,8 @@ public class ManufacturerController {
             |_|
      */
     @PutMapping(value = "/edit")
-    public Manufacturer updateCountry(@RequestParam UUID countryUUID, ManufacturerDTO handOverManufacturerDTO) {
-        return manufacturerService.updateManufacturer(countryUUID, handOverManufacturerDTO);
+    public Manufacturer updateManufacturer(@RequestParam UUID manufacturerUUID, ManufacturerDTO handOverManufacturerDTO) {
+        return manufacturerService.updateManufacturer(manufacturerUUID, handOverManufacturerDTO);
     }
 
     /************************************************************************************************************************************/
@@ -75,7 +75,7 @@ public class ManufacturerController {
      |_____/ \___|_|\___|\__\___|
      */
     @DeleteMapping("")
-    public void deleteManufacturer(@RequestParam String name) {
-        manufacturerService.deleteManufacturerByName(name);
+    public void deleteManufacturer(@RequestParam UUID uuid) {
+        manufacturerService.deleteManufacturerByUUID(uuid);
     }
 }

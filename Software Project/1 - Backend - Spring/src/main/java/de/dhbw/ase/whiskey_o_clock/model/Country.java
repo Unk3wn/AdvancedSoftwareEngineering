@@ -25,7 +25,7 @@ public class Country {
     )
     @Column(name = "uuid", updatable = false, nullable = false)
     private UUID uuid;
-    @Column(name = "abbreviation", length = 3)
+    @Column(name = "abbreviation", length = 3,unique = true)
     private String abbreviation;
     @Column(name = "name")
     private String name;

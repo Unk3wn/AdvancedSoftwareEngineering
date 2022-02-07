@@ -26,12 +26,12 @@ public class CountryController {
       \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public Country newCountry(@RequestBody CountryDTO handoverCountry) {
+    public Country createCountry(@RequestBody CountryDTO handoverCountry) {
         return countryService.saveCountry(handoverCountry);
     }
 
     @PostMapping(value = "/new", params = {"countryAbbreviation", "countryName"})
-    public Country newCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
+    public Country createCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
         return countryService.saveCountry(countryAbbreviation, countryName);
     }
 

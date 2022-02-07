@@ -103,8 +103,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         |_____/ \___|_|\___|\__\___|
     */
     @Override
-    public void deleteManufacturerByName(String name) {
-        manufacturerRepository.deleteByName(name);
+    public void deleteManufacturerByUUID(UUID uuid) {
+        manufacturerRepository.deleteById(uuid);
     }
 
     /************************************************************************************************************************************/

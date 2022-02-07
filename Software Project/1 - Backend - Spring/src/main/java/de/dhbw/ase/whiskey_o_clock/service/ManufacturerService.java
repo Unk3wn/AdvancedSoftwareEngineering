@@ -31,7 +31,7 @@ public interface ManufacturerService {
     /**
      * DELETE
      **/
-    void deleteManufacturerByName(String name);
+    void deleteManufacturerByUUID(UUID uuid);
 
 
 }
