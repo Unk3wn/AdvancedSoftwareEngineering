@@ -57,11 +57,6 @@ public class BottleController {
         return bottleService.getBottlesByLabel(label);
     }
 
-    @GetMapping("/read/labelManufacturer")
-    public List<Bottle> getBottleByLabelAndManufacturer(@RequestParam String label, @RequestParam String manufacturerName) {
-        return bottleService.getBottleByLabelAndManufacturer(label, manufacturerName);
-    }
-
     @GetMapping("/read/uuid")
     public Bottle getBottleByUUID(@RequestParam UUID bottleUUID) {
         return bottleService.getBottleByUUID(bottleUUID);

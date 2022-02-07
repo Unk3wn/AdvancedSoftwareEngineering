@@ -25,7 +25,6 @@ public interface BottleService {
     List<Bottle> getBottlesByLabel(String label);
     List<Bottle> getBottleByLabelAndManufacturer(String label, String manufacturer);
 
-
     /**
      * UPDATE
      **/

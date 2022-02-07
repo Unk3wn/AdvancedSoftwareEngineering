@@ -15,6 +15,8 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedList;
+
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class DataInserter implements ApplicationListener<ApplicationReadyEvent> {
