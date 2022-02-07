@@ -11,7 +11,7 @@ import java.util.UUID;
 public class BottleDTO implements Serializable {
 
     private String label;
-    private double price;
-    private int yearOfManufacture;
+    private Double price;
+    private Integer yearOfManufacture;
     private UUID manufacturer;
 }

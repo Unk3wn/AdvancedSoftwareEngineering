@@ -1,9 +1,16 @@
 package de.dhbw.ase.whiskey_o_clock.controller;
 
+import de.dhbw.ase.whiskey_o_clock.model.Bottle;
+import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
+import de.dhbw.ase.whiskey_o_clock.model.Series;
+import de.dhbw.ase.whiskey_o_clock.model.SeriesDTO;
 import de.dhbw.ase.whiskey_o_clock.service.SeriesService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -22,7 +29,15 @@ public class SeriesController {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
+    @PostMapping(value = "")
+    public Series createSeries(@RequestBody SeriesDTO handoverSeries) {
+        return seriesService.createSeries(handoverSeries);
+    }
 
+    @PostMapping(value = "/new", params = {"seriesLabel"})
+    public Series createSeries(@RequestParam String seriesLabel) {
+        return seriesService.createSeries(seriesLabel,new LinkedList<>());
+    }
     /************************************************************************************************************************************/
     /*
          _____                _
@@ -32,6 +47,16 @@ public class SeriesController {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
+    @GetMapping("")
+    public List<Series> getAllSeries() {
+        return seriesService.getAllSeries();
+    }
+
+    @GetMapping("/read/uuid")
+    public Series getSeriesByUUID(@RequestParam UUID uuid) {
+        return seriesService.getSeriesByUUID(uuid);
+    }
+
 
     /************************************************************************************************************************************/
     /*
@@ -44,6 +69,10 @@ public class SeriesController {
               | |
               |_|
     */
+    @PutMapping(value = "")
+    public Series updateSeries(@RequestParam UUID uuid, SeriesDTO handoverSeriesDTO) {
+        return seriesService.updateSeriesByUUID(uuid,handoverSeriesDTO);
+    }
     /************************************************************************************************************************************/
     /*
          _____       _      _
@@ -53,5 +82,9 @@ public class SeriesController {
         | |__| |  __/ |  __/ ||  __/
         |_____/ \___|_|\___|\__\___|
     */
+    @DeleteMapping("")
+    public void deleteSeries(@RequestParam UUID uuid) {
+        seriesService.deleteSeries(uuid);
+    }
     /************************************************************************************************************************************/
 }

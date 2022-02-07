@@ -74,10 +74,10 @@ public class Bottle {
         if (bottleDTO.getLabel() != null) {
             this.label = bottleDTO.getLabel();
         }
-        if (bottleDTO.getPrice() != 0) {
+        if (bottleDTO.getPrice() != null) {
             this.price = bottleDTO.getPrice();
         }
-        if (bottleDTO.getYearOfManufacture() != 0) {
+        if (bottleDTO.getYearOfManufacture() != null) {
             this.yearOfManufacture = bottleDTO.getYearOfManufacture();
         }
         if (updatedManufacturer != null) {
