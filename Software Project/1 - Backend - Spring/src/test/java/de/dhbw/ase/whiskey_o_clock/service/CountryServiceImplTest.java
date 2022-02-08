@@ -23,7 +23,7 @@ import static org.mockito.BDDMockito.verify;
 import static org.mockito.BDDMockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CountryServiceImplTest {
+public class CountryServiceImplTest {
 
     @Mock
     CountryRepository countryRepository;
