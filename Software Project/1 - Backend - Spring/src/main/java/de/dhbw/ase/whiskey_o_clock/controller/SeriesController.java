@@ -1,7 +1,5 @@
 package de.dhbw.ase.whiskey_o_clock.controller;
 
-import de.dhbw.ase.whiskey_o_clock.model.Bottle;
-import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
 import de.dhbw.ase.whiskey_o_clock.model.Series;
 import de.dhbw.ase.whiskey_o_clock.model.SeriesDTO;
 import de.dhbw.ase.whiskey_o_clock.service.SeriesService;
@@ -36,8 +34,9 @@ public class SeriesController {
 
     @PostMapping(value = "/new", params = {"seriesLabel"})
     public Series createSeries(@RequestParam String seriesLabel) {
-        return seriesService.createSeries(seriesLabel,new LinkedList<>());
+        return seriesService.createSeries(seriesLabel, new LinkedList<>());
     }
+
     /************************************************************************************************************************************/
     /*
          _____                _
@@ -70,9 +69,10 @@ public class SeriesController {
               |_|
     */
     @PutMapping(value = "")
-    public Series updateSeries(@RequestParam UUID uuid,@RequestBody SeriesDTO handoverSeriesDTO) {
-        return seriesService.updateSeriesByUUID(uuid,handoverSeriesDTO);
+    public Series updateSeries(@RequestParam UUID uuid, @RequestBody SeriesDTO handoverSeriesDTO) {
+        return seriesService.updateSeriesByUUID(uuid, handoverSeriesDTO);
     }
+
     /************************************************************************************************************************************/
     /*
          _____       _      _

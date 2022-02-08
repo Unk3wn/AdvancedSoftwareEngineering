@@ -75,6 +75,6 @@ class CountryTest {
 
     @Test
     void testToString() {
-        assertEquals(testCountry.toString(),"CountryName [TES]");
+        assertEquals("CountryName [TES]",testCountry.toString());
     }
 }

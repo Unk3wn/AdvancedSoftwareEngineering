@@ -73,12 +73,11 @@ class CountryServiceImplTest {
         List<Country> allCountrys = countryService.getAllCountrys();
 
         //Validation
-        assertEquals(allCountrys.get(0).getName(), "TestA");
+        assertEquals("TestA",allCountrys.get(0).getName());
     }
 
     @Test
     void updateCountry() {
-
 
         Country country = new Country(countryUUID, countryAbbreviation, countryName);
 
@@ -90,6 +89,8 @@ class CountryServiceImplTest {
         when(countryRepository.save(country)).thenReturn(new Country(countryUUID, newAbbreviation, newCountryName));
 
         countryService.updateCountry(countryUUID, newData);
+
+        verify(countryRepository,times(2)).save(any(Country.class));
 
     }
 
