@@ -5,7 +5,10 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 @ToString
 @RequiredArgsConstructor
@@ -28,7 +31,7 @@ public class Series {
     @Column(name = "label")
     private String label;
 
-    @ElementCollection
+    @OneToMany
     @CollectionTable(name = "bottle_series_set")
     private List<Bottle> bottleList = new LinkedList<>();
 
@@ -46,7 +49,7 @@ public class Series {
         this.bottleList.add(bottle);
     }
 
-    public void removeBottle(Bottle bottle){
+    public void removeBottle(Bottle bottle) {
         this.bottleList.remove(bottle);
     }
 
@@ -63,12 +66,7 @@ public class Series {
         return getClass().hashCode();
     }
 
-    public void updateFromDTO(SeriesDTO seriesDTO) {
-        if(seriesDTO.getSeriesLabel() != null){
-            this.label = seriesDTO.getSeriesLabel();
-        }
-        if(seriesDTO.getSeriesBottleList() != null){
-            this.bottleList = seriesDTO.getSeriesBottleList();
-        }
+    public void clearBottleList() {
+        this.bottleList.clear();
     }
 }

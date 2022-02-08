@@ -1,5 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.service;
 
+import de.dhbw.ase.whiskey_o_clock.helper.DTOMapper;
 import de.dhbw.ase.whiskey_o_clock.model.Country;
 import de.dhbw.ase.whiskey_o_clock.model.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.model.ManufacturerDTO;
@@ -53,7 +54,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     /**
-     * @return**********************************************************************************************************************************/
+     * @return
+     **********************************************************************************************************************************/
     /*
          _____                _
         |  __ \              | |
@@ -62,10 +64,10 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         | | \ \  __/ (_| | (_| |
         |_|  \_\___|\__,_|\__,_|
     */
-
-    public Manufacturer getManufacturerByUUID(UUID uuid){
+    public Manufacturer getManufacturerByUUID(UUID uuid) {
         return manufacturerRepository.getManufacturerByUuid(uuid);
     }
+
     @Override
     public List<Manufacturer> getAllManufacturers() {
         return manufacturerRepository.findAll();
@@ -86,7 +88,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     public Manufacturer updateManufacturer(UUID manufacturerUUID, ManufacturerDTO manufacturerDTO) {
         if (null != manufacturerRepository.getManufacturerByUuid(manufacturerUUID)) {
             Manufacturer foundManufacturer = manufacturerRepository.getManufacturerByUuid(manufacturerUUID);
-            foundManufacturer.updateFromDTO(manufacturerDTO, countryRepository.getCountryByAbbreviation(manufacturerDTO.getOriginCountryAbbreviation()));
+            DTOMapper.updateManufacturerWithDTO(foundManufacturer, manufacturerDTO);
             manufacturerRepository.save(foundManufacturer);
             return foundManufacturer;
         }

@@ -70,19 +70,4 @@ public class Bottle {
         return getClass().hashCode();
     }
 
-    public void updateFromDTO(BottleDTO bottleDTO, Manufacturer updatedManufacturer) {
-        if (bottleDTO.getLabel() != null) {
-            this.label = bottleDTO.getLabel();
-        }
-        if (bottleDTO.getPrice() != null) {
-            this.price = bottleDTO.getPrice();
-        }
-        if (bottleDTO.getYearOfManufacture() != null) {
-            this.yearOfManufacture = bottleDTO.getYearOfManufacture();
-        }
-        if (updatedManufacturer != null) {
-            this.manufacturer = updatedManufacturer;
-        }
-    }
-
 }

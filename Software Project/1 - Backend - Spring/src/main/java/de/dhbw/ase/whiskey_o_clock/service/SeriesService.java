@@ -9,18 +9,28 @@ import java.util.UUID;
 
 public interface SeriesService {
 
-    /** CREATE **/
+    /**
+     * CREATE
+     **/
     Series createSeries(SeriesDTO seriesDTO);
+
     Series createSeries(String label, List<Bottle> bottleList);
 
-    /** READ **/
+    /**
+     * READ
+     **/
     Series getSeriesByUUID(UUID uuid);
+
     List<Series> getAllSeries();
 
-    /** UPDATE **/
-    Series updateSeriesByUUID(UUID uuid,SeriesDTO seriesDTO);
+    /**
+     * UPDATE
+     **/
+    Series updateSeriesByUUID(UUID uuid, SeriesDTO seriesDTO);
 
-    /** DELETE **/
+    /**
+     * DELETE
+     **/
     void deleteSeries(UUID uuid);
 
 }

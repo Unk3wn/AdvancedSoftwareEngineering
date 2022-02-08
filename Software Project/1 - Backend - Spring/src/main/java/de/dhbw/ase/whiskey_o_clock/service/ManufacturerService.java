@@ -12,6 +12,7 @@ public interface ManufacturerService {
      * CREATE
      **/
     Manufacturer createManufacturer(ManufacturerDTO manufacturerDTO);
+
     Manufacturer createManufacturer(String name, String countryAbbreviation);
 
     /**

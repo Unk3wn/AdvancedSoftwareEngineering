@@ -1,5 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.service;
 
+import de.dhbw.ase.whiskey_o_clock.helper.DTOMapper;
 import de.dhbw.ase.whiskey_o_clock.model.Country;
 import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.repository.CountryRepository;
@@ -57,6 +58,11 @@ public class CountryServiceImpl implements CountryService {
         return countryRepository.findAll();
     }
 
+    @Override
+    public Country getCountryByAbbreviation(String abbreviation) {
+        return countryRepository.getCountryByAbbreviation(abbreviation);
+    }
+
 
     /************************************************************************************************************************************/
     /*
@@ -73,7 +79,7 @@ public class CountryServiceImpl implements CountryService {
     public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
         if (null != countryRepository.getCountryByUuid(countryUUID)) {
             Country foundCountry = countryRepository.getCountryByUuid(countryUUID);
-            foundCountry.updateFromDTO(countryDTO);
+            DTOMapper.updateCountryWithDTO(foundCountry, countryDTO);
             countryRepository.save(foundCountry);
             return foundCountry;
         }
@@ -93,6 +99,11 @@ public class CountryServiceImpl implements CountryService {
     @Override
     public void deleteCountry(String abbreviation) {
         countryRepository.deleteByAbbreviation(abbreviation);
+    }
+
+    @Override
+    public void deleteCountry(UUID uuid) {
+        countryRepository.deleteById(uuid);
     }
 
     /************************************************************************************************************************************/

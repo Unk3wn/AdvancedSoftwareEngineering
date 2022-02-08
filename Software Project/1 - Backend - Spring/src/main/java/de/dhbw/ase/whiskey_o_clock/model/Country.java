@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.ValidationException;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ public class Country {
     )
     @Column(name = "uuid", updatable = false, nullable = false)
     private UUID uuid;
-    @Column(name = "abbreviation", length = 3,unique = true)
+    @Column(name = "abbreviation", length = 3, unique = true)
     private String abbreviation;
     @Column(name = "name")
     private String name;
@@ -33,6 +34,14 @@ public class Country {
     public Country(String abbreviation, String name) {
         this.abbreviation = abbreviation;
         this.name = name;
+    }
+
+    public void setAbbreviation(String abbreviation) {
+        if (abbreviation.matches("[a-zA-Z]{1,3}")) {
+            this.abbreviation = abbreviation;
+            return;
+        }
+        throw new ValidationException("Abbreviation not valid, only between 1 and 3 are Valid!");
     }
 
     @Override
@@ -48,12 +57,9 @@ public class Country {
         return getClass().hashCode();
     }
 
-    public void updateFromDTO(CountryDTO countryDTO) {
-        if (countryDTO.getCountryName() != null) {
-            this.name = countryDTO.getCountryName();
-        }
-        if (countryDTO.getCountryAbbreviation() != null) {
-            this.abbreviation = countryDTO.getCountryAbbreviation();
-        }
+    @Override
+    public String toString() {
+        return String.format("%s [%s]", name, abbreviation);
     }
+
 }

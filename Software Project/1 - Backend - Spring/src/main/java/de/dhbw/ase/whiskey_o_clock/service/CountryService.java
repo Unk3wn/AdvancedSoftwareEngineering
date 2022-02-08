@@ -12,6 +12,7 @@ public interface CountryService {
      * CREATE
      **/
     Country saveCountry(final CountryDTO country);
+
     Country saveCountry(String abbreviation, String name);
 
     /**
@@ -19,6 +20,7 @@ public interface CountryService {
      **/
     List<Country> getAllCountrys();
 
+    Country getCountryByAbbreviation(String abbreviation);
 
     /**
      * UPDATE
@@ -29,4 +31,8 @@ public interface CountryService {
      * DELETE
      **/
     void deleteCountry(String abbreviation);
+
+    void deleteCountry(UUID uuid);
+
+
 }

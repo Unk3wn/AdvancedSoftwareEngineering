@@ -1,6 +1,7 @@
 package de.dhbw.ase.whiskey_o_clock.service;
 
 import de.dhbw.ase.whiskey_o_clock.helper.BottleBooleanType;
+import de.dhbw.ase.whiskey_o_clock.helper.DTOMapper;
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
 import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
@@ -35,18 +36,22 @@ public class BottleServiceImpl implements BottleService {
     public Bottle createBottle(BottleDTO bottleDTO) {
         return createBottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()).getName());
     }
+
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName) {
         return createBottle(label, price, yearOfManufacture, manufacturerName, false);
     }
+
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale) {
         return createBottle(label, price, yearOfManufacture, manufacturerName, false, false);
     }
+
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite) {
         return createBottle(label, price, yearOfManufacture, manufacturerName, false, false, false);
     }
+
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
         if (null != getBottlesByLabel(label)) {
@@ -77,14 +82,17 @@ public class BottleServiceImpl implements BottleService {
     public Bottle getBottleByUUID(UUID uuid) {
         return bottleRepository.getBottleByUuid(uuid);
     }
+
     @Override
     public List<Bottle> getBottles() {
         return bottleRepository.findAll();
     }
+
     @Override
     public List<Bottle> getBottlesByLabel(String label) {
         return bottleRepository.getBottlesByLabel(label);
     }
+
     @Override
     public List<Bottle> getBottleByLabelAndManufacturer(String label, String manufacturerName) {
         return bottleRepository.getBottlesByLabelAndManufacturer(label, manufacturerRepository.getFirstManufacturerByName(manufacturerName));
@@ -105,31 +113,41 @@ public class BottleServiceImpl implements BottleService {
     public Bottle updateBottle(UUID bottleUUID, BottleDTO bottleDTO) {
         if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-            foundBottle.updateFromDTO(bottleDTO, manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
+            DTOMapper.updateBottleWithDTO(foundBottle, bottleDTO);
             bottleRepository.save(foundBottle);
             return foundBottle;
         }
         throw new ValidationException("UUID is not known");
     }
+
     @Override
     public Bottle updateBottleForSale(UUID bottleUUID, Boolean isForSale) {
         return updateBooleanBottleValue(bottleUUID, isForSale, BottleBooleanType.FORSALE);
     }
+
     @Override
     public Bottle updateBottleFavorite(UUID bottleUUID, Boolean isFavorite) {
         return updateBooleanBottleValue(bottleUUID, isFavorite, BottleBooleanType.FAVORITE);
     }
+
     @Override
     public Bottle updateBottleUnsaleable(UUID bottleUUID, Boolean isUnsaleable) {
         return updateBooleanBottleValue(bottleUUID, isUnsaleable, BottleBooleanType.UNSALEABLE);
     }
+
     private Bottle updateBooleanBottleValue(UUID bottleUUID, Boolean value, BottleBooleanType type) {
         if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-            switch(type){
-                case FORSALE: foundBottle.setForSale(value); break;
-                case FAVORITE: foundBottle.setFavorite(value); break;
-                case UNSALEABLE: foundBottle.setUnsaleable(value); break;
+            switch (type) {
+                case FORSALE:
+                    foundBottle.setForSale(value);
+                    break;
+                case FAVORITE:
+                    foundBottle.setFavorite(value);
+                    break;
+                case UNSALEABLE:
+                    foundBottle.setUnsaleable(value);
+                    break;
             }
             bottleRepository.save(foundBottle);
             return foundBottle;

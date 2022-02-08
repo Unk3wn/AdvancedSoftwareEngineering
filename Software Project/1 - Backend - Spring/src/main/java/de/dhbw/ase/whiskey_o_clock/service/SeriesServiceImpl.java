@@ -1,5 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.service;
 
+import de.dhbw.ase.whiskey_o_clock.helper.DTOMapper;
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.Series;
 import de.dhbw.ase.whiskey_o_clock.model.SeriesDTO;
@@ -28,16 +29,21 @@ public class SeriesServiceImpl implements SeriesService {
      */
     @Override
     public Series createSeries(SeriesDTO seriesDTO) {
-        return createSeries(seriesDTO.getSeriesLabel(),seriesDTO.getSeriesBottleList());
+        return createSeries(DTOMapper.convertDTOToSeries(seriesDTO));
     }
 
     @Override
     public Series createSeries(String label, List<Bottle> bottleList) {
         // kein Check, da mehrere Serien mit dem Selben Namen vorhanden sein dürfen
-        Series newSeries = new Series(label,bottleList);
-        seriesRepository.save(newSeries);
-        return newSeries;
+        return createSeries(new Series(label, bottleList));
+
     }
+
+    private Series createSeries(Series series) {
+        seriesRepository.save(series);
+        return series;
+    }
+
     /************************************************************************************************************************************/
     /*
          _____                _
@@ -69,9 +75,9 @@ public class SeriesServiceImpl implements SeriesService {
               |_|
     */
     @Override
-    public Series updateSeriesByUUID(UUID uuid,SeriesDTO seriesDTO) {
+    public Series updateSeriesByUUID(UUID uuid, SeriesDTO seriesDTO) {
         Series foundSeries = seriesRepository.getById(uuid);
-        foundSeries.updateFromDTO(seriesDTO);
+        DTOMapper.updateSeriesWithDTO(foundSeries, seriesDTO);
         seriesRepository.save(foundSeries);
         return foundSeries;
     }
