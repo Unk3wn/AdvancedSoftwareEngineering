@@ -49,6 +49,11 @@ public class CountryController {
         return countryService.getAllCountrys();
     }
 
+    @GetMapping("/abbreviation")
+    public Country getCountryByAbbreviation(@RequestParam String abbreviation) {
+        return countryService.getCountryByAbbreviation(abbreviation);
+    }
+
     /************************************************************************************************************************************/
     /*
       _    _           _       _
@@ -61,7 +66,7 @@ public class CountryController {
             |_|
      */
     @PutMapping(value = "/edit")
-    public Country updateCountry(@RequestParam UUID countryUUID, CountryDTO handOverCountryDTO) {
+    public Country updateCountry(@RequestParam UUID countryUUID, @RequestBody CountryDTO handOverCountryDTO) {
         return countryService.updateCountry(countryUUID, handOverCountryDTO);
     }
 
