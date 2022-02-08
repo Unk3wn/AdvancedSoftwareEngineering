@@ -10,7 +10,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-public class CountryTest {
+class CountryTest {
 
     String countryName = "CountryName";
     String countryNameNew = "CountryName NEW";

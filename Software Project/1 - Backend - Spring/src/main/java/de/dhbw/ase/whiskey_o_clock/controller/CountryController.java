@@ -80,7 +80,7 @@ public class CountryController {
      |_____/ \___|_|\___|\__\___|
      */
     @DeleteMapping("")
-    public void delteCountry(@RequestParam String abbreviation) {
+    public void deleteCountry(@RequestParam String abbreviation) {
         countryService.deleteCountry(abbreviation);
     }
 }

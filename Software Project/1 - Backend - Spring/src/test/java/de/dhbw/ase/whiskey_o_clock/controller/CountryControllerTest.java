@@ -32,7 +32,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CountryControllerTest.class)
-public class CountryControllerTest {
+class CountryControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -57,7 +57,7 @@ public class CountryControllerTest {
     Country c3 = new Country("DRE","DREI");
 
     @Test
-    public void createCountry() throws Exception {
+    void createCountry() throws Exception {
         CountryDTO countryDTO = new CountryDTO(countryAbbreviation,countryName);
         when(countryController.createCountry(countryDTO)).thenReturn(new Country(countryUUID,countryAbbreviation,countryName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
