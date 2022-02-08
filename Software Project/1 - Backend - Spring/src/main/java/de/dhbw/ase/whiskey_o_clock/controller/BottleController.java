@@ -75,7 +75,7 @@ public class BottleController {
               |_|
     */
     @PutMapping(value = "/edit")
-    public Bottle updateBottle(@RequestParam UUID uuid, BottleDTO handOverBottleDTO) {
+    public Bottle updateBottle(@RequestParam UUID uuid, @RequestBody BottleDTO handOverBottleDTO) {
         return bottleService.updateBottle(uuid,handOverBottleDTO);
     }
 

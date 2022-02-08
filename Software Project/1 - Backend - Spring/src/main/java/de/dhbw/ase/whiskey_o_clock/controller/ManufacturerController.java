@@ -61,7 +61,7 @@ public class ManufacturerController {
             |_|
      */
     @PutMapping(value = "/edit")
-    public Manufacturer updateManufacturer(@RequestParam UUID manufacturerUUID, ManufacturerDTO handOverManufacturerDTO) {
+    public Manufacturer updateManufacturer(@RequestParam UUID manufacturerUUID,@RequestBody ManufacturerDTO handOverManufacturerDTO) {
         return manufacturerService.updateManufacturer(manufacturerUUID, handOverManufacturerDTO);
     }
 

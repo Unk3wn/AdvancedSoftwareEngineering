@@ -8,7 +8,6 @@ class WhsikeyOClockApplicationTests {
 
     @Test
     void contextLoads() {
-        // Empty
         assert(true);
     }
 

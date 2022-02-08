@@ -70,7 +70,7 @@ public class SeriesController {
               |_|
     */
     @PutMapping(value = "")
-    public Series updateSeries(@RequestParam UUID uuid, SeriesDTO handoverSeriesDTO) {
+    public Series updateSeries(@RequestParam UUID uuid,@RequestBody SeriesDTO handoverSeriesDTO) {
         return seriesService.updateSeriesByUUID(uuid,handoverSeriesDTO);
     }
     /************************************************************************************************************************************/
