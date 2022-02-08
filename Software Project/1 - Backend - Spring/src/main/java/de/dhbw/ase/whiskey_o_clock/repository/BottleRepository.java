@@ -18,8 +18,11 @@ public interface BottleRepository extends JpaRepository<Bottle, UUID> {
      * READ
      **/
     List<Bottle> getBottlesByLabel(String label);
+
     List<Bottle> getBottlesByLabelAndManufacturer(String label, Manufacturer manufacturer);
+
     Bottle getFirstBottleByLabelAndManufacturer(String label, Manufacturer manufacturer);
+
     Bottle getBottleByUuid(UUID bottleUUID);
 
     /** UPDATE **/
