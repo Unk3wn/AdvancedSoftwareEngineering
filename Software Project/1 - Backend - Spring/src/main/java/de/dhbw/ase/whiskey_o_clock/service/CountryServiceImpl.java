@@ -76,7 +76,7 @@ public class CountryServiceImpl implements CountryService {
               |_|
     */
     @Override
-    public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) {
+    public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) throws ValidationException{
         if (null != countryRepository.getCountryByUuid(countryUUID)) {
             Country foundCountry = countryRepository.getCountryByUuid(countryUUID);
             DTOMapper.updateCountryWithDTO(foundCountry, countryDTO);
