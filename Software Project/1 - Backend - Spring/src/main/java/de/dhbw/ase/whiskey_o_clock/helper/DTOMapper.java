@@ -7,6 +7,7 @@ import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,14 +17,27 @@ public class DTOMapper {
         throw new InstantiationException("Utility Class should not be instanciated!");
     }
 
-    @Autowired
     static CountryRepository countryRepository;
-    @Autowired
     static ManufacturerRepository manufacturerRepository;
-    @Autowired
     static BottleRepository bottleRepository;
-    @Autowired
     static SeriesRepository seriesRepository;
+
+    @Autowired
+    CountryRepository countryRepositoryImpl;
+    @Autowired
+    ManufacturerRepository manufacturerRepositoryImpl;
+    @Autowired
+    BottleRepository bottleRepositoryImpl;
+    @Autowired
+    SeriesRepository seriesRepositoryImpl;
+
+    @PostConstruct
+    public void init(){
+        countryRepository = countryRepositoryImpl;
+        manufacturerRepository = manufacturerRepositoryImpl;
+        bottleRepository = bottleRepositoryImpl;
+        seriesRepository = seriesRepositoryImpl;
+    }
 
     // Hier sollte man auf ein Framework zurückgeifen, wenn mehr Entitys verwendet werden sollen!
 
