@@ -42,11 +42,11 @@ class CountryServiceImplTest {
         CountryDTO countryDTO = new CountryDTO(countryAbbreviation, countryName);
         Country country = DTOMapper.convertDTOToCountry(countryDTO);
 
-        doReturn(country).when(countryRepository).save(country);
+        when(countryRepository.save(country)).thenReturn(country);
+
         Country createdCountry = countryRepository.save(country);
 
         verify(countryRepository).save(any(Country.class));
-
         assertThat(createdCountry).isEqualTo(country);
     }
 
@@ -55,9 +55,10 @@ class CountryServiceImplTest {
         Country country = new Country(countryAbbreviation, countryName);
 
         when(countryRepository.save(country)).thenReturn(country);
-        countryRepository.save(country);
+        Country createdCountry = countryRepository.save(country);
 
         verify(countryRepository).save(any(Country.class));
+        assertThat(createdCountry).isEqualTo(country);
     }
 
     @Test
@@ -87,11 +88,10 @@ class CountryServiceImplTest {
 
         when(countryRepository.getCountryByUuid(countryUUID)).thenReturn(country);
         when(countryRepository.save(country)).thenReturn(new Country(countryUUID, newAbbreviation, newCountryName));
+        when(countryRepository.existsById(countryUUID)).thenReturn(true);
 
         countryService.updateCountry(countryUUID, newData);
-
         verify(countryRepository,times(2)).save(any(Country.class));
-
     }
 
     @Test
