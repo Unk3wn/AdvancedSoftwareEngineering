@@ -31,6 +31,7 @@ public class Country {
     @Column(name = "name")
     private String name;
 
+
     public Country(String abbreviation, String name) {
         this.abbreviation = abbreviation;
         this.name = name;

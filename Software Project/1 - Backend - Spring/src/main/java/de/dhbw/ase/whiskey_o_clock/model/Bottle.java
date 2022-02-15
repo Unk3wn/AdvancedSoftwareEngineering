@@ -1,5 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import de.dhbw.ase.whiskey_o_clock.model.listener.BottleListener;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -27,14 +28,14 @@ public class Bottle {
     )
     @Column(name = "uuid", updatable = false, nullable = false)
     private UUID uuid;
-    @Column(name = "label")
+    @Column(name = "label",nullable = false)
     private String label;
-    @Column(name = "price")
+    @Column(name = "price",nullable = false)
     private double price;
-    @Column(name = "yearOfManufacture")
+    @Column(name = "yearOfManufacture",nullable = false)
     private int yearOfManufacture;
     @ManyToOne
-    @JoinColumn(name = "manufacturerID")
+    @JoinColumn(name = "manufacturerID",nullable = false)
     private Manufacturer manufacturer;
     @Column(name = "isForSale")
     private boolean forSale;
@@ -42,12 +43,20 @@ public class Bottle {
     private boolean favorite;
     @Column(name = "isUnsaleable")
     private boolean unsaleable;
+    @ManyToOne
+    @JsonIgnoreProperties("bottleList")
+    @JoinColumn(name="series_id")
+    private Series series;
 
     public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer) {
-        this(label, price, yearOfManufacture, manufacturer, false, false, false);
+        this(label,price,yearOfManufacture,manufacturer,null);
     }
 
-    public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
+    public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer,Series series) {
+        this(label, price, yearOfManufacture, manufacturer, series, false, false,false);
+    }
+
+    public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, Series series,boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
         this.label = label;
         this.price = price;
         this.yearOfManufacture = yearOfManufacture;
@@ -55,6 +64,7 @@ public class Bottle {
         this.forSale = isForSale;
         this.favorite = isFavorite;
         this.unsaleable = isUnsaleable;
+        this.series = series;
     }
 
     @Override

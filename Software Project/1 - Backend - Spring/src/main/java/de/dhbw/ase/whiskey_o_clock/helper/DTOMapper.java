@@ -76,11 +76,19 @@ public class DTOMapper {
     }
 
     public static BottleDTO convertBottleToDTO(Bottle bottle) {
-        return new BottleDTO(bottle.getLabel(), bottle.getPrice(), bottle.getYearOfManufacture(), bottle.getManufacturer().getUuid());
+        if(bottle.getSeries() != null){
+            return new BottleDTO(bottle.getLabel(), bottle.getPrice(), bottle.getYearOfManufacture(), bottle.getManufacturer().getUuid(),bottle.getSeries().getUuid());
+          }else{
+            return new BottleDTO(bottle.getLabel(), bottle.getPrice(), bottle.getYearOfManufacture(), bottle.getManufacturer().getUuid());
+        }
     }
 
     public static Bottle convertDTOToBottle(BottleDTO bottleDTO) {
-        return new Bottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
+        if(bottleDTO.getSeries() != null){
+            return new Bottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()),seriesRepository.getById(bottleDTO.getSeries()));
+        }else{
+            return new Bottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
+        }
     }
 
     public static void updateBottleWithDTO(Bottle bottle, BottleDTO bottleDTO) {
@@ -95,6 +103,9 @@ public class DTOMapper {
         }
         if (bottleDTO.getManufacturer() != null) {
             bottle.setManufacturer(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
+        }
+        if (bottleDTO.getSeries() != null) {
+            bottle.setSeries(seriesRepository.getById(bottleDTO.getManufacturer()));
         }
     }
 

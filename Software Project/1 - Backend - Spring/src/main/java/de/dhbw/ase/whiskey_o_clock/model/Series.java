@@ -1,5 +1,7 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
@@ -31,8 +33,8 @@ public class Series {
     @Column(name = "label")
     private String label;
 
-    @OneToMany
-    @CollectionTable(name = "bottle_series_set")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="series")
+    @JsonIgnoreProperties("series")
     private List<Bottle> bottleList = new LinkedList<>();
 
     public Series(String label) {
@@ -51,6 +53,7 @@ public class Series {
 
     public void removeBottle(Bottle bottle) {
         this.bottleList.remove(bottle);
+        bottle.setSeries(null);
     }
 
     @Override
