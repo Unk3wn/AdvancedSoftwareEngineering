@@ -20,6 +20,8 @@ public interface ManufacturerRepository extends JpaRepository<Manufacturer, UUID
 
     Manufacturer getManufacturerByUuid(UUID uuid);
 
+    Boolean existsByName(String name);
+
     /** UPDATE **/
 
     /**

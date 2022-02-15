@@ -1,7 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;

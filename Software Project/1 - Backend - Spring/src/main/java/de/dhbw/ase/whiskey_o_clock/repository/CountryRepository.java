@@ -16,8 +16,8 @@ public interface CountryRepository extends JpaRepository<Country, UUID> {
      * READ
      **/
     Country getCountryByAbbreviation(String abbreviation);
-
     Country getCountryByUuid(UUID uuid);
+    Boolean existsByAbbreviation(String abbreviation);
 
     /** UPDATE **/
 

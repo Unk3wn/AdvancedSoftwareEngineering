@@ -47,10 +47,13 @@ public class DataInserter implements ApplicationListener<ApplicationReadyEvent> 
         bottleRepository.save(bottle3);
 
         Series series = new Series("Paddys Best Selection");
-        series.addBottle(bottle);
-        series.addBottle(bottle2);
-        series.addBottle(bottle3);
         seriesRepository.save(series);
 
+        bottle.setSeries(series);
+        bottleRepository.save(bottle);
+        bottle2.setSeries(series);
+        bottleRepository.save(bottle2);
+        bottle3.setSeries(series);
+        bottleRepository.save(bottle3);
     }
 }

@@ -4,8 +4,10 @@ import de.dhbw.ase.whiskey_o_clock.helper.BottleBooleanType;
 import de.dhbw.ase.whiskey_o_clock.helper.DTOMapper;
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
+import de.dhbw.ase.whiskey_o_clock.model.Series;
 import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
+import de.dhbw.ase.whiskey_o_clock.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class BottleServiceImpl implements BottleService {
 
     @Autowired
     ManufacturerRepository manufacturerRepository;
+
+    @Autowired
+    SeriesRepository seriesRepository;
 
     /************************************************************************************************************************************/
 
@@ -62,7 +67,7 @@ public class BottleServiceImpl implements BottleService {
             if (null != targetBottle && targetBottle.getYearOfManufacture() == yearOfManufacture) {
                 throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' and the Year of Manufactoring '%d' is already in the Database!", targetBottle.getLabel(), manufacturerName, targetBottle.getYearOfManufacture()));
             }
-            Bottle newBottle = new Bottle(label, price, yearOfManufacture, manufacturerRepository.getFirstManufacturerByName(manufacturerName), isForSale, isFavorite, isUnsaleable);
+            Bottle newBottle = new Bottle(label, price, yearOfManufacture, manufacturerRepository.getFirstManufacturerByName(manufacturerName), null,isForSale, isFavorite, isUnsaleable);
             bottleRepository.save(newBottle);
             return newBottle;
         }
@@ -111,7 +116,7 @@ public class BottleServiceImpl implements BottleService {
     */
     @Override
     public Bottle updateBottle(UUID bottleUUID, BottleDTO bottleDTO) {
-        if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
+        if (bottleRepository.existsById(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
             DTOMapper.updateBottleWithDTO(foundBottle, bottleDTO);
             bottleRepository.save(foundBottle);
@@ -135,8 +140,21 @@ public class BottleServiceImpl implements BottleService {
         return updateBooleanBottleValue(bottleUUID, isUnsaleable, BottleBooleanType.UNSALEABLE);
     }
 
+    @Override
+    public Series updateBottleSeries(UUID bottleUUID, UUID seriesUUID) {
+        if (bottleRepository.existsById(bottleUUID)) {
+            if(seriesRepository.existsById(seriesUUID)){
+                Bottle bottle = bottleRepository.getBottleByUuid(bottleUUID);
+                bottle.setSeries(seriesRepository.getById(seriesUUID));
+                return bottle.getSeries();
+            }
+            throw new ValidationException("Series not found!");
+        }
+        throw new ValidationException("Bottle not found!");
+    }
+
     private Bottle updateBooleanBottleValue(UUID bottleUUID, Boolean value, BottleBooleanType type) {
-        if (null != bottleRepository.getBottleByUuid(bottleUUID)) {
+        if (bottleRepository.existsById(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
             switch (type) {
                 case FORSALE:
@@ -169,6 +187,17 @@ public class BottleServiceImpl implements BottleService {
     @Override
     public void deleteBottleByUUID(UUID bottleUUID) {
         bottleRepository.delete(getBottleByUUID(bottleUUID));
+    }
+
+    @Override
+    public BottleDTO deleteSeriesFromBottleByUUID(UUID bottleUUID) {
+        if(bottleRepository.existsById(bottleUUID)){
+            Bottle tempBottle = bottleRepository.getBottleByUuid(bottleUUID);
+            tempBottle.setSeries(null);
+            bottleRepository.save(tempBottle);
+            return DTOMapper.convertBottleToDTO(tempBottle);
+        }
+        throw new ValidationException("Bottle not found!");
     }
     /************************************************************************************************************************************/
 }

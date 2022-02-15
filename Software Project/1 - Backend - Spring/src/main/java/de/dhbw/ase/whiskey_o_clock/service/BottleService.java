@@ -2,6 +2,7 @@ package de.dhbw.ase.whiskey_o_clock.service;
 
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
+import de.dhbw.ase.whiskey_o_clock.model.Series;
 
 import java.util.List;
 import java.util.UUID;
@@ -43,9 +44,11 @@ public interface BottleService {
 
     Bottle updateBottleUnsaleable(UUID bottleUUID, Boolean isUnsaleable);
 
+    Series updateBottleSeries(UUID bottleUUID, UUID seriesUUID);
+
     /**
      * DELETE
      **/
     void deleteBottleByUUID(UUID bottleUUID);
-
+    BottleDTO deleteSeriesFromBottleByUUID(UUID bottleUUID);
 }

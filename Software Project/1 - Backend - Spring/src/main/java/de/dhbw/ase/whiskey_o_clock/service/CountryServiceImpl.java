@@ -35,7 +35,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country saveCountry(String abbreviation, String name) throws NonUniqueObjectException {
-        if (null == countryRepository.getCountryByAbbreviation(abbreviation)) {
+        if (countryRepository.existsByAbbreviation(abbreviation)) {
             Country countryToCreate = new Country(abbreviation, name);
             countryRepository.save(countryToCreate);
             return countryToCreate;
@@ -77,7 +77,7 @@ public class CountryServiceImpl implements CountryService {
     */
     @Override
     public Country updateCountry(UUID countryUUID, CountryDTO countryDTO) throws ValidationException{
-        if (null != countryRepository.getCountryByUuid(countryUUID)) {
+        if (countryRepository.existsById(countryUUID)) {
             Country foundCountry = countryRepository.getCountryByUuid(countryUUID);
             DTOMapper.updateCountryWithDTO(foundCountry, countryDTO);
             countryRepository.save(foundCountry);

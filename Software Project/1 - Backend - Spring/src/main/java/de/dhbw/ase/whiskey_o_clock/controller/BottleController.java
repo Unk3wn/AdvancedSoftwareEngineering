@@ -2,6 +2,7 @@ package de.dhbw.ase.whiskey_o_clock.controller;
 
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
+import de.dhbw.ase.whiskey_o_clock.model.Series;
 import de.dhbw.ase.whiskey_o_clock.service.BottleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -92,6 +93,11 @@ public class BottleController {
         return bottleService.updateBottleUnsaleable(uuid, newValue);
     }
 
+    @PutMapping(value = "/edit/series")
+    public Series updateSeriesForBottle(@RequestParam UUID bottleUUID, @RequestParam UUID seriesUUID){
+        return bottleService.updateBottleSeries(bottleUUID,seriesUUID);
+    }
+
     /************************************************************************************************************************************/
     /*
          _____       _      _
@@ -105,6 +111,9 @@ public class BottleController {
     public void deleteBottle(@RequestParam UUID uuid) {
         bottleService.deleteBottleByUUID(uuid);
     }
+
+    @DeleteMapping("/series")
+    public BottleDTO deleteSeriesFromBottle(@RequestParam UUID bottleUUID){return bottleService.deleteSeriesFromBottleByUUID(bottleUUID);}
 
     /************************************************************************************************************************************/
 }
