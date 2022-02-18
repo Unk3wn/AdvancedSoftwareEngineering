@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 public class CountryDTO implements Serializable {
-    private String countryAbbreviation;
-    private String countryName;
+    private final String countryAbbreviation;
+    private final String countryName;
 }

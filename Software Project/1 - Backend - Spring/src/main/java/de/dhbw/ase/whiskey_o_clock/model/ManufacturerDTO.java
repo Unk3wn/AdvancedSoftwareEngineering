@@ -8,6 +8,6 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 public class ManufacturerDTO implements Serializable {
-    private String manufacturerName;
-    private String originCountryAbbreviation;
+    private final String manufacturerName;
+    private final String originCountryAbbreviation;
 }

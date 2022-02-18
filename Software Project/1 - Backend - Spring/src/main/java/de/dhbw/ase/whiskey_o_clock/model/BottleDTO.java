@@ -9,11 +9,11 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 public class BottleDTO implements Serializable {
-    private String label;
-    private Double price;
-    private Integer yearOfManufacture;
-    private UUID manufacturer;
-    private UUID series;
+    private final String label;
+    private final Double price;
+    private final Integer yearOfManufacture;
+    private final UUID manufacturer;
+    private final UUID series;
 
     public BottleDTO(String label, double price, int yearOfManufacture, UUID manufacturerUUID) {
         this(label,price,yearOfManufacture,manufacturerUUID,null);
