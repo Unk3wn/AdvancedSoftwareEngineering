@@ -41,11 +41,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
-        if (countryRepository.existsByAbbreviation(countryAbbreviation)) {
+        if (!countryRepository.existsByAbbreviation(countryAbbreviation)) {
             throw new ValidationException("Country-Abbreviation is not valid!");
         }
         Country targetCountry = countryRepository.getCountryByAbbreviation(countryAbbreviation);
-        if (manufacturerRepository.existsByName(name) || !targetCountry.equals(manufacturerRepository.getManufacturerByName(name))) {
+        if (!manufacturerRepository.existsByName(name) || !targetCountry.equals(manufacturerRepository.getManufacturerByName(name))) {
             Manufacturer newManufacturer = new Manufacturer(name, countryRepository.getCountryByAbbreviation(countryAbbreviation));
             manufacturerRepository.save(newManufacturer);
             return newManufacturer;

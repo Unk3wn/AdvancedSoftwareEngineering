@@ -5,6 +5,7 @@ import de.dhbw.ase.whiskey_o_clock.helper.DTOMapper;
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.BottleDTO;
 import de.dhbw.ase.whiskey_o_clock.model.Series;
+import de.dhbw.ase.whiskey_o_clock.model.builder.BottleBuilder;
 import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.SeriesRepository;
@@ -59,19 +60,22 @@ public class BottleServiceImpl implements BottleService {
 
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
-        if (null != getBottlesByLabel(label)) {
-            if (null != getBottleByLabelAndManufacturer(label, manufacturerName)) {
-                throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!", label, manufacturerName));
-            }
-            Bottle targetBottle = bottleRepository.getFirstBottleByLabelAndManufacturer(label, manufacturerRepository.getFirstManufacturerByName(manufacturerName));
-            if (null != targetBottle && targetBottle.getYearOfManufacture() == yearOfManufacture) {
-                throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' and the Year of Manufactoring '%d' is already in the Database!", targetBottle.getLabel(), manufacturerName, targetBottle.getYearOfManufacture()));
-            }
-            Bottle newBottle = new Bottle(label, price, yearOfManufacture, manufacturerRepository.getFirstManufacturerByName(manufacturerName), null,isForSale, isFavorite, isUnsaleable);
-            bottleRepository.save(newBottle);
-            return newBottle;
+        if (bottleRepository.existsByLabelAndManufacturer(label, manufacturerRepository.getFirstManufacturerByName(manufacturerName))) {
+            throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!", label, manufacturerName));
         }
-        throw new ValidationException(String.format("Bottle '%s' not found!", label));
+        if(!manufacturerRepository.existsByName(manufacturerName)){
+            throw new ValidationException(String.format("Manufacturer '%s' not known!", manufacturerName));
+        }
+        Bottle newBottle = new BottleBuilder(label)
+            .price(price)
+            .yearOfManufacture(yearOfManufacture)
+            .manufacturer(manufacturerRepository.getFirstManufacturerByName(manufacturerName))
+            .forSale(isForSale)
+            .favorite(isFavorite)
+            .unsaleable(isUnsaleable)
+            .build();
+        bottleRepository.save(newBottle);
+        return newBottle;
     }
 
     /************************************************************************************************************************************/

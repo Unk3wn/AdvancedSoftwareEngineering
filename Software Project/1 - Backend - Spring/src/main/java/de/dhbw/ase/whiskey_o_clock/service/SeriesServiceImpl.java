@@ -4,6 +4,7 @@ import de.dhbw.ase.whiskey_o_clock.helper.DTOMapper;
 import de.dhbw.ase.whiskey_o_clock.model.Bottle;
 import de.dhbw.ase.whiskey_o_clock.model.Series;
 import de.dhbw.ase.whiskey_o_clock.model.SeriesDTO;
+import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,9 @@ public class SeriesServiceImpl implements SeriesService {
 
     @Autowired
     SeriesRepository seriesRepository;
+
+    @Autowired
+    BottleRepository bottleRepository;
 
     /************************************************************************************************************************************/
 
@@ -75,9 +79,9 @@ public class SeriesServiceImpl implements SeriesService {
               |_|
     */
     @Override
-    public Series updateSeriesByUUID(UUID uuid, SeriesDTO seriesDTO) {
+    public Series updateSeriesByUUID(UUID uuid, String newName) {
         Series foundSeries = seriesRepository.getById(uuid);
-        DTOMapper.updateSeriesWithDTO(foundSeries, seriesDTO);
+        foundSeries.setLabel(newName);
         seriesRepository.save(foundSeries);
         return foundSeries;
     }

@@ -26,11 +26,12 @@ public interface SeriesService {
     /**
      * UPDATE
      **/
-    Series updateSeriesByUUID(UUID uuid, SeriesDTO seriesDTO);
+    Series updateSeriesByUUID(UUID uuid, String newName);
 
     /**
      * DELETE
      **/
     void deleteSeries(UUID uuid);
+
 
 }

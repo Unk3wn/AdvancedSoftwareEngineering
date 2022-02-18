@@ -2,6 +2,7 @@ package de.dhbw.ase.whiskey_o_clock.controller;
 
 import de.dhbw.ase.whiskey_o_clock.model.Series;
 import de.dhbw.ase.whiskey_o_clock.model.SeriesDTO;
+import de.dhbw.ase.whiskey_o_clock.service.BottleService;
 import de.dhbw.ase.whiskey_o_clock.service.SeriesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +28,6 @@ public class SeriesController {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-    @PostMapping(value = "")
-    public Series createSeries(@RequestBody SeriesDTO handoverSeries) {
-        return seriesService.createSeries(handoverSeries);
-    }
 
     @PostMapping(value = "/new", params = {"seriesLabel"})
     public Series createSeries(@RequestParam String seriesLabel) {
@@ -69,8 +66,8 @@ public class SeriesController {
               |_|
     */
     @PutMapping(value = "")
-    public Series updateSeries(@RequestParam UUID uuid, @RequestBody SeriesDTO handoverSeriesDTO) {
-        return seriesService.updateSeriesByUUID(uuid, handoverSeriesDTO);
+    public Series updateSeries(@RequestParam UUID uuid, @RequestParam String newName) {
+        return seriesService.updateSeriesByUUID(uuid, newName);
     }
 
     /************************************************************************************************************************************/

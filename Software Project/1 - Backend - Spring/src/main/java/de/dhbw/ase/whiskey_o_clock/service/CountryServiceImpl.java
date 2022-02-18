@@ -35,7 +35,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country saveCountry(String abbreviation, String name) throws NonUniqueObjectException {
-        if (countryRepository.existsByAbbreviation(abbreviation)) {
+        if (!countryRepository.existsByAbbreviation(abbreviation)) {
             Country countryToCreate = new Country(abbreviation, name);
             countryRepository.save(countryToCreate);
             return countryToCreate;
