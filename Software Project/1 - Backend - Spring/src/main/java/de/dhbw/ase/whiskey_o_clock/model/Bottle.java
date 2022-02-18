@@ -1,6 +1,7 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.dhbw.ase.whiskey_o_clock.model.builder.BottleBuilder;
 import de.dhbw.ase.whiskey_o_clock.model.listener.BottleListener;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -56,6 +57,10 @@ public class Bottle {
         this(label, price, yearOfManufacture, manufacturer, series, false, false,false);
     }
 
+    public Bottle(BottleBuilder bottleBuilder) {
+        this(bottleBuilder.getLabel(), bottleBuilder.getPrice(), bottleBuilder.getYearOfManufacture(), bottleBuilder.getManufacturer(), bottleBuilder.getSeries(),bottleBuilder.isForSale(),bottleBuilder.isFavorite(),bottleBuilder.isUnsaleable());
+    }
+
     public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, Series series,boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
         this.label = label;
         this.price = price;
@@ -66,6 +71,8 @@ public class Bottle {
         this.unsaleable = isUnsaleable;
         this.series = series;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
