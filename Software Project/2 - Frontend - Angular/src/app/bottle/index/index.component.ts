@@ -30,4 +30,16 @@ export class IndexComponent implements OnInit {
     })
   }
 
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  deleteSeries(uuid:string){
+    this.bottleService.delete(uuid).subscribe(res => {
+      this.bottles = this.bottles.filter(item => item.uuid !== uuid);
+      console.log('Bottle deleted successfully!');
+    })
+  }
+
 }

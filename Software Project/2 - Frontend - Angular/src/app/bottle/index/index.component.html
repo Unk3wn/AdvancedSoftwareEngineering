@@ -12,16 +12,18 @@
       <th>Series</th>
       <th>For Sale?</th>
       <th>Favorite?</th>
+      <th>Options</th>
     </tr>
     <tr *ngFor="let bottle of bottles">
       <td>{{ bottle.uuid}}</td>
       <td>{{ bottle.label }}</td>
       <td>{{ bottle.price}}€</td>
       <td>{{ bottle.yearOfManufacture}}</td>
-      <td>{{ bottle.manufacturer.name}}</td>
+      <td>{{ bottle.manufacturer.name}} [{{bottle.manufacturer.originCountry.abbreviation}}]</td>
       <td>{{ bottle.series.label}}</td>
       <td><input value="{{bottle.forSale}}" type="checkbox" disabled="1"></td>
       <td><input value="{{bottle.favorite}}" type="checkbox" disabled="1"></td>
+      <td><button type="button" (click)="deleteSeries(bottle.uuid)" class="btn btn-danger">Delete</button></td>
     </tr>
   </table>
 </div>

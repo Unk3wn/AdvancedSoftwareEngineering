@@ -44,6 +44,18 @@ export class BottleService {
    *
    * @return response()
    */
+  delete(uuid:string){
+    return this.httpClient.delete(this.apiURL + '?uuid=' + uuid, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
