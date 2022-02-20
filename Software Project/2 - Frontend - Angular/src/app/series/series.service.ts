@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {ISeries} from "./ISeries";
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,30 @@ export class SeriesService {
 
     return this.httpClient.get(this.apiURL)
 
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  create(iSeries:ISeries): Observable<any> {
+    return this.httpClient.post(this.apiURL,JSON.stringify(iSeries),this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  delete(uuid:string){
+    return this.httpClient.delete(this.apiURL + '?uuid=' + uuid, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )

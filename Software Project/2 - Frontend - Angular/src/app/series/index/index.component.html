@@ -2,14 +2,22 @@
 
   <h1>Serieses's</h1>
 
+  <br>
+
+  <a href="#" routerLink="/series/create/" class="btn btn-success">Create New Series</a>
+
+  <br>
+
   <table class="table table-striped text-center">
     <tr>
       <th>UUID</th>
       <th>Label</th>
+      <th>Delete ?</th>
     </tr>
     <tr *ngFor="let series of serieses">
       <td>{{ series.uuid}}</td>
       <td>{{ series.label }}</td>
+      <td><button type="button" (click)="deleteSeries(series.uuid)" class="btn btn-danger">Delete</button></td>
     </tr>
   </table>
 </div>

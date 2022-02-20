@@ -31,4 +31,16 @@ export class IndexComponent implements OnInit {
     })
   }
 
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  deleteSeries(uuid:string){
+    this.seriesService.delete(uuid).subscribe(res => {
+      this.serieses = this.serieses.filter(item => item.uuid !== uuid);
+      console.log('Series deleted successfully!');
+    })
+  }
+
 }
