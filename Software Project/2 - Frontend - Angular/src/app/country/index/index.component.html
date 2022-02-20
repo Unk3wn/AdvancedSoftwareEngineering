@@ -1,0 +1,17 @@
+<div class="container">
+
+  <h1>Country's</h1>
+
+  <table class="table table-striped">
+    <tr>
+      <th>UUID</th>
+      <th>Abbreviation</th>
+      <th>Name</th>
+    </tr>
+    <tr *ngFor="let country of countrys">
+      <td>{{ country.uuid}}</td>
+      <td>{{ country.abbreviation }}</td>
+      <td>{{ country.name }}</td>
+    </tr>
+  </table>
+</div>
