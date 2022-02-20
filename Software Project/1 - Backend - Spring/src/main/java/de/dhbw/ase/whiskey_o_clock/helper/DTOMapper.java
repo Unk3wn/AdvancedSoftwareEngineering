@@ -118,12 +118,17 @@ public class DTOMapper {
     }
 
     public static Series convertDTOToSeries(SeriesDTO seriesDTO) {
-        List<Bottle> bottleList = new LinkedList<>();
-        for (BottleDTO bottleDTO : seriesDTO.getSeriesBottleList()) {
-            // Hierbei wird ausgegangen, dass beim Selben Manufacturer keine zwei Whiskey's existieren, die den selben Namen haben
-            bottleList.add(bottleRepository.getFirstBottleByLabelAndManufacturer(bottleDTO.getLabel(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer())));
+        if(null != seriesDTO.getSeriesBottleList()){
+            List<Bottle> bottleList = new LinkedList<>();
+            for (BottleDTO bottleDTO : seriesDTO.getSeriesBottleList()) {
+                // Hierbei wird ausgegangen, dass beim Selben Manufacturer keine zwei Whiskey's existieren, die den selben Namen haben
+                bottleList.add(bottleRepository.getFirstBottleByLabelAndManufacturer(bottleDTO.getLabel(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer())));
+            }
+            return new Series(seriesDTO.getSeriesLabel(), bottleList);
+        }else{
+            return new Series(seriesDTO.getSeriesLabel());
         }
-        return new Series(seriesDTO.getSeriesLabel(), bottleList);
+
     }
 
 }

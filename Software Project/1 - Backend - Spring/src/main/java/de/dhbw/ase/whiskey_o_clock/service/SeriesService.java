@@ -13,7 +13,6 @@ public interface SeriesService {
      * CREATE
      **/
     Series createSeries(SeriesDTO seriesDTO);
-
     Series createSeries(String label, List<Bottle> bottleList);
 
     /**
