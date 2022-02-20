@@ -1,1 +1,15 @@
-<p>index works!</p>
+<div class="container">
+
+  <h1>Serieses's</h1>
+
+  <table class="table table-striped text-center">
+    <tr>
+      <th>UUID</th>
+      <th>Label</th>
+    </tr>
+    <tr *ngFor="let series of serieses">
+      <td>{{ series.uuid}}</td>
+      <td>{{ series.label }}</td>
+    </tr>
+  </table>
+</div>

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ManufacturerModule} from "./manufacturer/manufacturer.module";
 import {BottleModule} from "./bottle/bottle.module";
+import {SeriesModule} from "./series/series.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {BottleModule} from "./bottle/bottle.module";
     NgbModule,
     CountryModule,
     ManufacturerModule,
-    BottleModule
+    BottleModule,
+    SeriesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

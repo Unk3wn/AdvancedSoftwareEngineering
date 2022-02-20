@@ -4,7 +4,8 @@ import {IndexComponent} from "./index/index.component";
 
 const routes: Routes = [
   { path: 'manufacturer', redirectTo: 'manufacturer/index', pathMatch: 'full'},
-  { path: 'manufacturer/index', component: IndexComponent },];
+  { path: 'manufacturer/index', component: IndexComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
