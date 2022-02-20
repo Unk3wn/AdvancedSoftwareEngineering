@@ -1,4 +1,4 @@
 export interface ISeries {
-  id:string,
+  uuid:string,
   label : string
 }
