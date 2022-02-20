@@ -9,6 +9,7 @@ import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ManufacturerModule} from "./manufacturer/manufacturer.module";
 import {BottleModule} from "./bottle/bottle.module";
 import {SeriesModule} from "./series/series.module";
+import {StartPageModule} from "./start-page/start-page.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {SeriesModule} from "./series/series.module";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    StartPageModule,
     CountryModule,
     ManufacturerModule,
     BottleModule,
