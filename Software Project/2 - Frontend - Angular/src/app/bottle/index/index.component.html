@@ -1,1 +1,26 @@
-<p>index works!</p>
+<div class="container">
+
+  <h1>Bottle's</h1>
+
+  <table class="table table-striped text-center">
+    <tr>
+      <th>UUID</th>
+      <th>Label</th>
+      <th>Price</th>
+      <th>Year of Manufacture</th>
+      <th>Manufacturer</th>
+      <th>For Sale?</th>
+      <th>Favorite?</th>
+
+    </tr>
+    <tr *ngFor="let bottle of bottles">
+      <td>{{ bottle.uuid}}</td>
+      <td>{{ bottle.label }}</td>
+      <td>{{ bottle.price}}€</td>
+      <td>{{ bottle.yearOfManufacture}}</td>
+      <td>{{ bottle.manufacturer.name}}</td>
+      <td><input value="{{bottle.forSale}}" type="checkbox" disabled="1"></td>
+      <td><input value="{{bottle.favorite}}" type="checkbox" disabled="1"></td>
+    </tr>
+  </table>
+</div>
