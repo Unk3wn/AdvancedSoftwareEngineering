@@ -1,5 +1,7 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
+import de.dhbw.ase.whiskey_o_clock.model.listener.BottleListener;
+import de.dhbw.ase.whiskey_o_clock.model.listener.CountryListener;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
@@ -15,6 +17,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@EntityListeners(CountryListener.class)
 @Table(name = "country")
 public class Country {
 
