@@ -9,9 +9,9 @@
       <th>Price</th>
       <th>Year of Manufacture</th>
       <th>Manufacturer</th>
+      <th>Series</th>
       <th>For Sale?</th>
       <th>Favorite?</th>
-
     </tr>
     <tr *ngFor="let bottle of bottles">
       <td>{{ bottle.uuid}}</td>
@@ -19,6 +19,7 @@
       <td>{{ bottle.price}}€</td>
       <td>{{ bottle.yearOfManufacture}}</td>
       <td>{{ bottle.manufacturer.name}}</td>
+      <td>{{ bottle.series.label}}</td>
       <td><input value="{{bottle.forSale}}" type="checkbox" disabled="1"></td>
       <td><input value="{{bottle.favorite}}" type="checkbox" disabled="1"></td>
     </tr>

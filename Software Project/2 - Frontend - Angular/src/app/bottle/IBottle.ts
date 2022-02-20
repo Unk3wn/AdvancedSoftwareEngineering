@@ -1,4 +1,5 @@
 import {IManufacturer} from "../manufacturer/IManufacturer";
+import {ISeries} from "../series/ISeries";
 
 export interface IBottle {
   uuid : string,
@@ -8,5 +9,6 @@ export interface IBottle {
   manufacturer : IManufacturer,
   forSale : boolean,
   favorite : boolean;
-  unsaleable : boolean
+  unsaleable : boolean,
+  series : ISeries
 }
