@@ -1,0 +1,17 @@
+<div class="container">
+
+  <h1>Manufacturer's</h1>
+
+  <table class="table table-striped">
+    <tr>
+      <th>UUID</th>
+      <th>Name</th>
+      <th>Origin Country</th>
+    </tr>
+    <tr *ngFor="let manufacturer of manufacturers">
+      <td>{{ manufacturer.uuid}}</td>
+      <td>{{ manufacturer.name }}</td>
+      <td>{{ manufacturer.originCountry.name}} - [{{ manufacturer.originCountry.abbreviation}}]</td>
+    </tr>
+  </table>
+</div>
