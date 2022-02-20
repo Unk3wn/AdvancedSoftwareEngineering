@@ -7,6 +7,7 @@ import {CountryModule} from "./country/country.module";
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ManufacturerModule} from "./manufacturer/manufacturer.module";
+import {BottleModule} from "./bottle/bottle.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ManufacturerModule} from "./manufacturer/manufacturer.module";
     AppRoutingModule,
     NgbModule,
     CountryModule,
-    ManufacturerModule
+    ManufacturerModule,
+    BottleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import {IManufacturer} from "../manufacturer/IManufacturer";
 
 export interface IBottle {
-  id : string,
+  uuid : string,
   label : string,
   price : number,
   yearOfManufacture : number
