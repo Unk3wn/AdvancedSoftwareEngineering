@@ -101,12 +101,17 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    git clone https://github.com/Unk3wn/AdvancedSoftwareEngineering.git
    ```
-2. Navigate in the Folder /1 - Backend - Spring/
-3. Download the needed Maven Dependencys to run the Project
+   ![GIT Clone](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/GITPULL.png?raw=true)
+2. Import the Project from the Folder /1 - Backend - Spring/ into your IDE
+   ![Import](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/B_Import.png?raw=true)
+4. Download the needed Maven Dependencys to run the Project
    ```sh
    mvn install
    ```
+   ![Maven Update](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/B_MavenUpdate.png?raw=true)
 4. Start the Backend in your IDE by Executing the main Method in the Class 'WhsikeyOClockApplication.java'
+   ![Start into](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/B_StartBackend.png?raw=true)
+   ![Start into](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/B_Running.png?raw=true)
 
 ### Installation - Frontend
 
@@ -114,13 +119,18 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    git clone https://github.com/Unk3wn/AdvancedSoftwareEngineering.git
    ```
-2. Navigate in the Folder /2 - Frontend - Angular/
-3. Download the needed Node Dependencys to run the Project
+   ![GIT Clone](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/GITPULL.png?raw=true)
+2. Import the Project in the Folder /2 - Frontend - Angular/ into your IDE
+   ![Import](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_Import.png?raw=true)
+4. Download the needed Node Dependencys to run the Project
    ```sh
    npm install
    ```
+   ![NPM Install](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_NPM_Install.png?raw=true)
 4. Start the Backend in your IDE by Executing the start Method in the Json File 'package.json'
-
+   ![Start Project](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_START_CONSOLE.png?raw=true)
+   ![Start Project](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_START.png?raw=true)
+   ![Start Project](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_VIEW.png?raw=true)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
