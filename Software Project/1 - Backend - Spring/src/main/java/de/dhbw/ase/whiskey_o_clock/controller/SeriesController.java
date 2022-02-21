@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/series")
@@ -28,7 +29,10 @@ public class SeriesController {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-
+    @PostMapping(value = "")
+    public Series createSeries(@RequestBody SeriesDTO seriesDTO) {
+        return seriesService.createSeries(seriesDTO);
+    }
     @PostMapping(value = "/new", params = {"seriesLabel"})
     public Series createSeries(@RequestParam String seriesLabel) {
         return seriesService.createSeries(seriesLabel, new LinkedList<>());

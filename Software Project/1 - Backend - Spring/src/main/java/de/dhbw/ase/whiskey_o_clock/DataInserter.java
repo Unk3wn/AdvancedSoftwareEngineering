@@ -15,6 +15,9 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class DataInserter implements ApplicationListener<ApplicationReadyEvent> {
@@ -31,29 +34,40 @@ public class DataInserter implements ApplicationListener<ApplicationReadyEvent> 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
 
-        Country country = new Country("PAD", "Patricks Länd");
-        countryRepository.save(country);
+        Country uk = new Country("UK", "Vereinigtes Königreich");
+        countryRepository.save(uk);
 
-        Manufacturer manufacturer = new Manufacturer("Paddys Whiskey Manufaktur", country);
-        manufacturerRepository.save(manufacturer);
+        Manufacturer ardbeg = new Manufacturer("Ardbeg", uk);
+        Manufacturer lagavulin = new Manufacturer("Brennerei Lagavulin", uk);
+        manufacturerRepository.save(ardbeg);
+        manufacturerRepository.save(lagavulin);
 
-        Bottle bottle = new Bottle("Paddys Special Brand", 69.42, 2022, manufacturer);
-        bottleRepository.save(bottle);
+        Bottle ardbeg10 = new Bottle("Ten 10 Jahre Islay Single Malt Scotch Whisky", 60.06, 2012, ardbeg);
+        ardbeg10.setForSale(true);
+        bottleRepository.save(ardbeg10);
 
-        Bottle bottle2 = new Bottle("Paddys Special Brand 2", 69.42, 2022, manufacturer);
-        bottleRepository.save(bottle2);
+        Bottle uigeadail = new Bottle("Uigeadail", 62.87, 2022, ardbeg);
+        uigeadail.setFavorite(true);
+        bottleRepository.save(uigeadail);
 
-        Bottle bottle3 = new Bottle("Paddys Special Brand 3", 69.42, 2022, manufacturer);
-        bottleRepository.save(bottle3);
+        Bottle specialRelease26 = new Bottle("26 Jahre Special Release", 1999.0, 1994, lagavulin);
+        specialRelease26.setUnsaleable(true);
+        bottleRepository.save(specialRelease26);
 
-        Series series = new Series("Paddys Best Selection");
-        seriesRepository.save(series);
+        Bottle destillersEdition2021 = new Bottle("Distillers Edition 2021", 99.99, 2006, lagavulin);
+        destillersEdition2021.setForSale(true);
+        bottleRepository.save(destillersEdition2021);
 
-        bottle.setSeries(series);
-        bottleRepository.save(bottle);
-        bottle2.setSeries(series);
-        bottleRepository.save(bottle2);
-        bottle3.setSeries(series);
-        bottleRepository.save(bottle3);
+        Bottle destillersEdition2020 = new Bottle("Distillers Edition 2020", 157.99, 2005, lagavulin);
+        destillersEdition2020.setForSale(true);
+        bottleRepository.save(destillersEdition2020);
+
+        Series destillersEdition = new Series("Lagavulin Destillers Edition");
+        seriesRepository.save(destillersEdition);
+
+        destillersEdition2020.setSeries(destillersEdition);
+        bottleRepository.save(destillersEdition2020);
+        destillersEdition2021.setSeries(destillersEdition);
+        bottleRepository.save(destillersEdition2021);
     }
 }

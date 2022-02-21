@@ -88,7 +88,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     public Manufacturer updateManufacturer(UUID manufacturerUUID, ManufacturerDTO manufacturerDTO) {
         if (manufacturerRepository.existsById(manufacturerUUID)) {
             Manufacturer foundManufacturer = manufacturerRepository.getManufacturerByUuid(manufacturerUUID);
-            DTOMapper.updateManufacturerWithDTO(foundManufacturer, manufacturerDTO);
+            DTOMapper.updateManufacturerWithDTO(countryRepository,foundManufacturer, manufacturerDTO);
             manufacturerRepository.save(foundManufacturer);
             return foundManufacturer;
         }

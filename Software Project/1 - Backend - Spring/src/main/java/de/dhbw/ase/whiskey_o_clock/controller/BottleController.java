@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/bottle")
@@ -27,6 +28,10 @@ public class BottleController {
         | |____| | |  __/ (_| | ||  __/
          \_____|_|  \___|\__,_|\__\___|
     */
+    @PostMapping(value = "")
+    public Bottle createBottle(@RequestBody BottleDTO bottleDTO) {
+        return bottleService.createBottle(bottleDTO);
+    }
     @PostMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
     public Bottle createBottle(@RequestParam String bottleLabel, @RequestParam double bottlePrice, @RequestParam int yearOfManufacture, @RequestParam String manufacturerName) {
         return bottleService.createBottle(bottleLabel, bottlePrice, yearOfManufacture, manufacturerName);

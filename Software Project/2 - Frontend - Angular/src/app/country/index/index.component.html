@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h1>Country's</h1>
+
+  <div *ngIf="countrys.length == 0">
+    Error Country could not be loaded! <br>
+    OR no Data in the Backend ¯\_(ツ)_/¯ <br>
+    Is the <a href="http://localhost:8080/">Backend</a> started ??? <br>
+    Also take a look into the console ¯\_(ツ)_/¯
+  </div>
+
+  <table class="table table-striped text-center" *ngIf="countrys.length > 0">
+    <tr>
+      <th>UUID</th>
+      <th>Abbreviation</th>
+      <th>Name</th>
+    </tr>
+    <tr *ngFor="let country of countrys">
+      <td>{{ country.uuid}}</td>
+      <td>{{ country.abbreviation }}</td>
+      <td>{{ country.name }}</td>
+    </tr>
+  </table>
+</div>

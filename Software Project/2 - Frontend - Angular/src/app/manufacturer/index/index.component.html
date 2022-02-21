@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h1>Manufacturer's</h1>
+
+  <div *ngIf="manufacturers.length == 0">
+    Error Country could not be loaded! <br>
+    OR no Data in the Backend ¯\_(ツ)_/¯ <br>
+    Is the <a href="http://localhost:8080/">Backend</a> started ??? <br>
+    Also take a look into the console ¯\_(ツ)_/¯
+  </div>
+
+  <table class="table table-striped text-center" *ngIf="manufacturers.length > 0">
+    <tr>
+      <th>UUID</th>
+      <th>Name</th>
+      <th>Origin Country</th>
+    </tr>
+    <tr *ngFor="let manufacturer of manufacturers">
+      <td>{{ manufacturer.uuid}}</td>
+      <td>{{ manufacturer.name }}</td>
+      <td>{{ manufacturer.originCountry.name}} - [{{ manufacturer.originCountry.abbreviation}}]</td>
+    </tr>
+  </table>
+</div>

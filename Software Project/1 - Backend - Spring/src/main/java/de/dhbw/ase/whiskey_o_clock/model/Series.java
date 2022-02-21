@@ -1,6 +1,8 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.dhbw.ase.whiskey_o_clock.model.listener.BottleListener;
+import de.dhbw.ase.whiskey_o_clock.model.listener.SeriesListener;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
@@ -17,6 +19,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @Entity
+@EntityListeners(SeriesListener.class)
 @Table(name = "series")
 public class Series {
 

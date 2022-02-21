@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h1>Serieses's</h1>
+
+  <div *ngIf="serieses.length == 0">
+    Error Country could not be loaded! <br>
+    OR no Data in the Backend ¯\_(ツ)_/¯ <br>
+    Is the <a href="http://localhost:8080/">Backend</a> started ??? <br>
+    Also take a look into the console ¯\_(ツ)_/¯
+  </div>
+
+  <br>
+  <div *ngIf="serieses.length > 0">
+    <a href="#" routerLink="/series/create/" class="btn btn-success">Create New Series</a>
+    <br>
+    <table class="table table-striped text-center">
+      <tr>
+        <th>UUID</th>
+        <th>Label</th>
+        <th>Delete ?</th>
+      </tr>
+      <tr *ngFor="let series of serieses">
+        <td>{{ series.uuid}}</td>
+        <td>{{ series.label }}</td>
+        <td><button type="button" (click)="deleteSeries(series.uuid)" class="btn btn-danger">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
