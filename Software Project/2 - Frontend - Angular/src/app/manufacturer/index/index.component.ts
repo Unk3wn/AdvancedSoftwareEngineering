@@ -18,11 +18,6 @@ export class IndexComponent implements OnInit {
  --------------------------------------------*/
   constructor(public manufacturerService: ManufacturerService) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   ngOnInit(): void {
     this.manufacturerService.getAll().subscribe((data: IManufacturer[])=>{
       this.manufacturers = data;

@@ -22,31 +22,17 @@ export class CreateComponent implements OnInit {
     private router: Router
   ) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
   ngOnInit(): void {
     this.form = new FormGroup({
       seriesLabel: new FormControl('', [Validators.required]),
     });
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   get f(){
     return this.form.controls;
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   submit(){
     console.log(this.form.value);
     this.seriesService.create(this.form.value).subscribe((res:any) => {

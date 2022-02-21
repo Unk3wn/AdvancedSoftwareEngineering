@@ -28,11 +28,6 @@ export class CountryService {
   --------------------------------------------*/
   constructor(private httpClient: HttpClient) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   getAll(): Observable<any> {
 
     return this.httpClient.get(this.apiURL)
@@ -42,11 +37,6 @@ export class CountryService {
       )
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

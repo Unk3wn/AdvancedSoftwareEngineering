@@ -28,11 +28,6 @@ export class SeriesService {
   --------------------------------------------*/
   constructor(private httpClient: HttpClient) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   getAll(): Observable<any> {
 
     return this.httpClient.get(this.apiURL)
@@ -42,11 +37,6 @@ export class SeriesService {
       )
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   create(iSeries:ISeries): Observable<any> {
     return this.httpClient.post(this.apiURL,JSON.stringify(iSeries),this.httpOptions)
       .pipe(
@@ -54,11 +44,6 @@ export class SeriesService {
       )
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   delete(uuid:string){
     return this.httpClient.delete(this.apiURL + '?uuid=' + uuid, this.httpOptions)
       .pipe(
@@ -66,11 +51,6 @@ export class SeriesService {
       )
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

@@ -19,11 +19,6 @@ export class IndexComponent implements OnInit {
  --------------------------------------------*/
   constructor(public seriesService: SeriesService) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   ngOnInit(): void {
     this.seriesService.getAll().subscribe((data: ISeries[])=>{
       this.serieses = data;
@@ -31,11 +26,6 @@ export class IndexComponent implements OnInit {
     })
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   deleteSeries(uuid:string){
     this.seriesService.delete(uuid).subscribe(res => {
       this.serieses = this.serieses.filter(item => item.uuid !== uuid);
