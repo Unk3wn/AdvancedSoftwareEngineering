@@ -36,7 +36,10 @@
         <td><input type="checkbox" [checked]="bottle.forSale == true" disabled="1"></td>
         <td><input type="checkbox" [checked]="bottle.favorite == true" disabled="1"></td>
         <td><input type="checkbox" [checked]="bottle.unsaleable == true" disabled="1"></td>
-        <td><button type="button" (click)="deleteSeries(bottle.uuid)" class="btn btn-danger">Delete</button></td>
+        <td>
+          <button type="button" (click)="deleteSeries(bottle.uuid)" class="btn btn-danger">Delete</button>
+          <a href="#" [routerLink]="['/bottle/',bottle.uuid,'edit']" class="btn btn-primary">Edit</a>
+        </td>
       </tr>
     </table>
   </div>

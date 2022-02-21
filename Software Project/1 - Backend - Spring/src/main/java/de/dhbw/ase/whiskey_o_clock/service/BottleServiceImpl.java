@@ -126,8 +126,7 @@ public class BottleServiceImpl implements BottleService {
     public Bottle updateBottle(UUID bottleUUID, BottleDTO bottleDTO) {
         if (bottleRepository.existsById(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-            DTOMapper.updateBottleWithDTO(manufacturerRepository,seriesRepository,foundBottle, bottleDTO);
-            bottleRepository.save(foundBottle);
+            DTOMapper.updateBottleWithDTO(manufacturerRepository,seriesRepository,bottleRepository,foundBottle, bottleDTO);
             return foundBottle;
         }
         throw new ValidationException("UUID is not known");

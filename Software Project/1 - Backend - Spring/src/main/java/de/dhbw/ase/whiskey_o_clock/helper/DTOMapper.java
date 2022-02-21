@@ -78,22 +78,36 @@ public class DTOMapper {
         throw new ValidationException("Label not given!");
     }
 
-    public static void updateBottleWithDTO(ManufacturerRepository manufacturerRepository,SeriesRepository seriesRepository,Bottle bottle, BottleDTO bottleDTO) {
-        if (bottleDTO.getLabel() != null) {
+    public static void updateBottleWithDTO(ManufacturerRepository manufacturerRepository,SeriesRepository seriesRepository,BottleRepository bottleRepository,Bottle bottle, BottleDTO bottleDTO) {
+        if (null != bottle.getLabel() && !bottle.getLabel().equals(bottleDTO.getLabel())) {
             bottle.setLabel(bottleDTO.getLabel());
         }
-        if (bottleDTO.getPrice() != null) {
+        if (null != bottleDTO.getPrice() && bottle.getPrice() == bottleDTO.getPrice()) {
             bottle.setPrice(bottleDTO.getPrice());
         }
-        if (bottleDTO.getYearOfManufacture() != null) {
+        if (null != bottleDTO.getYearOfManufacture() && bottle.getYearOfManufacture() == bottleDTO.getYearOfManufacture()) {
             bottle.setYearOfManufacture(bottleDTO.getYearOfManufacture());
         }
-        if (bottleDTO.getManufacturer() != null) {
+        if (!bottle.getManufacturer().equals(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()))) {
             bottle.setManufacturer(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
+        }else if(null == bottleDTO.getManufacturer()) {
+           bottle.setManufacturer(null);
         }
-        if (bottleDTO.getSeries() != null) {
-            bottle.setSeries(seriesRepository.getById(bottleDTO.getManufacturer()));
+        if (bottle.isForSale() != bottleDTO.isForSale()) {
+            bottle.setForSale(bottleDTO.isForSale());
         }
+        if (bottle.isFavorite() != bottleDTO.isFavorite()) {
+            bottle.setFavorite(bottleDTO.isFavorite());
+        }
+        if (bottle.isUnsaleable() != bottleDTO.isUnsaleable()) {
+            bottle.setUnsaleable(bottleDTO.isUnsaleable());
+        }
+        if (null == bottleDTO.getSeries()) {
+            bottle.setSeries(null);
+        }else if(null != bottleDTO.getSeries() || null != bottle.getSeries() && bottle.getSeries() != seriesRepository.getSeriesByUuid(bottleDTO.getSeries())){
+            bottle.setSeries(seriesRepository.getSeriesByUuid(bottleDTO.getSeries()));
+        }
+        bottleRepository.save(bottle);
     }
 
     public static SeriesDTO convertSeriesToDTO(Series series) {

@@ -12,7 +12,6 @@ import {SeriesService} from "../series/series.service";
 export class BottleService {
   private apiURL = "http://localhost:8080/bottle";
 
-
   /*------------------------------------------
   --------------------------------------------
   Http Header Options
@@ -29,7 +28,11 @@ export class BottleService {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private httpClient: HttpClient,private manufacturerService : ManufacturerService,private seriesService : SeriesService) { }
+  constructor(
+    private httpClient: HttpClient,
+    private manufacturerService : ManufacturerService,
+    private seriesService : SeriesService,
+  ) { }
 
   getAll(): Observable<any> {
     return this.httpClient.get(this.apiURL)
@@ -46,8 +49,21 @@ export class BottleService {
     return this.seriesService.getAll();
   }
 
+  find(uuid: string | null): Observable<any> {
+    return this.httpClient
+      .get(this.apiURL + '/read/uuid?bottleUUID=' + uuid)
+      .pipe(catchError(this.errorHandler))
+  }
+
   create(iBottle:IBottle): Observable<any> {
     return this.httpClient.post(this.apiURL,JSON.stringify(iBottle),this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  update(uuid:string, iBottle:IBottle): Observable<any> {
+    return this.httpClient.put(this.apiURL + '/edit?uuid=' + uuid, JSON.stringify(iBottle), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
