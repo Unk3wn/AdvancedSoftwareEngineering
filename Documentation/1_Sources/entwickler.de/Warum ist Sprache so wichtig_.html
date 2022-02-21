@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001 -->
+<html lang="de-DE" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+		    <script src="./Warum ist Sprache so wichtig__files/zxcvbn.min.js.Download" type="text/javascript" async=""></script><script async="" src="./Warum ist Sprache so wichtig__files/insight.old.min.js.Download"></script><script async="" src="./Warum ist Sprache so wichtig__files/fbevents.js.Download"></script><script async="" type="text/javascript" src="./Warum ist Sprache so wichtig__files/gpt.js.Download"></script><script type="text/javascript" async="" src="./Warum ist Sprache so wichtig__files/insight.min.js.Download"></script><script type="text/javascript" async="" src="./Warum ist Sprache so wichtig__files/analytics.js.Download"></script><script type="text/javascript" async="" src="./Warum ist Sprache so wichtig__files/f.txt"></script><script type="text/javascript" async="" src="./Warum ist Sprache so wichtig__files/recaptcha__de.js.Download" crossorigin="anonymous" integrity="sha384-cEM1GxOWo85woC9cnsaVguHcxrN9wIG67ZuVTe/1s+4WFmwlXtzSLqjNAXt3HOKm"></script><script async="" src="./Warum ist Sprache so wichtig__files/gtm.js.Download"></script><script>
+		window.dataLayer = window.dataLayer || [];
+		window.dataLayer.push({
+			'userId' : undefined,
+		});
+	</script>
+	    	
+		
+	<!-- Anti-flicker snippet -->
+	<style>.async-hide { opacity: 0 !important} </style>
+	<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+	})(window,document.documentElement,'async-hide','dataLayer',500,
+	{'GTM-PJK98V':true});</script> 
+	<!-- End anti-flicker snippet -->
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PJK98V');</script>
+	<!-- End Google Tag Manager -->
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link href="./Warum ist Sprache so wichtig__files/css" rel="stylesheet">
+	<title>Warum ist Sprache so wichtig?</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v13.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Ein Element, das in der gesamten Domain-driven-Design-Literatur querschnittlich präsent ist, ist die Ubiquitous Language, die allgegenwärtige Sprache. Allgegenwärtig bezieht sich darauf, dass es sich hierbei um eine Sprache handelt, die von Softwareentwickler*innen und Fachexpert*innen gemeinsam gesprochen wird. Diese Sprache soll dann auch die Basis für die Entwicklung des Softwaremodells sein. Im Rahmen dieses Artikels gehen wir erst auf die Motivation für die Etablierung einer Ubiquitous Language ein, bevor schließlich das Potenzial und die Möglichkeiten für die Arbeit mit einer solchen Sprache vorgestellt werden. Weiterhin werden noch kurz die Vorgehensweisen zur Herleitung einer Ubiquitous Language erläutert.">
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001">
+<script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://entwickler.de/#website","url":"https://entwickler.de/","name":"entwickler.de","inLanguage":"de-DE","description":"Unbegrenzt. Wegweisend. Kompakt.","potentialAction":{"@type":"SearchAction","target":"https://entwickler.de/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"#webpage","url":false,"name":"Warum ist Sprache so wichtig?","isPartOf":{"@id":"https://entwickler.de/#website"},"inLanguage":"de-DE","datePublished":null,"dateModified":null,"description":"Ein Element, das in der gesamten Domain-driven-Design-Literatur querschnittlich pr\u00e4sent ist, ist die Ubiquitous Language, die allgegenw\u00e4rtige Sprache. Allgegenw\u00e4rtig bezieht sich darauf, dass es sich hierbei um eine Sprache handelt, die von Softwareentwickler*innen und Fachexpert*innen gemeinsam gesprochen wird. Diese Sprache soll dann auch die Basis f\u00fcr die Entwicklung des Softwaremodells sein. Im Rahmen dieses Artikels gehen wir erst auf die Motivation f\u00fcr die Etablierung einer Ubiquitous Language ein, bevor schlie\u00dflich das Potenzial und die M\u00f6glichkeiten f\u00fcr die Arbeit mit einer solchen Sprache vorgestellt werden. Weiterhin werden noch kurz die Vorgehensweisen zur Herleitung einer Ubiquitous Language erl\u00e4utert."}]}</script>
+<meta property="og:title" content="Warum ist Sprache so wichtig?">
+<meta property="og:description" content="Ein Element, das in der gesamten Domain-driven-Design-Literatur querschnittlich präsent ist, ist die Ubiquitous Language, die allgegenwärtige Sprache. Allgegenwärtig bezieht sich darauf, dass es sich hierbei um eine Sprache handelt, die von Softwareentwickler*innen und Fachexpert*innen gemeinsam gesprochen wird. Diese Sprache soll dann auch die Basis für die Entwicklung des Softwaremodells sein. Im Rahmen dieses Artikels gehen wir erst auf die Motivation für die Etablierung einer Ubiquitous Language ein, bevor schließlich das Potenzial und die Möglichkeiten für die Arbeit mit einer solchen Sprache vorgestellt werden. Weiterhin werden noch kurz die Vorgehensweisen zur Herleitung einer Ubiquitous Language erläutert.">
+<meta property="og:url" content="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001">
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="entwickler.de">
+<meta property="article:section" content="Artikel">
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="450">
+<meta property="article:published_time" content="17/04/2020 08:29:31">
+<meta property="og:image" content="https://s3.eu-west-1.amazonaws.com/redsys-prod/articles/4a9794eb6b6187f859820af0/images/teaserImage_xx_Brand_Teaser_EntwicklerMagazin_shutterstock_Liashko_1558424923644.jpg">
+<meta property="og:image:secure_url" content="https://s3.eu-west-1.amazonaws.com/redsys-prod/articles/4a9794eb6b6187f859820af0/images/teaserImage_xx_Brand_Teaser_EntwicklerMagazin_shutterstock_Liashko_1558424923644.jpg">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="dns-prefetch" href="https://www.google.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="entwickler.de » Feed" href="https://entwickler.de/feed/">
+<link rel="alternate" type="application/rss+xml" title="entwickler.de » Kommentar-Feed" href="https://entwickler.de/comments/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/entwickler.de\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Warum ist Sprache so wichtig__files/wp-emoji-release.min.js.Download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="subscription-status-style-css" href="./Warum ist Sprache so wichtig__files/subscription-status.css" type="text/css" media="all">
+<link rel="stylesheet" id="google-material-font-sands-css" href="./Warum ist Sprache so wichtig__files/icon" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./Warum ist Sprache so wichtig__files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="./Warum ist Sprache so wichtig__files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="woocommerce-layout-css" href="./Warum ist Sprache so wichtig__files/woocommerce-layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="woocommerce-smallscreen-css" href="./Warum ist Sprache so wichtig__files/woocommerce-smallscreen.css" type="text/css" media="only screen and (max-width: 768px)">
+<link rel="stylesheet" id="woocommerce-general-css" href="./Warum ist Sprache so wichtig__files/woocommerce.css" type="text/css" media="all">
+<style id="woocommerce-inline-inline-css" type="text/css">
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel="stylesheet" id="child-understrap-styles-css" href="./Warum ist Sprache so wichtig__files/child-theme.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="cookieconsent-css" href="./Warum ist Sprache so wichtig__files/cookieconsent.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="mc4wp-form-styles-builder-css" href="./Warum ist Sprache so wichtig__files/bundle.css" type="text/css" media="all">
+<style id="themecomplete-extra-css-inline-css" type="text/css">
+.single-product .woocommerce-Price-amount.amount {display:none;}
+
+.single-product .subscription-details, .single-product .tmperiod {display:none;}
+.single-product .woocommerce-form-coupon-toggle {display:none;}
+
+.reset_variations {
+display: none !important;
+}
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sands_vue_app_context = {"marketing_widget_one":"<aside id=\"text-6\" class=\"widget widget_text\">\t\t\t<div class=\"textwidget\"><div style=\"width: 96%; margin: 30px 32px 30px 30px;\">\n<p><img class=\"alignright wp-image-99767\" style=\"margin: 0px 0px 50px 55px;\" src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2020\/11\/Gray-Flash-216x300.png\" alt=\"\" width=\"135\" height=\"187\" \/><\/p>\n<h4><strong>Bauen, bauen, bauen \u2013 aber wie?<br \/>\n<\/strong><\/h4>\n<p>Der erste Schritt ist wie immer der schwierigste, auch wenn es um die Einf\u00fchrung von CI\/CD, bzw. DevOps geht. In diesem Fall l\u00e4uft dieser Schritt \u00fcber Build Automation Tools, wie bspw. Maven, Gradle oder auch CMake.<\/p>\n<p>Diese Woche haben wir euch eine \u00dcbersicht an Artikeln unserer Expert:innen zu den verschiedensten automatisierten Build Tools zusammengestellt.<\/p>\n<\/div>\n<div style=\"width: 96%; margin: 30px 28px 30px 30px;\">\n<p>Verpasst au\u00dferdem nicht unseren <a href=\"https:\/\/entwickler.de\/reader\/workshops\/61e145e15642af001d4a6ee6\">Workshop<\/a> am 14.02. zum Thema WebAssembly, Project Fugu und PWA!<\/p>\n<p><em>Viel Spa\u00df beim St\u00f6bern!<br \/>\n<\/em><br \/>\n<span style=\"color: #ffffff;\">.<\/span><\/p>\n<\/div>\n<\/div>\n\t\t<\/aside>","marketing_widget_two":"<aside id=\"text-7\" class=\"widget widget_text\">\t\t\t<div class=\"textwidget\"><div style=\"width: 96%; margin: 30px 28px 30px 30px;\">\n<p><a href=\"https:\/\/entwickler.de\/reader\/magazine\/tensorflow-tutorial\/Woche%202\"><img class=\"alignright wp-image-126058\" style=\"margin: 0px 0px 0px 55px;\" src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2021\/07\/cover_x_ILMU_TensorFlow_62117_v2_2_1625467543757.jpeg\" alt=\"\" width=\"195\" height=\"273\" \/><\/a><\/p>\n<h3>Was tut sich in den Frameworks?<\/h3>\n<p>Diese Woche schauen wir uns an, welche Neuerungen es in popul\u00e4ren Frameworks wie <strong>React, Spring<\/strong> oder <strong>Laravel<\/strong> zu entdecken gibt. Freut Euch au\u00dferdem \u00fcber den zweiten Teil des gro\u00dfen <strong>TensorFlow-Tutorials<\/strong> sowie das exklusive <strong>Rust-Comic<\/strong>, in dem Ihr das innovative Konzept der Memory Ownership kennenlernt!<\/p>\n<h4>entwickler.kiosk wird entwickler.de<\/h4>\n<p>Ihr habt es sicher schon mitbekommen: entwickler.kiosk hei\u00dft ab sofort entwickler.de! Auf einer <strong>einheitlichen Plattform<\/strong> findet Ihr nun sowohl die Inhalte des bekannten <strong>Entwickler Kiosk<\/strong> als auch die popul\u00e4ren Onlineportale <strong>JAXenter<\/strong> und <strong>entwickler.de<\/strong>.<\/p>\n<p>Das bedeutet f\u00fcr euch nicht nur mehr Experteninhalte, sondern auch eine deutlich verbesserte User Experience und nicht zuletzt die M\u00f6glichkeit, genau das St\u00fcck Wissen zu finden, das euch gerade weiterbringt!<\/p>\n<p><strong>Viel Vergn\u00fcgen! <\/strong><br \/>\n<span style=\"color: #ffffff;\">.<\/span><\/p>\n<\/div>\n<\/div>\n\t\t<\/aside>","marketing_widget_three":"<aside id=\"text-8\" class=\"widget widget_text\">\t\t\t<div class=\"textwidget\"><div style=\"width: 96%; margin: 30px 28px 30px 30px;\">\n<p><a href=\"https:\/\/entwickler.de\/reader\/magazine\/tensorflow-tutorial\/Woche%201\"><img class=\"alignright wp-image-125150\" style=\"margin: 0px 0px 0px 55px;\" src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2021\/06\/cover_x_ILMU_TensorFlow_Issue_Cover_1600x224_62117_v2_1624628002643.jpeg\" alt=\"\" width=\"195\" height=\"273\" \/><\/a><\/p>\n<h4>Datenstr\u00f6me & Machine Learning<\/h4>\n<p>Datenstr\u00f6me in Echtzeit organisieren \u2013 vor dieser Aufgabe stehen viele moderne Anwendungen. Mit welchen Mitteln das aktuell m\u00f6glich ist, erfahrt Ihr diese Woche in unseren Highlights. Neben <strong>Apache Kafka<\/strong> nehmen wir auch die neue Option von Amazon unter die Lupe: <strong>AWS Kinesis<\/strong>.<\/p>\n<p>Au\u00dferdem pr\u00e4sentieren wir Euch diese Woche die erste Folge unserer gro\u00dfen <strong>Video-Tutorialreihe zu TensorFlow<\/strong>. Baut zusammen mit dem Experten Cedric M\u00f6ssner Schritt f\u00fcr Schritt ein neuronales Netzwerk auf. Leichter zug\u00e4nglich war <strong>Machine Learning<\/strong> noch nie!<\/p>\n<p><strong>Viel Vergn\u00fcgen!<\/strong><br \/>\n<span style=\"color: #ffffff;\">.<\/span><br \/>\n<span style=\"color: #ffffff;\">.<\/span><\/p>\n<\/div>\n<\/div>\n\t\t<\/aside>","marketing_widget_four":"<aside id=\"text-9\" class=\"widget widget_text\">\t\t\t<div class=\"textwidget\"><div style=\"width: 96%; margin: 30px 32px 30px 30px;\">\n<p><img class=\"alignright wp-image-99767\" style=\"margin: 0px 0px 50px 55px;\" src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2020\/11\/Gray-Flash-216x300.png\" alt=\"\" width=\"135\" height=\"187\" \/><\/p>\n<h4><strong>Schnell <em>und<\/em> Flexibel<br \/>\n<\/strong><\/h4>\n<p>Aus dem <strong>Wasserfallmodell<\/strong> entstanden, um die Softwareproduktion zu beschleunigen, ist <strong>Rapid Development<\/strong> heute eng mit <strong>agiler Softwareentwicklung<\/strong> verkn\u00fcpft.<\/p>\n<p>Ein Vertreter dieses Entwicklungsansatzes ist das PHP-Framework <strong>CakePHP<\/strong>. In der neuen Ausgabe des PHP Magazins 2.2022 steht das Framework im Fokus. Was hat sich in letzter Zeit getan und was k\u00f6nnen Entwickler:innen zuk\u00fcnftig erwarten?<\/p>\n<\/div>\n<div style=\"width: 96%; margin: 30px 28px 30px 30px;\">\n<p>Am kommenden Donnerstag erwartet Euch au\u00dferdem unser <a href=\"https:\/\/entwickler.de\/reader\/workshops\/61e17abbd6b114001dad4be5\">Monitoring-Workshop<\/a> mit Thomas Kruse und Karsten Sitterberg<\/p>\n<p><em>Viel Vergn\u00fcgen mit unserem \u00dcberblick!<br \/>\n<\/em><\/p>\n<p>\u00a0<\/p>\n<\/div>\n<\/div>\n\t\t<\/aside>","marketing_widget_five":"<aside id=\"text-10\" class=\"widget widget_text\">\t\t\t<div class=\"textwidget\"><div style=\"width: 96%; margin: 30px 32px 30px 30px;\">\n<p><img class=\"alignright wp-image-99767\" style=\"margin: 0px 0px 50px 55px;\" src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2020\/11\/Gray-Flash-216x300.png\" alt=\"\" width=\"135\" height=\"187\" \/><\/p>\n<div>\n<h4><strong>Es geht um die inneren Werte<\/strong><\/h4>\n<p>Per Definiton kann die <strong>Observability<\/strong> eines Systems als gegeben angesehen<br \/>\nwerden, wenn der aktuelle interne Zustand allein mit Hilfe vorhandener<br \/>\nAusgabewerte eingesch\u00e4tzt werden kann. Observability soll erm\u00f6glichen, ein weites Spektrum an Problemursachen zu lokalisieren, um die Performance zu verbessern.<\/p>\n<p>Diese Woche haben wir euch eine \u00dcbersicht an Artikeln unserer Expert:innen zu<br \/>\nverschiedenen Themen rund um die Observability zusammengestellt. <span dir=\"ltr\" role=\"presentation\">Au\u00dferdem m\u00f6chten wir unseren Blick auf unterschiedliche Arten des <\/span><span dir=\"ltr\" role=\"presentation\"><strong>Projektmanagements im IT-Bereich<\/strong> richten.<\/span><\/p>\n<p><em>Viel Spa\u00df beim St\u00f6bern!<\/em><\/p>\n<\/div>\n<\/div>\n<\/div>\n\t\t<\/aside>","bandp":{"bandp_0":{"is_active":1,"banner_html":"<div class=\"d-flex d-sm-block flex-column mb-2 p-2 text-center text-white\" style=\"background-color: #00A19A; margin-top: -1.5rem;\">\r\n    <span>Deine Konferenzunterlagen bei entwickler.de \u2013 und ein Geschenk von uns<\/span> \r\n    <button  class=\"btn btn-light mx-4 my-2 ws_banner\" id=\"bandpcontenttrigger\" data-target=\"#bandpcontent\" data-toggle=\"modal\" style=\"color: #00A19A;\">Mehr Informationen<\/button>\r\n<\/div>","popover_html":"<div class=\"modal fade\" id=\"bandpcontent\" tabindex=\"-1\" role=\"dialog\" style=\"z-index: 1060;\"\r\n  aria-labelledby=\"bandpcontentTitle\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-dialog-centered mx-auto\" role=\"document\" style=\"width: 700px !important; max-width: 94%;\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"pr-3 pt-2\">\r\n        <button type=\"button\" class=\"close text-white\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <!-- span aria-hidden=\"true\">\u00d7<\/span -->\r\n        <\/button>\r\n      <\/div>\r\n      \r\n      <div class=\"modal-body d-flex py-1\">\r\n        \r\n        <div class=\"col-12\">\r\n          <h3 style=\"font-size: 24px;\" class=\"mb-4 mt-3 text-primary\">Deine Konferenzunterlagen auf entwickler.de<\/h3>\r\n          \r\n          <p class=\" py-1\">\r\n            Unter dem Men\u00fcpunkt \u201eMeine Events\u201c findest du die Auswahl an Events, an denen du teilgenommen hast. W\u00e4hle bitte den entsprechenden Event aus, um deine Konferenz-Slides sowie dein Teilnahmezertifikat zu erhalten.<\/p>\r\n           <p> Als Dankesch\u00f6n erh\u00e4ltst du au\u00dferdem einen Monat lang gratis Zugang zu entwickler.de und hast damit Zugriff auf \u00fcber 10.000 Expertenbeitr\u00e4ge.\r\n          <\/p>\r\n         \r\n        <\/div>\r\n      <\/div>\r\n      \r\n      <div class=\"p-2 pb-4 text-center\">\r\n        <button type=\"button\" data-dismiss=\"modal\" class=\"btn btn-primary toastclicktrigger marketingeventtriggerhandler mb-2\" \r\n  data-detailaction=\"add_user_meta\"\r\n  data-actiontocall=\"sands_bandp\" \r\n  data-marketingeventdata=\"clicked_on_marketing_attendee_consent_yes\"\r\n  \r\n             data-consentstatus=\"YES\"\r\n                  \r\n \r\n  data-toastclicktext=\"Vielen Dank, wir w\u00fcnschen Dir viel Spa\u00df beim St\u00f6bern mit Deinem kostenlosen entwickler.de-Zugang.\"\r\n> Ja, ich nehme das Angebot an<\/button>\r\n        \r\n\r\n\r\n<div data-dismiss=\"modal\" aria-label=\"Close\" style=\"color:#000;\">\r\n          <span aria-hidden=\"true\" class=\"cursorPointer\"\r\n\r\n>Nein, vielleicht sp\u00e4ter<\/span>\r\n\r\n\r\n\r\n        <\/div>\r\n        \r\n      <\/div>\r\n      <p class=\"px-4 smalltextsize\">(*) Mit der Annahme des Angebotes akzeptiere ich die AGB und die Datenschutzbestimmungen der Software & Support Media GmbH. Die Verwendung meiner Daten f\u00fcr werbliche Zwecke (per Newsletter oder auf dem Postweg) f\u00fcr \u00e4hnliche Waren und Dienstleistungen ist nicht ausgeschlossen. Ich kann diese Einwilligung jederzeit ohne Angabe von Gr\u00fcnden widerrufen, ohne dass mir Nachteile entstehen. Wird die Einwilligung jedoch widerrufen, ist die Wahrnehmung des kostenlosen Angebotes nicht m\u00f6glich. <\/p>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>","segment_config":["PENDING"],"banner2_html":"<div class=\"d-flex d-sm-block flex-column mb-2 p-2 text-center text-white\" style=\"background-color: #00A19A; margin-top: -1.5rem;\">\r\n    <span>Deine Konferenzunterlagen bei entwickler.de \u2013 und ein Geschenk von uns<\/span> \r\n    <button  class=\"btn btn-light mx-4 my-2 ws_banner\" id=\"bandpcontenttrigger\" data-target=\"#bandpcontent\" data-toggle=\"modal\" style=\"color: #00A19A;\">Mehr Informationen<\/button>\r\n<\/div>","popover2_html":"<div class=\"modal fade\" id=\"bandpcontent\" tabindex=\"-1\" role=\"dialog\" style=\"z-index: 1060;\"\r\n  aria-labelledby=\"bandpcontentTitle\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-dialog-centered mx-auto\" role=\"document\" style=\"width: 700px !important; max-width: 94%;\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"pr-3 pt-2\">\r\n        <button type=\"button\" class=\"close text-white\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <!-- span aria-hidden=\"true\">\u00d7<\/span -->\r\n        <\/button>\r\n      <\/div>\r\n      \r\n      <div class=\"modal-body d-flex py-1\">\r\n        \r\n        <div class=\"col-12\">\r\n          <h3 style=\"font-size: 24px;\" class=\"mb-4 mt-3 text-primary\">Deine Konferenzunterlagen auf entwickler.de<\/h3>\r\n          \r\n          <p class=\" py-1\">\r\n            Unter dem Men\u00fcpunkt \u201eMeine Events\u201c findest du die Auswahl an Events, an denen du teilgenommen hast. W\u00e4hle bitte den entsprechenden Event aus, um deine Konferenz-Slides sowie dein Teilnahmezertifikat zu erhalten.<\/p>\r\n           <p> Als Dankesch\u00f6n erh\u00e4ltst du au\u00dferdem einen Monat lang gratis Zugang zu entwickler.de und hast damit Zugriff auf \u00fcber 10.000 Expertenbeitr\u00e4ge.\r\n          <\/p>\r\n         \r\n        <\/div>\r\n      <\/div>\r\n      \r\n      <div class=\"p-2 pb-4 text-center\">\r\n        <button type=\"button\" data-dismiss=\"modal\" class=\"btn btn-primary toastclicktrigger marketingeventtriggerhandler mb-2\" \r\n  data-detailaction=\"add_user_meta\"\r\n  data-actiontocall=\"sands_bandp\" \r\n  data-marketingeventdata=\"clicked_on_marketing_attendee_consent_yes\"\r\n  \r\n\r\n\r\n             data-consentstatus=\"YES\"\r\n                 \r\n                 \r\n \r\n  data-toastclicktext=\"Vielen Dank, wir w\u00fcnschen Dir viel Spa\u00df beim St\u00f6bern mit Deinem kostenlosen entwickler.de-Zugang.\"\r\n> Ja, ich nehme das Angebot an<\/button>\r\n        \r\n\r\n\r\n<div data-dismiss=\"modal\" aria-label=\"Close\" style=\"color:#000;\">\r\n          <span aria-hidden=\"true\" class=\"cursorPointer\"\r\n\r\n>Nein, vielleicht sp\u00e4ter<\/span>\r\n\r\n\r\n\r\n        <\/div>\r\n        \r\n      <\/div>\r\n      <p class=\"px-4 smalltextsize\">(*) Mit der Annahme des Angebotes akzeptiere ich die AGB und die Datenschutzbestimmungen der Software & Support Media GmbH. Die Verwendung meiner Daten f\u00fcr werbliche Zwecke (per Newsletter oder auf dem Postweg) f\u00fcr \u00e4hnliche Waren und Dienstleistungen ist nicht ausgeschlossen. Ich kann diese Einwilligung jederzeit ohne Angabe von Gr\u00fcnden widerrufen, ohne dass mir Nachteile entstehen. Wird die Einwilligung jedoch widerrufen, ist die Wahrnehmung des kostenlosen Angebotes nicht m\u00f6glich. <\/p>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>","segment2_config":["MONTHLY_OVER_6MTHS","YEARLY","IP","DOMAIN","ABO_CODE","MONTHLY_BELOW_6MTHS"],"cookie_name":"bandp_0"},"bandp_1":{"is_active":0},"bandp_2":{"is_active":0},"bandp_3":{"is_active":1,"banner_html":"<div class=\"d-flex d-sm-block flex-column mb-2 p-2 text-center text-white\" style=\"background-color: #F45498; margin-top: -1.5rem;\">\r\n    <span>Exklusiv f\u00fcr Printmagazin-Abonnenten: Auf entwickler.de-Abo upgraden und 50% sparen.<\/span> \r\n    <button  class=\"btn btn-light mx-4 my-2 ws_banner\" id=\"bandpcontenttrigger\" data-target=\"#bandpcontent\" data-toggle=\"modal\" style=\"color: #F45498;\">Zum Angebot<\/button>\r\n<\/div>","popover_html":"<div class=\"modal fade\" id=\"bandpcontent\" tabindex=\"-1\" role=\"dialog\" style=\"z-index: 1060;\"\r\n  aria-labelledby=\"bandpcontentTitle\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-dialog-centered mx-auto\" role=\"document\" style=\"width: 700px !important; max-width: 94%;\">\r\n    <div class=\"modal-content\" style=\"background-color: #ffffff;\">\r\n      <div class=\"pr-3 pt-2\">\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">\u00d7<\/span>\r\n        <\/button>\r\n      <\/div>\r\n      \r\n      <div class=\"modal-body d-flex pt-1\">\r\n \r\n        <div class=\"col-12 col-md-7\">\r\n          <h2 class=\"font-weight-bolder\" style=\"font-size: 24px; color: #03A09A;\" >Jetzt auf digitales Abo upgraden und 50 % sparen<\/h2>\r\n          <p style=\"font-size: initial; color: #000000;\">\r\n            Zus\u00e4tzlich zum bestehenden Print-Abo erh\u00e4ltst Du zum Vorzugspreis uneingeschr\u00e4nkten Zugriff auf die Inhalte von entwickler.de. Das bedeutet:\r\n          <\/p>\r\n          <p class=\"font-weight-bolder\" style=\"font-size: initial; color: #03A09A;\">\r\n            Du zahlst nur 99,40 \u20ac statt 198,80 \u20ac im Jahr.\r\n<span style=\"color: #000000; font-weight:600; margin: 4px 0 0 0; display: block; font-size: initial;\">Gib bei Deiner Bestellung einfach Deine Abo-Nummer als Gutschein-Code ein.<\/span>\r\n          <\/p>\r\n              <a href=\"\/checkout\/?add-to-cart=62490\" class=\"btn btn-primary my-sm-0 text-uppercase\">Angebot sichern<\/a>\r\n        <\/div>\r\n       <div class=\"d-none d-md-block col-md-5\">\r\n          <img src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2020\/12\/EKiosk_20_Print_Offfer_59306_v1_desktop.jpg\" \/>\r\n        <\/div>\r\n      <\/div>\r\n      <div class=\"text-center d-sm-block d-xs-block d-md-none\">\r\n            <img src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2020\/12\/EKiosk_20_Print_Offfer_59306_v1_mobile.jpg\" \/>\r\n      <\/div>\r\n    <\/div>\r\n  <\/div>\r\n<\/div>","segment_config":["NEVER_PRINT","NONE_PRINT"],"cookie_name":"bandp"}},"consent_settings":{"mailchimp_kiosk_leadchannel_field_name":"MMERGE23","mailchimp_kiosk_attendee_field_name":"MMERGE17","mailchimp_kiosk_whitepaper_cat_id":"","mailchimp_kiosk_whitepaper_group_id":"","mailchimp_kiosk_whitepaper_list_id":"","mailchimp_kiosk_whitepaper_field_name":""},"comchat_details":{"appid":"19791640586b930d","region":"eu"},"session_detail_marketing":{"sands_session_details_top":"<div id=\"custom_html-15\" class=\"widget_text widget widget_custom_html\"><div class=\"textwidget custom-html-widget\"><style>\r\n\t.marketingwidget{display:none;}\r\n<\/style><\/div><\/div","sands_session_details_bottom":"<div id=\"custom_html-14\" class=\"widget_text widget widget_custom_html\"><div class=\"textwidget custom-html-widget\"><div class=\"d-none d-sm-block\" style=\"margin-bottom:80px;\">\r\n\t<a href=\"https:\/\/basta.net\/mainz\/?utm_source=entwickler.de&utm_medium=referral&utm_campaign=ws_banner\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2021\/07\/BASTA_MZ21_WebAd_62294_v1.jpg\" \/><\/a>\r\n<\/div>\r\n<div class=\"d-block d-sm-none m-3\">\r\n <a href=\"https:\/\/basta.net\/mainz\/?utm_source=entwickler.de&utm_medium=referral&utm_campaign=ws_banner\"><img src=\"https:\/\/entwickler.de\/wp-content\/uploads\/2021\/07\/BASTA_MZ21_WebAd_Mobile_62294_v1.jpg\" target=\"_blank\" \/><\/a>\r\n<\/div><\/div><\/div>","sands_session_details_user_has_no_access":"<div id=\"custom_html-19\" class=\"widget_text widget widget_custom_html\"><div class=\"textwidget custom-html-widget\"><div class=\"bg-white no-access-reader-main-block p-3 rounded-xl-left-xs-full\">\r\n                        <div class=\"text-center\"><h3 class=\"font-weight-bolder h2 mb-0 mx-4 pb-0 pt-4 text-danger\">Jetzt Zugang freischalten<\/h3><h3 class=\"h4 mx-5 my-3\">Leider hast du noch keinen Zugriff auf die Online-Workshops. Schlie\u00dfe jetzt ein entwickler.de <br \/>Fullstack-Abo ab, um s\u00e4mtliche Workshops freizuschalten.<\/h3>\r\n<div class=\"my-4 text-center\"><a href=\"\/checkout\/?add-to-cart=62490\"><span class=\"bg-primary font-weight-bold p-2 px-4 rounded text-white\">JETZT ABSCHLIESSEN<\/span><\/a><\/div><\/div>\r\n                        \r\n                    <\/div>\r\n<style>\r\n    .no-access-reader-main-block {\r\n        border: 10px solid #89DDA0\r\n    }\r\n<\/style><\/div><\/div>","sands_hybrid_session_details_user_has_no_access":"<div id=\"custom_html-46\" class=\"widget_text widget widget_custom_html\"><div class=\"textwidget custom-html-widget\"><div class=\"bg-white no-access-reader-main-block p-5 rounded-xl-left-xs-full\" style=\"min-height: 320px;\">\r\n                        <div class=\"text-center\"><br><h3 class=\"h4 mx-5 my-3\">Diese Session oder Workshop steht<br \/> f\u00fcr deinen Account nicht zur Verf\u00fcgung.<br><br><\/h3>\r\n<\/div>\r\n                        \r\n                    <\/div>\r\n<style>\r\n    .no-access-reader-main-block {\r\n        border: 0px solid #89DDA0\r\n    }\r\n<\/style><\/div><\/div>"},"poster_image_if_no_session":"https:\/\/entwickler.de\/wp-content\/uploads\/2021\/09\/EKiosk_21_Talk_Detail_Fallback_PreEvent.jpg","poster_image_if_session_has_passed":"https:\/\/entwickler.de\/wp-content\/uploads\/2021\/09\/EKiosk_21_Talk_Detail_Fallback_Unavailable.jpg","poster_image_if_session_iframe_missing":"https:\/\/entwickler.de\/wp-content\/uploads\/2021\/09\/EKiosk_21_Talk_Detail_Fallback_PreUpload.jpg"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/jquery.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/jquery-migrate.min.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/popper.min.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/jquery.cycle2.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/jquery.cycle2.carousel.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/jquery.touchSwipe.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _zxcvbnSettings = {"src":"https:\/\/entwickler.de\/wp-includes\/js\/zxcvbn.min.js"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/zxcvbn-async.min.js.Download"></script>
+<link rel="https://api.w.org/" href="https://entwickler.de/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://entwickler.de/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://entwickler.de/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.3.2">
+<meta name="generator" content="WooCommerce 3.5.5">
+<link rel="alternate" type="application/json+oembed" href="https://entwickler.de/wp-json/oembed/1.0/embed?url">
+<link rel="alternate" type="text/xml+oembed" href="https://entwickler.de/wp-json/oembed/1.0/embed?url&amp;format=xml">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="entwickler.de - Unbegrenzt. Wegweisend. Kompakt.">
+	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>      <meta name="onesignal" content="wordpress-plugin">
+            <script>
+
+      window.OneSignal = window.OneSignal || [];
+
+      OneSignal.push( function() {
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = 'OneSignalSDKUpdaterWorker.js';
+                      OneSignal.SERVICE_WORKER_PATH = 'OneSignalSDKWorker.js';
+                      OneSignal.SERVICE_WORKER_PARAM = { scope: '/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/push/onesignal/' };
+        OneSignal.setDefaultNotificationUrl("https://entwickler.de");
+        var oneSignal_options = {};
+        window._oneSignalInitOptions = oneSignal_options;
+
+        oneSignal_options['wordpress'] = true;
+oneSignal_options['appId'] = '1fa2af8d-ea00-4a8e-bf68-a0f55393ff84';
+oneSignal_options['allowLocalhostAsSecureOrigin'] = true;
+oneSignal_options['welcomeNotification'] = { };
+oneSignal_options['welcomeNotification']['title'] = "Vielen Dank!";
+oneSignal_options['welcomeNotification']['message'] = "Sie erhalten jetzt alle wichtigen Event-Benachrichtigungen.";
+oneSignal_options['path'] = "https://entwickler.de/wp-content/plugins/onesignal-free-web-push-notifications/sdk_files/";
+oneSignal_options['promptOptions'] = { };
+oneSignal_options['promptOptions']['actionMessage'] = "Wichtige Event-Benachrichtigungen erhalten";
+oneSignal_options['notifyButton'] = { };
+oneSignal_options['notifyButton']['enable'] = true;
+oneSignal_options['notifyButton']['position'] = 'bottom-left';
+oneSignal_options['notifyButton']['theme'] = 'inverse';
+oneSignal_options['notifyButton']['size'] = 'large';
+oneSignal_options['notifyButton']['showCredit'] = false;
+oneSignal_options['notifyButton']['text'] = {};
+oneSignal_options['notifyButton']['text']['tip.state.unsubscribed'] = 'Bitte aktivieren für wichtige Event-Benachrichtigungen';
+oneSignal_options['notifyButton']['text']['tip.state.subscribed'] = 'Sie erhalten wichtige Event-Benachrichtigungen';
+oneSignal_options['notifyButton']['text']['tip.state.blocked'] = 'Sie erhalten keine wichtigen Event-Benachrichtigungen mehr';
+oneSignal_options['notifyButton']['text']['message.action.subscribed'] = 'Danke! Sie erhalten jetzt wichtige Event-Benachrichtigungen';
+oneSignal_options['notifyButton']['text']['message.action.resubscribed'] = 'Danke! Sie erhalten jetzt wichtige Event-Benachrichtigungen';
+oneSignal_options['notifyButton']['text']['message.action.unsubscribed'] = 'Sie erhalten keine wichtigen Event-Benachrichtigungen mehr';
+oneSignal_options['notifyButton']['text']['dialog.main.title'] = 'Event-Benachrichtigungen verwalten';
+oneSignal_options['notifyButton']['text']['dialog.main.button.subscribe'] = 'aktivieren';
+oneSignal_options['notifyButton']['text']['dialog.main.button.unsubscribe'] = 'deaktivieren';
+oneSignal_options['notifyButton']['colors'] = {};
+oneSignal_options['notifyButton']['offset'] = {};
+oneSignal_options['notifyButton']['offset']['bottom'] = '30px';
+oneSignal_options['notifyButton']['offset']['left'] = '30px';
+          /* OneSignal: Using custom SDK initialization. */
+                });
+
+      function documentInitOneSignal() {
+        var oneSignal_elements = document.getElementsByClassName("OneSignal-prompt");
+
+        var oneSignalLinkClickHandler = function(event) { OneSignal.push(['registerForPushNotifications']); event.preventDefault(); };        for(var i = 0; i < oneSignal_elements.length; i++)
+          oneSignal_elements[i].addEventListener('click', oneSignalLinkClickHandler, false);
+      }
+
+      if (document.readyState === 'complete') {
+           documentInitOneSignal();
+      }
+      else {
+           window.addEventListener("load", function(event){
+               documentInitOneSignal();
+          });
+      }
+    </script>
+<script src="./Warum ist Sprache so wichtig__files/splide.min.js.Download"></script>
+<!-- or the reference on CDN -->
+<link rel="stylesheet" href="./Warum ist Sprache so wichtig__files/splide.min.css">
+<link rel="icon" href="https://entwickler.de/wp-content/uploads/2022/01/cropped-entwicklerDE_22_Rheingold_favicon_v2-32x32.png?x88418" sizes="32x32">
+<link rel="icon" href="https://entwickler.de/wp-content/uploads/2022/01/cropped-entwicklerDE_22_Rheingold_favicon_v2-192x192.png?x88418" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://entwickler.de/wp-content/uploads/2022/01/cropped-entwicklerDE_22_Rheingold_favicon_v2-180x180.png?x88418">
+<meta name="msapplication-TileImage" content="https://entwickler.de/wp-content/uploads/2022/01/cropped-entwicklerDE_22_Rheingold_favicon_v2-270x270.png">
+<link rel="icon" href="https://entwickler.de/wp-content/themes/understrap-child/src/images/EntwicklerDE_21_Favicon.ico?x88418" sizes="any">
+<link rel="icon" href="https://entwickler.de/wp-content/themes/understrap-child/src/images/EntwicklerDE_favicon_512px.svg?x88418" type="image/svg+xml">
+<link rel="apple-touch-icon" href="https://entwickler.de/wp-content/themes/understrap-child/src/images/EntwicklerDE_21_Favicon.ico?x88418">
+		<style type="text/css" id="wp-custom-css">
+			.event-w9nu264oPhKqTLcbu .count-down-main-block {display:none;}
+
+.page-id-126002 a.optoutlink {
+    margin-left:20px;
+}
+.one-to-one-main-block .chatHeaderStyle {
+    display: block !important;
+}
+.event-YMuEYMkJGTfJwN5cJ .session-start-end-time {
+    visibility: hidden;
+}
+.menu-item-981 a{
+	font-weight: bolder!important;
+}
+.event-YMuEYMkJGTfJwN5cJ.session-new-view .session-date-time {
+    display: none;
+}
+
+.event-YMuEYMkJGTfJwN5cJ.session-new-view .count-down-main-block {
+    display: none;
+}
+
+.event-7ZrYJgCSBtJDnK6W7 .session-start-end-time {
+    visibility: hidden;
+}
+
+.event-7ZrYJgCSBtJDnK6W7.session-new-view .session-date-time {
+    display: none;
+}
+
+.event-7ZrYJgCSBtJDnK6W7.session-new-view .count-down-main-block {
+    display: none;
+}
+
+.event-RCSHFwQHwWs5HAHzv .session-start-end-time {
+    visibility: hidden;
+}
+
+.event-RCSHFwQHwWs5HAHzv.session-new-view .session-date-time {
+    display: none;
+}
+
+.event-RCSHFwQHwWs5HAHzv.session-new-view .count-down-main-block {
+    display: none;
+}
+
+.article-detail-center .left-ads, .article-detail-center .right-ads {
+    min-width: 135px !important;
+}
+
+.page .left-ads, .page .right-ads {
+    min-width: 135px !important;
+}
+
+
+.atdpack-conference-logo {
+	max-height: 170px;
+}
+/*.cometchat-embedded-chat-screen {max-width:327px;}*/
+.cometchat-grouplist-container {max-height:40px;}
+
+.workshop-iframe-detail {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.workshop-iframe-detail iframe,
+.workshop-iframe-detail object,
+.workshop-iframe-detail embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.term-php-magazin.term-33 .col-md-12.col-lg-3.btn-margin-top {
+    display: none;
+}
+
+.elementor-16 .elementor-element.elementor-element-995a49f > .elementor-container {
+    max-width: 1600px;
+}
+.sands-article-detail .card-text a img {
+    width: 100px!important;
+    height: auto;
+}
+
+.firm-contact-form .wpcf7{
+	max-width:none;
+}
+.send-form{
+	background-color:#007d8d!important;
+    color: #fff!important;
+}
+
+.send-form:hover {
+    color: #fff!important;
+    background-color: #005b67!important;
+    border-color: #00505a!important;
+}
+.postid-109901 .divide-conquer-banner,
+.page-id-105270 .divide-conquer-banner,
+.page-id-109701 .divide-conquer-banner,
+.page-id-112727 .divide-conquer-banner,
+.page-id-112107 .divide-conquer-banner,
+.page-id-109477 .divide-conquer-banner,
+.page-id-62658 .divide-conquer-banner,
+.page-id-62647 .divide-conquer-banner,
+.page-id-49748 .divide-conquer-banner,
+.page-id-48839 .divide-conquer-banner,
+.page-id-233 .divide-conquer-banner,
+.page-id-47938 .divide-conquer-banner,
+.page-id-4669 .divide-conquer-banner,
+.page-id-173 .divide-conquer-banner,
+.page-id-55 .divide-conquer-banner,
+.page-id-170 .divide-conquer-banner,
+.page-id-97025 .divide-conquer-banner,
+.woocommerce-page .divide-conquer-banner,
+.page-template-kiosk-reader-page-angular .divide-conquer-banner{
+	display:none!important;
+}
+
+.show-only-Home.divide-conquer-banner,
+.discount-banner-mobile.divide-conquer-banner .discount-banner-mobile-row, #visitEntwicklerKioskFurTeams.show-only-Home,
+.discount-banner-mobile.divide-conquer-banner a{
+	display:none !important;
+}
+
+.home .show-only-Home.divide-conquer-banner{
+	display:block !important;
+}
+
+
+.page-id-2708 .show-only-Home, .page-id-2708 #visitEntwicklerKioskFurTeams.show-only-Home{
+	display:block!important;
+}
+.page-id-2708 .divide-conquer-banner.disable-discount-banner{
+	display:none!important;
+}
+@media (max-width:720px){
+.page-id-2708 .divide-conquer-banner,.page-id-2708 #visitEntwicklerKioskFurTeams.show-only-home,.page-id-2708 #visitEntwicklerKioskFurTeams{
+	display:none!important;
+}
+
+	.page-id-2708 .discount-banner-mobile.divide-conquer-banner.show-only-Home,
+.page-id-2708 .discount-banner-mobile.divide-conquer-banner a{
+	display:block!important;
+}
+	
+	.page-id-2708 .discount-banner-mobile.divide-conquer-banner.show-only-Home .discount-banner-mobile-row, .page-id-2708 .show-only-Home #visitEntwicklerKioskFurTeams,
+.page-id-2708 .show-only-Home.discount-banner-mobile.divide-conquer-banner a{
+	display:block!important;
+}
+	.page-id-2708 .discount-banner-mobile.show-only-Home .discount-banner-mobile-row.disable-discount-banner,
+		.page-id-2708 .discount-banner-mobile .discount-banner-mobile-row.disable-discount-banner,
+	.page-id-2708 .discount-banner-mobile.divide-conquer-banner .disable-discount-banner + a{
+	display:none!important;
+}
+.page-id-2708 .show-only-Home, .page-id-2708 #visitEntwicklerKioskFurTeams.show-only-Home {
+ display:none!important
+}
+	.home .show-only-Home.divide-conquer-banner{
+	display:none !important;
+}
+		.home .discount-banner-mobile.divide-conquer-banner, #visitEntwicklerKioskFurTeams.show-only-Home,
+	.home .discount-banner-mobile.divide-conquer-banner a,.discount-banner-mobile.divide-conquer-banner .discount-banner-mobile-row{
+		display:block!important;
+	}
+	.home .show-only-Home.discount-banner-mobile .discount-banner-mobile-row.disable-discount-banner.row{
+		display:none !important;
+	}
+}
+.show-only-Home.discount-banner-mobile.divide-conquer-banner.discount-banner{
+	top:0px!important;
+}
+
+.home-magazin.search-section {
+   height: 84vh;
+   
+}
+
+
+.page-id-49748 div#visitEntwicklerKioskFurTeams {
+    display: none !important;
+}
+
+@media (min-width: 902px) and (max-width: 1370px){
+.home .home-magazin.search-section {
+    height: 102vh;
+}
+.home	.home-magazin.search-section .container{
+    margin-top: 18vh;
+}
+}
+
+
+.rabattaktion.devathome-team.einzel-offer .landingpage-header {
+    background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_Website_Rabattaktion_Header_57459_v2_Desktop_Einzel.jpg);
+
+}
+.rabattaktion.devathome-team .landingpage-header {
+    color: #fff;
+    background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_Website_Rabattaktion_Header_57459_v2_Desktop_Team.jpg);
+    background-position-y: top;
+    margin-top: -34px;
+}
+
+
+
+.devathome-team.rabattaktion .divide-conquer-headline {
+    font-size: 48px;
+}
+
+.devathome-team.rabattaktion .kiosk--falg::before{
+    width: 36px;
+    content: " ";
+    background-image: url(https://entwickler.de/wp-content/uploads/2019/09/E_Kiosk_Logo_book.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 38px;
+    top: 22px;
+    height: 33px;
+    font-size: 33PX;
+    font-weight: 600;
+}
+.kiosk--flag{
+	font-size: 33PX;
+    font-weight: 600;
+}
+
+.team--lizenz--bg.team-link{
+	background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_20_Rabattaktion_Lizenzen_Team_57459_v2_singlepage.svg);
+    
+}
+.team--lizenz--bg{
+	background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_20_Rabattaktion_Lizenzen_Team_57459_v2_teampage.svg);
+    background-repeat: no-repeat;
+    background-position-x: right;
+	background-position-y: bottom;
+	 height: 216px;background-color:#006885;
+}
+
+
+
+
+.single--lizenz--bg.einzel-link{background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_20_Rabattaktion_Lizenzen_Einzel_57459_v1_teampage.svg);}
+.single--lizenz--bg{
+	background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_20_Rabattaktion_Lizenzen_Einzel_57459_v1.svg);
+    background-repeat: no-repeat;
+    background-position-x: right;
+	background-position-y: bottom;
+	 height: 216px;background-color:#006885;
+}
+
+@media only screen and (max-width: 568px) {
+	.single--lizenz--bg.einzel-link{background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_20_Rabattaktion_Lizenzen_Einzel_57459_v1_teampage.svg);}
+	.single--lizenz--bg, .team--lizenz--bg{
+height: 255px;
+    background-position-x: unset;
+    background-size: contain;
+}
+	.bottom--align{
+		vertical-align:bottom !important;
+	}
+}
+
+
+@media only screen and (max-width: 768px) {
+    .rabattaktion.devathome-team .landingpage-header,
+    .rabattaktion.devathome-team.einzel-offer .landingpage-header {
+    color: #fff;
+    background-image: url(https://entwickler.de/wp-content/uploads/2020/04/EKiosk_Website_Rabattaktion_Header_57459_v2_mobile.jpg);
+    background-position-y: top;
+		 background-position-x: center !important;
+    margin-top: -34px;
+}
+	.logo--svg{
+		width:99%;
+	}
+
+}
+
+
+@media only screen and (max-width: 991px){
+.rabattaktion .home-magazin.search-section {
+    height: 96vh !important;
+}}
+
+.discount-banner-row {
+        padding: 15px 0vw 10px 0vw;
+    background: none;
+    background-color: #E6FFED!important;
+}
+
+
+.discount-banner-mobile, .home .discount-banner-mobile{
+	    background-color: transparent!important;
+}
+.discount-banner-mobile .discount-banner-mobile-row {
+	background-color:#E6FFED;
+}
+
+
+
+@media (max-width: 992px) and (min-width: 578px){
+.mobile-banner-button-margin {
+    margin-left: 0px!important;
+     margin-top: 1px;
+}
+}
+
+@media (min-width: 1370px) and (max-width: 1670px){
+.home .home-magazin.search-section {
+    height: 110vh;
+	}
+}
+
+
+.show-only-archive,
+.term-kiosk-specials .brand-depending-teaser .brand-widget-abo-headline,
+.term-kiosk-shortcuts .brand-depending-teaser .brand-widget-abo-headline,
+.term-sharepoint-kompendium .brand-depending-teaser .brand-widget-abo-headline,
+.term-javascript-kompendium
+.brand-depending-teaser .brand-widget-abo-headline,
+.term-cloud-compendium .brand-depending-teaser .brand-widget-abo-headline,
+.term-mobile-technology .brand-depending-teaser .brand-widget-abo-headline,
+.term-eclipse-magazin .brand-depending-teaser
+.brand-widget-abo-headline,
+.term-business-technology-magazin .brand-depending-teaser .brand-widget-abo-headline{
+	display: none;
+}
+.term-eclipse-magazin .sands-border-headline.show-on-all-brands,
+.term-sharepoint-kompendium .sands-border-headline.show-on-all-brands,
+.term-business-technology-magazin .sands-border-headline.show-on-all-brands{
+display:none;	
+}
+.term-eclipse-magazin .sands-border-headline.show-only-archive,
+.term-sharepoint-kompendium .sands-border-headline.show-only-archive,
+.term-business-technology-magazin .sands-border-headline.show-only-archive{
+display:inline-block!important;	
+}
+.tax-brand .red-banner{
+	display: none !important;
+}
+
+
+
+.new-brand-header-image{
+	width:initial;
+}
+
+/* mobile top intro and sreach area */
+@media only screen and (max-width: 600px){
+  .margin-top-mobile {
+    padding: 20px 0px !important;
+  }
+	.height--mobile{
+		padding-top: 100px;
+	}
+}
+
+/*team-lizenz css*/
+@media (min-width:1025px)and (max-width: 1281px) { 
+		.min-h--headlne{
+		min-height:80px
+	}
+	.row-top-text{
+	min-height:230px
+}
+
+.row-bottom-text{
+	min-height:110px
+} }
+@media (min-width:1281px) {
+	.row-top-text{
+	min-height:220px
+}
+
+.row-bottom-text{
+	min-height:85px
+}
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px){
+
+.page-id-109477 h4.elementor-heading-title.elementor-size-default {
+    min-height: 70px;
+}
+}
+@media only screen 
+  and (min-device-width: 314px) 
+  and (max-device-width: 736px)  { 
+.set--text-height{
+    height: auto;
+}
+.page-id-109477 .elementor-109477 .elementor-element.remove--shadow .elementor-element-populated{
+			box-shadow: none;
+    padding: 15px 0px;
+    margin: 0px;
+		}
+}
+.page-id-112727 .entry-header,
+.page-id-112399 .entry-header,
+.page-id-112107 .entry-header,
+.elementor-page-109477 .sands-nav-login,
+.page-id-109477 .entry-header, .page-id-109477 #visitEntwicklerKioskFurTeams,.page-id-109477 .menu-item-999,.page-id-109477 .sands-mobile-menu a.mobile-nav-item.rounded.px-2,
+.page-id-109477 .menu-item-981{
+	display:none !important;
+}
+/*team-lizenz css ends*/
+.web-app-content-area readerapp-session #clockdivCountdown .countdown--font,
+.web-app-content-area readerapp-session h4{
+	/* display:none !important;*/
+}
+
+/*print css for AGB page*/
+@media print { 
+    .page-id-55 #wrapper-navbar { 
+        display: none; 
+    }
+}
+.elementor-page-126113 .navbar-collapse .navbar-nav{
+	display:none!important;
+}
+.grecaptcha-badge { 
+    visibility: hidden;
+}
+body.woocommerce-page #page-wrapper.sands-login.wrapper,
+body.woocommerce-page #woocommerce-wrapper,
+body.woocommerce-checkout #page-wrapper,.error-page-main-wrapper{
+	background: linear-gradient(
+		0deg
+		, rgb(156, 237, 166) 14%, rgb(0, 104, 133) 72%);
+}
+.main-article-detail-container .article-detail-body hr{
+	width: 85%;
+}
+.postid-8943 .menu-fidelio,
+.postid-8943 .show-search-popup-lens-icon, .postid-8943 .global-main-menu
+{
+	display:none!important;
+}
+
+.boxed{
+display:grid;
+}
+.sands-search-botton{
+	background-size:50%;
+	outline: none!important;
+}
+.menu-suche {
+    background-image: url(https://entwickler.de/wp-content/uploads/2021/07/EntwicklerDE_Magnifying_Glass_icon_v3.svg);
+    background-repeat: no-repeat;
+    background-position: 29% 45%;
+    background-size: 7%;
+}
+.blog-stream-first-confad{
+max-width: 380px;}
+.infoblock-special-iframe{
+	border-width: 0px;
+}
+/* dynamic sessions */
+.infoblock-special-iframe{
+    margin: 0px !important;
+    padding: 0px !important;
+    overflow: hidden !important;
+    border: none !important;
+    width: 100% !important;
+  }
+@media only screen and (min-width:19em) and (max-width:40em) { 
+  .infoblock-special-iframe{
+    height: 1090px;
+  }
+  .category .infoblock-special-iframe{
+    height: 100px;
+  }
+  .single .infoblock-special-iframe{
+    height: 1150px;
+  }
+}
+@media only screen and (min-width:40.01em) and (max-width:55em) { 
+  .infoblock-special-iframe{
+    height: 650px ;
+  }
+  .single .infoblock-special-iframe{
+    height: 950px ;
+  }
+}
+@media only screen and (min-width:55.01em) and (max-width:63.94em) { 
+  .infoblock-special-iframe{
+    height: 650px ;
+  }
+}
+@media only screen and (min-width:64em) { 
+  .infoblock-special-iframe{
+    height: 550px ;
+  }
+  .category .infoblock-special-iframe{
+    height: 560px ;
+  }
+  .single .infoblock-special-iframe{
+    height: 650px ;
+  }
+}
+/* Article detail */
+@media only screen and (min-width:63em) and (max-width:65em) { 
+  .single .infoblock-special-iframe{
+    height: 750px;
+  }
+}
+
+/* Reader Web App Hide top Footer */
+.page.page-id-80 #wrapper-footer-full {
+    display: none;
+}
+@media (max-width: 992px) and (min-width: 78px){
+.home  .show-only-Home.discount-banner-mobile {
+    margin-top: 0px !important;
+	padding-top: 0px !important;
+
+	}
+	}
+.home .show-only-Home.disable-discount-banner {
+    display: none !important;
+}
+.advert_position_2 .infoblock-handmade-element{
+	margin-bottom: 15px !important;
+}
+.mediumtextsize.epubhtml .SuS_Autor{
+	display: inline-block;
+}
+/*
+#cometchat-message-composer-emoji-icon2 .material-icons{
+	visibility: hidden;
+}
+*/
+.widget-below-free-blog-articles .custom-check li{
+	list-style: none !important;
+	font-family: 'Open Sans' !important;
+}
+.widget-below-free-blog-articles{
+	    font-family: 'Open Sans';
+}
+input[type='radio']:checked:after {
+  width: 19px;
+  height: 19px;
+  border-radius: 19px;
+  top: -1px;
+}
+input[type=radio]:after {
+  width: 19px;
+  height: 19px;
+  border-radius: 19px;
+  top: -1px;
+}
+@media screen and (min-width: 576px) {
+	.change--container .main .wrapper #content.container{
+		max-width:667px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.change--container .main .wrapper #content.container{
+		max-width:953px;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.change--container .main .wrapper #content.container{
+		max-width:1460px;
+	}
+}
+.epubhtml pre{
+	font-size:0.9rem;
+}
+cometchat-receiver-text-message-bubble.ng-star-inserted ul.messageActionStyle.ng-star-inserted{
+	display:none !important;
+}
+
+cometchat-sender-text-message-bubble.ng-star-inserted li.actionGroupStyle.ng-star-inserted:first-of-type{
+	display:none !important;
+}
+
+cometchat-receiver-text-message-bubble.ng-star-inserted .messageContainerStyle{
+	max-width:90% !important;
+}
+
+cometchat-sender-text-message-bubble.ng-star-inserted .messageContainerStyle{
+	max-width:90% !important;
+}		</style>
+		<script src="./Warum ist Sprache so wichtig__files/OneSignalPageSDKES6.js.Download" async=""></script><meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="./Warum ist Sprache so wichtig__files/pubads_impl_2022021401.js.Download" async=""></script><script src="./Warum ist Sprache so wichtig__files/f(1).txt"></script><script src="./Warum ist Sprache so wichtig__files/f(2).txt"></script><meta http-equiv="origin-trial" content="A+sitaPn3hlQ8QipTsncwHz+k1NvfPtFsQqIOiD8GK3M9v9XCeQqlF7x1P9AVJdoYTiJPZXZc5XZYpwc10fH4wEAAACfeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGVhZHNlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="./Warum ist Sprache so wichtig__files/f(3).txt"></script><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","mainEntityOfPage":{"@type":"WebPage"},"publisher":{"@type":"Organization","name":"entwickler.de","logo":{"@type":"ImageObject","url":"https://entwickler.de/wp-content/themes/understrap-child/src/images/ekiosk_logo_4c.svg"}},"headline":"Warum ist Sprache so wichtig?","datePublished":"17/04/2020 08:29:31","dateModified":"25/11/2021 13:54:45","image":["https://s3.eu-west-1.amazonaws.com/redsys-prod/articles/4a9794eb6b6187f859820af0/images/teaserImage_xx_Brand_Teaser_EntwicklerMagazin_shutterstock_Liashko_1558424923644.jpg"],"author":{"@type":"Person","name":"Michael Plöd"},"isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":"False","cssSelector":".sands-paywall"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","mainEntityOfPage":{"@type":"WebPage"},"publisher":{"@type":"Organization","name":"entwickler.de","logo":{"@type":"ImageObject","url":"https://entwickler.de/wp-content/themes/understrap-child/src/images/ekiosk_logo_4c.svg"}},"headline":"Warum ist Sprache so wichtig?","datePublished":"17/04/2020 08:29:31","dateModified":"25/11/2021 13:54:45","image":["https://s3.eu-west-1.amazonaws.com/redsys-prod/articles/4a9794eb6b6187f859820af0/images/teaserImage_xx_Brand_Teaser_EntwicklerMagazin_shutterstock_Liashko_1558424923644.jpg"],"author":{"@type":"Person","name":"Michael Plöd"},"isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":"False","cssSelector":".sands-paywall"}}</script><link rel="preload" href="./Warum ist Sprache so wichtig__files/f(4).txt" as="script"><script type="text/javascript" src="./Warum ist Sprache so wichtig__files/f(4).txt"></script><link rel="preload" href="./Warum ist Sprache so wichtig__files/f(5).txt" as="script"><script type="text/javascript" src="./Warum ist Sprache so wichtig__files/f(5).txt"></script></head>
+
+<body class="-template-default single wp-custom-logo woocommerce-js">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJK98V"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	
+	<div class="site" id="page">
+	
+	<div class="d-none d-sm-none mobile-jaxenter-ads col-auto p-0" style=""><aside id="custom_html-43" class="widget_text mobile-fpa-jaxenter-widget widget widget_custom_html"><div class="textwidget custom-html-widget"><!-- /21339274/entwickler.de-jaxenter-mobile-header -->
+<div id="div-gpt-ad-1639571124306-0" style="min-width: 300px; min-height: 50px; text-align: center; display: none;">
+<script>
+//googletag.cmd.push(function() { googletag.display('div-gpt-ad-1639571124306-0'); });
+    
+</script>
+<div id="google_ads_iframe_/21339274/entwickler.de-jaxenter-mobile-header_0__container__" style="border: 0pt none; width: 300px; height: 0px;"></div></div></div></aside></div><div class="d-none d-sm-none mobile-blog-ads col-auto p-0" style=""><aside id="custom_html-42" class="widget_text mobile-fpa-entwickler-widget widget widget_custom_html"><div class="textwidget custom-html-widget"><!-- /21339274/entwickler.de-blog-mobile-header -->
+<div id="div-gpt-ad-1639571076010-0" style="min-width: 300px; min-height: 50px; text-align: center; display: none;">
+<script>
+//googletag.cmd.push(function() { googletag.display('div-gpt-ad-1639571076010-0'); });
+
+
+</script>
+<div id="google_ads_iframe_/21339274/entwickler.de-blog-mobile-header_0__container__" style="border: 0pt none; width: 300px; height: 0px;"></div></div></div></aside></div><div class="d-none d-sm-none mobile-free-article-ads col-auto p-0"><aside id="custom_html-41" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><!-- /21339274/entwickler.de-free-Mobile-Header -->
+<div id="div-gpt-ad-1639502269603-0" style="min-width: 300px; min-height: 50px; text-align: center; display: none;">
+<script>
+//googletag.cmd.push(function() { googletag.display('div-gpt-ad-1639502269603-0'); });
+  </script>
+<div id="google_ads_iframe_/21339274/entwickler.de-free-Mobile-Header_0__container__" style="border: 0pt none; width: 300px; height: 0px;"></div></div></div></aside></div>
+	
+		<!-- ******************* The Navbar Area ******************* -->
+		<div id="wrapper-navbar" itemscope="" itemtype="http://schema.org/WebSite">
+		        <script src="./Warum ist Sprache so wichtig__files/moment-with-locales.min.js.Download"></script>
+                        <script src="./Warum ist Sprache so wichtig__files/vue@2"></script>
+                <script src="./Warum ist Sprache so wichtig__files/fideliohelper.js.Download"></script>
+            <script type="text/x-template" id="article-series-item-box-template">
+    <div class="d-flex flex-column flex-lg-row feature-detail-article-column feature-detail shadow my-4 rounded">
+        <div class="col-12 col-lg-3 p-0">
+                <div  class="h-100">
+                    <img class="h-100 img-cover" :src="series.teaser.xx" alt="">
+                </div>
+        </div>
+        <div class="col-12 col-lg-9 mb-2 mt-1 mt-lg-4 mt-md-2">
+            <div class="mb-xl-5 mb-2 mb-lg-3"><!---->
+                <h3 class="font-weight-bold mt-lg-0 my-3">
+                    <!--
+                    {{series.relUrl}}
+                    <a v-if="series.type== 'COLUMN'"  :href="'/kolumnen/'+series._id+''">{{ series.name }}</a>
+                    <a v-if="series.type== 'SERIES'"  :href="'/serien/'+series._id+''">{{ series.name }}</a>
+                    -->
+                    <a v-if="series.relUrl"  :href="series.relUrl">{{ series.name }}</a>
+                </h3>
+                <p>{{ series.description }}</p>
+            </div>
+        <div>
+            <article-box-small-component 
+                v-for="(article, articleIndex) in series.articles.slice(0, 3)"  
+                v-bind:key ="article._id"
+                v-bind:article ="article"
+                v-bind:articleIndex ="articleIndex"
+                v-bind:seriesarticles ="series.articles.slice(0, 3)">
+            </article-box-small-component>
+        </div>
+    </div>
+</div>
+</script>
+
+<script>
+    Vue.component("article-series-item-box-component", {
+        props: ["series", "seriesindex"],
+        template: "#article-series-item-box-template"
+    });
+</script>
+<script type="text/x-template" id="article-box-small-template">
+    <div v-if="article.name && article.subtitle" class="single-article-reference-display">
+        <div class="mb-xl-2 mb-2 mb-lg-2">
+            <a :href="article.relUrl">
+                <h5 class="font-weight-bold mt-lg-0">
+                {{ article.name }}
+                </h5>
+            </a>
+            <p >{{article.subtitle}}</p>
+        </div>
+        <hr v-if="articleIndex !== seriesarticles.length - 1" class="my-3 " style="">
+    </div>
+</script>
+
+<script>
+    Vue.component("article-box-small-component", {
+        props: ["article", "articleIndex","seriesarticles"],
+        template: "#article-box-small-template"
+    });
+</script>
+<script type="text/x-template" id="article-issue-item-box-template">
+    <div class="d-flex flex-column flex-lg-row feature-detail-article-column feature-detail shadow my-4 rounded">
+        <div class="col-12 col-lg-3 p-0 p-lg-3">
+                <div  class="h-100">
+                    <img class="img-cover p-2" :src="series.cover.x" alt="">
+                </div>
+        </div>
+        <div class="col-12 col-lg-9 mb-2 mt-1 mt-lg-4 mt-md-2">
+            <div class="mb-xl-5 mb-2 mb-lg-3"><!---->
+                <h3 class="font-weight-bold mt-lg-0 my-3">
+                    <a :href="series.relUrl">{{ series.coverStory }}</a>
+                </h3>
+                <p>{{ series.description }}</p>
+            </div>
+        <div>
+            <article-box-small-component 
+                v-for="(article, articleIndex) in series.articles.slice(0, 3)"  
+                v-bind:key ="article._id"
+                v-bind:article ="article"
+                v-bind:articleIndex ="articleIndex"
+                v-bind:seriesarticles ="series.articles.slice(0, 3)">
+            </article-box-small-component>
+        </div>
+    </div>
+</div>
+</script>
+
+<script>
+    Vue.component("article-issue-item-box-component", {
+        props: ["series", "seriesindex"],
+        template: "#article-issue-item-box-template"
+    });
+</script>
+<script type="text/x-template" id="article-authors-item-box-template">
+    <div class="sands-author-detail text-center col-6 col-lg-3 p-sm-3 p-2 feature-detail-article-authors">
+	<a v-if="authors._id" :href="authors.relUrl">
+		<div class="mb-2">
+			<img v-if="authors.avatarSquareSmall.xx" class="h-auto img-fluid rounded-circle w-100" :src="authors.avatarSquareSmall.xx" style="filter: grayscale(90%) sepia(65%) hue-rotate(100deg) saturate(50%);" />
+		</div>
+		<div v-if="authors.forename && authors.surname" class="text-dark">
+			<span>{{ authors.title }} </span>
+			<span>{{ authors.forename }} </span>
+			<span class="font-weight-bolder">{{ authors.surname }}</span>
+		</div>
+	</a>
+</div>
+</script>
+
+<script>
+    Vue.component("article-authors-item-box-component", {
+        props: ["authors", "authorsindex"],
+        template: "#article-authors-item-box-template"
+    });
+</script>
+<script type="text/x-template" id="article-interview-item-box-template">
+<div class="d-flex flex-column flex-lg-row feature-detail-article-column feature-detail shadow my-4 rounded">
+        <div class="col-12 col-lg-3 p-0">
+                <div  class="h-md-100">
+                    <img v-if="feature && feature.teaser.xx"  class="img-cover p-2 h-md-100 w-100" :src="feature.teaser.xx" alt="">
+                     <img v-else-if="articles.authors[0].avatarSquareSmall.xx"  class="img-cover p-2 h-md-100 w-100" :src="articles.authors[0].avatarSquareSmall.xx" alt="">
+                </div>
+        </div>
+        <div class="col-12 col-lg-9 mb-2 mt-1 mt-lg-4 mt-md-2">
+            <div class="mb-xl-5 mb-2 mb-lg-3"><!---->
+                <!-- <p>
+                    Interview mit {{ articles.authors[0].name }}
+                </p> -->
+                <p v-if="articles.subtitle">{{ articles.subtitle }}</p>
+                <a v-if="articles.relUrl" :href="articles.relUrl">
+                    <h3 v-if="articles.name" class="font-weight-bold mt-lg-0 my-3">
+                        {{ articles.name}}
+                    </h3>
+                </a>
+                <h3 v-else-if="articles.name" class="font-weight-bold mt-lg-0 my-3">
+                    {{ articles.name }}
+                </h3>
+                <p v-if="articles.abstract" >{{ articles.abstract }}</p>
+                <span v-if="articles.publishedAt" >{{ articles.publishedAt | moment }}</span>
+            </div>
+        <div>
+        </div>
+    </div>
+</div>
+</script>
+
+<script>
+    Vue.component("article-interview-item-box-component", {
+        props: ["articles", "articlesindex", "feature"],
+        template: "#article-interview-item-box-template"
+    });
+    Vue.filter("moment", function (date) {
+        return moment(date, 'DD/MM/YYYY').locale("de").format('MMMM YYYY');
+    });
+</script>
+<script type="text/x-template" id="article-content-item-box-template">
+<div class="sands-article-content-item-box-component-top  sands-article-detail sands-extra-header col-12 col-lg-6">
+    <div class="sands-inner-item-container shadow col-12 h-100 p-0 rounded">
+        <div class="col-12 col-lg-12 p-0 d-flex align-items-stretch">
+            <div class="">
+                <a :href="series.relUrl">			
+                    <img v-if="series.teaserImage.xxx" itemprop="image" class="card-img rounded-top" :src="series.teaserImage.xxx">
+                </a>			
+                <div class="card-img-overlay">
+                    <div class="card-text col d-flex">
+                        <a :href="processConcordObjectAfterLoad(series.brand).relUrl" class="col-4 m-auto">		
+                        <img v-if="series.brand.logo.xx" class="" :src="series.brand.logo.xx" alt="Windows Developer">
+                        </a>
+                        <a v-if="series.issue && series.issue.slug"  :href="processConcordObjectAfterLoad(series.issue).relUrl" class="col-8 m-auto">                   
+                            <div v-if="series.issue && series.issue.designation && series.brand.name" class="text-primary">
+                            {{ series.brand.name }} {{series.issue.designation}}
+                            </div>
+                        </a>
+                    </div>
+                </div>	
+            </div>
+        </div>
+        <div v-if="series.subtitle && series.name" class="col-12 col-lg-12 py-3"> 
+            <a :href="series.relUrl" itemprop="url">
+                <p itemprop="sub-title">{{series.subtitle}}</p>
+                <h3 itemprop="headline">{{ series.name }}</h3>
+                <p itemprop="abstract">
+                {{ series.abstract | substring }} 
+                </p>
+                <cite v-if="series.issue.publicationDate" itemprop="authors" class="text-secondary">
+                <!-- {{ series.issue.publicationDate | moment }}
+                <span v-if="series.authors.length"> - </span> -->
+                <span v-for="(authors, authorsindex) in series.authors ">
+                    <span v-if="authors.name">{{authors.title}}  {{authors.name}}<span v-if="authorsindex !== series.authors.length - 1">,</span></span>
+                    
+                </span>
+                </cite>
+            </a>	
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</script>
+
+<script>
+    Vue.component("article-content-item-box-component-top", {
+        props: ["series", "seriesindex"],
+        template: "#article-content-item-box-template"
+    });
+    Vue.filter("moment", function (date) {
+        return moment(date, 'DD/MM/YYYY').locale("de").format('MMMM YYYY');
+    });
+    Vue.filter("substring", function (string) {
+        var strLength = string.length;
+        if(strLength && strLength > 240){
+            string = string.substring(0, 238) + '...';
+        }
+        return string;
+    });
+</script>
+<script type="text/x-template" id="article-content-item-box-template-bottom">
+    <!-- <div class="d-flex flex-column flex-lg-row feature-detail-article-column feature-detail shadow my-4 rounded">
+        <div class="col-12 col-lg-3 p-0">
+                <div  class="h-100">
+                    <img class="h-100 img-cover" :src="series.teaserImage.xx" alt="">
+                </div>
+        </div>
+        <div class="col-12 col-lg-9 mb-2 mt-1 mt-lg-4 mt-md-2">
+            <div class="mb-xl-5 mb-2 mb-lg-3">
+                <p>{{series.subtitle}}</p>
+                <h3 class="font-weight-bold mt-lg-0 my-3">
+                    <a href="/reader/article-series/NqdhnMcyAzNLfp8Se">{{ series.name }}</a>
+                </h3>
+                <p>{{ series.abstract }}</p>
+                <cite itemprop="authors" class="text-secondary">
+                {{ series.issue.publicationDate }}
+                </cite>
+            </div>
+        <div>
+        </div>
+    </div>
+</div> -->
+
+<div class="sands-article-content-item-box-component-bottom sands-article-detail shadow row my-4 rounded">
+        <div class="sands-inner-item-container col-12 col-md-4 p-0 d-flex align-items-stretch">
+            <div class="">
+                <a :href="series.relUrl">			
+                    <img v-if="series.teaserImage.xx" itemprop="image" class="card-img" :src="series.teaserImage.xx">
+                </a>			
+                <div class="card-img-overlay">
+                    <div class="card-text col d-flex">
+                        <a :href="processConcordObjectAfterLoad(series.brand).relUrl" class="col-4 m-auto">		
+                        <img class="" v-if="series.brand.logo.xx" :src="series.brand.logo.xx" alt="Windows Developer">
+                        </a>
+                        <a v-if="series.issue && series.issue.slug" :href="processConcordObjectAfterLoad(series.issue).relUrl" class="col-8 m-auto">                   
+                            <div v-if="series.issue && series.issue.designation && series.brand.name" class="text-primary">
+                            {{ series.brand.name }} {{series.issue.designation}}
+                            </div>
+                        </a>
+                    </div>
+                </div>	
+            </div>
+        </div>
+        <div v-if="series.subtitle && series.abstract"  class="col-12 col-md-8 py-3"> 
+            <a :href="series.relUrl" itemprop="url">
+                <p itemprop="sub-title">{{series.subtitle}}</p>
+                <h3 itemprop="headline">{{ series.name }}</h3>
+                <p itemprop="abstract">
+                {{ series.abstract | substring }} 
+                </p>
+                <cite itemprop="authors" class="text-secondary">
+                <!-- {{ series.issue.publicationDate | formatedDate }}	
+                <span v-if="series.authors.length"> - </span> -->
+                <span v-for="(authors, authorsindex) in series.authors ">
+                    <span v-if="authors.name">{{authors.title}}  {{authors.name}}<span v-if="authorsindex !== series.authors.length - 1">,</span></span>
+                    
+                </span>
+
+                </cite>
+            </a>	
+        </div>
+</div>
+
+</script>
+
+<script>
+    Vue.component("article-content-item-box-component-bottom", {
+        props: ["series", "seriesindex"],
+        template: "#article-content-item-box-template-bottom"
+    });
+    Vue.filter("formatedDate", function (date) {
+        return moment(date, 'DD/MM/YYYY').locale("de").format('MMMM YYYY');
+    });
+    Vue.filter("substring", function (string) {
+        var strLength = string.length;
+        if(strLength && strLength > 240){
+            string = string.substring(0, 238) + '...';
+        }
+        return string;
+    });
+</script>
+
+<script type="text/x-template" id="event-item-box-template">
+    <div class="col-12 col-lg-4 col-md-6 sands-article-detail mb-3">
+    <div class="h-100 d-flex flex-column feature-detail-article-column feature-detail shadow rounded">
+        <div class="col-auto col-lg-auto d-flex p-0 rounded-top text-center" v-bind:style="{backgroundColor: event.conferences[0].colourHexCode}">
+            <div class="mx-auto">
+                <a v-if="event.conferences && event.conferences[0] && event.conferences[0].marketingUrl " :href="event.conferences[0].marketingUrl" >
+                    <img v-if="event.conferences[0].transparentLogo && event.conferences[0].transparentLogo.svg && event.conferences[0].transparentLogo.svg.length" 
+                    class="card-img py-4" :src="event.conferences[0].transparentLogo.svg" alt="">
+                    <img v-if="(!event.conferences[0].transparentLogo || !event.conferences[0].transparentLogo.svg) && event.logo && event.logo.xx" 
+                    class="card-img" :src="event.logo.xx" alt="">
+                </a>
+                <div v-else>
+                    <img v-if="event.conferences[0].transparentLogo && event.conferences[0].transparentLogo.svg && event.conferences[0].transparentLogo.svg.length" 
+                    class="card-img py-4" :src="event.conferences[0].transparentLogo.svg" alt="">
+                    <img v-if="(!event.conferences[0].transparentLogo || !event.conferences[0].transparentLogo.svg) && event.logo && event.logo.xx" 
+                    class="card-img" :src="event.logo.xx" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="pb-2 pt-3 px-3"> <!-- class="d-flex flex-column pb-1 pt-3 px-3 h-100"-->
+            <div class="mb-4" v-if="event.conferences && event.conferences.length">
+                <p v-if="datevisibility && event.sessions && event.sessions.length && event.sessions[0]" class="add-min-height">
+                    <span v-if="event.sessions[0].startDate">{{event.sessions[0].startDate | moment}}</span>
+                    <span v-if="event.sessions[0].startDate"> | {{event.sessions[0].startDate | momenttime}}</span>
+                    <span v-if="event.sessions[0].endDate"> - {{event.sessions[0].endDate | momenttime}}</span>
+                    <span v-if="event.conferences[0].city"> | {{event.conferences[0].city}}</span>
+                </p>
+                <a v-if="event.conferences && event.conferences[0] && event.conferences[0].marketingUrl " :href="event.conferences[0].marketingUrl">
+                    <h4 class="mb-3 text-break">{{event.sessions[0].name}}</h4>
+                </a>
+                <div v-if="!event.conferences[0].marketingUrl && event.sessions[0] && event.sessions[0].name">
+                    <h4 class="mb-3 text-break">{{event.sessions[0].name}}</h4>
+                </div>
+                <div  v-if="event.conferences && event.conferences.length && event.conferences[0].slogan"
+                class="pl-0 d-flex flex-row flex-wrap mb-0 mt-auto">
+                    <span>{{event.conferences[0].slogan}}</span>
+                </div>
+                <div v-else class="pl-0 d-flex flex-row flex-wrap mb-0 mt-auto    border-danger border text-danger">
+                    <span>THIS IS JUST TO TEST, SINCE WE DON'T HAVE CONFERENCE SLOGAN</span>
+                </div>
+            </div>
+            <!-- WE NEED THIS PART IF WE WANNA HAVE STICKY FOOTER ELEMENT ON THIS COMPONENT  
+            <div  v-if="event.conferences && event.conferences.length && event.conferences[0].slogan"
+            class="pl-0 d-flex flex-row flex-wrap mb-0 mt-auto">
+                <div class="align-self-center col pl-0 text-secondary">
+                    <span>{{event.conferences[0].slogan}}</span>
+                </div>
+            </div>
+            <div  v-else class="pl-0 d-flex flex-row flex-wrap mb-0 mt-auto">
+                <div class="align-self-center col pl-0 text-secondary">
+                    <span>THIS IS JUST TO TEST, SINCE WE DON'T HAVE CONFERENCE SLOGAN</span>
+                </div>
+            </div -->
+        </div>
+    </div>
+</div>
+    
+</script>
+
+<script>
+Vue.component("event-item-box-component", {
+    props: ["event", "eventindex", "datevisibility"],
+    template: "#event-item-box-template"
+});
+Vue.filter("moment", function (date) {
+    return moment(date, 'DD/MM/YYYY').locale("de").format('DD. MMMM YYYY');
+});
+Vue.filter("momenttime", function (date) {
+    return moment(date, 'DD/MM/YYYY hh:mm').add(1,'hours').format('HH:mm');
+});
+</script>
+
+<div id="searchCatPopupId8333" class="main-search-popup-detail-container h-100 p-0 d-none container-fluid flex-column invisibleviewapp searchCatPopupId8333"><div class="blury--bg d-flex justify-content-around mb-4 mb-5 pt-3 pupup-search-box"><form method="GET" action="https://entwickler.de/" class="mb-3 sands-popup-search-form"><input name="s" type="search" placeholder="Gib z.B. „Java“ ein" aria-label="Durchsuchen Sie den Inhalt der Website" required="required" class="form-control sands-search sands-search-popup" style="width: 83% !important;"> <button type="submit" class="sands-search-botton sands-search-botton-popup" style="vertical-align: bottom;">Search</button></form></div> <div class="close-search-popup blury--bg"><a class="close-search-popup-btn"><span class="cursorPointer text-primary">X</span></a></div> <div class="blury--bg mt-n5 mx-0 mx-md-n5 pb-2 pt-4 px-2 px-md-0"><div class="container"><div class="category-row row mb-3"><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/agile" id="searchPopupCat"><div><span>Agile</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/android" id="searchPopupCat"><div><span>Android</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/angular" id="searchPopupCat"><div><span>Angular</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/api" id="searchPopupCat"><div><span>API</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/aspnet" id="searchPopupCat"><div><span>ASP.NET</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/aws" id="searchPopupCat"><div><span>AWS</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/azure" id="searchPopupCat"><div><span>Azure</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/blockchain" id="searchPopupCat"><div><span>Blockchain</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/cloud" id="searchPopupCat"><div><span>Cloud</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/container" id="searchPopupCat"><div><span>Container</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/continuous-delivery" id="searchPopupCat"><div><span>Continuous Delivery</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/csharp" id="searchPopupCat"><div><span>C#</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/datenbanken" id="searchPopupCat"><div><span>Datenbanken</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/ddd" id="searchPopupCat"><div><span>DDD</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/delphi" id="searchPopupCat"><div><span>Delphi</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/devops" id="searchPopupCat"><div><span>DevOps</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/digitale-transformation" id="searchPopupCat"><div><span>Digitale Transformation</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/docker" id="searchPopupCat"><div><span>Docker</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/dotnet" id="searchPopupCat"><div><span>.NET</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/eclipse" id="searchPopupCat"><div><span>Eclipse</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/game-development" id="searchPopupCat"><div><span>Game Development</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/go" id="searchPopupCat"><div><span>Go</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/ios" id="searchPopupCat"><div><span>iOS</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/iot" id="searchPopupCat"><div><span>IoT</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/java" id="searchPopupCat"><div><span>Java</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/javascript" id="searchPopupCat"><div><span>JavaScript</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/karriere" id="searchPopupCat"><div><span>Karriere</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/kubernetes" id="searchPopupCat"><div><span>Kubernetes</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/machine-learning" id="searchPopupCat"><div><span>Machine Learning</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/microservices" id="searchPopupCat"><div><span>Microservices</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/mobile" id="searchPopupCat"><div><span>Mobile</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/nodejs" id="searchPopupCat"><div><span>Node.js</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/online-marketing" id="searchPopupCat"><div><span>Online Marketing</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/open-source" id="searchPopupCat"><div><span>Open Source</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/php" id="searchPopupCat"><div><span>PHP</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/programmierung" id="searchPopupCat"><div><span>Programmierung</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/python" id="searchPopupCat"><div><span>Python</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/react" id="searchPopupCat"><div><span>React</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/recht-netzkultur" id="searchPopupCat"><div><span>Recht &amp; Netzkultur</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/ruby" id="searchPopupCat"><div><span>Ruby</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/rust" id="searchPopupCat"><div><span>Rust</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/security" id="searchPopupCat"><div><span>Security</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/seo" id="searchPopupCat"><div><span>SEO</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/serverless" id="searchPopupCat"><div><span>Serverless</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/sharepoint" id="searchPopupCat"><div><span>Sharepoint</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/shortcuts" id="searchPopupCat"><div><span>Shortcuts</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/software-architektur" id="searchPopupCat"><div><span>Software-Architektur</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/spring" id="searchPopupCat"><div><span>Spring</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/swift" id="searchPopupCat"><div><span>Swift</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/testing" id="searchPopupCat"><div><span>Testing</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/typescript" id="searchPopupCat"><div><span>TypeScript</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/ux" id="searchPopupCat"><div><span>UX</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/visual-studio" id="searchPopupCat"><div><span>Visual Studio</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/vuejs" id="searchPopupCat"><div><span>Vue.js</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/webdesign" id="searchPopupCat"><div><span>Webdesign</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/webentwicklung" id="searchPopupCat"><div><span>Webentwicklung</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/windows" id="searchPopupCat"><div><span>Windows</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/wordpress" id="searchPopupCat"><div><span>Wordpress</span></div></a></div><div class="py-2 px-2 m-2 font-weight-bold" style="border: 2px solid rgb(67, 183, 179); border-radius: 4px; color: rgb(67, 183, 179);"><a href="https://entwickler.de/xamarin" id="searchPopupCat"><div><span>Xamarin</span></div></a></div></div></div></div></div>
+<script>
+            
+ searchCatPopup = function(magazineBrandsAppParams, dataPassed) {
+    dataParams = {
+        apploaded: false,
+        loading: false,
+        everLoadedData: false,
+        maxCategories: 0,
+        loadedCategories: [],
+    };
+    if (dataPassed) {
+        jQuery.extend(dataParams, dataPassed);
+    };
+    dataParams.brandsLoadingParams =  {
+        query: 'search-categories-popup'
+    };
+    appSettings = {
+        methods: {
+            loadMore: function () {
+                this.loading = true;
+                var self = this;
+                // instance data is an observable, so we clone to send data
+                const clone = JSON.parse(JSON.stringify(this.brandsLoadingParams));
+
+                jQuery.ajax({
+                    url: this.ajaxurl,
+                    type: 'POST',
+                    data: clone
+                }).error(function(data, error) {
+                    self.everLoadedData = true;
+                    self.loading = false;
+                }).success(function(data, error) {
+                    if (data.Meta.count) {
+                        self.maxCategories = data.Meta.count;
+                    }
+                    if (data.Categories && data.Categories.length >0) {
+                        for(let i=0; i < data.Categories.length; i++){
+                            self.loadedCategories.push(self.processConcordObjectAfterLoad(data.Categories[i]));
+                        }
+                    }
+                    self.everLoadedData = true;
+                    self.loading = false;
+                });
+            }
+        },
+        created :  function(){
+            this.apploaded = true;
+            this.loadMore();
+        },
+        data: dataParams
+    }
+    jQuery.extend(appSettings, magazineBrandsAppParams);
+    var catSpecificSeriesApp = new Vue(appSettings);
+ }
+            var categorySearchItemAppParams = {
+                el: '#searchCatPopupId8333'
+            };
+            var someInitDataSearchCategoryPopup = {
+
+                ajaxurl: 'https://entwickler.de/wp-json/fidelio/v1/get-public-data-detail'
+            }
+            searchCatPopup(categorySearchItemAppParams, someInitDataSearchCategoryPopup);
+
+    </script> 
+			<a class="skip-link sr-only sr-only-focusable" href="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001#content">Zum Inhalt springen</a>
+			<nav class="d-flex flex-row justify-content-between navbar navbar-expand-md navbar-dark sands-nav fixed-on-scroll shadow">	
+								<div class="container-fluid">
+							
+				<!-- Mobile menu starts -->
+					<div class="d-block d-xl-none">
+						<div class="sands-mobile-menu">
+							<div class="nav" onclick="openMobileNav()" aria-label="Toggle navigation">
+								<h2 class="navbar-brand  mb-0"><a rel="home" title="entwickler.de">entwickler.de</a>
+								<i class="material-icons">keyboard_arrow_down</i>
+								</h2>
+							</div>
+						</div>
+					</div>
+									<div class="d-block d-xl-none">
+						<div class="sands-mobile-menu">
+						<a title="Gratismonat beginnen" href="https://entwickler.de/unsere-angebote/" class="badge-danger border-0 text-white py-1 mobile-nav-item rounded px-2" style=" padding: .5rem 1rem; display: inline-block;margin: 0 0 0 20px;">Gratis testen</a>						</div>
+					</div>
+									<!-- Mobile menu ends -->
+
+				<div id="mySidenav" class="sidenav d-xl-none"><ul id="mobile_menu" class="d-xl-none"><div class="d-flex justify-content-between"><a href="https://entwickler.de/" class="my-auto"><img class="pl-3" src="./Warum ist Sprache so wichtig__files/EntwicklerDE_Logo_Neu.svg"></a><a href="javascript:void(0)" class="closebtn closebtn--mob" onclick="closeMobileNav()" style="font-size:3rem; font-weight:100;">×</a></div><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-128335" class="nav-link border-bottom menu-suche show-search-popup menu-item menu-item-type-custom menu-item-object-custom menu-item-128335 nav-item"><a title="Suche" href="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001#" class="nav-link">Suche</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1753" class="nav-link kiosk-app-link menu-item menu-item-type-custom menu-item-object-custom menu-item-1753 nav-item"><a title="Entwickler App laden" href="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001#" class="nav-link">Entwickler App laden</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127319" class="nav-link border-bottom menu-item menu-item-type-post_type menu-item-object-page menu-item-127319 nav-item"><a title="FAQ / Hilfe" href="https://entwickler.de/hilfe-zum-entwickler/" class="nav-link">FAQ / Hilfe</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-2748" class="nav-link menu-item menu-item-type-post_type menu-item-object-page menu-item-2748 nav-item"><a title="Kontakt" href="https://entwickler.de/kontakt/" class="nav-link">Kontakt</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127321" class="nav-link menu-item menu-item-type-post_type menu-item-object-page menu-item-127321 nav-item"><a title="Impressum" href="https://entwickler.de/impressum/" class="nav-link">Impressum</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127329" class="nav-link menu-item menu-item-type-post_type menu-item-object-page menu-item-127329 nav-item"><a title="Nutzungsbedingungen" href="https://entwickler.de/agb/" class="nav-link">Nutzungsbedingungen</a></li>
+<li class="mobile-logged-in-user-invisible nav-item nav-link"><a class="nav-link" href="https://entwickler.de/wp-login.php?action=logout&amp;_wpnonce=a2d442bcd3">Abmelden</a></li><li class="nav-item nav-link mobile-non-logged-in-user-visible"><a class="nav-link" href="https://entwickler.de/my-account/">Anmelden</a></li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-996" class="logged-in-user-invisible rounded sands-nav-login menu-item menu-item-type-post_type 
+			menu-item-object-page menu-item-1000 nav-item my-auto">
+				<a href="https://entwickler.de/reader/" class="nav-link px-2">Jetzt lesen</a>
+			</li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-995" class="has-admin-user-invisible d-none d-md-block sands-menu-free rounded sands-nav-free 
+                        menu-item menu-item-type-post_type menu-item-object-page menu-item-999 nav-item my-auto ">
+                            <a href="https://entwickler.de/unsere-angebote/" class="nav-link px-2">Gratis testen</a>
+                    </li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-994" class="had-sub-user-invisible d-none d-md-block sands-menu-free rounded sands-nav-free 
+                        menu-item menu-item-type-post_type menu-item-object-page menu-item-998 nav-item my-auto ">
+                            <a href="https://entwickler.de/unsere-angebote/" class="nav-link px-2">Abo wieder aufnehmen</a>
+                    </li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1000" class="has-not-sub-user-invisible d-none d-md-block sands-menu-free rounded sands-nav-free 
+                        menu-item menu-item-type-post_type menu-item-object-page menu-item-999 nav-item my-auto ">
+                            <a href="https://entwickler.de/unsere-angebote/" class="nav-link px-2">Gratis testen</a>
+                    </li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-999" class="border border-primary rounded menu-item menu-item-type-post_type menu-item-object-page menu-item-982 nav-item my-auto non-logged-in-user-visible">
+								<a href="https://entwickler.de/my-account/" class="nav-link px-4 font-weight-bolder text-capitalize text-primary">Anmelden</a>
+							</li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1000" class="badge-danger sands-menu-free rounded sands-nav-free menu-item menu-item-type-post_type         menu-item-object-page menu-item-981 nav-item my-auto non-logged-in-user-visible">
+								<a href="https://entwickler.de/unsere-angebote/" class="nav-link px-4 text-white text-transform--none">Gratis testen</a>
+							</li></ul></div>					<h2 class="navbar-brand mb-0 d-none d-xl-block col-sm-auto"><a rel="home" href="https://entwickler.de/" title="entwickler.de" itemprop="url">entwickler.de</a></h2>
+									<!-- end custom logo -->
+
+				<!-- The WordPress Menu goes here -->
+
+				<div id="navbarNavDropdown" class="collapse d-none d-xl-block menu-fidelio"><ul id="main-second-menu" class="navbar-nav ml-auto d-xl-flex flex-sm-row float-right main-second-menu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127242 nav-item"><a title="Für Teams" href="https://entwickler.de/gewinnerteams/" class="nav-link">Für Teams</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127239" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-127239 nav-item"><a title="Unsere Features" href="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link" id="menu-item-dropdown-127239">Unsere Features</a>
+<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-127239" role="menu">
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127241" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-127241 nav-item"><a title="Magazine, E-Books &amp; Archiv" href="https://entwickler.de/magazine-ebooks/" class="dropdown-item">Magazine, E-Books &amp; Archiv</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127244 nav-item"><a title="Live-Events &amp; Tutorials" href="https://entwickler.de/live-events/" class="dropdown-item">Live-Events &amp; Tutorials</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127246" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-127246 nav-item"><a title="KI Themensuche AskFrank" href="https://entwickler.de/ask-frank/" class="dropdown-item">KI Themensuche AskFrank</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-127247" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-127247 nav-item"><a title="Trainings &amp; Zertifizierungen" href="https://entwickler.de/entwickler-akademie/" class="dropdown-item">Trainings &amp; Zertifizierungen</a></li>
+	<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-138765" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138765 nav-item"><a title="Das Fullstack-Abo" href="https://entwickler.de/fullstack-abo/" class="dropdown-item">Das Fullstack-Abo</a></li>
+</ul>
+</li>
+</ul></div><div class="cursorPointer d-xl-block d-none show-search-popup show-search-popup-lens-icon"><img src="./Warum ist Sprache so wichtig__files/EntwicklerDE_lupe_icon.svg" alt="suche"></div><div id="navbarNavDropdown" class="col d-none d-xl-block global-main-menu"><ul id="main-menu" class="navbar-nav ml-auto d-xl-flex flex-sm-row float-right"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-432" class="d-lg-none d-none kiosk-app-link menu-item menu-item-type-custom menu-item-object-custom menu-item-432 nav-item"><a title="Entwickler App laden" href="https://entwickler.de/apps" class="nav-link">Entwickler App laden</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-996" class="logged-in-user-invisible rounded sands-nav-login menu-item menu-item-type-post_type 
+			menu-item-object-page menu-item-1000 nav-item my-auto">
+				<a href="https://entwickler.de/reader/" class="nav-link px-2">Jetzt lesen</a>
+			</li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-995" class="has-admin-user-invisible d-none d-md-block sands-menu-free rounded sands-nav-free 
+                        menu-item menu-item-type-post_type menu-item-object-page menu-item-999 nav-item my-auto ">
+                            <a href="https://entwickler.de/unsere-angebote/" class="nav-link px-2">Gratis testen</a>
+                    </li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-994" class="had-sub-user-invisible d-none d-md-block sands-menu-free rounded sands-nav-free 
+                        menu-item menu-item-type-post_type menu-item-object-page menu-item-998 nav-item my-auto ">
+                            <a href="https://entwickler.de/unsere-angebote/" class="nav-link px-2">Abo wieder aufnehmen</a>
+                    </li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1000" class="has-not-sub-user-invisible d-none d-md-block sands-menu-free rounded sands-nav-free 
+                        menu-item menu-item-type-post_type menu-item-object-page menu-item-999 nav-item my-auto ">
+                            <a href="https://entwickler.de/unsere-angebote/" class="nav-link px-2">Gratis testen</a>
+                    </li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-999" class="border border-primary rounded menu-item menu-item-type-post_type menu-item-object-page menu-item-982 nav-item my-auto non-logged-in-user-visible">
+								<a href="https://entwickler.de/my-account/" class="nav-link px-4 font-weight-bolder text-capitalize text-primary">Anmelden</a>
+							</li><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1000" class="badge-danger sands-menu-free rounded sands-nav-free menu-item menu-item-type-post_type         menu-item-object-page menu-item-981 nav-item my-auto non-logged-in-user-visible">
+								<a href="https://entwickler.de/unsere-angebote/" class="nav-link px-4 text-white text-transform--none">Gratis testen</a>
+							</li></ul></div>
+								</div><!-- .container -->
+							</nav><!-- .site-navigation -->
+		</div><!-- #wrapper-navbar end -->
+		
+		<!-- Sticky alert starts -->
+					<!-- Sticky alert ends -->
+		
+		
+		<!-- Banner for marketing campign starts -->
+		
+	<aside id="custom_html-45" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="col-12 d-lg-block d-none discount-banner divide-conquer-banner p-0 show-only-Home">
+	<div id="carouselExampleIndicators" class="carousel slide" data-interval="7000" data-ride="carousel">
+		<div class="carousel-inner">
+			<!-- first banner -->
+			<div class="carousel-item active">
+				<div class="d-flex discount-banner-row justify-content-center row pb-0 pt-1">
+					<div class="sands-discount-banner-text-container text-center" style="position: relative;">
+						<a style="display: inline-block;width: 45px;height: 71px;overflow: hidden;">
+                            <img src="./Warum ist Sprache so wichtig__files/EntwicklerDE_Fullstack_PNGsequence_2.png" class="banner--icon" style="    width: 2092px;
+    height: 70px;
+    max-width: inherit;">
+                        </a>
+					</div>
+					<div class="align-self-center pl-4">
+						<div class="d-flex flex-wrap">
+							<div class="align-self-end">
+								<h5 style="color:#006885;font-size: 16px;font-weight: 900;line-height: 1.5;display:inline-block;text-align: left;">03.03. Angular Workshop mit Manfred Steyer</h5>
+							</div>
+							<div class="btn-margin-top col text-right">
+								<a class="btn sands-kiosk-teaser-btn" role="button" href="https://entwickler.de/angular-workshop/" aria-pressed="true" style="border: 3px solid #006885;color: #006885;">JETZT INFORMIEREN</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a style="color:#006885!important;" class="close-banner--button" onclick="setCookieForHour(&#39;eKioskAboSpecialCookie&#39;, &#39;true&#39;, &#39;2&#39;)" role="button">
+					X
+				</a>
+			</div>
+		</div>
+		<a class="carousel-control-prev d-none" href="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next d-none" href="https://entwickler.de/software-architektur/warum-ist-sprache-so-wichtig-001#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+
+	</div>
+</div>
+
+<div class="col-12 d-lg-none d-xl-none show-only-Home discount-banner-mobile divide-conquer-banner p-0">
+	<div id="carouselExampleIndicators2" class="carousel slide" data-interval="7000" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item pl-4 pr-4 active">
+				<div class="row discount-banner-mobile-row">
+					<div class="align-self-center col-sm-12 col-12">
+						<h3 style="color:#006885;font-size: 15px;font-weight: 900;line-height: 1.5;text-align: left;"><a href="https://entwickler.de/angular-workshop/">03.03. Angular Workshop mit Manfred Steyer</a></h3>
+						
+					</div>
+				</div>
+			<a style="color:#006885!important;" class="close-banner-button-mobile" onclick="setCookieForHour(&#39;eKioskAboSpecialCookie&#39;, &#39;true&#39;, &#39;2&#39;)" role="button">
+				X
+			</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<style>
+	.search-headline-margintop {
+		margin-top: 90px !important;
+	}
+
+	.discount-banner {
+		background-color: #E6FFED !important;
+	}
+
+	.disable-discount-banner {
+		display: none !important;
+	}
+
+	.close-banner-button-mobile,
+	.close-banner--button {
+		cursor: pointer;
+	}
+	.discount-banner-mobile, .home .discount-banner-mobile {
+    background-color: #E6FFED!important;
+}
+.discount-banner.show-only-Home.divide-conquer-banner .discount-banner-row{
+  min-height: 60px;
+}
+
+.discount-banner-mobile.divide-conquer-banner .row.discount-banner-mobile-row {
+    min-height: 48px;
+}
+	.animate-banner-icon{
+-webkit-animation: play 2s steps(48) forwards;
+    animation: play 2s steps(48) forwards;
+}
+	@keyframes play {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-2092px);
+		
+		}
+}
+</style>
+<script>
+let banner = jQuery('.discount-banner-row');
+	console.log(banner);
+	if(banner && banner.length){
+		 console.log('banner found');
+jQuery(".discount-banner-row").hover(function () {
+	console.log('hover');
+    jQuery(".banner--icon").addClass("animate-banner-icon");
+}, function () {
+
+		console.log('hover out');
+});
+
+}
+jQuery(".banner--icon").on(
+    "webkitAnimationEnd oanimationend msAnimationEnd animationend",
+    function() {
+        jQuery(".banner--icon").removeClass("animate-banner-icon");
+    }
+);
+	
+	
+</script>
+</div></aside>	<!-- Banner for marketing campign ends -->
+<main class="main" style="margin-top: 0px;">
+
+<script>
+	function openMobileNav() {
+		document.getElementById("mySidenav").style.width = "100%";
+	}
+
+	function closeMobileNav() {
+		document.getElementById("mySidenav").style.width = "0";
+	}
+</script>
+
+<style>
+
+	.sidenav ul{
+		padding-inline-start: 0px !important;
+		text-align:left;
+	}
+
+	.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: 0.5s;
+	text-align:center;
+	}
+
+	.sidenav a {
+
+	text-decoration: none;
+	font-size: 20px;
+	color: #007d8d;
+	display: block;
+	transition: 0.3s;
+
+	}
+
+	/* .sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+	color: #007d8d;
+	} */
+
+	.sidenav hr{
+		color: #007d8d;
+		width:95vw;
+	}
+
+	@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+	}
+
+</style>
+<div class="article-detail-center d-xl-flex mx-auto" style="max-width:1440px;"><div class="col px-0"><div class="container"></div>    <div id="articleDetailAppID3906" class="main-article-detail-container invisibleviewapp articleDetailAppID3906"><div class="container v-cloak--hidden d-none d-block"><div class="article-detail-header d-none d-md-block" style="padding-top: 10rem; background-image: url(&quot;https://s3.eu-west-1.amazonaws.com/redsys-prod/articles/4a9794eb6b6187f859820af0/images/teaserImage_xxxx_Brand_Teaser_EntwicklerMagazin_shutterstock_Liashko_1558424923644.jpg&quot;); background-position-x: 50%; background-size: cover;"><div class="bg-white col-md-8 epubhtml offset-md-2 sands-paywall-content"><div class="brand-logo paywall-content-issue-link d-flex flex-row flex-wrap mb-2"><a href="https://entwickler.de/magazine-ebooks/entwickler-magazin"><img src="./Warum ist Sprache so wichtig__files/logo_xx_EK_Logo_EM_v2_1558680963212.png" alt="Entwickler Magazin" style="max-width: 200px; min-height: 80px;"></a></div> <div class="article-subtitle font-weight-bold mb-4 paywall-content-subtitle"><p class="v-cloak--hidden">Ubiquitous Language</p></div> <div class="article-title pb-lg-4 pb-md-3"><h1 class="mb-3 paywall-content-title font-weight-bolder">Warum ist Sprache so wichtig?</h1></div></div></div> <div class="article-detail-body"><div class="d-md-none bg-white epubhtml sands-paywall-content"><div class="d-md-none "><img src="./Warum ist Sprache so wichtig__files/teaserImage_xxxx_Brand_Teaser_EntwicklerMagazin_shutterstock_Liashko_1558424923644.jpg" alt="Warum ist Sprache so wichtig?" class="w-100" style="min-height: 150px;"></div> <div class="brand-logo paywall-content-issue-link d-flex flex-row flex-wrap mb-2"><a href="https://entwickler.de/magazine-ebooks/entwickler-magazin"><img src="./Warum ist Sprache so wichtig__files/logo_xx_EK_Logo_EM_v2_1558680963212.png" alt="Entwickler Magazin" style="max-width: 250px; min-height: 99px;"></a></div> <div class="article-subtitle font-weight-bold mb-4 paywall-content-subtitle"><p>Ubiquitous Language</p></div> <div class="article-title pb-md-2"><h1 class="mb-3 paywall-content-title font-weight-bolder">Warum ist Sprache so wichtig?</h1></div></div> <div class="align-items-center bg-white col-md-8 d-md-flex epubhtml justify-content-between my-3 offset-md-2 flex-row px-md-3 px-0 sands-paywall-content"><div class="align-items-center article-detail-authors d-flex pb-3 pb-md-0 pl-0 flex-wrap"><div class="mb-1 mr-2"><img src="./Warum ist Sprache so wichtig__files/avatarSquareSmall_x_ploed_michael_ek_1557742753644.jpg" alt="Michael Plöd" class="rounded-circle" style="width: 60px; min-height: 60px;"> <a href="https://entwickler.de/experten/michael-plod" class="paywall-content-author"> Michael Plöd</a></div></div> <div class="paywall-content-author col-auto"><a href="https://entwickler.de/magazine-ebooks/entwickler-magazin/entwickler-magazin-spezial-vol-24">Ausgabe: Spezial Vol. 24</a></div></div> <hr class="offset-md-2 col-md-8 px-0" style="border-top: 3px solid rgb(0, 104, 132);"> <!----> <div class="bg-white col-md-8 d-md-flex epubhtml offset-md-2 flex-column sands-paywall-content my-2"><div class="epubhtml"><p class="preface">Ein Element, das in der gesamten Domain-driven-Design-Literatur querschnittlich präsent ist, ist die Ubiquitous Language, die allgegenwärtige Sprache. Allgegenwärtig bezieht sich darauf, dass es sich hierbei um eine Sprache handelt, die von Softwareentwickler*innen und Fachexpert*innen gemeinsam gesprochen wird. Diese Sprache soll dann auch die Basis für die Entwicklung des Softwaremodells sein. Im Rahmen dieses Artikels gehen wir erst auf die Motivation für die Etablierung einer Ubiquitous Language ein, bevor schließlich das Potenzial und die Möglichkeiten für die Arbeit mit einer solchen Sprache vorgestellt werden. Weiterhin werden noch kurz die Vorgehensweisen zur Herleitung einer Ubiquitous Language erläutert. </p>
+<p>Immer wieder wird betont, dass eine direkte Kollaboration zwischen Fachexpert*innen und Entwickler*innen von zentraler Bedeutung ist. Insbesondere die zwei Klassiker der Domain-driven Design-Literatur von Eric Evans&nbsp;[1] und Vaughn Vernon&nbsp;[2] stellen eine solche direkte Kollaboration in den Mittelpunkt der projekt-kulturellen Aspekte der Methode. Allerdings zeigt sich in der Praxis häufig, dass eine direkte Zusammenarbeit nicht ganz einfach ist, da mit unterschiedlichen Sprachen gearbeitet wird. Die Entwicklungsteams arbeiten mit und sprechen in sehr technischen, meist englischen Begriffen. Andererseits ist auf Fachseite häufig zu beobachten, dass hier in einer fachlichen Sprache gesprochen wird. Je nach Organisation stammt diese entweder aus dem englischen oder aus dem deutschen Vokabular. Exemplarisch könnte man etwas überspitzt anführen, dass Entwicklungsteams einen Gegenstand, den ein Fachteam beispielsweise „Trolley“ nennt, in der Implementierung als „RollableStuffContainer“ umsetzt. Um solche Differenzen besser zu adressieren, haben viele&nbsp;– meist größere&nbsp;– Organisationen Requirements-Engineering-Teams etabliert, die einerseits Anforderungen aufnehmen, klären und priorisieren sollen. Andererseits befinden sich diese Teams genau an der Schnittstelle zwischen IT und Fachbereich, weshalb sie natürlich auch auf sprachlicher Ebene Übersetzungsarbeit zwischen IT- und Fachsprache leisten. Mit einer solchen Lösung gehen allerdings häufig Reibungsverluste einher, die dazu führen, dass sich fachliche Fehler in die Software einschleichen.</p>
+<p>Deshalb setzt Domain-driven Design auf eine Ubiquitous Language. Dabei handelt es sich um ein Vokabular, das sich Domain Experts und Entwickler*innen teilen. Die allgegenwärtige Sprache ist somit eine geteilte Sprache zwischen Fachbereich und IT. Eine solche Sprache entsteht selbstredend nicht von selbst oder per Anordnung von oben, sie muss iterativ und kollaborativ erarbeitet werden.</p>
+<h2>Herleitung einer Ubiquitous Language</h2>
+<p>In der Vergangenheit wurde im Rahmen der Analyse oftmals sehr schnell mit technisch geprägten Werkzeugen, beispielsweise mit UML-Tools, gearbeitet. Diese Programme funktionieren für technikaffine Projektmitarbeiter*innen zwar meist sehr...</p></div> <div class="clear"></div> <!----></div> <div class="d-none d-block"><div class="bg-white col-md-8 d-md-flex offset-md-2 flex-column sands-paywall-content my-2"><div class="sands-paywall-block"><div class="sands-paywall"></div> <div class="paywall-content"><aside id="custom_html-27" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="test"><hr class="bg-primary mt-5" style="padding-top: 2px;"> <h2 class="text-primary text-center">Neugierig geworden? Registriere dich jetzt:</h2> <div class="d-flex justify-content-center my-3"><div class="col-12 col-md-9"><div class="bg-danger my-4 pb-1 rounded shadow"><h2 class="h3 px-2 py-3 text-center text-white">Das entwickler.de Basic-Abo</h2> <div class="bg-white m-2 row"><div class="col-12 col-lg-3 pt-3 text-center"><img src="./Warum ist Sprache so wichtig__files/EntwicklerDE_Fullstack_logo_v1_trialMonth.svg" alt="" style="height: 150px; width: auto;"></div> <div class="col-12 col-lg-9"><ul class="custom-check py-3"><li class="elementor-icon-list-item"><span class="elementor-icon-list-text">Über 10.000 Fachbeiträge, Magazine, E-Books, Artikelserien und Kolumnen sowie ein umfassendes Archiv</span></li> <li class="elementor-icon-list-item"><span class="elementor-icon-list-text">Intelligente Themensuche AskFrank</span></li> <li class="elementor-icon-list-item"><span class="elementor-icon-list-text">Sonderpreise für Printabonnenten</span></li> <li class="elementor-icon-list-item"><span class="elementor-icon-list-text">Überall lesen - auf dem Desktop, mobil oder in der App</span></li> <li class="elementor-icon-list-item"><span class="elementor-icon-list-text">Monatlich kündbar</span></li></ul> <h5 class="font-weight-bold mb-4"><span class="bg-danger p-2 rounded text-white"><a href="https://entwickler.de/product/kiosk/kiosk-abo-single-user-license-with-trial/" class="text-white">ANMELDEN</a></span></h5></div></div></div></div></div></div></div></aside> <!----></div></div></div></div></div></div> <!----></div>
+
+    <script>
+            
+ initArticleDetailViewApp = function(articleItemAppParams, dataPassed) {
+    dataParams = {
+        apploaded: false,
+        loading: true,
+        loadedArticle: false,
+        brandSubscriptionTeaser: false,
+        listOfInfoBlocks: [],
+        listOfSponsoredInfoBlocks: [],
+        listOfAdBlocks: [],
+        didWeProccessedAdverts: false
+    };
+    if (dataPassed) {
+        jQuery.extend(dataParams, dataPassed);
+    };
+    dataParams.articleLoadingParams =  {
+        query: 'article-detail',
+        article_slug: dataParams.article_slug
+    };
+    appSettings = {
+        methods: {
+            loadMore: function () {
+                var self = this;
+                // instance data is an observable, so we clone to send data
+                const clone = JSON.parse(JSON.stringify(this.articleLoadingParams));
+                this.loadPublicDataDetail(clone, function(data, error) {
+                    if (data.Article) {
+                        if (data.Article.authors && data.Article.authors.length) {
+                            let pimpedAuthors = [];
+                            for (let authorI = 0; authorI < data.Article.authors.length; authorI++) {
+                                pimpedAuthors.push(self.processConcordObjectAfterLoad(data.Article.authors[authorI]));
+                            }
+                            data.Article.authors = pimpedAuthors;
+                        }
+                        if (data.Article.brand) {
+                            let pimpedBrand = self.processConcordObjectAfterLoad(data.Article.brand);
+                            data.Article.brand = pimpedBrand;
+                        }
+                        if (data.Article.issue) {
+                            let pimpedIssue = self.processConcordObjectAfterLoad(data.Article.issue);
+                            data.Article.issue = pimpedIssue;
+                        }
+                        let loadedArticle = self.processConcordObjectAfterLoad(data.Article);
+                        self.loadedArticle = loadedArticle;
+                        
+                        // schema.org support
+                        let jsonLDData = {
+                            "@context": "https://schema.org",
+                            "@type": "TechArticle",
+                            "mainEntityOfPage": {
+                                "@type": "WebPage"
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "entwickler.de",
+                                "logo": {	
+                                    "@type": "ImageObject",	
+                                    "url": "https://entwickler.de/wp-content/themes/understrap-child/src/images/ekiosk_logo_4c.svg"
+                                }	
+                            },
+                            "headline" : loadedArticle.name,
+                            "datePublished": loadedArticle.publishedAt,
+                            "dateModified": loadedArticle.updatedAt
+                        };
+                        if (loadedArticle.teaserImage && loadedArticle.teaserImage.xx) {
+                            jsonLDData.image = [loadedArticle.teaserImage.xx];
+                        }
+
+                        if (loadedArticle.authors && loadedArticle.authors.length) {
+                            if (loadedArticle.authors[0].name) {
+                                jsonLDData.author = {
+                                    "@type": "Person",
+                                    "name": loadedArticle.authors[0].name
+                                };
+                            }
+                            
+                        }
+                        if (!loadedArticle.isFree) {
+                            jsonLDData.isAccessibleForFree = false;
+                            jsonLDData.hasPart = {
+                                "@type": "WebPageElement",
+                                "isAccessibleForFree": "False",
+                                "cssSelector" : ".sands-paywall"
+                            };
+                        }
+
+                        self.addJSONLDToHead(jsonLDData);
+
+                        /* ADVERTS */
+                        if (data.Article.adverts && data.Article.adverts.length && self.didWeProccessedAdverts) {
+                            if (data.Article.isFree && data.Article.content && data.Article.content.length) {
+                                // self.didWeProccessedAdverts = true;
+                                // console.log('isFree');
+                                let doIhaveConfblock = false;
+                                let doIhaveInfoblock = false;
+                                let doIhaveSecInfoblock = false;
+                                let doIhaveAdblock = false;
+                                let doIhaveSecAdblock = false;
+                                let doIhaveSponsoredInfoBlocks = false;
+                                
+                                if(data.Article.bannerAdvert && data.Article.bannerAdvert.html && data.Article.bannerAdvert.type === "BANNER"){
+                                    let bannerPosition = jQuery('.epubhtml .advert_banner');
+                                    data.Article.bannerAdvert.html = self.changeTextAndImage(data.Article.bannerAdvert.html, data.Article.bannerAdvert.baseUrl);
+                                    bannerPosition.append(data.Article.bannerAdvert.html);
+                                }
+                                
+                                data.Article.adverts.forEach((advert)=>{
+                                    if (advert) {
+                                        // CONF BLOCK
+                                        if (advert.type && advert.type === "CONFBLOCK" && !doIhaveConfblock) {
+                                            doIhaveConfblock = true;
+                                            //console.log('in onload');
+                                            let adPoistion1Div = jQuery('.epubhtml .advert_position_1');
+                                            //console.log('in adPoistion1Div');
+                                            //console.log(adPoistion1Div);
+                                            advert.html = self.changeTextAndImage(advert.html, advert.baseUrl);
+                                            adPoistion1Div.append(advert.html);
+                                            adPoistion1Div.addClass('float-lg-right mb-2 ml-lg-3 ml-n3 mx-md-auto');
+                                        }
+                                        if (advert.type && advert.type === "SPONSOREDINFOBLOCK") {
+                                            self.listOfSponsoredInfoBlocks.push(advert);
+                                            // console.log('we have a SPONSOREDINFOBLOCK = ', advert);
+                                        }
+                                        if (advert.type && advert.type === "INFOBLOCK") {
+                                            self.listOfInfoBlocks.push(advert);
+                                        }
+                                        if (advert.type && advert.type === "ADBLOCK") {
+                                            self.listOfAdBlocks.push(advert);
+                                        }
+
+                                        // FIRST INFO BLOCK If SPONSOREDINFOBLOCK missing
+                                        if(self.listOfSponsoredInfoBlocks && self.listOfSponsoredInfoBlocks.length && self.listOfSponsoredInfoBlocks[0] && !doIhaveSponsoredInfoBlocks){
+                                            doIhaveSponsoredInfoBlocks = true;
+                                            let advertI = self.listOfSponsoredInfoBlocks[0];
+                                            // console.log('in onload1');
+                                            let adPoistion2Div = jQuery('.epubhtml .advert_position_2');
+                                            advertI.html = self.changeTextAndImage(advertI.html, advertI.baseUrl);
+                                            adPoistion2Div.append(advertI.html);
+                                            //adPoistion1Div.addClass('float-right mb-2 ml-3');
+
+                                        }else if (!self.listOfSponsoredInfoBlocks.length && self.listOfInfoBlocks && self.listOfInfoBlocks.length && self.listOfInfoBlocks[0] && !doIhaveInfoblock) {
+                                            doIhaveInfoblock = true;
+                                            let advertI = self.listOfInfoBlocks[0];
+                                            // console.log('in onload1');
+                                            let adPoistion2Div = jQuery('.epubhtml .advert_position_2');
+                                            advertI.html = self.changeTextAndImage(advertI.html, advertI.baseUrl);
+                                            adPoistion2Div.append(advertI.html);
+                                            //adPoistion1Div.addClass('float-right mb-2 ml-3');
+                                        }
+                                        // FIRST AD BLOCK
+                                        if (self.listOfAdBlocks && self.listOfAdBlocks.length && self.listOfAdBlocks[0] && !doIhaveAdblock) {
+                                            doIhaveAdblock = true;
+                                            let advertA = self.listOfAdBlocks[0];
+                                            // console.log('in onload2');
+                                            let adPoistion3Div = jQuery('.epubhtml .advert_position_3');
+                                            advertA.html = self.changeTextAndImage(advertA.html, advertA.baseUrl);
+                                            adPoistion3Div.append(advertA.html);
+                                            //adPoistion1Div.addClass('float-right mb-2 ml-3');
+                                        }
+
+                                        // SECOND INFO BLOCK OR SECOND ADBLOCK
+                                        if (self.listOfInfoBlocks && self.listOfInfoBlocks.length && self.listOfInfoBlocks[1] && !doIhaveSecInfoblock) {
+                                            doIhaveSecInfoblock = true;
+                                            let advert2I = self.listOfInfoBlocks[1];
+                                            // console.log('in onload3');
+                                            let adPoistion4Div = jQuery('.epubhtml .advert_position_4');
+                                            if (advert2I.html && advert2I.html.length) {
+                                                advert2I.html = self.changeTextAndImage(advert2I.html, advert2I.baseUrl);
+                                                adPoistion4Div.append(advert2I.html);
+                                            }
+                                            //adPoistion1Div.addClass('float-right mb-2 ml-3');
+                                        } else if (self.listOfAdBlocks && self.listOfAdBlocks.length && self.listOfAdBlocks[1] && !doIhaveSecAdblock) {
+                                            doIhaveSecAdblock = true;
+                                            let advert2A = self.listOfAdBlocks[1];
+                                            // console.log('in onload4');
+                                            let adPoistion4Div = jQuery('.epubhtml .advert_position_4');
+                                            if (advert2A.html && advert2A.html.length) {
+                                                advert2A.html = self.changeTextAndImage(advert2A.html, advert2A.baseUrl);
+                                                adPoistion4Div.append(advert2A.html);
+                                            }
+                                            //adPoistion1Div.addClass('float-right mb-2 ml-3');
+                                        }
+
+                                        /*
+                                        if (advert.type && advert.type === "INFOBLOCK" && !doIhaveInfoblock) {
+                                            doIhaveInfoblock = true;
+                                            //console.log('in onload');
+                                            let adPoistion2Div = jQuery('.epubhtml .advert_position_2');
+                                            advert.html = self.changeTextAndImage(advert.html, advert.baseUrl);
+                                            adPoistion2Div.append(advert.html);
+                                            //adPoistion1Div.addClass('float-right mb-2 ml-3');
+                                        }
+                                        if (advert.type && advert.type === "ADBLOCK" && doIhaveAdblock <= 1) {
+
+                                            console.log('advert');
+                                            console.log(advert);
+                                            console.log(doIhaveAdblock);
+
+                                            let positionClass = '';
+                                            if (doIhaveAdblock === 0) {
+                                                console.log('case0');
+                                                positionClass = '.epubhtml .advert_position_3';
+                                            }
+                                            else if (doIhaveAdblock === 1) {
+                                                console.log('case1');
+                                                positionClass = '.epubhtml .advert_position_4';
+                                            }
+                                            let adPoistion3Div = jQuery(positionClass);
+                                            advert.html = self.changeTextAndImage(advert.html, advert.baseUrl);
+                                            adPoistion3Div.append(advert.html);
+                                            //adPoistion3Div.addClass('bg-danger p-5 m-5');
+                                            doIhaveAdblock++;
+                                        }*/
+                                    }
+                                });
+                                
+                            }
+                            
+                            //console.log('adverts');
+                            //console.log(data.Article);
+                        }else{
+                            self.didWeProccessedAdverts = true;
+                            //console.log('no adverts');
+                            //console.log(data.Article);
+                        }
+
+                        /* Brand depending Banner */
+                        if (data.Article.issue && data.Article.issue.brand && data.Article.issue.brand._id ) {
+                            let payLoad = {
+                                query:"get_brand_detail",
+                                brandid: data.Article.issue.brand._id
+                            };
+                            self.loadPublicDataDetail(payLoad, function(data) {
+                                if (data && data.loadedbrand) {
+                                    self.brandSubscriptionTeaser = data;
+                                    // console.log(self.brandSubscriptionTeaser);
+                                }
+                            }, function(error) {
+                                // console.log('ERRRRR');
+                            });
+                        }
+                    }
+                    self.everLoadedData = true;
+                    self.loading = false;
+                }, 
+                function(error) {
+                    // console.log('ARTICLE DETAIL LOADING FAILURE');
+                    self.everLoadedData = true;
+                    self.loading = false;
+                });
+            }
+        },
+        created :  function(){
+            this.apploaded = true;
+            this.loadMore();
+        },
+        mounted: function(){
+            this.loadMore();
+        },
+        data: dataParams
+    }
+    jQuery.extend(appSettings, articleItemAppParams);
+    var catSpecificSeriesApp = new Vue(appSettings);
+ }
+            var articleItemAppParams = {
+                el: '#articleDetailAppID3906'
+            };
+            var someInitDataArticle = {
+                article_slug: 'warum-ist-sprache-so-wichtig-001',
+            }
+            initArticleDetailViewApp(articleItemAppParams, someInitDataArticle);
+
+            jQuery( document ).ready(function($) {
+                if ($(".left-ads").length && $(".right-ads").length) {
+                    var leftWidth  = $(".left-ads img").width() + 15;
+                    var rightWidth = $(".right-ads img").width() + 15;
+                    var lastScrollTop = 0;
+                    var mainHeight = 2000;
+                    var footerHeight = $("#wrapper-footer-full").outerHeight();
+                  
+                    $(".left-ads").css({width: leftWidth + 'px'});
+                    $(".right-ads").css({width: rightWidth + 'px'});
+    
+                    jQuery(window).scroll(function(event){
+                        var naviHeight = $(".sticky-header").outerHeight();
+                        var scrollTop = $(this).scrollTop();
+                        mainHeight = $("main").outerHeight() - footerHeight - 320;
+                        if (scrollTop > lastScrollTop && scrollTop < mainHeight){
+                           $(".left-ads img").css({position: 'fixed', top:  naviHeight + 'px'});
+                           $(".right-ads img").css({position: 'fixed', top: naviHeight + 'px'});
+                           // $(".top-ads").css({position: 'fixed', top: naviHeight + 'px', zIndex: '99'});
+                        } else {
+                           $(".left-ads, .right-ads").css({position: 'inherit'});
+                           $(".left-ads img, .right-ads img").css({position: 'inherit', top: 'auto'});
+                           // $(".top-ads").css({position: 'inherit', top: 'auto', zIndex: '0'});
+                        }
+                        // lastScrollTop = scrollTop;
+                    });
+                }
+            });
+
+    </script>
+    </div></div></main>
+
+
+
+	<!-- ******************* The Footer Full-width Widget Area ******************* -->
+
+	<div class="wrapper hide-only-if-en-cookie" id="wrapper-footer-full">
+
+		<div class="container-fluid" id="footer-full-content" tabindex="-1">
+
+			<div class="global-top-footer-block row mx-md-3 mx-lg-5">
+
+								<div class="col-12 col-md-6 col-lg-3 footer-col"><aside id="text-4" class="widget widget_text">			<div class="textwidget"><div class="row left-footer-widget">
+<div class="col-10">
+<h3>Social</h3>
+</div>
+</div>
+<p>Sagen Sie uns Ihre Meinung! Folgen Sie uns für News und Hintergründe rund um entwickler.de und teilen Sie Ihre persönlichen Eindrücke mit uns<br>
+<a title="auf Facebook" href="https://www.facebook.com/entwickler.de" target=" _blank" rel="noopener noreferrer"><img style="margin-right: 10px;" src="./Warum ist Sprache so wichtig__files/facebook-icon.png"></a><a title="auf Twitter" href="https://twitter.com/entwickler" target="_blank" rel="noopener noreferrer"><img src="./Warum ist Sprache so wichtig__files/twitter-icon.png"></a></p>
+<h3>Leadgenerierung mit entwickler.de</h3>
+<div class="">
+<p><a class="btn edit btn-primary" style="background-color: #00a19a; border-color: #00A19A;" href="https://entwickler.de/leadgenerierung">MEHR INFORMATIONEN</a></p>
+</div>
+</div>
+		</aside></div>
+				<div class="col-12 col-md-6 col-lg-3 footer-col"><aside id="text-3" class="widget widget_text">			<div class="textwidget"><div>
+<h3 class="center-footer-widget">App</h3>
+<p>Digital und mobil – Ihr Fachwissen immer zur Hand mit unserer App</p>
+<div class="row mb-3">
+<div class="col-md-12 col-6 mb-3"><a href="https://itunes.apple.com/de/app/entwickler-kiosk/id929560208"><img style="height: 52px; width: 167px;" src="./Warum ist Sprache so wichtig__files/EKiosk_Website_Store_Badge_AppStore.svg"></a></div>
+<div class="col-md-12 col-6 mb-3"><a href="https://play.google.com/store/apps/details?id=com.sandsmedia.apps.android.entwicklerkiosk"><img class="app--image" style="width: 167px;" src="./Warum ist Sprache so wichtig__files/EKiosk_Website_Store_Badge_GooglePlay.svg"><br>
+</a></div>
+</div>
+<div></div>
+</div>
+</div>
+		</aside></div>
+				<div class="col-12 col-md-12 col-lg-6 footer-col"><aside id="text-2" class="widget widget_text">			<div class="textwidget"><h3 class="right-footer-widget">Wissensvorsprung sichern</h3>
+<p>Als Abonnent unseres Newsletters erfahren Sie als erstes von neuen Beiträgen auf entwickler.de.</p>
+<script>(function() {
+	if (!window.mc4wp) {
+		window.mc4wp = {
+			listeners: [],
+			forms    : {
+				on: function (event, callback) {
+					window.mc4wp.listeners.push({
+						event   : event,
+						callback: callback
+					});
+				}
+			}
+		}
+	}
+})();
+</script><!-- MailChimp for WordPress v4.2.4 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-285 mc4wp-ajax" method="post" data-id="285" data-name="NL Form"><div class="mc4wp-form-fields"><div style="max-width:90%;">
+<div class="input-group col-xl-12 col-lg-12 col-md-12" style="margin-top:0px;display: flex;padding-left:0px;">            
+<input class="form-control" type="email" name="EMAIL" placeholder="E-Mail *" required=""><input id="SUBSCRIPTION" type="hidden" name="SUBSCRIPTI" value=""><input name="INTERESTS[d85200078a][]" type="hidden" value="d1ebba3116" checked="true"><div class="input-group-append"><button class="btn btn-success" type="submit" style="background-color: #00A19A;border-color: #00A19A;">SENDEN</button>
+</div>
+</div>
+</div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1645477665"><input type="hidden" name="_mc4wp_form_id" value="285"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"><div class="mc4wp-response"></div><!-- / MailChimp for WordPress Plugin -->
+<h3 class="mb-2 mt-4 right-footer-widget">Jetzt kostenlos testen</h3>
+<p style="mb-3 font-size: 13px;">Überzeug dich selbst von unserem Angebot und sicher dir deinen kostenlosen Gratismonat.</p>
+<p><a class="btn edit btn-primary" style="background-color: #00a19a; border-color: #00A19A;" href="https://entwickler.de/unsere-angebote/">Gratismonat sichern</a></p>
+</div></form>
+		</div></aside></div>
+
+			</div>
+			<div class="ea-top-footer-block row mx-md-3 mx-lg-5">
+
+								<div class="col-12 col-md-6 col-lg-3 footer-col"><aside id="text-13" class="widget widget_text">			<div class="textwidget"><div class="row left-footer-widget">
+<div class="col-10">
+<h3>Social</h3>
+</div>
+</div>
+<p style="font-size: 15px;">Sagen Sie uns Ihre Meinung! Folgen Sie uns für News und Hintergründe rund um die Entwickler Akademie und teilen Sie Ihre persönlichen Eindrücke mit uns.</p>
+<p><a href="https://www.facebook.com/EntwicklerAkademie"><img style="margin-right: 10px;" src="./Warum ist Sprache so wichtig__files/facebook-icon.png"></a> <a href="https://twitter.com/entw_akademie"><img src="./Warum ist Sprache so wichtig__files/twitter-icon.png"></a></p>
+</div>
+		</aside></div>
+				<div class="col-12 col-md-6 col-lg-3 footer-col"><aside id="custom_html-24" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div>
+<h3 class="center-footer-widget">App</h3>
+<p>
+	Digital und mobil - Ihr Fachwissen immer zur Hand mit unserer App
+	</p>
+<div class="row mb-3">
+<div class="col-md-12 col-6 mb-3"><a href="https://itunes.apple.com/de/app/entwickler-kiosk/id929560208"><img style="height: 52px; width: 167px;" src="./Warum ist Sprache so wichtig__files/EKiosk_Website_Store_Badge_AppStore.svg"></a></div>
+<div class="col-md-12 col-6 mb-3"><a href="https://play.google.com/store/apps/details?id=com.sandsmedia.apps.android.entwicklerkiosk"><img class="app--image" style="width: 167px;" src="./Warum ist Sprache so wichtig__files/EKiosk_Website_Store_Badge_GooglePlay.svg">
+</a></div>
+</div>
+<div></div>
+</div></div></aside></div>
+				<div class="col-12 col-md-12 col-lg-6 footer-col"><aside id="text-12" class="widget widget_text">			<div class="textwidget"><div>
+<h3 class="right-footer-widget">Auf dem laufenden bleiben</h3>
+<p style="font-size: 15px;">Aktuelle Infos zu Events, Trainings &amp; mehr bequem in deiner Inbox.</p>
+<form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-285" method="post" data-id="285" data-name="">
+<div class="mc4wp-form-fields" style="height: 40px;">
+<div style="max-width: 90%;">
+<div class="input-group col-xl-12 col-lg-12 col-md-12" style="margin-top: 0px; display: flex; padding-left: 0px;"><input class="form-control" name="EMAIL" required="" type="email" placeholder="E-Mail *"><input id="SUBSCRIPTION" name="SUBSCRIPTI" type="hidden" value=""><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="b623397b8e"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="08bf243018"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="cdccd97fcd"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="e5945d0363"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="c3eea504cc"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="c530969ff7"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="c48410b60d"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="a8f5399631"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="abed1fd667"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="d23fe09da7"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="8510f92f73"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="e137a04af9"><br>
+<input checked="checked" name="INTERESTS[0316b161de][]" type="hidden" value="4c3e8f00d8"><p></p>
+<div class="d-block input-group-append"><button class="btn btn-success" style="background-color: #286011; border-color: #286011;" type="submit">SENDEN</button></div>
+</div>
+</div>
+<p><label style="display: none !important;">Leave this field empty if you’re human: <input tabindex="-1" autocomplete="off" name="_mc4wp_honeypot" type="text" value=""></label><input name="_mc4wp_timestamp" type="hidden" value="1625209127"><input name="_mc4wp_form_id" type="hidden" value="285"><input name="_mc4wp_form_element_id" type="hidden" value="mc4wp-form-1"></p>
+<div class="mc4wp-response"></div>
+<p><!-- / MailChimp for WordPress Plugin --><br>
+<input name="_mc4wp_lists" type="hidden" value="de2c881f4a"></p>
+</div>
+<h3 class="mb-2 mt-4 right-footer-widget">Jetzt kostenlos testen</h3>
+<p style="mb-3 font-size: 13px;">Überzeug dich selbst von unserem Angebot und sicher dir deinen kostenlosen Gratismonat.</p>
+<p><a class="btn edit btn-primary" style="background-color: #00a19a; border-color: #00A19A; z-index: 9999; position: absolute;" href="https://entwickler.de/unsere-angebote/">Gratismonat sichern</a></p>
+</form>
+</div>
+</div>
+		</aside></div>
+
+			</div>
+
+		</div>
+
+	</div><!-- #wrapper-footer-full -->
+
+
+	<div class="wrapper" id="wrapper-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<footer class="site-footer" id="colophon">
+						<div class="row d-flex justify-content-between site-info">
+							<div class="cr-footer-left"><ul id="menu-footer-left" class="menu navbar-nav flex-row sands-footer-menu"><li id="menu-item-139023" class="hide-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-139023"><a href="https://entwickler.de/unsere-angebote/">Preise und Lizenzen</a></li>
+<li id="menu-item-227" class="hide-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://entwickler.de/kontakt/">Kontakt</a></li>
+<li id="menu-item-127274" class="hide-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-127274"><a href="https://entwickler.de/hilfe-zum-entwickler/">FAQ</a></li>
+<li id="menu-item-127312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127312"><a href="https://entwickler.de/experten/">Expert:in werden</a></li>
+</ul></div><div class="cr-footer-right"><ul id="menu-footer-right" class="menu navbar-nav flex-row sands-footer-menu"><li id="menu-item-127306" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127306"><a href="https://entwickler.de/impressum/">Impressum</a></li>
+<li id="menu-item-127320" class="hide-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-127320"><a href="https://entwickler.de/datenschutz/">Datenschutz</a></li>
+<li id="menu-item-127275" class="hide-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-127275"><a href="https://entwickler.de/agb/">AGB</a></li>
+<li id="menu-item-115280" class="show-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-115280 d-none"><a href="https://entwickler.de/contact/">Contact</a></li>
+<li id="menu-item-115281" class="show-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-115281 d-none"><a href="https://entwickler.de/imprint/">Imprint</a></li>
+<li id="menu-item-115282" class="show-only-if-en-cookie menu-item menu-item-type-post_type menu-item-object-page menu-item-115282 d-none"><a href="https://entwickler.de/privacy/">Privacy</a></li>
+</ul></div>						</div><!-- .site-info -->
+					</footer><!-- #colophon -->
+				</div>
+				<!--col end -->
+			</div><!-- row end -->
+		</div><!-- container end -->
+	</div><!-- wrapper end -->
+
+	</div><!-- #page we need this extra closing tag here -->
+
+
+<script>(function() {function addEventListener(element,event,handler) {
+	if(element.addEventListener) {
+		element.addEventListener(event,handler, false);
+	} else if(element.attachEvent){
+		element.attachEvent('on'+event,handler);
+	}
+}function maybePrefixUrlField() {
+	if(this.value.trim() !== '' && this.value.indexOf('http') !== 0) {
+		this.value = "http://" + this.value;
+	}
+}
+
+var urlFields = document.querySelectorAll('.mc4wp-form input[type="url"]');
+if( urlFields && urlFields.length > 0 ) {
+	for( var j=0; j < urlFields.length; j++ ) {
+		addEventListener(urlFields[j],'blur',maybePrefixUrlField);
+	}
+}/* test if browser supports date fields */
+var testInput = document.createElement('input');
+testInput.setAttribute('type', 'date');
+if( testInput.type !== 'date') {
+
+	/* add placeholder & pattern to all date fields */
+	var dateFields = document.querySelectorAll('.mc4wp-form input[type="date"]');
+	for(var i=0; i<dateFields.length; i++) {
+		if(!dateFields[i].placeholder) {
+			dateFields[i].placeholder = 'YYYY-MM-DD';
+		}
+		if(!dateFields[i].pattern) {
+			dateFields[i].pattern = '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])';
+		}
+	}
+}
+
+})();</script>	<script type="text/javascript">
+		var c = document.body.className;
+		c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+		document.body.className = c;
+	</script>
+	<script type="text/javascript">
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/entwickler.de\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/scripts.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/sands_mc4wp.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/jquery.blockUI.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Warenkorb anzeigen","cart_url":"https:\/\/entwickler.de\/checkout\/","is_cart":"","cart_redirect_after_add":"yes"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/add-to-cart.min.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/js.cookie.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/woocommerce.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_e95f1823c91630120b9a63317ae60f57","fragment_name":"wc_fragments_e95f1823c91630120b9a63317ae60f57"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/cart-fragments.min.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/api.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sands_ajax_object = {"ajaxurl":"https:\/\/entwickler.de\/wp-admin\/admin-ajax.php","nvalue":"9812311cf7"};
+var sands_kiosk_app_urls = {"app_url_android":"https:\/\/play.google.com\/store\/apps\/details?id=com.sandsmedia.apps.android.entwicklerkiosk","app_url_ios":"https:\/\/itunes.apple.com\/de\/app\/entwickler-kiosk\/id929560208"};
+var sands_payment_page_urls = {"url_einzel_payment_page":"\/product\/kiosk\/kiosk-abo-single-user-license-with-trial","url_team_payment_page":"\/product\/kiosk\/kiosk-abo-multi-user-license\/","url_domain_payment_page":"\/firmenkunde\/","url_einzel_payment_yearly_page":"\/checkout\/?add-to-cart=62490","ajaxurl":"https:\/\/entwickler.de\/wp-admin\/admin-ajax.php","post_id":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/child-theme.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var pwsL10n = {"unknown":"Passwort-St\u00e4rke unbekannt","short":"Ganz schwach","bad":"Schwach","good":"Mittel","strong":"Stark","mismatch":"Keine \u00dcbereinstimmung"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/password-strength-meter.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wc_password_strength_meter_params = {"min_password_strength":"4","i18n_password_error":"Bitte geben Sie ein st\u00e4rkeres Passwort ein.","i18n_password_hint":"Tipp: Das Passwort sollte mindestens zw\u00f6lf Zeichen lang sein. F\u00fcr ein st\u00e4rkeres Passwort verwende Gro\u00df- und Kleinbuchstaben, Zahlen und Sonderzeichen wie ! \" ? $ % ^ & )."};
+var wc_password_strength_meter_params = {"min_password_strength":"4","i18n_password_error":"Bitte erh\u00f6hen Sie die Sicherheit Ihres Passwortes!","i18n_password_hint":"Bitte erh\u00f6hen Sie die Sicherheit Ihres Passwortes, indem Sie Gro\u00df- und Kleinbuchstaben sowie Nummern verwenden. Das Passwort sollte 10-20 Zeichen lang sein."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/password-strength-meter.min.js(1).Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/wp-embed.min.js.Download"></script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/OneSignalSDK.js.Download" async="async"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var mc4wp_forms_config = [];
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/forms-api.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var mc4wp_ajax_vars = {"loading_character":"\u2022","ajax_url":"https:\/\/entwickler.de\/wp-admin\/admin-ajax.php?action=mc4wp-form","error_text":"Es ist ein Fehler aufgetreten, bitte versuchen Sie es sp\u00e4ter noch einmal."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Warum ist Sprache so wichtig__files/ajax-forms.js.Download"></script>
+<!--[if lte IE 9]>
+<script type='text/javascript' src='https://entwickler.de/wp-content/plugins/mailchimp-for-wp/assets/js/third-party/placeholders.min.js?x88418&amp;ver=4.2.4'></script>
+<![endif]-->
+<script type="text/javascript">
+( function( grecaptcha, sitekey, actions ) {
+
+	var wpcf7recaptcha = {
+
+		execute: function( action ) {
+			grecaptcha.execute(
+				sitekey,
+				{ action: action }
+			).then( function( token ) {
+				var forms = document.getElementsByTagName( 'form' );
+
+				for ( var i = 0; i < forms.length; i++ ) {
+					var fields = forms[ i ].getElementsByTagName( 'input' );
+
+					for ( var j = 0; j < fields.length; j++ ) {
+						var field = fields[ j ];
+
+						if ( 'g-recaptcha-response' === field.getAttribute( 'name' ) ) {
+							field.setAttribute( 'value', token );
+							break;
+						}
+					}
+				}
+			} );
+		},
+
+		executeOnHomepage: function() {
+			wpcf7recaptcha.execute( actions[ 'homepage' ] );
+		},
+
+		executeOnContactform: function() {
+			wpcf7recaptcha.execute( actions[ 'contactform' ] );
+		},
+
+	};
+
+	grecaptcha.ready(
+		wpcf7recaptcha.executeOnHomepage
+	);
+
+	document.addEventListener( 'change',
+		wpcf7recaptcha.executeOnContactform, false
+	);
+
+	document.addEventListener( 'wpcf7submit',
+		wpcf7recaptcha.executeOnHomepage, false
+	);
+
+} )(
+	grecaptcha,
+	'6LeFBOYZAAAAAI4o5y2WDH2HRKz5zAkSrBzvuvCw',
+	{"homepage":"homepage","contactform":"contactform"}
+);
+</script>
+
+
+
+<!-- Team licence information page -->
+	<div id="visitEntwicklerKioskFurTeams" class="d-none mr-3 shadow-lg bg-white show-only-Home rounded alert fade p-0 m-0 border-0 minus--index d-sm-block" style="position:fixed; bottom:2%;right:0; width:320px;z-index:1023;">
+		<div class="rounded-top badge-danger">
+			<div class="d-flex flex-row text-white justify-content-between px-3 py-1">
+				<p class="my-auto" style="font-size: 1.17em;">Angebote für Gewinner-Teams</p>
+				<a class="cursorPointer close text-white" data-dismiss="alert" aria-label="Close" onclick="setCookie(&#39;entwicklerKioskFurTeamsCookie&#39;,&#39;true&#39;,&#39;1&#39;)">
+					<!--  -->
+					<span id="closeTeamBanner" aria-hidden="true">×</span>
+				</a>
+			</div>
+		</div>
+		<div class="p-3 team--popup--bg-swing">
+		<!-- /wp-content/uploads/2021/03/EKiosk_21_Team_Popover_img.svg -->
+			<p class="text-primary team--popup-text--margin">
+			Wir bieten <strong> Lizenz-Lösungen für Teams jeder Größe:</strong> Finden Sie heraus, welche Lösung am besten zu Ihnen passt.
+			</p>
+			<div class="mx-2 d-none" style="color:#00a19a;">
+				<div class="d-flex flex-row mb-2">
+					<img style="width: 50px; height: 50px;" src="./Warum ist Sprache so wichtig__files/E_Kiosk_Firmenkunden_IP.svg" alt="">
+					<p class="ml-3 my-auto">Das Library-Modell:<br> IP-Zugang</p>
+				</div>
+				<div class="d-flex flex-row">
+					<img style="width: 50px; height: 50px;" src="./Warum ist Sprache so wichtig__files/E_Kiosk_Firmenkunden_Domain.svg" alt="">
+					<p class="ml-3 my-auto">Das Company-Modell:<br> Domain-Zugang</p>
+				</div>
+			</div>
+			<div class="mt-3 text-center">
+				<a id="mehrErfahrenButton" href="https://entwickler.de/firmenkunde/" class="btn btn-danger font-weight-bold w-75">
+				Jetzt alles über <br> Team-Lizenzen erfahren
+				</a>
+			</div>
+		</div>
+	</div>
+<aside id="custom_html-44" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div id="nlSubscriptionCookie" class="mr-3 shadow-lg bg-white rounded alert p-0 m-0 border-0 slide-out d-none" style="position:fixed; bottom:7%;right:0; width:320px;opacity:0;">
+		<div class="rounded-top badge-primary">
+			<div class="d-flex flex-row text-white justify-content-between px-3 py-1">
+				<p class="my-auto new-font">Bleibe auf dem neuesten Stand</p>
+				<a class="hide-nl-banner cursorPointer close text-white" data-dismiss="alert" aria-label="Close">
+					<!--  -->
+					<span id="closeTeamBanner" aria-hidden="true">×</span>
+				</a>
+			</div>
+		</div>
+		<div class="px-3 py-2">
+		<!-- /wp-content/uploads/2021/03/EKiosk_21_Team_Popover_img.svg -->
+			<script>(function() {
+	if (!window.mc4wp) {
+		window.mc4wp = {
+			listeners: [],
+			forms    : {
+				on: function (event, callback) {
+					window.mc4wp.listeners.push({
+						event   : event,
+						callback: callback
+					});
+				}
+			}
+		}
+	}
+})();
+</script><!-- MailChimp for WordPress v4.2.4 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-2" class="mc4wp-form mc4wp-form-149980 mc4wp-ajax" method="post" data-id="149980" data-name="News-letter slider"><div class="mc4wp-form-fields"><p class="text-primary font-weight-normal">
+	Melde dich jetzt zum Newsletter an:
+</p>
+<input class="w-100 p-2" type="email" name="EMAIL" placeholder="E-Mail-Adresse" required="">	
+<div class="mt-2 py-3">
+	<input class="badge-primary border-0 py-2 px-3 rounded text-uppercase input--btn-nl" type="submit" value="abschicken">
+</div></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1645477665"><input type="hidden" name="_mc4wp_form_id" value="149980"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-2"><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin -->
+		</div>
+	</div>
+<style>
+	/* Newsletter subscription slider */
+.new-font{
+	font-family: 'Open Sans'!important;
+	font-size: 1.15em; 
+}
+
+/*Slide in NL sub animation*/
+.slide-out{
+	transform: translateX(350px);
+	-webkit-transform: translateX(350px);
+}
+.slide-in {
+	opacity:1 !important;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition-duration: 1s;
+	transition-duration: 1s;
+}
+</style>
+<script>
+	jQuery( document ).ready( function( $ ) {
+		console.log('js in widget');
+		  setTimeout(() => {
+    //click starts
+    jQuery('.input--btn-nl').on('click', function(){
+      setCookieForHour('nlSubscriptionCookie','true','120');
+			setTimeout(() => {
+				jQuery('#nlSubscriptionCookie').fadeOut( "slow" );
+			},3000);
+    });
+  }, 7000);
+	});
+</script></div></aside>	
+
+
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Page Caching using disk: enhanced 
+
+Served from: entwickler.de @ 2022-02-21 22:07:45 by W3 Total Cache
+--><script type="text/javascript" id="">var gaProperty=google_tag_manager["GTM-PJK98V"].macro(4),disableStr="sands-disable-"+gaProperty;-1<document.cookie.indexOf(disableStr+"\x3dtrue")&&(window[disableStr]=!0);function gaOptout(){document.cookie=disableStr+"\x3dtrue; expires\x3dThu, 31 Dec 2099 23:59:59 UTC; path\x3d/";window[disableStr]=!0};</script>
+<script type="text/javascript" id="">var googletag=googletag||{};googletag.cmd=googletag.cmd||[];(function(){var a=document.createElement("script");a.async=!0;a.type="text/javascript";var b="https:"==document.location.protocol;a.src=(b?"https:":"http:")+"//www.googletagservices.com/tag/js/gpt.js";b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script> 
+
+<script type="text/javascript" id="">setTimeout(function(){googletag.cmd.push(function(){googletag.defineSlot("/21339274/jaxenter.de_contentAD1_Wordpress",[[300,250],[728,90],[468,60]],"div-gpt-ad-1638798930828-0").addService(googletag.pubads());googletag.defineSlot("/21339274/entwicklerde-blog-fireplace-right",[120,600],"div-gpt-ad-1631213254149-0").addService(googletag.pubads());googletag.defineSlot("/21339274/entwicklerde-blog-fireplace-left",[120,600],"div-gpt-ad-1631212846970-0").addService(googletag.pubads());googletag.defineSlot("/21339274/entwicklerde-blog-fireplace-top",
+[[1170,110],[1170,250]],"div-gpt-ad-1638800699918-0").addService(googletag.pubads());googletag.defineSlot("/21339274/entwickler.de-free-Mobile-Header",[[300,50],[640,150],[320,50],[320,75],[640,100]],"div-gpt-ad-1639502269603-0").addService(googletag.pubads());googletag.defineSlot("/21339274/entwickler.de-blog-mobile-header",[[300,50],[320,50],[320,75]],"div-gpt-ad-1639571076010-0").addService(googletag.pubads());googletag.defineSlot("/21339274/entwickler.de-jaxenter-mobile-header",[[300,50],[320,
+75],[320,50]],"div-gpt-ad-1639571124306-0").addService(googletag.pubads());googletag.pubads().collapseEmptyDivs(!0);googletag.pubads().enableSingleRequest();googletag.enableServices();googletag.display("div-gpt-ad-1638798930828-0");googletag.cmd.push(function(){googletag.display("div-gpt-ad-1631213254149-0")});googletag.cmd.push(function(){googletag.display("div-gpt-ad-1631212846970-0")});googletag.cmd.push(function(){googletag.display("div-gpt-ad-1638800699918-0")});googletag.cmd.push(function(){googletag.display("div-gpt-ad-1639502269603-0")});
+googletag.cmd.push(function(){googletag.display("div-gpt-ad-1639571076010-0")});googletag.cmd.push(function(){googletag.display("div-gpt-ad-1639571124306-0")})})},3E3);</script>
+
+<style>
+  .cc_headline {
+    /*color: #333;*/
+    font-weight: 600;
+    font-size: 1.3em;
+  }
+  .cc_banner-wrapper  .cc_container {
+    padding: 60px 15%;
+  }
+  
+ .inner-container {
+   display: flex;
+   margin: 0 auto;
+  }  
+  @media only screen and (max-width: 1024px) {
+    .inner-container {
+     flex-direction: column;
+    } 
+  }
+  
+  .inner-container-left {
+   flex-grow: 1;
+  }
+  .inner-container-right {
+    flex-shrink: 0;
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cc_banner-wrapper .cc_container .cc_message {
+    font-size: 1.2em !important;
+    line-height: 1.3;
+    color: #333;
+    font-weight: 500;
+  }  
+  
+  .cc_container .cc_btn.cc_more_info, .cc_container .cc_btn.cc_more_info:visited {
+    background-color: #f4f4f4;
+  }
+  .cc_btn_no_border {
+   border:none !important; 
+    color:#999 !important;
+    background-color:#fff !important;
+  }
+  
+  .my-3 {
+   margin-bottom: 12px;
+   margin-top: 12px; 
+  }
+  
+  .cc_container .cc_btn {
+    width: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    border: 1px solid #999;
+    max-width: initial !important;
+}
+  
+  .cc_btn_accept_all{
+    background-color: #007d8d!important;
+    color: white !important;
+    border: none !important;
+}
+  
+  .cc_banner-wrapper .inner-container-left{
+color:#006885!important;
+}
+</style>
+<script type="text/javascript" id="">window.cookieconsent_options={message:"Wir verwenden Cookies von Drittanbietern, um Dienste bereitzustellen, Anzeigen zu personalisieren und Zugriffe zu analysieren, damit Ihre Webseitenerfahrung verbessert wird.",expiryDays:google_tag_manager["GTM-PJK98V"].macro(12),markup:'\x3cdiv\x3e;\x3cdiv class\x3d"cc_banner-wrapper "\x3e;\x3cdiv class\x3d"cc_banner cc_container cc_container--open"\x3e;\x3cdiv class\x3d"inner-container"\x3e;\x3cdiv class\x3d"inner-container-left"\x3e;\x3ch3 class\x3d"cc_headline" \x3eWählen Sie Ihre Cookie-Einstellungen\x3c/h3\x3e;\x3cp class\x3d"cc_message"\x3e{{options.message}}\x3c/p\x3e;\x3ca class\x3d"cc_logo" target\x3d"_blank" href\x3d"http://silktide.com/cookieconsent"\x3eCookie Consent plugin for the EU cookie law\x3c/a\x3e;\x3c/div\x3e;\x3cdiv class\x3d"inner-container-right my-3 "\x3e;\x3ca href\x3d"#null" id\x3d"cc-opt-in" onclick\x3d"cc_page_reload()" data-cc-event\x3d"click:dismiss" target\x3d"_blank" class\x3d"cc_btn cc_btn_accept_all btn_reload_activity"\x3e{{options.dismiss}}\x3c/a\x3e;\x3ca data-cc-if\x3d"options.link" target\x3d"{{ options.target }}" class\x3d"cc_more_info cc_btn cc_btn_no_border" href\x3d"{{options.link || "#null"}}"\x3e{{options.learnMore}}\x3c/a\x3e;\x3c/div\x3e;\x3c/div\x3e;\x3c/div\x3e;\x3c/div\x3e;\x3c/div\x3e'.split(";"),
+dismiss:"Alle Cookies akzeptieren",learnMore:"Cookie-Einstellungen anpassen",link:"\/datenschutz\/",theme:"light-bottom"};</script>
+
+<script type="text/javascript" id="">!function(){if(!window.hasCookieConsent){window.hasCookieConsent=!0;var u="cookieconsent_options",v="update_cookieconsent_options",q="cookieconsent_dismissed",w="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/";if(!(-1<document.cookie.indexOf(q))){"function"!=typeof String.prototype.trim&&(String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,"")});var r,g={isArray:function(a){a=Object.prototype.toString.call(a);return"[object Array]"==a},isObject:function(a){return"[object Object]"==
+Object.prototype.toString.call(a)},each:function(a,d,b,f){if(g.isObject(a)&&!f)for(var l in a)a.hasOwnProperty(l)&&d.call(b,a[l],l,a);else for(f=0,l=a.length;l>f;f++)d.call(b,a[f],f,a)},merge:function(a,d){a&&g.each(d,function(b,f){g.isObject(b)&&g.isObject(a[f])?g.merge(a[f],b):a[f]=b})},bind:function(a,d){return function(){return a.apply(d,arguments)}},queryObject:function(a,d){var b,f=0;for(d=d.split(".");(b=d[f++])&&a.hasOwnProperty(b)&&(a=a[b]);)if(f===d.length)return a;return null},setCookie:function(a,
+d,b,f,l){b=b||365;var m=new Date;m.setDate(m.getDate()+b);a=[a+"\x3d"+d,"expires\x3d"+m.toUTCString(),"path\x3d"+l||"/"];f&&a.push("domain\x3d"+f);document.cookie=a.join(";")},addEventListener:function(a,d,b){a.addEventListener?a.addEventListener(d,b):a.attachEvent("on"+d,b)}},y=function(){var a="data-cc-event",d="data-cc-if",b=function(c,h,k){return g.isArray(h)?g.each(h,function(e){b(c,e,k)}):void(c.addEventListener?c.addEventListener(h,k):c.attachEvent("on"+h,k))},f=function(c,h){return c.replace(/\{\{(.*?)\}\}/g,
+function(k,e){for(k=e.split("||");e=k.shift();){if(e=e.trim(),'"'===e[0])return e.slice(1,e.length-1);if(e=g.queryObject(h,e))return e}return""})},l=function(c,h,k){c=c.parentNode.querySelectorAll("["+h+"]");g.each(c,function(e){var n=e.getAttribute(h);k(e,n)},window,!0)},m=function(c,h){l(c,a,function(k,e){e=e.split(":");var n=g.queryObject(h,e[1]);b(k,e[0],g.bind(n,h))})},x=function(c,h){l(c,d,function(k,e){(e=g.queryObject(h,e))||k.parentNode.removeChild(k)})};return{build:function(c,h){g.isArray(c)&&
+(c=c.join(""));c=f(c,h);var k=document.createElement("div");c=(k.innerHTML=c,k.children[0]);return m(c,h),x(c,h),c}}}(),p={options:{message:"This website uses cookies to ensure you get the best experience on our website. ",dismiss:"Got it!",learnMore:"More info",link:null,target:"_self",container:null,theme:"light-floating",domain:null,path:"/",expiryDays:365,markup:'\x3cdiv class\x3d"cc_banner-wrapper {{containerClasses}}"\x3e;\x3cdiv class\x3d"cc_banner cc_container cc_container--open"\x3e;\x3ca href\x3d"#null" data-cc-event\x3d"click:dismiss" target\x3d"_blank" class\x3d"cc_btn cc_btn_accept_all"\x3e{{options.dismiss}}\x3c/a\x3e;\x3cp class\x3d"cc_message"\x3e{{options.message}} \x3ca data-cc-if\x3d"options.link" target\x3d"{{ options.target }}" class\x3d"cc_more_info" href\x3d"{{options.link || "#null"}}"\x3e{{options.learnMore}}\x3c/a\x3e\x3c/p\x3e;\x3ca class\x3d"cc_logo" target\x3d"_blank" href\x3d"http://silktide.com/cookieconsent"\x3eCookie Consent plugin for the EU cookie law\x3c/a\x3e;\x3c/div\x3e;\x3c/div\x3e'.split(";")},
+init:function(){var a=window[u];a&&this.setOptions(a);this.setContainer();this.options.theme?this.loadTheme(this.render):this.render()},setOptionsOnTheFly:function(a){this.setOptions(a);this.render()},setOptions:function(a){g.merge(this.options,a)},setContainer:function(){this.options.container?this.container=document.querySelector(this.options.container):this.container=document.body;this.containerClasses="";-1<navigator.appVersion.indexOf("MSIE 8")&&(this.containerClasses+=" cc_ie8")},loadTheme:function(a){var d=
+this.options.theme;-1===d.indexOf(".css")&&(d=w+d+".css");var b=document.createElement("link");b.rel="stylesheet";b.type="text/css";b.href=d;var f=!1;b.onload=g.bind(function(){!f&&a&&(a.call(this),f=!0)},this);document.getElementsByTagName("head")[0].appendChild(b)},render:function(){this.element&&this.element.parentNode&&(this.element.parentNode.removeChild(this.element),delete this.element);this.element=y.build(this.options.markup,this);this.container.firstChild?this.container.insertBefore(this.element,
+this.container.firstChild):this.container.appendChild(this.element)},dismiss:function(a){a.preventDefault&&a.preventDefault();a.returnValue=!1;this.setDismissedCookie();this.container.removeChild(this.element);dataLayer.push({event:"accept_cookies"})},setDismissedCookie:function(){g.setCookie(q,"yes",this.options.expiryDays,this.options.domain,this.options.path)}},t=!1;(r=function(){t||"complete"!=document.readyState||(p.init(),t=!0,window[v]=g.bind(p.setOptionsOnTheFly,p))})();g.addEventListener(document,
+"readystatechange",r)}}}();</script>
+
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","474319973130265");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=407071789447604&amp;ev=PageView&amp;noscript=1"></noscript>
+<script type="text/javascript" id="">var delete_cookie=function(a){document.cookie=a+"\x3d;expires\x3dThu, 01 Jan 1970 00:00:01 GMT;";document.cookie=a+"\x3d;expires\x3dThu, 01 Jan 1970 00:00:00 GMT; path\x3d/"},cc_page_reload=function(){delete_cookie("ga-disable-UA-18197167-40")};-1<document.cookie.indexOf(google_tag_manager["GTM-PJK98V"].macro(37)+"\x3dtrue")&&(window[cookieDismiss]=!0);function listCookies(){for(var a=document.cookie.split(";"),c="",b=1;b<=a.length;b++)c+=b+" "+a[b-1]+"\n";return c}
+function setDismissCookie(a,c,b,e,f){b=b||365;var d=new Date;d.setDate(d.getDate()+b);a=[a+"\x3d"+c,"expires\x3d"+d.toUTCString(),"path\x3d"+f||"/"];e&&a.push("domain\x3d"+e);document.cookie=a.join(";")}function removedDismissedCookie(){delete_cookie(google_tag_manager["GTM-PJK98V"].macro(38));var a=document.getElementById("optoutlink"),c=document.getElementById("disabledoptoutlink");a&&a.setAttribute("style","display:none;");c&&c.setAttribute("style","color:gray;");location.reload()}
+function cookieDismiss(){setDismissCookie(google_tag_manager["GTM-PJK98V"].macro(39),"yes",google_tag_manager["GTM-PJK98V"].macro(40),void 0,"/");window[cookieDismiss]=!0;delete_cookie("ga-disable-UA-18197167-40");location.reload()};</script><iframe src="./Warum ist Sprache so wichtig__files/container.html" style="visibility: hidden; display: none;"></iframe><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" src="./Warum ist Sprache so wichtig__files/anchor.html" width="256" height="60" role="presentation" name="a-v16n4c82070j" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Warum ist Sprache so wichtig__files/saved_resource(1).html"></iframe></div></body></html>

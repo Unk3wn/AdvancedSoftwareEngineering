@@ -6,11 +6,81 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Domain Driven Design}
+	
 
-	\section{Analyse der Ubiquitous Language}
+	\section{Ubiquitous Language}
+	Die \hk{ubiquitous language} ist ein Begriff, den \citeauthor{evans2004ddd} in seinem Buch \citetitle{evans2004ddd} eingeführt hat. Dieser Begriss beschreibt die allgegenwärtige Sprache, die von Softwareentwickler*innen und Fachexpert*innen gemeinsam gesprochen wird \cite{ubiquitousLanguage.entwicklerDE}. Sie soll der Basis für die Entwicklung des Softwaremodells sein.
+	
+		\subsection{Analyse der Ubiquitous Language}
+		In diesem Projekt ist die \hk{ubiquitous language} relativ einfach gehalten, da die Fachdomäne überschaubar ist. Aufgrund dieser beschränkten Problemdomäne sollten keine schwerwiegenden Kommunikationsprobleme in der gemeinsamen Sprache auftreten. Jedoch ist es auch hier wichtig, bestimmte Thematiken und Objekttypen exakt zu spezifizieren um Problemen direkt vor deren Entstehung entgegenzuwirken.
+		
+		\begin{table}[ht]
+			\begin{adjustbox}{width=1\textwidth}
+				\begin{tabular}{|l|c|}
+					\hline
+					\multicolumn{2}{|c|}{Ubiquitous Language} \\
+					\hline
+					\hk{normale} Bezeichnung 		&		Ubiquitous Language \\
+					\hline
+					Whiskeyflasche				&		Kleinste Entität des Systems. Einfach nur eine schöne, meist teure, Flasche Whiskey \\
+					Serie						&		0 .. n Whiskeyflaschen bilden zusammen eine Serie. Diese haben meist einen gemeinsamen Faktor, wie z.B. die Herkunft \\
+					\hline
+				\end{tabular}
+			\end{adjustbox}
+		\end{table}
+	
+		\subsection{Probleme bei der Ubiquitous Language \& deren Lösung \cite{ubiquitousLanguage.medium}}
+		\begin{itemize}
+			\item Übersetzen von komplexen Sachinhalten in einfache Sprache
+			\begin{itemize}
+				\item[] → Durch Wortdefinitionen eliminiert
+			\end{itemize}
+			\item Unterschiedliche Bezeichnungen für ein und das Selbe
+			\begin{itemize}
+				\item[] → Begriffe aus dem Definitionspool verwenden
+			\end{itemize}
+			\item Abstraktion der technischen Sachverhalte für die Domain Experten
+			\begin{itemize}
+				\item[] → Klar und deutliche Definitionen im Team und ständige Weiterentwicklung der Ubiquitous Language
+			\end{itemize}
+			\item Keine Rücksichtnahme der Domain Experten bei der Entwicklung des technischen Modells
+			\begin{itemize}
+				\item[] → Mit einbeziehen alles Parteien für das bestmögliche Ergebnis
+			\end{itemize}
+		\end{itemize}
 	
 	\section{Analyse und Begründung der verwendeten Muster}
 		
 		\subsection{Analyse}
+		Eine komplette Übersicht des \acl{DDD} ist in Anhang in \cref{a.1.ddd} beigefügt.
+			
+			\subsubsection{Value Objects \cite{valueObjects.medium}}
+			Das Value Object ist ein in der Softwareentwicklung häufig eingesetztes Entwurfsmuster. Wertobjekte(engl. \hk{Value Objects}) sind unveränderbare Objekte, die einen speziellen Wert repräsentieren. Soll der Wert geändert werden, so muss ein neues Wertobjekt erzeugt werden.
+			
+			\subsubsection{Entities \cite{domainModell.microsoft}}
+			Entitäten stellen im Domänemodell Objekte da, welche nicht nur durch die darin enthaltenen Attribute definiert, sondern primär durch ihre Identität, Kontinuität und Persistenz im Laufe der Zeit definiert werden. Entitäten sind im Domänenmodell sehr wichtig, da sie die Basis eines Modells darstellen.
+			
+			\subsubsection{Aggregates \cite{domainModell.microsoft}}
+			Ein Aggregat umfasst mindestens eine Entität: den sogennanten Aggregatstamm, der auch als Stammentität oder primäre Entität bezeichnet wird. Darüber hinaus kann es über mehrere untergeordnete Entitäten und Wertobjekte verfügen, wobei alle Entitäten und Objekte zusammenarbeiten, um erforderliche Verhaltensweisen und Transaktionen zu implementieren. \cref{a.1.aggregate}
+			
+			\subsubsection{Repositories \cite{repository.medium}}
+			Ein Repository vermittelt zwischen der Domänen- und der Datenzuordnungsebene mithilfe einer sammlungsähnlichen Schnittstelle für den Zugriff auf Domänenobjekte. Hierbei kann die Anwendung einfach vorhandene Entitäten aus der Persistenzebene laden, speichern, updaten oder löschen.
+			
+			\subsubsection{Domain Service \cite{domainService.gorodinski}}
+			Eric Evans beschreibt in seinem Buch \citetitle{evans2004ddd} einen Domänen Service wie folgt : 
+			\begin{displayquote}
+				When a significant process or transformation in the domain is not a natural responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as standalone interface declared as a SERVICE. Define the interface in terms of the language of the model and make sure the operation name is part of the UBIQUITOUS LANGUAGE. Make the SERVICE stateless.
+			\end{displayquote}
+			Hierbei ist grob gesagt, dass ein signifikanter Prozess oder eine Transformation, die über die Verantwortung einer Entität hinaus geht, als eine eigenständige Operation des Modells als Interface mit dem Namen \hk{Service} hinzugefügt werden muss. Somit beschreibt ein Service einen Prozess, der über die Verantwortung einer Entität oder eines Wertobjektes hinaus geht.
 		
 		\subsection{Begründung}
+		
+			\subsubsection{Value Objects}
+			
+			\subsubsection{Entities}
+			
+			\subsubsection{Aggregates}
+			
+			\subsubsection{Repositories}
+			
+			\subsubsection{Domain Service}

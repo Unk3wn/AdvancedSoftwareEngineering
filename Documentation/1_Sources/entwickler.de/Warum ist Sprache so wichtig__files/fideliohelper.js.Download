@@ -1,0 +1,212 @@
+/*
+// see https://vuejs.org/v2/guide/mixins.html
+var mixin = {
+    data: {
+        whatev:"ashasdh"
+    }
+    methods: {
+      foo: function () {
+        console.log('foo')
+      },
+      conflicting: function () {
+        console.log('from mixin')
+      }
+    }
+};
+var vm = new Vue({
+  mixins: [mixin],
+  methods: {
+    bar: function () {
+      console.log('bar')
+    },
+    conflicting: function () {
+      console.log('from self')
+    }
+  }
+})
+
+
+*/
+Vue.mixin({
+    filters: {
+      formatedDate: function (date) {
+        return moment(date).locale('de').format('MMMM YYYY');
+      }
+    },
+    methods: {
+      addJSONLDToHead: function(jsonLDContent) {
+        if (jsonLDContent) {
+          let stringifiedVersion = JSON.stringify(jsonLDContent);
+          if (stringifiedVersion.length) {
+            let script223 = document.createElement('script');
+            script223.setAttribute('type', 'application/ld+json');
+            script223.textContent = stringifiedVersion;
+            document.head.appendChild(script223);
+          }
+        }
+      },
+      changeTextAndImage: function(articleContent, articleBaseURL){
+        let htmlToDisplay = false;
+          if (articleContent && articleContent.length && articleBaseURL && articleBaseURL.length){
+              
+              
+              let parser;
+              parser = new DOMParser();
+              xmlDoc = parser.parseFromString(articleContent, 'text/html');
+
+              if (articleBaseURL) {
+                  const images = xmlDoc.getElementsByTagName('img');
+                  if (images && images.length) {
+                    for (let i = 0; i < images.length; i++) {
+                      const theCurrentImage = images[i];
+                      if (theCurrentImage.attributes) {
+                        if (theCurrentImage.attributes.getNamedItem('src')) {
+                          const srcItem = theCurrentImage.attributes.getNamedItem('src');
+                          if (srcItem.value) {
+                            const src = xmlDoc.createAttribute('src');
+                            src.value = articleBaseURL + srcItem.value;
+                            theCurrentImage.attributes.setNamedItem(src);
+                          }
+                        }
+                      }
+                    }
+                  }
+              }
+
+              const vtags = xmlDoc.getElementsByTagName('video');
+              if (vtags && vtags.length) {
+                for (let i = 0; i < vtags.length; i++) {
+                  const thecurrentVTag = vtags[i];
+                  if (thecurrentVTag.attributes) {
+                    const poster = xmlDoc.createAttribute('poster');
+                    poster.value = '/wp-content/themes/understrap-child/reader-web-app-angular/assets/images/poster-video.png';
+                    thecurrentVTag.attributes.setNamedItem(poster);
+                  }
+                }
+              }
+
+              const atags = xmlDoc.getElementsByTagName('a');
+              if (atags && atags.length) {
+                for (let i = 0; i < atags.length; i++) {
+                  const thecurrentATag = atags[i];
+                  if (thecurrentATag.attributes) {
+                    const target = xmlDoc.createAttribute('target');
+                    target.value = '_blank';
+                    thecurrentATag.attributes.setNamedItem(target);
+                  }
+                }
+              }
+              this.htmlToDisplay = xmlDoc.body.innerHTML;
+          }
+          return this.htmlToDisplay
+          
+      },
+        processConcordObjectAfterLoad: function(concordObject) {
+            if (concordObject) {
+                concordObject.relUrl = this.getRelUrlForConcordObject(concordObject);
+            }
+            return concordObject;
+        },
+        getRelUrlForConcordObject : function(concordObject) {
+            var relUrl = '#';
+            //console.log('getRelUrlForConcordObject');
+            if (concordObject && concordObject.__typename) {
+                var typeNameOfConcordObject = concordObject.__typename;
+                //console.log('typeNameOfConcordObject: ' + typeNameOfConcordObject);
+                if (typeNameOfConcordObject == 'Brand') {
+                  if (concordObject.slug && concordObject.slug.length) {
+                    return '/magazine-ebooks/' + concordObject.slug;
+                  }
+                }
+                if (typeNameOfConcordObject == 'Issue') {
+                  if (concordObject.slug && concordObject.slug.length) {
+                    if (concordObject.brand && concordObject.brand.slug && concordObject.brand.slug.length) {
+                      return '/magazine-ebooks/' + concordObject.brand.slug + '/' + concordObject.slug;
+                    }
+                  }
+                }
+                if (typeNameOfConcordObject == 'Conference') {
+                  if (concordObject.slug && concordObject.slug.length) {
+                      return '/live-events/' + concordObject.slug;
+                  }
+                }
+                if (typeNameOfConcordObject == 'Author') {
+                    if (concordObject.slug && concordObject.slug.length) {
+                        return '/experten/' + concordObject.slug;
+                    }
+                }
+                if (typeNameOfConcordObject == 'Article') {
+                  if (concordObject.slug && concordObject.slug.length ) {
+                    // TODO:
+                    // check if we have archetypeArticle (clone) article
+                    // if yes use the archetypeArticle slug and archetypeArticle primary category 
+                    if (concordObject.archetypeArticle && concordObject.archetypeArticle.primaryCategory && 
+                      concordObject.archetypeArticle.slug && concordObject.archetypeArticle.slug.length &&
+                      concordObject.archetypeArticle.primaryCategory.slug && concordObject.archetypeArticle.primaryCategory.slug.length ) {
+                      return '/' + concordObject.archetypeArticle.primaryCategory.slug + '/' + concordObject.archetypeArticle.slug;
+                    }
+                    // if no use normal slug and primary category
+                    else if (concordObject.primaryCategory && concordObject.primaryCategory.slug && concordObject.primaryCategory.slug.length ) {
+                      return '/' + concordObject.primaryCategory.slug + '/' + concordObject.slug;
+                    }
+                  }
+                }
+
+                if (typeNameOfConcordObject == 'ArticleSeriesItem') {
+                  //console.log(concordObject);
+                  //console.log(concordObject.type);
+                  if (concordObject.type) {
+                    if (concordObject.slug && concordObject.slug.length) {
+                      if (concordObject.type == 'COLUMN') {
+                          if (concordObject.authors && concordObject.authors.length) {
+                            if (concordObject.authors[0].slug && concordObject.authors[0].slug.length) {
+                              return '/experten/' + concordObject.authors[0].slug + '/' + concordObject.slug;
+                            }
+                          }
+                      } else  if (concordObject.type == 'SERIES') {
+                        //console.log(concordObject);
+                        if (concordObject.articles && concordObject.articles.length) {
+                          //console.log(2);
+                          if (concordObject.articles[0].primaryCategory && concordObject.articles[0].primaryCategory.slug && concordObject.articles[0].primaryCategory.slug.length) {
+                            return '/' + concordObject.articles[0].primaryCategory.slug + '/artikelserie/' + concordObject.slug;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                
+            }
+            return relUrl;
+        },
+        getAjaxPublicDataUrl : function() {
+            return '/wp-json/fidelio/v1/get-public-data';
+        },
+        getAjaxPublicDataDetailUrl : function() {
+          return '/wp-json/fidelio/v1/get-public-data-detail';
+        },
+        loadPublicDataDetail: function(payload, successCbk, errorCbk) {
+          jQuery.ajax({
+              url: this.getAjaxPublicDataDetailUrl(),
+              type: 'POST',
+              data: payload
+          }).success(function(data, error) {
+              successCbk(data);
+          }).error(function(error) {
+              errorCbk(error);
+          })
+        },
+        loadPublicData: function(payload, successCbk, errorCbk) {
+            jQuery.ajax({
+                url: this.getAjaxPublicDataUrl(),
+                type: 'POST',
+                data: payload
+            }).success(function(data, error) {
+                successCbk(data);
+            }).error(function(error) {
+                errorCbk(error);
+            })
+        }
+    }
+  });

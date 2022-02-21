@@ -1,0 +1,9 @@
+.scn_hidden {
+	display: none;
+}
+
+.scn_unsubscribe_window,
+.scn_info_unsubscribe_window {
+    border: 1px solid;
+    padding: 20px;
+}

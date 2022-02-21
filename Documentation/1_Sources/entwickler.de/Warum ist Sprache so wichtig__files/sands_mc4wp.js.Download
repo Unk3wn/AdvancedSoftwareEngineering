@@ -1,0 +1,74 @@
+
+/**
+ * tries to add all notices to a form elements response area
+ * @param formID the form for what we want to manipulate the response div
+ * @param notices the notices to display
+ * @returns nothing so far
+ */
+function findFormAndAppendMessage(formID, notices) {
+  if (formID && notices) {
+    var formElement = jQuery('#'+formID);
+    if (formElement.length) {
+      formElement = formElement[0];
+      var responseElements = jQuery(formElement).find('.mc4wp-response');
+      if (responseElements.length) {
+        responseElements = jQuery(responseElements[0]);
+        if (jQuery.isArray(notices)) {
+          responseElements.empty();
+          jQuery.each(notices, function( index, value ) {
+            /*
+            <div class="mc4wp-response">
+              <div class="mc4wp-alert mc4wp-success">
+                <p>Thank you, your sign-up request was successful! Please check your email inbox to confirm.</p>
+              </div>
+            </div>
+            <div class="mc4wp-response">
+              <div class="mc4wp-alert mc4wp-error">
+                <p>Oops. Something went wrong. Please try again later.</p>
+              </div>
+            </div>
+            */
+            if (value.type == 'error') {
+              responseElements.append('<div class="mc4wp-alert mc4wp-error">' + value.text + '</div>');
+            } else {
+              responseElements.append('<div class="mc4wp-alert mc4wp-success">' + value.text + '</div>');
+            }
+          });
+        }
+      }
+    }
+  }
+}
+/**
+ * finds the mc subscription forms by class mc4wp-form, attaches submission handler
+ * and takes care to submit via ajax and renders the answer
+ * @returns nothing so far
+ */
+jQuery(document).ready(function() {
+  jQuery(".mc4wp-form").submit(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+    var form = jQuery(this);
+    var url = form.attr('action');
+    var formID = form.attr('id');
+    var serializedFormData = form.serialize(); // serializes the form's elements.
+    jQuery.ajax({
+      type: "POST",
+      url: url,
+      data: serializedFormData, 
+      success: function(data)
+      {
+         if (data['mc4wp_form_element_id'] && data['notices']) {
+           findFormAndAppendMessage(data['mc4wp_form_element_id'], data['notices']);
+         }
+      },
+      error: function(data) {
+        if (data.responseJSON) {
+          var responseData = data.responseJSON;
+          if (responseData['mc4wp_form_element_id'] && responseData['notices']) {
+            findFormAndAppendMessage(responseData['mc4wp_form_element_id'], responseData['notices']);
+          }
+        }
+      }
+     });
+  });
+});
