@@ -110,7 +110,16 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation - Frontend
 
-TBD
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Unk3wn/AdvancedSoftwareEngineering.git
+   ```
+2. Navigate in the Folder /2 - Frontend - Angular/
+3. Download the needed Node Dependencys to run the Project
+   ```sh
+   npm install
+   ```
+4. Start the Backend in your IDE by Executing the start Method in the Json File 'package.json'
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -122,6 +131,8 @@ TBD
  - [Swagger](http://localhost:8080/swagger-ui/index.html)
  - [H2Console](http://localhost:8080/h2-ui/login.jsp)
 
+### Frontend
+ - [Frontend Angular](http://localhost:4200/)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- LICENSE -->
