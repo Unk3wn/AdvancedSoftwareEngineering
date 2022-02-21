@@ -127,10 +127,12 @@ To get a local copy up and running follow these simple example steps.
    npm install
    ```
    ![NPM Install](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_NPM_Install.png?raw=true)
-4. Start the Backend in your IDE by Executing the start Method in the Json File 'package.json'
+4. Start the Frontend in your IDE by Executing the start Method in the Json File 'package.json'
    ![Start Project](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_START_CONSOLE.png?raw=true)
    ![Start Project](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_START.png?raw=true)
    ![Start Project](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_VIEW.png?raw=true)
+5. Access https://localhost:4200 on your Browser to view the Frontend
+   ![Start Project](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/F_Overview.png?raw=true)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
