@@ -2,7 +2,13 @@
 
   <h1>Country's</h1>
 
-  <table class="table table-striped text-center">
+  <div *ngIf="countrys.length == 0">
+    Error Country could not be loaded! <br>
+    Is the <a href="http://localhost:8080/">Backend</a> started ??? <br>
+    Also take a look into the console ¯\_(ツ)_/¯
+  </div>
+
+  <table class="table table-striped text-center" *ngIf="countrys.length > 0">
     <tr>
       <th>UUID</th>
       <th>Abbreviation</th>
