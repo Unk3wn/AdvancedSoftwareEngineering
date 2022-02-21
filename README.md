@@ -36,7 +36,7 @@
   <p align="center">
     Project for the course Advanced Software Engineering @ DHBW Karlsruhe
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the documentation »</strong></a>
     <br />
   </p>
 </div>
