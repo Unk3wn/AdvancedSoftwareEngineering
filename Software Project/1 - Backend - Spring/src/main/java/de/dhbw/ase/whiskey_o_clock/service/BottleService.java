@@ -12,6 +12,8 @@ public interface BottleService {
     /**
      * CREATE
      **/
+    Bottle createBottle(Bottle bottle);
+
     Bottle createBottle(final BottleDTO bottleDTO);
 
     Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName);

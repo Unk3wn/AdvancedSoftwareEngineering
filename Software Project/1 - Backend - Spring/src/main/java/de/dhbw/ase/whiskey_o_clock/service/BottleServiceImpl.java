@@ -39,9 +39,13 @@ public class BottleServiceImpl implements BottleService {
         \_____|_|  \___|\__,_|\__\___|
      */
     @Override
-    public Bottle createBottle(BottleDTO bottleDTO) {
-        return createBottle(bottleDTO.getLabel(), bottleDTO.getPrice(), bottleDTO.getYearOfManufacture(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()).getName());
+    public Bottle createBottle (Bottle bottle){
+       return bottleRepository.save(bottle);
     }
+
+    @Override
+    public Bottle createBottle(BottleDTO bottleDTO) {
+        return createBottle(DTOMapper.convertDTOToBottle(manufacturerRepository,seriesRepository,bottleDTO));}
 
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName) {
@@ -122,7 +126,7 @@ public class BottleServiceImpl implements BottleService {
     public Bottle updateBottle(UUID bottleUUID, BottleDTO bottleDTO) {
         if (bottleRepository.existsById(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-            DTOMapper.updateBottleWithDTO(foundBottle, bottleDTO);
+            DTOMapper.updateBottleWithDTO(manufacturerRepository,seriesRepository,foundBottle, bottleDTO);
             bottleRepository.save(foundBottle);
             return foundBottle;
         }
