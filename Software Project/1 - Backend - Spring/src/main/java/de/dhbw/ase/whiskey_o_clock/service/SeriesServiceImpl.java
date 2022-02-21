@@ -97,7 +97,18 @@ public class SeriesServiceImpl implements SeriesService {
     */
     @Override
     public void deleteSeries(UUID uuid) {
-        seriesRepository.deleteById(uuid);
+        //Remove Series from Bottles#
+        if(seriesRepository.existsById(uuid)) {
+            Series targetSeries = seriesRepository.getSeriesByUuid(uuid);
+            List<Bottle> bottleList = bottleRepository.getBottlesBySeries(targetSeries);
+            if (null != bottleList){
+                for (Bottle bottle : bottleList) {
+                    bottle.setSeries(null);
+                    bottleRepository.save(bottle);
+                }
+            seriesRepository.deleteById(uuid);
+            }
+        }
     }
     /************************************************************************************************************************************/
 

@@ -38,12 +38,15 @@ public class DataInserter implements ApplicationListener<ApplicationReadyEvent> 
         manufacturerRepository.save(manufacturer);
 
         Bottle bottle = new Bottle("Paddys Special Brand", 69.42, 2022, manufacturer);
+        bottle.setForSale(true);
         bottleRepository.save(bottle);
 
         Bottle bottle2 = new Bottle("Paddys Special Brand 2", 69.42, 2022, manufacturer);
+        bottle2.setFavorite(true);
         bottleRepository.save(bottle2);
 
         Bottle bottle3 = new Bottle("Paddys Special Brand 3", 69.42, 2022, manufacturer);
+        bottle3.setUnsaleable(true);
         bottleRepository.save(bottle3);
 
         Series series = new Series("Paddys Best Selection");
