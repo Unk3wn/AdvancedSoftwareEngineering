@@ -104,7 +104,7 @@ To get a local copy up and running follow these simple example steps.
    ![GIT Clone](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/GITPULL.png?raw=true)
 2. Import the Project from the Folder /1 - Backend - Spring/ into your IDE
    ![Import](https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/zfiles/Bilder/B_Import.png?raw=true)
-4. Download the needed Maven Dependencys to run the Project
+4. Download the needed Maven Dependenciess to run the Project
    ```sh
    mvn install
    ```
