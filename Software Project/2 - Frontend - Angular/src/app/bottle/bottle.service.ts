@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {IBottle} from "./IBottle";
+import {ManufacturerService} from "../manufacturer/manufacturer.service";
+import {SeriesService} from "../series/series.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BottleService {
   private apiURL = "http://localhost:8080/bottle";
+
 
   /*------------------------------------------
   --------------------------------------------
@@ -25,13 +29,8 @@ export class BottleService {
   Created constructor
   --------------------------------------------
   --------------------------------------------*/
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private manufacturerService : ManufacturerService,private seriesService : SeriesService) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   getAll(): Observable<any> {
     return this.httpClient.get(this.apiURL)
       .pipe(
@@ -39,11 +38,21 @@ export class BottleService {
       )
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+  getAllManufacturers() : Observable<any> {
+    return this.manufacturerService.getAll();
+  }
+
+  getAllSeries() : Observable<any> {
+    return this.seriesService.getAll();
+  }
+
+  create(iBottle:IBottle): Observable<any> {
+    return this.httpClient.post(this.apiURL,JSON.stringify(iBottle),this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   delete(uuid:string){
     return this.httpClient.delete(this.apiURL + '?uuid=' + uuid, this.httpOptions)
       .pipe(
@@ -51,11 +60,6 @@ export class BottleService {
       )
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

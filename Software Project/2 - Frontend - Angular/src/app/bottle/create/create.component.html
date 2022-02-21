@@ -1,0 +1,94 @@
+<div class="container">
+  <h1>Create New Bottle</h1>
+
+  <br>
+
+  <a href="#" routerLink="/bottle/index" class="btn btn-primary">Back</a>
+
+  <br><br>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label for="label">Title:</label>
+    <input
+      formControlName="label"
+      id="label"
+      type="text"
+      class="form-control">
+    <div *ngIf="f['label'].touched && f['label'].invalid" class="alert alert-danger">
+      <div *ngIf="f['label'].errors && f['label'].errors['required']">Label is required.</div>
+    </div>
+
+    <br>
+
+    <label for="label">Price:</label>
+    <input
+      formControlName="price"
+      id="price"
+      type="text"
+      class="form-control">
+    <div *ngIf="f['price'].touched && f['price'].invalid" class="alert alert-danger">
+      <div *ngIf="f['price'].errors && f['price'].errors['required']">Price is required.</div>
+    </div>
+
+    <br>
+
+    <label for="label">Year Of Manufacture:</label>
+    <input
+      formControlName="yearOfManufacture"
+      id="yearOfManufacture"
+      type="text"
+      class="form-control">
+    <div *ngIf="f['yearOfManufacture'].touched && f['yearOfManufacture'].invalid" class="alert alert-danger">
+      <div *ngIf="f['yearOfManufacture'].errors && f['yearOfManufacture'].errors['required']">Year Of Manufacture is required.</div>
+    </div>
+
+    <br>
+
+    <label for="manufacturer">Manufacturer:</label>
+    <div>
+      <select formControlName="manufacturer" id="manufacturer">
+        <option [ngValue]="null" disabled>Select Manufacturer</option>
+        <option *ngFor="let manufacturer of manufacturers" [ngValue]="manufacturer.uuid">{{manufacturer.name}}</option>
+      </select>
+    </div>
+
+    <br>
+
+    <hr>
+    <label for="forSale">For Sale : &nbsp;</label>
+    <input
+        formControlName="forSale"
+        id="forSale"
+        type="checkbox">
+    <br>
+
+    <label for="favorite">Favorite : &nbsp;</label>
+    <input
+      formControlName="favorite"
+      id="favorite"
+      type="checkbox">
+
+    <br>
+
+    <label for="favorite">Not for Sale : &nbsp;</label>
+    <input
+      formControlName="unsaleable"
+      id="unsaleable"
+      type="checkbox">
+    <br>
+
+    <hr>
+
+    <label for="manufacturer">Series:</label>
+    <div>
+      <select formControlName="series" id="series">
+        <option [ngValue]="null" disabled>Select Series</option>
+        <option *ngFor="let series of serieses" [ngValue]="series.uuid">{{series.label}}</option>
+      </select>
+    </div>
+
+    <br>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+</div>

@@ -18,11 +18,6 @@ export class IndexComponent implements OnInit {
  --------------------------------------------*/
   constructor(public bottleService: BottleService) { }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   ngOnInit(): void {
     this.bottleService.getAll().subscribe((data: IBottle[])=>{
       this.bottles = data;
@@ -30,11 +25,6 @@ export class IndexComponent implements OnInit {
     })
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   deleteSeries(uuid:string){
     this.bottleService.delete(uuid).subscribe(res => {
       this.bottles = this.bottles.filter(item => item.uuid !== uuid);

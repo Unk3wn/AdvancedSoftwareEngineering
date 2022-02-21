@@ -8,31 +8,36 @@
     Also take a look into the console ¯\_(ツ)_/¯
   </div>
 
-  <table class="table table-striped text-center" *ngIf="bottles.length > 0">
-    <tr>
-      <th>UUID</th>
-      <th>Label</th>
-      <th>Price</th>
-      <th>Year of Manufacture</th>
-      <th>Manufacturer</th>
-      <th>Series</th>
-      <th>For Sale?</th>
-      <th>Favorite?</th>
-      <th>Unsaleable</th>
-      <th>Options</th>
-    </tr>
-    <tr *ngFor="let bottle of bottles">
-      <td>{{ bottle.uuid}}</td>
-      <td>{{ bottle.label }}</td>
-      <td>{{ bottle.price}}€</td>
-      <td>{{ bottle.yearOfManufacture}}</td>
-      <td>{{ bottle.manufacturer.name}} [{{bottle.manufacturer.originCountry.abbreviation}}]</td>
-      <td *ngIf="bottle.series">{{ bottle.series.label}}</td>
-      <td *ngIf="!bottle.series">No Series found!</td>
-      <td><input type="checkbox" [checked]="bottle.forSale == true" disabled="1"></td>
-      <td><input type="checkbox" [checked]="bottle.favorite == true" disabled="1"></td>
-      <td><input type="checkbox" [checked]="bottle.unsaleable == true" disabled="1"></td>
-      <td><button type="button" (click)="deleteSeries(bottle.uuid)" class="btn btn-danger">Delete</button></td>
-    </tr>
-  </table>
+  <br>
+  <div *ngIf="bottles.length > 0">
+    <a href="#" routerLink="/bottle/create/" class="btn btn-success">Create New Bottle</a>
+    <br>
+    <table class="table table-striped text-center" *ngIf="bottles.length > 0">
+      <tr>
+        <th>UUID</th>
+        <th>Label</th>
+        <th>Price</th>
+        <th>Year of Manufacture</th>
+        <th>Manufacturer</th>
+        <th>Series</th>
+        <th>For Sale?</th>
+        <th>Favorite?</th>
+        <th>Unsaleable</th>
+        <th>Options</th>
+      </tr>
+      <tr *ngFor="let bottle of bottles">
+        <td>{{ bottle.uuid}}</td>
+        <td>{{ bottle.label }}</td>
+        <td>{{ bottle.price}}€</td>
+        <td>{{ bottle.yearOfManufacture}}</td>
+        <td>{{ bottle.manufacturer.name}} [{{bottle.manufacturer.originCountry.abbreviation}}]</td>
+        <td *ngIf="bottle.series">{{ bottle.series.label}}</td>
+        <td *ngIf="!bottle.series">No Series found!</td>
+        <td><input type="checkbox" [checked]="bottle.forSale == true" disabled="1"></td>
+        <td><input type="checkbox" [checked]="bottle.favorite == true" disabled="1"></td>
+        <td><input type="checkbox" [checked]="bottle.unsaleable == true" disabled="1"></td>
+        <td><button type="button" (click)="deleteSeries(bottle.uuid)" class="btn btn-danger">Delete</button></td>
+      </tr>
+    </table>
+  </div>
 </div>
