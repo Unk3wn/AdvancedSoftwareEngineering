@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://medium.com/media/58be6062db0115e77c9726afc61757be -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Article Clean Architecture – Medium</title><meta name="description" content="You can&#39;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./c2589c1ffd515d7fad711b92537913c4.js.Download" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-0c70d27905a3824e6a9c3b9fddca6be1.css"><div id="gist102958840" class="gist">
+    <div class="gist-file" translate="no">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-bookcontroller-java" class="file my-2">
+    
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-java  ">
+
+      
+<div class="js-check-bidi js-blob-code-container blob-code-content">
+
+  <template class="js-file-alert-template"></template>
+<template class="js-line-alert-template"></template>
+
+  <table class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip="" data-tagsearch-lang="Java" data-tagsearch-path="BookController.java">
+        <tbody><tr>
+          <td id="file-bookcontroller-java-L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
+          <td id="file-bookcontroller-java-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">BookController</span> <span class="pl-k">extends</span> <span class="pl-e">BaseController</span> {</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
+          <td id="file-bookcontroller-java-LC2" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">@Autowired</span></td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
+          <td id="file-bookcontroller-java-LC3" class="blob-code blob-code-inner js-file-line">    <span class="pl-smi">BookManager</span> bookManager;</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
+          <td id="file-bookcontroller-java-LC4" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">@PostMapping</span>(<span class="pl-c1">value</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>/add<span class="pl-pds">"</span></span>, <span class="pl-c1">produces</span> <span class="pl-k">=</span> <span class="pl-smi">MediaType</span><span class="pl-c1"><span class="pl-k">.</span>APPLICATION_JSON_VALUE</span>)</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
+          <td id="file-bookcontroller-java-LC5" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">public</span> <span class="pl-k">ResponseEntity&lt;<span class="pl-smi">Map</span>&gt;</span> <span class="pl-en">integration</span>(<span class="pl-k">@RequestBody</span>(<span class="pl-c1">required</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>) <span class="pl-smi">BookRequestEntity</span> <span class="pl-v">bookRequestEntity</span>, <span class="pl-smi">HttpServletRequest</span> <span class="pl-v">request</span>)<span class="pl-k">throws</span> <span class="pl-smi">DomainException</span>{</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L6" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="6"></td>
+          <td id="file-bookcontroller-java-LC6" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">Book</span> book <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ModelMapper</span>()<span class="pl-k">.</span>map(bookRequestEntity, <span class="pl-smi">Book</span><span class="pl-k">.</span>class);</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L7" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="7"></td>
+          <td id="file-bookcontroller-java-LC7" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">BookResponseCoreEntity</span> bookResponseCoreEntity <span class="pl-k">=</span> bookManager<span class="pl-k">.</span>add(book);</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
+          <td id="file-bookcontroller-java-LC8" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">Map</span> trResponse <span class="pl-k">=</span> transformer<span class="pl-k">.</span>transform(bookResponseCoreEntity,<span class="pl-k">new</span> <span class="pl-smi">BookOperationResponseTransformer</span>());</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
+          <td id="file-bookcontroller-java-LC9" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-smi">ResponseEntity</span><span class="pl-k">.</span>status(<span class="pl-smi">HttpStatus</span><span class="pl-c1"><span class="pl-k">.</span>OK</span>)<span class="pl-k">.</span>body(trResponse);</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L10" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="10"></td>
+          <td id="file-bookcontroller-java-LC10" class="blob-code blob-code-inner js-file-line">    }</td>
+        </tr>
+        <tr>
+          <td id="file-bookcontroller-java-L11" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="11"></td>
+          <td id="file-bookcontroller-java-LC11" class="blob-code blob-code-inner js-file-line">}</td>
+        </tr>
+  </tbody></table>
+</div>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/pasindu-15/c2589c1ffd515d7fad711b92537913c4/raw/c8882897fdd0c8330fe307e823b4631ebae253b5/BookController.java" style="float:right">view raw</a>
+        <a href="https://gist.github.com/pasindu-15/c2589c1ffd515d7fad711b92537913c4#file-bookcontroller-java">
+          BookController.java
+        </a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; if (document) {document.domain = document.domain;}function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height);var elements = document.getElementsByClassName("gist-data"); for (var i = 0; i < elements.length; i++) {elements[i].style.overflow = "visible"}resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {try {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);} catch(error) {console.log('maybeResize error: ', error)}}maybeResize();</script><script defer="" src="./v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon="{&quot;rayId&quot;:&quot;6e17324c4a02914d&quot;,&quot;token&quot;:&quot;0b5f665943484354a59c39c6833f7078&quot;,&quot;version&quot;:&quot;2021.12.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+</body></html>

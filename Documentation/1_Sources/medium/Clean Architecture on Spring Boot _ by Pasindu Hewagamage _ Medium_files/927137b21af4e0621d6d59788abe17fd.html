@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://medium.com/media/927137b21af4e0621d6d59788abe17fd -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Article Clean Architecture – Medium</title><meta name="description" content="You can&#39;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./e58dfa1f89f04a4f9a85658bce2e21e3.js.Download" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-0c70d27905a3824e6a9c3b9fddca6be1.css"><div id="gist102959616" class="gist">
+    <div class="gist-file" translate="no">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-bookmanagertest-java" class="file my-2">
+    
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-java  ">
+
+      
+<div class="js-check-bidi js-blob-code-container blob-code-content">
+
+  <template class="js-file-alert-template"></template>
+<template class="js-line-alert-template"></template>
+
+  <table class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip="" data-tagsearch-lang="Java" data-tagsearch-path="BookManagerTest.java">
+        <tbody><tr>
+          <td id="file-bookmanagertest-java-L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
+          <td id="file-bookmanagertest-java-LC1" class="blob-code blob-code-inner js-file-line"> <span class="pl-k">@MockBean</span></td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
+          <td id="file-bookmanagertest-java-LC2" class="blob-code blob-code-inner js-file-line"> <span class="pl-smi">BookRepositoryInterface</span> bookRepository;</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
+          <td id="file-bookmanagertest-java-LC3" class="blob-code blob-code-inner js-file-line"> <span class="pl-k">@Autowired</span></td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
+          <td id="file-bookmanagertest-java-LC4" class="blob-code blob-code-inner js-file-line"> <span class="pl-smi">BookManager</span> bookManager;</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
+          <td id="file-bookmanagertest-java-LC5" class="blob-code blob-code-inner js-file-line"> <span class="pl-k">@Test</span></td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L6" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="6"></td>
+          <td id="file-bookmanagertest-java-LC6" class="blob-code blob-code-inner js-file-line"> <span class="pl-k">void</span> testAdd() throws <span class="pl-smi">DomainException</span> {</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L7" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="7"></td>
+          <td id="file-bookmanagertest-java-LC7" class="blob-code blob-code-inner js-file-line">   <span class="pl-smi">Book</span> book <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Book</span>(<span class="pl-s"><span class="pl-pds">"</span>Test Name<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Test Type<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Test Author<span class="pl-pds">"</span></span>);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
+          <td id="file-bookmanagertest-java-LC8" class="blob-code blob-code-inner js-file-line">        when(bookRepository<span class="pl-k">.</span>save(book))<span class="pl-k">.</span>thenReturn(book);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
+          <td id="file-bookmanagertest-java-LC9" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">BookResponseCoreEntity</span> bookResponseCoreEntity <span class="pl-k">=</span> bookManager<span class="pl-k">.</span>add(book);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L10" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="10"></td>
+          <td id="file-bookmanagertest-java-LC10" class="blob-code blob-code-inner js-file-line">        assertEquals(bookResponseCoreEntity<span class="pl-k">.</span>getCode(),<span class="pl-s"><span class="pl-pds">"</span>0000<span class="pl-pds">"</span></span>);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L11" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="11"></td>
+          <td id="file-bookmanagertest-java-LC11" class="blob-code blob-code-inner js-file-line">        <span class="pl-smi">DomainException</span> e <span class="pl-k">=</span> bookManager<span class="pl-k">.</span>createDomainError(<span class="pl-s"><span class="pl-pds">"</span>0001<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Add Book failure<span class="pl-pds">"</span></span>);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L12" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="12"></td>
+          <td id="file-bookmanagertest-java-LC12" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">try</span> {</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L13" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="13"></td>
+          <td id="file-bookmanagertest-java-LC13" class="blob-code blob-code-inner js-file-line">            when(bookRepository<span class="pl-k">.</span>save(book))<span class="pl-k">.</span>thenReturn(<span class="pl-c1">null</span>);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L14" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="14"></td>
+          <td id="file-bookmanagertest-java-LC14" class="blob-code blob-code-inner js-file-line">            bookManager<span class="pl-k">.</span>add(book);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L15" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="15"></td>
+          <td id="file-bookmanagertest-java-LC15" class="blob-code blob-code-inner js-file-line">        }<span class="pl-k">catch</span> (<span class="pl-smi">DomainException</span> ex){</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L16" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="16"></td>
+          <td id="file-bookmanagertest-java-LC16" class="blob-code blob-code-inner js-file-line">            assertEquals(ex,e);</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L17" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="17"></td>
+          <td id="file-bookmanagertest-java-LC17" class="blob-code blob-code-inner js-file-line">        }</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L18" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="18"></td>
+          <td id="file-bookmanagertest-java-LC18" class="blob-code blob-code-inner js-file-line"> }</td>
+        </tr>
+        <tr>
+          <td id="file-bookmanagertest-java-L19" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="19"></td>
+          <td id="file-bookmanagertest-java-LC19" class="blob-code blob-code-inner js-file-line">      </td>
+        </tr>
+  </tbody></table>
+</div>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/pasindu-15/e58dfa1f89f04a4f9a85658bce2e21e3/raw/93f14b78a2357c4d0c6e8031ded19e16c8e33d02/BookManagerTest.java" style="float:right">view raw</a>
+        <a href="https://gist.github.com/pasindu-15/e58dfa1f89f04a4f9a85658bce2e21e3#file-bookmanagertest-java">
+          BookManagerTest.java
+        </a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; if (document) {document.domain = document.domain;}function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height);var elements = document.getElementsByClassName("gist-data"); for (var i = 0; i < elements.length; i++) {elements[i].style.overflow = "visible"}resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {try {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);} catch(error) {console.log('maybeResize error: ', error)}}maybeResize();</script><script defer="" src="./v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon="{&quot;rayId&quot;:&quot;6e1732945e27914d&quot;,&quot;token&quot;:&quot;0b5f665943484354a59c39c6833f7078&quot;,&quot;version&quot;:&quot;2021.12.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+</body></html>
