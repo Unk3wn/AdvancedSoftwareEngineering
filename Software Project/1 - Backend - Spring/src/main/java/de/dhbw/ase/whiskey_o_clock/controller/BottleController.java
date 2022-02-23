@@ -32,6 +32,7 @@ public class BottleController {
     public Bottle createBottle(@RequestBody BottleDTO bottleDTO) {
         return bottleService.createBottle(bottleDTO);
     }
+
     @PostMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
     public Bottle createBottle(@RequestParam String bottleLabel, @RequestParam double bottlePrice, @RequestParam int yearOfManufacture, @RequestParam String manufacturerName) {
         return bottleService.createBottle(bottleLabel, bottlePrice, yearOfManufacture, manufacturerName);
@@ -94,8 +95,8 @@ public class BottleController {
     }
 
     @PutMapping(value = "/edit/series")
-    public Series updateSeriesForBottle(@RequestParam UUID bottleUUID, @RequestParam UUID seriesUUID){
-        return bottleService.updateBottleSeries(bottleUUID,seriesUUID);
+    public Series updateSeriesForBottle(@RequestParam UUID bottleUUID, @RequestParam UUID seriesUUID) {
+        return bottleService.updateBottleSeries(bottleUUID, seriesUUID);
     }
 
     /************************************************************************************************************************************/
@@ -113,7 +114,9 @@ public class BottleController {
     }
 
     @DeleteMapping("/series")
-    public BottleDTO deleteSeriesFromBottle(@RequestParam UUID bottleUUID){return bottleService.deleteSeriesFromBottleByUUID(bottleUUID);}
+    public BottleDTO deleteSeriesFromBottle(@RequestParam UUID bottleUUID) {
+        return bottleService.deleteSeriesFromBottleByUUID(bottleUUID);
+    }
 
     /************************************************************************************************************************************/
 }

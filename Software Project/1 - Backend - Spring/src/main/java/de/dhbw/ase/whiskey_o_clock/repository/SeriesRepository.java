@@ -10,7 +10,9 @@ public interface SeriesRepository extends JpaRepository<Series, UUID> {
 
     /** CREATE **/
 
-    /** READ **/
+    /**
+     * READ
+     **/
     Series getSeriesByUuid(UUID seriesUUID);
 
     /** UPDATE **/

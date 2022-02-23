@@ -39,13 +39,14 @@ public class BottleServiceImpl implements BottleService {
         \_____|_|  \___|\__,_|\__\___|
      */
     @Override
-    public Bottle createBottle (Bottle bottle){
-       return bottleRepository.save(bottle);
+    public Bottle createBottle(Bottle bottle) {
+        return bottleRepository.save(bottle);
     }
 
     @Override
     public Bottle createBottle(BottleDTO bottleDTO) {
-        return createBottle(DTOMapper.convertDTOToBottle(manufacturerRepository,seriesRepository,bottleDTO));}
+        return createBottle(DTOMapper.convertDTOToBottle(manufacturerRepository, seriesRepository, bottleDTO));
+    }
 
     @Override
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName) {
@@ -67,17 +68,17 @@ public class BottleServiceImpl implements BottleService {
         if (bottleRepository.existsByLabelAndManufacturer(label, manufacturerRepository.getFirstManufacturerByName(manufacturerName))) {
             throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!", label, manufacturerName));
         }
-        if(!manufacturerRepository.existsByName(manufacturerName)){
+        if (Boolean.FALSE.equals(manufacturerRepository.existsByName(manufacturerName))) {
             throw new ValidationException(String.format("Manufacturer '%s' not known!", manufacturerName));
         }
         Bottle newBottle = new BottleBuilder(label)
-            .price(price)
-            .yearOfManufacture(yearOfManufacture)
-            .manufacturer(manufacturerRepository.getFirstManufacturerByName(manufacturerName))
-            .forSale(isForSale)
-            .favorite(isFavorite)
-            .unsaleable(isUnsaleable)
-            .build();
+                .price(price)
+                .yearOfManufacture(yearOfManufacture)
+                .manufacturer(manufacturerRepository.getFirstManufacturerByName(manufacturerName))
+                .forSale(isForSale)
+                .favorite(isFavorite)
+                .unsaleable(isUnsaleable)
+                .build();
         bottleRepository.save(newBottle);
         return newBottle;
     }
@@ -126,7 +127,7 @@ public class BottleServiceImpl implements BottleService {
     public Bottle updateBottle(UUID bottleUUID, BottleDTO bottleDTO) {
         if (bottleRepository.existsById(bottleUUID)) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottleUUID);
-            DTOMapper.updateBottleWithDTO(manufacturerRepository,seriesRepository,bottleRepository,foundBottle, bottleDTO);
+            DTOMapper.updateBottleWithDTO(manufacturerRepository, seriesRepository, bottleRepository, foundBottle, bottleDTO);
             return foundBottle;
         }
         throw new ValidationException("UUID is not known");
@@ -150,7 +151,7 @@ public class BottleServiceImpl implements BottleService {
     @Override
     public Series updateBottleSeries(UUID bottleUUID, UUID seriesUUID) {
         if (bottleRepository.existsById(bottleUUID)) {
-            if(seriesRepository.existsById(seriesUUID)){
+            if (seriesRepository.existsById(seriesUUID)) {
                 Bottle bottle = bottleRepository.getBottleByUuid(bottleUUID);
                 bottle.setSeries(seriesRepository.getById(seriesUUID));
                 return bottle.getSeries();
@@ -198,7 +199,7 @@ public class BottleServiceImpl implements BottleService {
 
     @Override
     public BottleDTO deleteSeriesFromBottleByUUID(UUID bottleUUID) {
-        if(bottleRepository.existsById(bottleUUID)){
+        if (bottleRepository.existsById(bottleUUID)) {
             Bottle tempBottle = bottleRepository.getBottleByUuid(bottleUUID);
             tempBottle.setSeries(null);
             bottleRepository.save(tempBottle);

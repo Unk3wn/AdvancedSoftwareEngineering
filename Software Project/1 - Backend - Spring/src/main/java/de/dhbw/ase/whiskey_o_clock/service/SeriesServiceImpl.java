@@ -37,7 +37,7 @@ public class SeriesServiceImpl implements SeriesService {
      */
     @Override
     public Series createSeries(SeriesDTO seriesDTO) {
-        return createSeries(DTOMapper.convertDTOToSeries(bottleRepository,manufacturerRepository, seriesDTO));
+        return createSeries(DTOMapper.convertDTOToSeries(bottleRepository, manufacturerRepository, seriesDTO));
     }
 
     @Override
@@ -102,15 +102,15 @@ public class SeriesServiceImpl implements SeriesService {
     @Override
     public void deleteSeries(UUID uuid) {
         //Remove Series from Bottles#
-        if(seriesRepository.existsById(uuid)) {
+        if (seriesRepository.existsById(uuid)) {
             Series targetSeries = seriesRepository.getSeriesByUuid(uuid);
             List<Bottle> bottleList = bottleRepository.getBottlesBySeries(targetSeries);
-            if (null != bottleList){
+            if (null != bottleList) {
                 for (Bottle bottle : bottleList) {
                     bottle.setSeries(null);
                     bottleRepository.save(bottle);
                 }
-            seriesRepository.deleteById(uuid);
+                seriesRepository.deleteById(uuid);
             }
         }
     }

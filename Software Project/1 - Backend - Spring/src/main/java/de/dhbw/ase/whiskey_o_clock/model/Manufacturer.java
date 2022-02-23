@@ -1,7 +1,5 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
-import de.dhbw.ase.whiskey_o_clock.model.listener.BottleListener;
-import de.dhbw.ase.whiskey_o_clock.model.listener.CountryListener;
 import de.dhbw.ase.whiskey_o_clock.model.listener.ManufacturerListener;
 import lombok.*;
 import org.hibernate.Hibernate;

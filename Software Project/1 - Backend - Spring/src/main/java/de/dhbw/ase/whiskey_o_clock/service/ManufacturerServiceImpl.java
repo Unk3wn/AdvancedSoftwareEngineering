@@ -41,11 +41,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
-        if (!countryRepository.existsByAbbreviation(countryAbbreviation)) {
+        if (Boolean.FALSE.equals(countryRepository.existsByAbbreviation(countryAbbreviation))) {
             throw new ValidationException("Country-Abbreviation is not valid!");
         }
         Country targetCountry = countryRepository.getCountryByAbbreviation(countryAbbreviation);
-        if (!manufacturerRepository.existsByName(name) || !targetCountry.equals(manufacturerRepository.getManufacturerByName(name))) {
+        if (Boolean.FALSE.equals(manufacturerRepository.existsByName(name)) || !targetCountry.equals(manufacturerRepository.getManufacturerByName(name))) {
             Manufacturer newManufacturer = new Manufacturer(name, countryRepository.getCountryByAbbreviation(countryAbbreviation));
             manufacturerRepository.save(newManufacturer);
             return newManufacturer;
@@ -88,7 +88,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     public Manufacturer updateManufacturer(UUID manufacturerUUID, ManufacturerDTO manufacturerDTO) {
         if (manufacturerRepository.existsById(manufacturerUUID)) {
             Manufacturer foundManufacturer = manufacturerRepository.getManufacturerByUuid(manufacturerUUID);
-            DTOMapper.updateManufacturerWithDTO(countryRepository,foundManufacturer, manufacturerDTO);
+            DTOMapper.updateManufacturerWithDTO(countryRepository, foundManufacturer, manufacturerDTO);
             manufacturerRepository.save(foundManufacturer);
             return foundManufacturer;
         }

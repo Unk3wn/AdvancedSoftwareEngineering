@@ -3,8 +3,6 @@ package de.dhbw.ase.whiskey_o_clock.service;
 import de.dhbw.ase.whiskey_o_clock.model.Country;
 import de.dhbw.ase.whiskey_o_clock.model.CountryDTO;
 
-import javax.validation.Valid;
-import javax.validation.Validation;
 import javax.validation.ValidationException;
 import java.util.List;
 import java.util.UUID;

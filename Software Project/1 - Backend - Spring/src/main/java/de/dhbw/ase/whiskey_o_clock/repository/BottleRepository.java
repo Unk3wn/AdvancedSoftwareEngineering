@@ -29,7 +29,8 @@ public interface BottleRepository extends JpaRepository<Bottle, UUID> {
     Bottle getBottleByUuid(UUID bottleUUID);
 
     boolean existsByLabel(String label);
-    boolean existsByLabelAndManufacturer(String label,Manufacturer manufacturer);
+
+    boolean existsByLabelAndManufacturer(String label, Manufacturer manufacturer);
 
     /** UPDATE **/
 

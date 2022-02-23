@@ -52,5 +52,6 @@ public interface BottleService {
      * DELETE
      **/
     void deleteBottleByUUID(UUID bottleUUID);
+
     BottleDTO deleteSeriesFromBottleByUUID(UUID bottleUUID);
 }

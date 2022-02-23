@@ -1,7 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import de.dhbw.ase.whiskey_o_clock.model.listener.BottleListener;
 import de.dhbw.ase.whiskey_o_clock.model.listener.SeriesListener;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -35,7 +34,7 @@ public class Series {
     @Column(name = "label")
     private String label;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="series")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "series")
     @JsonIgnoreProperties("series")
     private List<Bottle> bottleList = new LinkedList<>();
 

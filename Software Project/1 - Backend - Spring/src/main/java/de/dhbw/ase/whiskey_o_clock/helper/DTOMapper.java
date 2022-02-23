@@ -6,13 +6,10 @@ import de.dhbw.ase.whiskey_o_clock.repository.BottleRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.CountryRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.ManufacturerRepository;
 import de.dhbw.ase.whiskey_o_clock.repository.SeriesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.PostConstruct;
 import javax.validation.ValidationException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 public class DTOMapper {
 
@@ -39,7 +36,7 @@ public class DTOMapper {
         }
     }
 
-    public static void updateManufacturerWithDTO(CountryRepository countryRepository,Manufacturer manufacturer, ManufacturerDTO manufacturerDTO) {
+    public static void updateManufacturerWithDTO(CountryRepository countryRepository, Manufacturer manufacturer, ManufacturerDTO manufacturerDTO) {
         if (manufacturerDTO.getManufacturerName() != null) {
             manufacturer.setName(manufacturerDTO.getManufacturerName());
         }
@@ -49,36 +46,36 @@ public class DTOMapper {
     }
 
     public static BottleDTO convertBottleToDTO(Bottle bottle) {
-        if(bottle.getSeries() != null){
-            return new BottleDTO(bottle.getLabel(), bottle.getPrice(), bottle.getYearOfManufacture(), bottle.getManufacturer().getUuid(),bottle.isForSale(),bottle.isFavorite(),bottle.isUnsaleable(),bottle.getSeries().getUuid());
-          }else{
-            return new BottleDTO(bottle.getLabel(), bottle.getPrice(), bottle.getYearOfManufacture(), bottle.getManufacturer().getUuid(),bottle.isForSale(),bottle.isFavorite(),bottle.isUnsaleable(),null);
+        if (bottle.getSeries() != null) {
+            return new BottleDTO(bottle.getLabel(), bottle.getPrice(), bottle.getYearOfManufacture(), bottle.getManufacturer().getUuid(), bottle.isForSale(), bottle.isFavorite(), bottle.isUnsaleable(), bottle.getSeries().getUuid());
+        } else {
+            return new BottleDTO(bottle.getLabel(), bottle.getPrice(), bottle.getYearOfManufacture(), bottle.getManufacturer().getUuid(), bottle.isForSale(), bottle.isFavorite(), bottle.isUnsaleable(), null);
         }
     }
 
-    public static Bottle convertDTOToBottle(ManufacturerRepository manufacturerRepository,SeriesRepository seriesRepository,BottleDTO bottleDTO) {
-        if(null != bottleDTO.getLabel()){
+    public static Bottle convertDTOToBottle(ManufacturerRepository manufacturerRepository, SeriesRepository seriesRepository, BottleDTO bottleDTO) {
+        if (null != bottleDTO.getLabel()) {
             BottleBuilder bottleBuilder = new BottleBuilder(bottleDTO.getLabel());
-            if(null != bottleDTO.getPrice())
+            if (null != bottleDTO.getPrice())
                 bottleBuilder.price(bottleDTO.getPrice());
-            if(null != bottleDTO.getYearOfManufacture())
+            if (null != bottleDTO.getYearOfManufacture())
                 bottleBuilder.yearOfManufacture(bottleDTO.getYearOfManufacture());
-            if(null != bottleDTO.getManufacturer())
+            if (null != bottleDTO.getManufacturer())
                 bottleBuilder.manufacturer(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
-            if(bottleDTO.isForSale())
+            if (bottleDTO.isForSale())
                 bottleBuilder.forSale(bottleDTO.isForSale());
-            if(bottleDTO.isFavorite())
+            if (bottleDTO.isFavorite())
                 bottleBuilder.favorite(bottleDTO.isFavorite());
-            if(bottleDTO.isUnsaleable())
+            if (bottleDTO.isUnsaleable())
                 bottleBuilder.unsaleable(bottleDTO.isUnsaleable());
-            if(null != bottleDTO.getSeries())
+            if (null != bottleDTO.getSeries())
                 bottleBuilder.series(seriesRepository.getSeriesByUuid(bottleDTO.getSeries()));
             return bottleBuilder.build();
         }
         throw new ValidationException("Label not given!");
     }
 
-    public static void updateBottleWithDTO(ManufacturerRepository manufacturerRepository,SeriesRepository seriesRepository,BottleRepository bottleRepository,Bottle bottle, BottleDTO bottleDTO) {
+    public static void updateBottleWithDTO(ManufacturerRepository manufacturerRepository, SeriesRepository seriesRepository, BottleRepository bottleRepository, Bottle bottle, BottleDTO bottleDTO) {
         if (null != bottle.getLabel() && !bottle.getLabel().equals(bottleDTO.getLabel())) {
             bottle.setLabel(bottleDTO.getLabel());
         }
@@ -90,8 +87,8 @@ public class DTOMapper {
         }
         if (!bottle.getManufacturer().equals(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()))) {
             bottle.setManufacturer(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer()));
-        }else if(null == bottleDTO.getManufacturer()) {
-           bottle.setManufacturer(null);
+        } else if (null == bottleDTO.getManufacturer()) {
+            bottle.setManufacturer(null);
         }
         if (bottle.isForSale() != bottleDTO.isForSale()) {
             bottle.setForSale(bottleDTO.isForSale());
@@ -104,7 +101,7 @@ public class DTOMapper {
         }
         if (null == bottleDTO.getSeries()) {
             bottle.setSeries(null);
-        }else if(null != bottleDTO.getSeries() || null != bottle.getSeries() && bottle.getSeries() != seriesRepository.getSeriesByUuid(bottleDTO.getSeries())){
+        } else if (null != bottleDTO.getSeries() || null != bottle.getSeries() && bottle.getSeries() != seriesRepository.getSeriesByUuid(bottleDTO.getSeries())) {
             bottle.setSeries(seriesRepository.getSeriesByUuid(bottleDTO.getSeries()));
         }
         bottleRepository.save(bottle);
@@ -118,15 +115,15 @@ public class DTOMapper {
         return new SeriesDTO(series.getLabel(), bottleDTOList);
     }
 
-    public static Series convertDTOToSeries(BottleRepository bottleRepository,ManufacturerRepository manufacturerRepository,SeriesDTO seriesDTO) {
-        if(null != seriesDTO.getSeriesBottleList()){
+    public static Series convertDTOToSeries(BottleRepository bottleRepository, ManufacturerRepository manufacturerRepository, SeriesDTO seriesDTO) {
+        if (null != seriesDTO.getSeriesBottleList()) {
             List<Bottle> bottleList = new LinkedList<>();
             for (BottleDTO bottleDTO : seriesDTO.getSeriesBottleList()) {
                 // Hierbei wird ausgegangen, dass beim Selben Manufacturer keine zwei Whiskey's existieren, die den selben Namen haben
                 bottleList.add(bottleRepository.getFirstBottleByLabelAndManufacturer(bottleDTO.getLabel(), manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer())));
             }
             return new Series(seriesDTO.getSeriesLabel(), bottleList);
-        }else{
+        } else {
             return new Series(seriesDTO.getSeriesLabel());
         }
 
