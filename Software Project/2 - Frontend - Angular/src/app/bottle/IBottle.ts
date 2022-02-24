@@ -8,7 +8,7 @@ export interface IBottle {
   yearOfManufacture : number
   manufacturer : IManufacturer,
   forSale : boolean,
-  favorite : boolean;
+  favorite : boolean,
   unsaleable : boolean,
-  series : ISeries
+  series : ISeries,
 }
