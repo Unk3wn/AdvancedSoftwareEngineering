@@ -20,7 +20,7 @@ import static org.mockito.BDDMockito.verify;
 import static org.mockito.BDDMockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CountryServiceImplTest {
+class CountryApplicationServiceTest {
 
     @Mock
     CountryRepository countryRepository;
@@ -81,10 +81,17 @@ class CountryServiceImplTest {
         countryRepository.save(country);
 
         when(countryRepository.getCountryByUuid(countryUUID)).thenReturn(country);
-        when(countryRepository.save(country)).thenReturn(new Country(countryUUID, newAbbreviation, newCountryName));
+        when(countryRepository.save(country)).thenReturn(country);
         when(countryRepository.existsById(countryUUID)).thenReturn(true);
 
-        countryApplicationService.updateCountry(countryUUID, new Country(newAbbreviation,newCountryName));
+        country.setAbbreviation(newAbbreviation);
+        country.setName(newAbbreviation);
+
+        when(countryRepository.save(country)).thenReturn(new Country(countryUUID,newAbbreviation, newCountryName));
+        country = countryApplicationService.updateCountry(country);
+
+        assertEquals(newCountryName,country.getName());
+        assertEquals(newAbbreviation,country.getAbbreviation());
         verify(countryRepository,times(2)).save(any(Country.class));
     }
 
