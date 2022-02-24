@@ -1,5 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.domain.bottle;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.builder.BottleBuilder;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.listener.BottleListener;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
@@ -7,6 +8,7 @@ import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -47,6 +49,7 @@ public class Bottle {
     private boolean unsaleable;
     @ManyToOne
     @JoinColumn(name="series_id")
+    @JsonIgnoreProperties(value = "bottleList")
     private Series series;
 
     public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer) {
