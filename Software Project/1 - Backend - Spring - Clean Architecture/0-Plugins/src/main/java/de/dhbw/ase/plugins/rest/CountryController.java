@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
@@ -34,8 +33,8 @@ public class CountryController {
       \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public Country createCountry(@RequestBody CountryDTO handoverCountry) {
-        return countryApplicationService.saveCountry(CountryMapper.convertDTOToCountry(handoverCountry));
+    public Country createCountry(@RequestBody Country country) {
+        return countryApplicationService.saveCountry(country);
     }
 
     @PostMapping(value = "/new", params = {"countryAbbreviation", "countryName"})

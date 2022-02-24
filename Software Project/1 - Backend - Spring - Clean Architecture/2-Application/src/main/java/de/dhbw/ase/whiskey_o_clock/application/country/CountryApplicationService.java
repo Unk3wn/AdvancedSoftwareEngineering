@@ -31,7 +31,7 @@ public class CountryApplicationService{
         \_____|_|  \___|\__,_|\__\___|
      */
     public Country saveCountry(Country country) {
-        return countryRepository.save(country);
+        return saveCountry(country.getAbbreviation(),country.getName());
     }
     public Country saveCountry(String abbreviation, String name) throws NonUniqueObjectException {
         if (!countryRepository.existsByAbbreviation(abbreviation)) {
