@@ -5,6 +5,7 @@ import {IBottle} from "../IBottle";
 import {BottleService} from "../bottle.service";
 import {IManufacturer} from "../../manufacturer/IManufacturer";
 import {ISeries} from "../../series/ISeries";
+import {bottom} from "@popperjs/core";
 
 @Component({
   selector: 'app-edit',
@@ -37,6 +38,7 @@ export class EditComponent implements OnInit {
       this.bottle = data;
     });
     this.form = new FormGroup({
+      uuid : new FormControl(this.uuid),
       label: new FormControl(''),
       price: new FormControl(''),
       yearOfManufacture: new FormControl(''),
@@ -46,11 +48,11 @@ export class EditComponent implements OnInit {
       unsaleable: new FormControl(''),
       series: new FormControl('')
     });
-    this.bottleService.getAllManufacturers().subscribe((data: IManufacturer[])=>{
-      this.manufacturers = data;
-    })
     this.bottleService.getAllSeries().subscribe((data: ISeries[])=>{
       this.serieses = data;
+    })
+    this.bottleService.getAllManufacturers().subscribe((data: IManufacturer[])=>{
+      this.manufacturers = data;
     })
   }
 
@@ -59,8 +61,8 @@ export class EditComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.form.value);
-    this.bottleService.update(this.uuid, this.form.value).subscribe((res:any) => {
+    console.log(this.bottle)
+    this.bottleService.update(this.uuid, this.bottle).subscribe((res:any) => {
       console.log('Bottle updated successfully!');
       this.router.navigateByUrl('bottle/index');
     })
