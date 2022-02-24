@@ -17,6 +17,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>0-Plugins</module>
+        <module>1-Adapters</module>
+        <module>2-Application</module>
+        <module>3-Domain</module>
+        <module>4-AbstractionCode</module>
     </modules>
 
     <properties>
