@@ -34,8 +34,8 @@ public class ManufacturerController {
       \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public Manufacturer createManufacturer(@RequestBody ManufacturerDTO manufacturerDTO) {
-        return manufacturerApplicationService.createManufacturer(ManufacturerMapper.convertDTOToManufacturer(manufacturerDTO));
+    public Manufacturer createManufacturer(@RequestBody Manufacturer manufacturer) {
+        return manufacturerApplicationService.createManufacturer(manufacturer);
     }
     @PostMapping(value = "/new", params = {"name", "countryAbbreviation"})
     public Manufacturer createManufacturer(@RequestParam String name, @RequestParam String countryAbbreviation) {
@@ -68,8 +68,8 @@ public class ManufacturerController {
             |_|
      */
     @PutMapping(value = "/edit")
-    public Manufacturer updateManufacturer(@RequestParam UUID manufacturerUUID, @RequestBody ManufacturerDTO handOverManufacturerDTO) {
-        return manufacturerApplicationService.updateManufacturer(manufacturerUUID, ManufacturerMapper.convertDTOToManufacturer(handOverManufacturerDTO));
+    public Manufacturer updateManufacturer(@RequestBody Manufacturer manufacturer) {
+        return manufacturerApplicationService.updateManufacturer(manufacturer);
     }
 
     /************************************************************************************************************************************/

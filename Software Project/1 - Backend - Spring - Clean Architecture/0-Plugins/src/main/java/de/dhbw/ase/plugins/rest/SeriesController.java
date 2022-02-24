@@ -35,8 +35,8 @@ public class SeriesController {
         \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public Series createSeries(@RequestBody SeriesDTO seriesDTO) {
-        return seriesApplicationService.createSeries(SeriesMapper.convertDTOToSeries(seriesDTO));
+    public Series createSeries(@RequestBody Series series) {
+        return seriesApplicationService.createSeries(series);
     }
     @PostMapping(value = "/new", params = {"seriesLabel"})
     public Series createSeries(@RequestParam String seriesLabel) {

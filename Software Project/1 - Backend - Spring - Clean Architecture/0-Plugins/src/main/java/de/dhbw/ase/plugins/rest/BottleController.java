@@ -36,8 +36,8 @@ public class BottleController {
          \_____|_|  \___|\__,_|\__\___|
     */
     @PostMapping(value = "")
-    public Bottle createBottle(@RequestBody BottleDTO bottleDTO) {
-        return bottleApplicationService.createBottle(BottleMapper.convertDTOToBottle(bottleDTO));
+    public Bottle createBottle(@RequestBody Bottle bottle) {
+        return bottleApplicationService.createBottle(bottle);
     }
     @PostMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
     public Bottle createBottle(@RequestParam String bottleLabel, @RequestParam double bottlePrice, @RequestParam int yearOfManufacture, @RequestParam String manufacturerName) {
@@ -81,8 +81,8 @@ public class BottleController {
               |_|
     */
     @PutMapping(value = "/edit")
-    public Bottle updateBottle(@RequestParam UUID uuid, @RequestBody BottleDTO handOverBottleDTO) {
-        return bottleApplicationService.updateBottle(uuid, BottleMapper.convertDTOToBottle(handOverBottleDTO));
+    public Bottle updateBottle(@RequestBody Bottle bottle) {
+        return bottleApplicationService.updateBottle(bottle);
     }
     @PutMapping(value = "/edit/forSale")
     public Bottle updateBottleForSale(@RequestParam UUID uuid, @RequestParam boolean newValue) {

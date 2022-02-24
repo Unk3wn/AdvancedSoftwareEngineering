@@ -74,8 +74,8 @@ public class CountryController {
             |_|
      */
     @PutMapping(value = "/edit")
-    public Country updateCountry(@RequestParam UUID countryUUID, @RequestBody CountryDTO handOverCountryDTO) {
-        return countryApplicationService.updateCountry(countryUUID, CountryMapper.convertDTOToCountry(handOverCountryDTO));
+    public Country updateCountry(@RequestBody Country country) {
+        return countryApplicationService.updateCountry(country);
     }
 
     /************************************************************************************************************************************/
