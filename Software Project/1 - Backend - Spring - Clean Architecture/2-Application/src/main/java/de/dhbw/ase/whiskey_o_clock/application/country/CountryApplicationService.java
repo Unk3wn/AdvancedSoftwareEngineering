@@ -72,8 +72,14 @@ public class CountryApplicationService{
               | |
               |_|
     */
-    public Country updateCountry(UUID countryUUID, Country convertedDTO) {
-        return null;
+    public Country updateCountry(Country country) {
+        if(countryRepository.existsById(country.getUuid())){
+            Country targetCountry = countryRepository.getCountryByUuid(country.getUuid());
+            targetCountry.setAbbreviation(country.getAbbreviation());
+            targetCountry.setName(country.getName());
+            return countryRepository.save(targetCountry);
+        }
+        throw new ValidationException("Country not found!");
     }
 
 

@@ -80,8 +80,14 @@ public class ManufacturerApplicationService {
               | |
               |_|
     */
-    public Manufacturer updateManufacturer(UUID manufacturerUUID, Manufacturer manufacturer) {
-        return null;
+    public Manufacturer updateManufacturer(Manufacturer manufacturer) {
+        if(manufacturerRepository.existsById(manufacturer.getUuid())){
+            Manufacturer targetCountry = manufacturerRepository.getManufacturerByUuid(manufacturer.getUuid());
+            targetCountry.setName(manufacturer.getName());
+            targetCountry.setOriginCountry(manufacturer.getOriginCountry());
+            return manufacturerRepository.save(targetCountry);
+        }
+        throw new ValidationException("Country not found!");
     }
 
     /************************************************************************************************************************************/

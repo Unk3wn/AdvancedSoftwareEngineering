@@ -9,6 +9,8 @@ import de.dhbw.ase.whiskey_o_clock.domain.series.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.ValidationException;
 import java.util.List;
 import java.util.UUID;
@@ -19,6 +21,9 @@ public class BottleApplicationService{
     private BottleRepository bottleRepository;
     private ManufacturerRepository manufacturerRepository;
     private SeriesRepository seriesRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Autowired
     public BottleApplicationService(ManufacturerRepository manufacturerRepository,BottleRepository bottleRepository,SeriesRepository seriesRepository){
@@ -109,8 +114,20 @@ public class BottleApplicationService{
               | |
               |_|
     */
-    public Bottle updateBottle(UUID uuid, Bottle convertDTOToBottle) {
-        return null;
+    public Bottle updateBottle(Bottle bottle) {
+        if(bottleRepository.existsById(bottle.getUuid())){
+            Bottle foundBottle = bottleRepository.getBottleByUuid(bottle.getUuid());
+            foundBottle.setLabel(bottle.getLabel());
+            foundBottle.setPrice(bottle.getPrice());
+            foundBottle.setYearOfManufacture(bottle.getYearOfManufacture());
+            foundBottle.setManufacturer(bottle.getManufacturer());
+            foundBottle.setForSale(bottle.isForSale());
+            foundBottle.setFavorite(bottle.isFavorite());
+            foundBottle.setUnsaleable(bottle.isUnsaleable());
+            foundBottle.setSeries(bottle.getSeries());
+            return bottleRepository.save(foundBottle);
+        }
+        throw new ValidationException("Bottle not found!");
     }
     public Bottle updateBottleForSale(UUID bottleUUID, Boolean isForSale) {
         return updateBooleanBottleValue(bottleUUID, isForSale, BottleBooleanType.FORSALE);
