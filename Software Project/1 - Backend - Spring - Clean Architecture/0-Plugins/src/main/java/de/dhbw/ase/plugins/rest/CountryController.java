@@ -44,8 +44,8 @@ public class CountryController {
         return countryToCountryDTOMapper.apply(countryApplicationService.saveCountry(countryDTOToCountryMapper.apply(countryDTO)));
     }
 
-    @PostMapping(value = "/new", params = {"countryAbbreviation", "countryName"})
-    public CountryDTO createCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
+    @PostMapping(value = "/new/{countryAbbreviation}/{countryName}")
+    public CountryDTO createCountry(@PathVariable("countryAbbreviation") String countryAbbreviation, @PathVariable("countryName") String countryName) {
         return countryToCountryDTOMapper.apply(countryApplicationService.saveCountry(countryAbbreviation, countryName));
     }
 
@@ -63,8 +63,8 @@ public class CountryController {
         return countryApplicationService.getAllCountrys().stream().map(countryToCountryDTOMapper).collect(Collectors.toList());
     }
 
-    @GetMapping("/abbreviation")
-    public CountryDTO getCountryByAbbreviation(@RequestParam String abbreviation) {
+    @GetMapping("/abbreviation/{countryAbbreviation}")
+    public CountryDTO getCountryByAbbreviation(@PathVariable("countryAbbreviation") String abbreviation) {
         return countryToCountryDTOMapper.apply(countryApplicationService.getCountryByAbbreviation(abbreviation));
     }
 
@@ -93,8 +93,8 @@ public class CountryController {
      | |__| |  __/ |  __/ ||  __/
      |_____/ \___|_|\___|\__\___|
      */
-    @DeleteMapping("")
-    public void deleteCountry(@RequestParam String abbreviation) {
+    @DeleteMapping("/{abbreviation}")
+    public void deleteCountry(@PathVariable("abbreviation") String abbreviation) {
         countryApplicationService.deleteCountry(abbreviation);
     }
 }

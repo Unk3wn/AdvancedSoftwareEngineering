@@ -71,9 +71,7 @@ class CountryControllerTest {
     void testCreateCountry() throws Exception {
         when(countryController.createCountry(countryAbbreviation, countryName)).thenReturn(new CountryDTO(countryUUID, countryAbbreviation, countryName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                        .post("/country/new")
-                        .param("countryAbbreviation", countryAbbreviation)
-                        .param("countryName", countryName)
+                        .post("/country/new/"+countryAbbreviation+"/"+countryName)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -100,8 +98,7 @@ class CountryControllerTest {
     void getCountryByAbbreviation() throws Exception {
         when(countryController.getCountryByAbbreviation(countryAbbreviation)).thenReturn(countryTestDTO);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                        .get("/country/abbreviation/")
-                        .param("abbreviation", countryAbbreviation)
+                        .get("/country/abbreviation/"+countryAbbreviation)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -130,10 +127,9 @@ class CountryControllerTest {
 
 
     @Test
-    void delteCountry() throws Exception {
+    void deleteCountry() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                        .delete("/country")
-                        .param("abbreviation", countryAbbreviation)
+                        .delete("/country/"+countryAbbreviation)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
