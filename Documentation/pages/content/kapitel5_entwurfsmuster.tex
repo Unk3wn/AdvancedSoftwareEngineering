@@ -6,9 +6,131 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Entwurfsmuster}
+	Im Buch \cite{gamma1994design} werden Muster anhand zweier Kriterien klassifiziert, der Zweck (engl. purpose) und der Bereich (engl. scope). Anhand dieser beiden Merkmale können die Muster in verschiedene Kategorien eingeordnet werden. Es gibt nach \cite{gamma1994design} drei Kategorien, in welche Entwurfsmuster eingeteilt werden. Außerdem erfolt in jeder Kategorie eine Einteilung in Klassen- und Objektmuster
+		
+		\section{Erzeugungsmuster}
+		Erzeugungsmuster abstrahieren Objekterzeugungsprozesse. Hier erfolgt eine weitere Einteilung in Klassen- und Objektmuster
+			
+			\subsection{Klassenmuster}
+			Klassenmuster nutzen Vererbung um die Klasse des zu erzeugenden Objektes zu variieren. Bekannte Vertreter sind hierbei
+			\begin{itemize}
+				\item Fabrikmethode (factory Method)
+			\end{itemize}
+			
+			\subsection{Objektmuster}
+			Objektmuster delegieren die Objekterzeugung an andere Objekte. Bekannte Vertreter sind hierbei
+			\begin{itemize}
+				\item Abstrakte Fabrik (engl. abstract factory, kit)
+				\item Einzelstück (engl. singelton)
+				\item Erbauer (engl. builder)
+				\item Prototyp (engl. prototyp)
+			\end{itemize}
 
-\section{Begründung des Einsatzes}
-
-\section{\ac{UML} Vorher}
-
-\section{\ac{UML} Nachher}
+		\subsection{Strukturmuster}
+		Strukturmuster fassen Klassen und Objekte zu größeren Strukturen zusammen.
+			
+			\subsection{Klassenmuster}
+			Klassenmuster fassen dabei Schnittstellen und Implementierungen zusammen. Hierbei werden die Strukturen zur Übersetzungszeit festgelegt und sind danach nicht mehr veränderbar. Bekannte Vertreter sind hierbei
+			\begin{itemize}
+				\item Adapter (engl. adapter / wrapper)
+			\end{itemize}
+			
+			\subsection{Objektmuster}
+			Objektmuster ordnen Objekte in eine Struktur ein. Diese Strukturierung ist in der Laufzeit veränderbar. Bekannte Vertreter sind hierbei
+			\begin{itemize}
+				\item Adapter (engl. adapter / wrapper)
+				\item Bridge (engl. bridge)
+				\item Stellvertreter (engl. surrogate)
+				\item Dekorierer (engl. decorator)
+				\item ...
+			\end{itemize}
+		
+		\subsection{Verhaltensmuster}
+		Verhaltensmuster beschreiben die Interaktion zwischen Objekten und komplexen Kontrollflüssen.
+			\subsection{Klassenmuster}
+			Klassenmuster teilen die Kontrolle auf verschiedene Klassen auf. Bekannte Vertreter sind hierbei
+			\begin{itemize}
+				\item Adapter (engl. adapter / Wrapper)
+			\end{itemize}
+			
+			\subsection{Objektmuster}
+			Objektmuster nutzen hierfür die Komposition statts der Vererbung. Bekannte Vertreter sind hierbei
+			\begin{itemize}
+				\item Beobachter (engl. vbserver)
+				\item Besucher (engl. visitor)
+				\item Iterator (engl. iterator)
+				\item Vermittler (engl. mediator) % Könnte Russland brauchen #standwithukraine
+				\item ...
+			\end{itemize}
+		
+	\section{Analyse der verwendeten Muster}
+		\subsection{Bridge Pattern}
+		Das Bridge Pattern ist in der Klasse der Strukturmuster, in der Sektion Objektmuster angesiedelt. Es befasst sich somit mit der Struktur im Projekt. Hierbei werden Objekte zu größeren Strukturen zusammengefasst. Konkret erfolgt die Anwendung dieses Muster im \modul{0 - Plugins} angwendet. Hierbei werden die eigentlichen \hk{JPA - Repository} über eine Bridge Klasse an die vorhandenen Repositorys im \modul{3 - Domain} angebunden. Diese Bridge Klassen implementieren so mit Hilfe der JPA-Repositorys die Interfaces, welche durch die Domain vorgegeben werden. \\
+		Dadurch wird die Implementierung von der Abstraktion entkoppelt. Konkret bedeutet dass, eine Entkopplung der eigentlichen Geschäftslogik von der Persistierung erfolgt. Hierbei kann die Persistierungslogik leicht ausgetauscht. Hierzu müsste die neue Lösung nur die gegebenen Methoden der Interfaces aus den Interfaces des \modul{3 - Domain} implementieren.
+	
+			\subsubsection{UML Vergleich}
+			Zur Verdeutlichung sind die \ac{UML}-Diagramme vor (\cref{a.5.bridge.before}) und nach (\cref{a.5.bridge.after}) der Anwendung des Entwurfsmuster angehängt.
+			
+		\subsection{Builder Pattern}
+		Das Builder Pattern ist in der Klasse der Erzeugungsmuster, in der Sektion Objektmuster angesiedelt. Es befasst sich somit mit der Generierung und Erschaffung von anderen Objekte. Hierzu wird eine \class{Builder} entwickelt, welche im Konstruktor die erforderlichen Attribute annimmt, um ein Projekt zu erschaffen. 
+		\begin{lstlisting}[language=java,caption={Beispiel eines Constructors des BottleBuildes},gobble=11]
+			public BottleBuilder(String label) {
+				this.label = label;
+			}
+		\end{lstlisting}
+		Im weiteren werden die nicht zwingend erforderlichen Attribute mit weiteren Methoden ergänzt. Wichtig ist, dass hierbei immer die aktuelle Instanz zurückgegeben wird.
+		\begin{lstlisting}[language=java,caption={Beispiel einer Builder Methode},gobble=11]
+			public BottleBuilder price(double price) {
+				this.price = price;
+				return this;
+			}
+		\end{lstlisting}
+		Schlussendlich muss der Erbauer noch ein Objekt des jeweiligen Types erschaffen. Hierzu muss in der Zielentität ein Konstruktor vorhanden sein, der einen Builder als Übergabeparameter akzeptiert. 
+		
+		\newpage
+		
+		\begin{lstlisting}[language=java,caption={Beispiel einer Builder Methode},gobble=11]
+			public Bottle(BottleBuilder bottleBuilder) {
+				this(bottleBuilder.getUuid(),
+				bottleBuilder.getLabel(), 
+				bottleBuilder.getPrice(), 
+				bottleBuilder.getYearOfManufacture(), 
+				bottleBuilder.getManufacturer(), 
+				bottleBuilder.isForSale(), 
+				bottleBuilder.isFavorite(), 
+				bottleBuilder.isUnsaleable(),
+				bottleBuilder.getSeries());
+			}
+		\end{lstlisting}
+		Schlussendlich wird das Zielobjekt erschaffen, wobei evtl. noch eine Validierung der Instanz stattfindet.
+		\begin{lstlisting}[language=java,caption={Beispiel einer build() Methode eines Builders},gobble=11]
+			public Bottle build() {
+				Bottle bottle = new Bottle(this);
+				//Validation
+				return bottle;
+			}
+		\end{lstlisting}
+		Die schlussendliche Erschaffung eines Objektes erfolgt nun im Baukasten - System. Hier am Beispiel der Umwandlung einer BottleDTO und einer Bottle-Entität
+		\begin{lstlisting}[language=java,caption={Beispiel einer build() Methode eines Builders},gobble=11,basicstyle=\tiny]
+			private Bottle map(BottleDTO bottleDTO) {
+				BottleBuilder newBottle = new BottleBuilder(bottleDTO.getLabel());
+				newBottle.uuid(bottleDTO.getUuid())
+				.price(bottleDTO.getPrice())
+				.yearOfManufacture(bottleDTO.getYearOfManufacture())
+				.manufacturer(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer().getUuid()))
+				.forSale(bottleDTO.getForSale())
+				.favorite(bottleDTO.getFavorite())
+				.unsaleable(bottleDTO.getUnsaleable());
+				if(bottleDTO.getSeries() != null){
+					newBottle.series(seriesRepository.getSeriesByUuid(bottleDTO.getSeries().getUuid()));
+				}else{
+					newBottle.series(null);
+				}
+				return newBottle.build();
+			}
+		\end{lstlisting}
+		Durch die Verwendung dieses Muster wird die Erschaffung und Repräsentation eines beliebigen Objektes getrennt. Hierbei wird die Erschaffungslogik in einer dedizierten Klasse gekapselt, die bei späteren Änderungen einfach angepasst werden kann.
+		
+		\subsubsection{UML Vergleich}
+		Hierbei wird auf den Vergleich mit Hilfe von \ac{UML}-Diagrammen verzichtet, da hier lediglich die Klasse selbst (before), bzw. eine Verbindung von der Klasse zum Builder zu sehen wäre. Außerdem wurde dieses Muster Schemenhaft am Beispiel der Bottle-Entität im \modul{3 - Domain} entwickelt. 
+		\par Die Java Libary Lombok vereinfacht diesen Prozess, indem die Klassen mit der Annotation \hk{@Builder} annotiert werden. So muss keine konkrete Entwicklung des Builders erfolgen

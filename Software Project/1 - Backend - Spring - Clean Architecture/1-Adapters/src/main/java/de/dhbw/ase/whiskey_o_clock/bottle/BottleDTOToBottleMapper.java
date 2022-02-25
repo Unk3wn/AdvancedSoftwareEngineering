@@ -41,7 +41,6 @@ public class BottleDTOToBottleMapper implements Function<BottleDTO, Bottle> {
         }else{
             newBottle.series(null);
         }
-
         return newBottle.build();
     }
 
