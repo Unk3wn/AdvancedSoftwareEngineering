@@ -110,8 +110,8 @@ public class BottleController {
     }
 
     @PutMapping(value = "/edit/series")
-    public SeriesDTO updateSeriesForBottle(@RequestParam UUID bottleUUID, @RequestParam UUID seriesUUID) {
-        return seriesToSeriesDTOMapper.apply(bottleApplicationService.updateBottleSeries(bottleUUID, seriesUUID));
+    public BottleDTO updateSeriesForBottle(@RequestParam UUID bottleUUID, @RequestParam UUID seriesUUID) {
+        return bottleToBottleDTOMapper.apply(bottleApplicationService.updateBottleSeries(bottleUUID, seriesUUID));
     }
 
     /************************************************************************************************************************************/

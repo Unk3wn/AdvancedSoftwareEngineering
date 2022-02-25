@@ -136,12 +136,13 @@ public class BottleApplicationService {
         return updateBooleanBottleValue(bottleUUID, isUnsaleable, BottleBooleanType.UNSALEABLE);
     }
 
-    public Series updateBottleSeries(UUID bottleUUID, UUID seriesUUID) {
+    public Bottle updateBottleSeries(UUID bottleUUID, UUID seriesUUID) {
         if (bottleRepository.existsById(bottleUUID)) {
             if (seriesRepository.existsById(seriesUUID)) {
                 Bottle bottle = bottleRepository.getBottleByUuid(bottleUUID);
                 bottle.setSeries(seriesRepository.getById(seriesUUID));
-                return bottle.getSeries();
+                bottleRepository.save(bottle);
+                return bottle;
             }
             throw new ValidationException("Series not found!");
         }
@@ -166,8 +167,6 @@ public class BottleApplicationService {
             return foundBottle;
         }
         throw new ValidationException("UUID is not known");
-
-
     }
 
     /************************************************************************************************************************************/
