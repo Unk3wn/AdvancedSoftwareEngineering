@@ -1,13 +1,19 @@
 package de.dhbw.ase.plugins.rest;
 
+import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.application.manufacturer.ManufacturerApplicationService;
+import de.dhbw.ase.whiskey_o_clock.country.CountryDTOToCountryMapper;
+import de.dhbw.ase.whiskey_o_clock.country.CountryToCountryDTOMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
+import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTOToManufacturer;
+import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerToManufacturerDTOMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
@@ -17,9 +23,14 @@ public class ManufacturerController {
 
     private ManufacturerApplicationService manufacturerApplicationService;
 
+    private ManufacturerDTOToManufacturer manufacturerDTOToManufacturer;
+    private ManufacturerToManufacturerDTOMapper manufacturerToManufacturerDTOMapper;
+
     @Autowired
-    private ManufacturerController(ManufacturerApplicationService manufacturerApplicationService) {
+    private ManufacturerController(ManufacturerApplicationService manufacturerApplicationService,ManufacturerDTOToManufacturer manufacturerDTOToManufacturer,ManufacturerToManufacturerDTOMapper manufacturerToManufacturerDTOMapper) {
         this.manufacturerApplicationService = manufacturerApplicationService;
+        this.manufacturerDTOToManufacturer = manufacturerDTOToManufacturer;
+        this.manufacturerToManufacturerDTOMapper = manufacturerToManufacturerDTOMapper;
     }
 
     /************************************************************************************************************************************/
@@ -32,13 +43,13 @@ public class ManufacturerController {
       \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public Manufacturer createManufacturer(@RequestBody Manufacturer manufacturer) {
-        return manufacturerApplicationService.createManufacturer(manufacturer);
+    public ManufacturerDTO createManufacturer(@RequestBody ManufacturerDTO manufacturerDTO) {
+        return manufacturerToManufacturerDTOMapper.apply(manufacturerApplicationService.createManufacturer(manufacturerDTOToManufacturer.apply(manufacturerDTO)));
     }
 
     @PostMapping(value = "/new", params = {"name", "countryAbbreviation"})
-    public Manufacturer createManufacturer(@RequestParam String name, @RequestParam String countryAbbreviation) {
-        return manufacturerApplicationService.createManufacturer(name, countryAbbreviation);
+    public ManufacturerDTO createManufacturer(@RequestParam String name, @RequestParam String countryAbbreviation) {
+        return manufacturerToManufacturerDTOMapper.apply(manufacturerApplicationService.createManufacturer(name, countryAbbreviation));
     }
 
     /************************************************************************************************************************************/
@@ -51,8 +62,8 @@ public class ManufacturerController {
      |_|  \_\___|\__,_|\__,_|
      */
     @GetMapping("")
-    public List<Manufacturer> getAllManufacturers() {
-        return manufacturerApplicationService.getAllManufacturers();
+    public List<ManufacturerDTO> getAllManufacturers() {
+        return manufacturerApplicationService.getAllManufacturers().stream().map(manufacturerToManufacturerDTOMapper).collect(Collectors.toList());
     }
 
     /************************************************************************************************************************************/
@@ -67,8 +78,8 @@ public class ManufacturerController {
             |_|
      */
     @PutMapping(value = "/edit")
-    public Manufacturer updateManufacturer(@RequestBody Manufacturer manufacturer) {
-        return manufacturerApplicationService.updateManufacturer(manufacturer);
+    public ManufacturerDTO updateManufacturer(@RequestBody ManufacturerDTO manufacturerDTO) {
+        return manufacturerToManufacturerDTOMapper.apply(manufacturerApplicationService.updateManufacturer(manufacturerDTOToManufacturer.apply(manufacturerDTO)));
     }
 
     /************************************************************************************************************************************/
