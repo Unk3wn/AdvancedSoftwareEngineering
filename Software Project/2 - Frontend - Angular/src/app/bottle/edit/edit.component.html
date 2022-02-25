@@ -44,6 +44,8 @@
 
     <br>
 
+    <label>Old Value : {{bottle.manufacturer.name}}</label>
+    <br>
     <label for="manufacturer">Manufacturer :</label>
     <div>
       <select formControlName="manufacturer" id="manufacturer" [(ngModel)]="bottle.manufacturer">
@@ -86,6 +88,8 @@
 
     <hr>
 
+    <label>Old Value : {{bottle.series ? bottle.series.label : 'Keiner Serie vorhanden du Schnabeltier ... rrRRrrrRRr !'}}</label>
+    <br>
     <label for="series">Series :</label> <br>
     <div>
       <select formControlName="series" id="series" [(ngModel)]="bottle.series">
