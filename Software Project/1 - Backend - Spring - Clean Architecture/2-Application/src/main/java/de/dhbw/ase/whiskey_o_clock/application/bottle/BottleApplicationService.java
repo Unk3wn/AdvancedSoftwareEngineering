@@ -9,8 +9,6 @@ import de.dhbw.ase.whiskey_o_clock.domain.series.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.validation.ValidationException;
 import java.util.List;
 import java.util.UUID;
@@ -21,9 +19,6 @@ public class BottleApplicationService{
     private BottleRepository bottleRepository;
     private ManufacturerRepository manufacturerRepository;
     private SeriesRepository seriesRepository;
-
-    @PersistenceContext
-    private EntityManager em;
 
     @Autowired
     public BottleApplicationService(ManufacturerRepository manufacturerRepository,BottleRepository bottleRepository,SeriesRepository seriesRepository){

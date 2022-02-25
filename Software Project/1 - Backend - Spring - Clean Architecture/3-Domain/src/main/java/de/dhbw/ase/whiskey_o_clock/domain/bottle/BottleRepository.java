@@ -26,5 +26,4 @@ public interface BottleRepository {
     /** DELETE **/
     void delete(Bottle bottleByUUID);
 
-
 }
