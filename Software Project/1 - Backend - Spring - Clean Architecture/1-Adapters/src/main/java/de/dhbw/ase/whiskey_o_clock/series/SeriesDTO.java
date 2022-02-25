@@ -1,5 +1,6 @@
 package de.dhbw.ase.whiskey_o_clock.series;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTO;
 import lombok.AllArgsConstructor;
@@ -18,11 +19,12 @@ public class SeriesDTO implements Serializable {
     @JsonProperty("seriesLabel")
     private final String seriesLabel;
     @JsonProperty("bottleList")
+    @JsonIgnoreProperties(value = "series")
     private final List<BottleDTO> seriesBottleList;
 
-    public SeriesDTO(String seriesLabel) {
-        this.uuid = null;
+    public SeriesDTO(UUID uuid, String seriesLabel) {
+        this.uuid = uuid;
         this.seriesLabel = seriesLabel;
-        this.seriesBottleList = new LinkedList<>();
+        this.seriesBottleList = null;
     }
 }

@@ -32,4 +32,16 @@ public class BottleDTO implements Serializable {
     @JsonProperty("series")
     @JsonIgnoreProperties(value = "seriesBottleList")
     private final SeriesDTO series;
+
+    public BottleDTO(UUID uuid, String label, Double price, Integer yearOfManufacture, ManufacturerDTO manufacturer, boolean forSale, boolean favorite, boolean unsaleable) {
+        this.uuid = uuid;
+        this.label = label;
+        this.price = price;
+        this.yearOfManufacture = yearOfManufacture;
+        this.manufacturer = manufacturer;
+        this.forSale = forSale;
+        this.favorite = favorite;
+        this.unsaleable = unsaleable;
+        this.series = null;
+    }
 }

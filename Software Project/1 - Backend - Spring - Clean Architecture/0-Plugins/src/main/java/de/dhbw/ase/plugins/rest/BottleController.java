@@ -1,6 +1,8 @@
 package de.dhbw.ase.plugins.rest;
 
 import de.dhbw.ase.whiskey_o_clock.application.bottle.BottleApplicationService;
+import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTO;
+import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTOToBottleMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +19,12 @@ import java.util.UUID;
 public class BottleController {
 
     private BottleApplicationService bottleApplicationService;
+    private BottleDTOToBottleMapper bottleDTOToBottleMapper;
 
     @Autowired
-    private BottleController(BottleApplicationService bottleApplicationService) {
+    private BottleController(BottleApplicationService bottleApplicationService,BottleDTOToBottleMapper bottleDTOToBottleMapper) {
         this.bottleApplicationService = bottleApplicationService;
+        this.bottleDTOToBottleMapper = bottleDTOToBottleMapper;
     }
 
     /************************************************************************************************************************************/
@@ -34,8 +38,8 @@ public class BottleController {
          \_____|_|  \___|\__,_|\__\___|
     */
     @PostMapping(value = "")
-    public Bottle createBottle(@RequestBody Bottle bottle) {
-        return bottleApplicationService.createBottle(bottle);
+    public Bottle createBottle(@RequestBody BottleDTO bottleDTO) {
+        return bottleApplicationService.createBottle(bottleDTOToBottleMapper.apply(bottleDTO));
     }
 
     @PostMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
@@ -80,8 +84,8 @@ public class BottleController {
               |_|
     */
     @PutMapping(value = "/edit")
-    public Bottle updateBottle(@RequestBody Bottle bottle) {
-        return bottleApplicationService.updateBottle(bottle);
+    public Bottle updateBottle(@RequestBody BottleDTO bottleDTO) {
+        return bottleApplicationService.updateBottle(bottleDTOToBottleMapper.apply(bottleDTO));
     }
 
     @PutMapping(value = "/edit/forSale")

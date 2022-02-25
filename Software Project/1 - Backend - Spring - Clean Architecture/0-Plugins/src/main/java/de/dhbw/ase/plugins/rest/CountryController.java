@@ -1,12 +1,16 @@
 package de.dhbw.ase.whiskey_o_clock.controller;
 
 import de.dhbw.ase.whiskey_o_clock.application.country.CountryApplicationService;
+import de.dhbw.ase.whiskey_o_clock.country.CountryDTO;
+import de.dhbw.ase.whiskey_o_clock.country.CountryDTOToCountryMapper;
+import de.dhbw.ase.whiskey_o_clock.country.CountryToCountryDTOMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.country.Country;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
@@ -16,9 +20,14 @@ public class CountryController {
 
     private CountryApplicationService countryApplicationService;
 
+    private CountryDTOToCountryMapper countryDTOToCountryMapper;
+    private CountryToCountryDTOMapper countryToCountryDTOMapper;
+
     @Autowired
-    private CountryController(CountryApplicationService countryApplicationService) {
+    private CountryController(CountryApplicationService countryApplicationService, CountryDTOToCountryMapper countryDTOToCountryMapper,CountryToCountryDTOMapper countryToCountryDTOMapper) {
         this.countryApplicationService = countryApplicationService;
+        this.countryDTOToCountryMapper = countryDTOToCountryMapper;
+        this.countryToCountryDTOMapper = countryToCountryDTOMapper;
     }
 
     /************************************************************************************************************************************/
@@ -31,13 +40,13 @@ public class CountryController {
       \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public Country createCountry(@RequestBody Country country) {
-        return countryApplicationService.saveCountry(country);
+    public CountryDTO createCountry(@RequestBody CountryDTO countryDTO) {
+        return countryToCountryDTOMapper.apply(countryApplicationService.saveCountry(countryDTOToCountryMapper.apply(countryDTO)));
     }
 
     @PostMapping(value = "/new", params = {"countryAbbreviation", "countryName"})
-    public Country createCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
-        return countryApplicationService.saveCountry(countryAbbreviation, countryName);
+    public CountryDTO createCountry(@RequestParam String countryAbbreviation, @RequestParam String countryName) {
+        return countryToCountryDTOMapper.apply(countryApplicationService.saveCountry(countryAbbreviation, countryName));
     }
 
     /************************************************************************************************************************************/
@@ -50,13 +59,13 @@ public class CountryController {
      |_|  \_\___|\__,_|\__,_|
      */
     @GetMapping("")
-    public List<Country> getAllCountrys() {
-        return countryApplicationService.getAllCountrys();
+    public List<CountryDTO> getAllCountrys() {
+        return countryApplicationService.getAllCountrys().stream().map(countryToCountryDTOMapper).collect(Collectors.toList());
     }
 
     @GetMapping("/abbreviation")
-    public Country getCountryByAbbreviation(@RequestParam String abbreviation) {
-        return countryApplicationService.getCountryByAbbreviation(abbreviation);
+    public CountryDTO getCountryByAbbreviation(@RequestParam String abbreviation) {
+        return countryToCountryDTOMapper.apply(countryApplicationService.getCountryByAbbreviation(abbreviation));
     }
 
     /************************************************************************************************************************************/
@@ -71,8 +80,8 @@ public class CountryController {
             |_|
      */
     @PutMapping(value = "/edit")
-    public Country updateCountry(@RequestBody Country country) {
-        return countryApplicationService.updateCountry(country);
+    public CountryDTO updateCountry(@RequestBody CountryDTO countryDTO) {
+        return countryToCountryDTOMapper.apply(countryApplicationService.updateCountry(countryDTOToCountryMapper.apply(countryDTO)));
     }
 
     /************************************************************************************************************************************/

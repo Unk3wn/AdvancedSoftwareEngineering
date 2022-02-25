@@ -46,11 +46,11 @@ public class BottleApplicationService {
     }
 
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale) {
-        return createBottle(label, price, yearOfManufacture, manufacturerName, false, false);
+        return createBottle(label, price, yearOfManufacture, manufacturerName, isForSale, false);
     }
 
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite) {
-        return createBottle(label, price, yearOfManufacture, manufacturerName, false, false, false);
+        return createBottle(label, price, yearOfManufacture, manufacturerName, isForSale, isFavorite, false);
     }
 
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {

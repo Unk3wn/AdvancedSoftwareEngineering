@@ -2,6 +2,7 @@ package de.dhbw.ase.plugins.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.dhbw.ase.whiskey_o_clock.application.country.CountryApplicationService;
+import de.dhbw.ase.whiskey_o_clock.country.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.domain.country.Country;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +40,22 @@ class CountryControllerTest {
     CountryApplicationService countryApplicationService;
 
     UUID countryUUID = UUID.randomUUID();
+    UUID countryUUID1 = UUID.randomUUID();
+    UUID countryUUID2 = UUID.randomUUID();
+    UUID countryUUID3 = UUID.randomUUID();
     String countryAbbreviation = "TES";
     String countryName = "Testcountry";
 
     Country countryTest = new Country(countryUUID, countryAbbreviation, countryName);
+    CountryDTO countryTestDTO = new CountryDTO(countryUUID, countryAbbreviation, countryName);
 
-    Country c1 = new Country("EIN", "EINS");
-    Country c2 = new Country("ZWE", "ZWEI");
-    Country c3 = new Country("DRE", "DREI");
+    CountryDTO c1 = new CountryDTO(countryUUID1,"EIN", "EINS");
+    CountryDTO c2 = new CountryDTO(countryUUID2,"ZWE", "ZWEI");
+    CountryDTO c3 = new CountryDTO(countryUUID3,"DRE", "DREI");
 
     @Test
     void createCountry() throws Exception {
-        when(countryController.createCountry(countryTest)).thenReturn(new Country(countryUUID, countryAbbreviation, countryName));
+        when(countryController.createCountry(countryTestDTO)).thenReturn(new CountryDTO(countryUUID, countryAbbreviation, countryName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .post("/country/")
                         .content(objectMapper.writeValueAsString(countryTest))
@@ -58,13 +63,13 @@ class CountryControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String responseBody = mvcResult.getResponse().getContentAsString();
-        Country readOutCountry = objectMapper.readValue(responseBody, Country.class);
-        assertEquals(readOutCountry, new Country(readOutCountry.getUuid(), countryAbbreviation, countryName));
+        CountryDTO readOutCountry = objectMapper.readValue(responseBody, CountryDTO.class);
+        assertEquals(readOutCountry, new CountryDTO(readOutCountry.getUuid(), countryAbbreviation, countryName));
     }
 
     @Test
     void testCreateCountry() throws Exception {
-        when(countryController.createCountry(countryAbbreviation, countryName)).thenReturn(new Country(countryUUID, countryAbbreviation, countryName));
+        when(countryController.createCountry(countryAbbreviation, countryName)).thenReturn(new CountryDTO(countryUUID, countryAbbreviation, countryName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .post("/country/new")
                         .param("countryAbbreviation", countryAbbreviation)
@@ -73,13 +78,13 @@ class CountryControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String responseBody = mvcResult.getResponse().getContentAsString();
-        Country readOutCountry = objectMapper.readValue(responseBody, Country.class);
-        assertEquals(readOutCountry, new Country(readOutCountry.getUuid(), countryAbbreviation, countryName));
+        CountryDTO readOutCountry = objectMapper.readValue(responseBody, CountryDTO.class);
+        assertEquals(readOutCountry, new CountryDTO(readOutCountry.getUuid(), countryAbbreviation, countryName));
     }
 
     @Test
     void getAllCountrys() throws Exception {
-        List<Country> records = new ArrayList<>(Arrays.asList(c1, c2, c3));
+        List<CountryDTO> records = new ArrayList<>(Arrays.asList(c1, c2, c3));
         when(countryController.getAllCountrys()).thenReturn(records);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .get("/country/")
@@ -88,12 +93,12 @@ class CountryControllerTest {
                 .andReturn();
 
         String responseBody = mvcResult.getResponse().getContentAsString();
-        assertEquals(Arrays.toString(objectMapper.readValue(responseBody, Country[].class)), Arrays.toString(records.toArray()));
+        assertEquals(Arrays.toString(objectMapper.readValue(responseBody, CountryDTO[].class)), Arrays.toString(records.toArray()));
     }
 
     @Test
     void getCountryByAbbreviation() throws Exception {
-        when(countryController.getCountryByAbbreviation(countryAbbreviation)).thenReturn(countryTest);
+        when(countryController.getCountryByAbbreviation(countryAbbreviation)).thenReturn(countryTestDTO);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .get("/country/abbreviation/")
                         .param("abbreviation", countryAbbreviation)
@@ -109,9 +114,9 @@ class CountryControllerTest {
     void updateCountry() throws Exception {
         String newAbbreviation = "CHA";
         String newName = countryName + "CHANGED";
-        Country changedCountry = new Country(countryUUID, newAbbreviation, newName);
+        CountryDTO changedCountry = new CountryDTO(countryUUID, newAbbreviation, newName);
 
-        when(countryController.updateCountry(changedCountry)).thenReturn(changedCountry);
+        when(countryController.updateCountry(changedCountry)).thenReturn(new CountryDTO(countryUUID, newAbbreviation,newName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .put("/country/edit/")
                         .content(objectMapper.writeValueAsString(changedCountry))
@@ -120,8 +125,9 @@ class CountryControllerTest {
                 .andReturn();
 
         String responseBody = mvcResult.getResponse().getContentAsString();
-        assertEquals(objectMapper.readValue(responseBody, Country.class).toString(), changedCountry.toString());
+        assertEquals(objectMapper.readValue(responseBody, CountryDTO.class).toString(), changedCountry.toString());
     }
+
 
     @Test
     void delteCountry() throws Exception {

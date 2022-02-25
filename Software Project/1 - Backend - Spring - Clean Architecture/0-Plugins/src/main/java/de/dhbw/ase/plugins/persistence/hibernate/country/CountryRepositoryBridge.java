@@ -45,7 +45,7 @@ public class CountryRepositoryBridge implements CountryRepository {
 
     @Override
     public boolean existsById(UUID countryUUID) {
-        return existsById(countryUUID);
+        return springDataCountryRepository.existsById(countryUUID);
     }
 
     @Override
