@@ -1,13 +1,17 @@
 package de.dhbw.ase.plugins.rest;
 
+import de.dhbw.ase.whiskey_o_clock.SeriesDTO;
 import de.dhbw.ase.whiskey_o_clock.application.series.SeriesApplicationService;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
+import de.dhbw.ase.whiskey_o_clock.series.SeriesDTOToSeriesMapper;
+import de.dhbw.ase.whiskey_o_clock.series.SeriesToSeriesDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -16,9 +20,14 @@ public class SeriesController {
 
     private final SeriesApplicationService seriesApplicationService;
 
+    private SeriesToSeriesDTOMapper seriesToSeriesDTOMapper;
+    private SeriesDTOToSeriesMapper seriesDTOToSeriesMapper;
+
     @Autowired
-    private SeriesController(SeriesApplicationService seriesApplicationService) {
+    private SeriesController(SeriesApplicationService seriesApplicationService,SeriesToSeriesDTOMapper seriesToSeriesDTOMapper,SeriesDTOToSeriesMapper seriesDTOToSeriesMapper) {
         this.seriesApplicationService = seriesApplicationService;
+        this.seriesToSeriesDTOMapper = seriesToSeriesDTOMapper;
+        this.seriesDTOToSeriesMapper = seriesDTOToSeriesMapper;
     }
 
     /************************************************************************************************************************************/
@@ -32,13 +41,13 @@ public class SeriesController {
         \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public Series createSeries(@RequestBody Series series) {
-        return seriesApplicationService.createSeries(series);
+    public SeriesDTO createSeries(@RequestBody Series series) {
+        return seriesToSeriesDTOMapper.apply(seriesApplicationService.createSeries(series));
     }
 
     @PostMapping(value = "/new", params = {"seriesLabel"})
-    public Series createSeries(@RequestParam String seriesLabel) {
-        return seriesApplicationService.createSeries(seriesLabel, new LinkedList<>());
+    public SeriesDTO createSeries(@RequestParam String seriesLabel) {
+        return seriesToSeriesDTOMapper.apply(seriesApplicationService.createSeries(seriesLabel, new LinkedList<>()));
     }
 
     /************************************************************************************************************************************/
@@ -51,13 +60,13 @@ public class SeriesController {
         |_|  \_\___|\__,_|\__,_|
     */
     @GetMapping("")
-    public List<Series> getAllSeries() {
-        return seriesApplicationService.getAllSeries();
+    public List<SeriesDTO> getAllSeries() {
+        return seriesApplicationService.getAllSeries().stream().map(seriesToSeriesDTOMapper).collect(Collectors.toList());
     }
 
     @GetMapping("/read/uuid")
-    public Series getSeriesByUUID(@RequestParam UUID uuid) {
-        return seriesApplicationService.getSeriesByUUID(uuid);
+    public SeriesDTO getSeriesByUUID(@RequestParam UUID uuid) {
+        return seriesToSeriesDTOMapper.apply(seriesApplicationService.getSeriesByUUID(uuid));
     }
 
 
@@ -73,8 +82,8 @@ public class SeriesController {
               |_|
     */
     @PutMapping(value = "")
-    public Series updateSeries(@RequestParam UUID uuid, @RequestParam String newName) {
-        return seriesApplicationService.updateSeriesByUUID(uuid, newName);
+    public SeriesDTO updateSeries(@RequestParam UUID uuid, @RequestParam String newName) {
+        return seriesToSeriesDTOMapper.apply(seriesApplicationService.updateSeriesByUUID(uuid, newName));
     }
 
     /************************************************************************************************************************************/

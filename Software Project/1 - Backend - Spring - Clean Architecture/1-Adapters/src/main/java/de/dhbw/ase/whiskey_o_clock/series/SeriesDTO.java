@@ -1,30 +1,76 @@
-package de.dhbw.ase.whiskey_o_clock.series;
+package de.dhbw.ase.whiskey_o_clock;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.*;
+import javax.annotation.Generated;
+
+import com.fasterxml.jackson.annotation.*;
 import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "uuid",
+        "label",
+        "bottleList"
+})
 @Data
-@AllArgsConstructor
-public class SeriesDTO implements Serializable {
-    @JsonProperty("uuid")
-    private final UUID uuid;
-    @JsonProperty("seriesLabel")
-    private final String seriesLabel;
-    @JsonProperty("bottleList")
-    @JsonIgnoreProperties(value = "series")
-    private final List<BottleDTO> seriesBottleList;
+@NoArgsConstructor
+@Generated("jsonschema2pojo")
+public class SeriesDTO {
 
-    public SeriesDTO(UUID uuid, String seriesLabel) {
+    @JsonProperty("uuid")
+    private UUID uuid;
+    @JsonProperty("label")
+    private String label;
+    @JsonProperty("bottleList")
+    private List<BottleDTO> bottleList = null;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("uuid")
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    @JsonProperty("uuid")
+    public void setUuid(String uuid) {
+        this.uuid = UUID.fromString(uuid);
+    }
+
+    @JsonProperty("label")
+    public String getLabel() {
+        return label;
+    }
+
+    @JsonProperty("label")
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    @JsonProperty("bottleList")
+    public List<BottleDTO> getBottleList() {
+        return bottleList;
+    }
+
+    @JsonProperty("bottleList")
+    public void setBottleList(List<BottleDTO> bottleList) {
+        this.bottleList = bottleList;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    public SeriesDTO(UUID uuid, String label) {
         this.uuid = uuid;
-        this.seriesLabel = seriesLabel;
-        this.seriesBottleList = null;
+        this.label = label;
+        this.bottleList = new LinkedList<>();
     }
 }
