@@ -8,7 +8,6 @@ import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -32,14 +31,14 @@ public class Bottle {
     )
     @Column(name = "uuid", updatable = false, nullable = false)
     private UUID uuid;
-    @Column(name = "label",nullable = false)
+    @Column(name = "label", nullable = false)
     private String label;
-    @Column(name = "price",nullable = false)
+    @Column(name = "price", nullable = false)
     private double price;
-    @Column(name = "yearOfManufacture",nullable = false)
+    @Column(name = "yearOfManufacture", nullable = false)
     private int yearOfManufacture;
     @ManyToOne
-    @JoinColumn(name = "manufacturerID",nullable = false)
+    @JoinColumn(name = "manufacturerID", nullable = false)
     private Manufacturer manufacturer;
     @Column(name = "isForSale")
     private boolean forSale;
@@ -48,23 +47,23 @@ public class Bottle {
     @Column(name = "isUnsaleable")
     private boolean unsaleable;
     @ManyToOne
-    @JoinColumn(name="series_id")
+    @JoinColumn(name = "series_id")
     @JsonIgnoreProperties(value = "bottleList")
     private Series series;
 
     public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer) {
-        this(label,price,yearOfManufacture,manufacturer,null);
+        this(label, price, yearOfManufacture, manufacturer, null);
     }
 
-    public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer,Series series) {
-        this(label, price, yearOfManufacture, manufacturer, series, false, false,false);
+    public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, Series series) {
+        this(label, price, yearOfManufacture, manufacturer, series, false, false, false);
     }
 
     public Bottle(BottleBuilder bottleBuilder) {
-        this(bottleBuilder.getLabel(), bottleBuilder.getPrice(), bottleBuilder.getYearOfManufacture(), bottleBuilder.getManufacturer(), bottleBuilder.getSeries(),bottleBuilder.isForSale(),bottleBuilder.isFavorite(),bottleBuilder.isUnsaleable());
+        this(bottleBuilder.getLabel(), bottleBuilder.getPrice(), bottleBuilder.getYearOfManufacture(), bottleBuilder.getManufacturer(), bottleBuilder.getSeries(), bottleBuilder.isForSale(), bottleBuilder.isFavorite(), bottleBuilder.isUnsaleable());
     }
 
-    public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, Series series,boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
+    public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, Series series, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {
         this.label = label;
         this.price = price;
         this.yearOfManufacture = yearOfManufacture;
@@ -74,7 +73,6 @@ public class Bottle {
         this.unsaleable = isUnsaleable;
         this.series = series;
     }
-
 
 
     @Override

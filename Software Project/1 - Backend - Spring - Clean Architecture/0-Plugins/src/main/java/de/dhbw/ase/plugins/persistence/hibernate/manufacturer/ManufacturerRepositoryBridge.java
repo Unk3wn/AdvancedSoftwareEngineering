@@ -14,7 +14,7 @@ public class ManufacturerRepositoryBridge implements ManufacturerRepository {
     SpringDataManufacturerRepository springDataManufacturerRepository;
 
     @Autowired
-    public ManufacturerRepositoryBridge(SpringDataManufacturerRepository springDataManufacturerRepository){
+    public ManufacturerRepositoryBridge(SpringDataManufacturerRepository springDataManufacturerRepository) {
         this.springDataManufacturerRepository = springDataManufacturerRepository;
     }
 

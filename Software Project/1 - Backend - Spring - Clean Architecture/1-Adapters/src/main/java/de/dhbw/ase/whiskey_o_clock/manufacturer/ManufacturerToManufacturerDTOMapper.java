@@ -1,10 +1,7 @@
 package de.dhbw.ase.whiskey_o_clock.manufacturer;
 
-import de.dhbw.ase.whiskey_o_clock.country.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.country.CountryToCountryDTOMapper;
-import de.dhbw.ase.whiskey_o_clock.domain.country.Country;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
-import de.dhbw.ase.whiskey_o_clock.series.SeriesToSeriesDTOMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
@@ -14,7 +11,7 @@ public class ManufacturerToManufacturerDTOMapper implements Function<Manufacture
 
     private CountryToCountryDTOMapper countryToCountryDTOMapper;
 
-    public ManufacturerToManufacturerDTOMapper(CountryToCountryDTOMapper countryToCountryDTOMapper){
+    public ManufacturerToManufacturerDTOMapper(CountryToCountryDTOMapper countryToCountryDTOMapper) {
         this.countryToCountryDTOMapper = countryToCountryDTOMapper;
     }
 
@@ -24,7 +21,7 @@ public class ManufacturerToManufacturerDTOMapper implements Function<Manufacture
     }
 
     private ManufacturerDTO map(Manufacturer manufacturer) {
-        return new ManufacturerDTO(manufacturer.getUuid(),countryToCountryDTOMapper.apply(manufacturer.getOriginCountry()),manufacturer.getName());
+        return new ManufacturerDTO(manufacturer.getUuid(), countryToCountryDTOMapper.apply(manufacturer.getOriginCountry()), manufacturer.getName());
     }
 
 }

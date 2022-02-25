@@ -15,9 +15,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.times;
-import static org.mockito.BDDMockito.verify;
-import static org.mockito.BDDMockito.when;
+import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CountryApplicationServiceTest {
@@ -70,7 +68,7 @@ class CountryApplicationServiceTest {
         List<Country> allCountrys = countryApplicationService.getAllCountrys();
 
         //Validation
-        assertEquals("TestA",allCountrys.get(0).getName());
+        assertEquals("TestA", allCountrys.get(0).getName());
     }
 
     @Test
@@ -87,12 +85,12 @@ class CountryApplicationServiceTest {
         country.setAbbreviation(newAbbreviation);
         country.setName(newAbbreviation);
 
-        when(countryRepository.save(country)).thenReturn(new Country(countryUUID,newAbbreviation, newCountryName));
+        when(countryRepository.save(country)).thenReturn(new Country(countryUUID, newAbbreviation, newCountryName));
         country = countryApplicationService.updateCountry(country);
 
-        assertEquals(newCountryName,country.getName());
-        assertEquals(newAbbreviation,country.getAbbreviation());
-        verify(countryRepository,times(2)).save(any(Country.class));
+        assertEquals(newCountryName, country.getName());
+        assertEquals(newAbbreviation, country.getAbbreviation());
+        verify(countryRepository, times(2)).save(any(Country.class));
     }
 
     @Test

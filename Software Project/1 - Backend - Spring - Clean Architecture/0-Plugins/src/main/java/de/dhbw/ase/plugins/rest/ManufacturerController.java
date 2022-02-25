@@ -2,8 +2,6 @@ package de.dhbw.ase.plugins.rest;
 
 import de.dhbw.ase.whiskey_o_clock.application.manufacturer.ManufacturerApplicationService;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
-import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTO;
-import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +18,7 @@ public class ManufacturerController {
     private ManufacturerApplicationService manufacturerApplicationService;
 
     @Autowired
-    private ManufacturerController(ManufacturerApplicationService manufacturerApplicationService){
+    private ManufacturerController(ManufacturerApplicationService manufacturerApplicationService) {
         this.manufacturerApplicationService = manufacturerApplicationService;
     }
 
@@ -37,6 +35,7 @@ public class ManufacturerController {
     public Manufacturer createManufacturer(@RequestBody Manufacturer manufacturer) {
         return manufacturerApplicationService.createManufacturer(manufacturer);
     }
+
     @PostMapping(value = "/new", params = {"name", "countryAbbreviation"})
     public Manufacturer createManufacturer(@RequestParam String name, @RequestParam String countryAbbreviation) {
         return manufacturerApplicationService.createManufacturer(name, countryAbbreviation);

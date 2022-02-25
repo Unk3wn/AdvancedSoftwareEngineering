@@ -10,13 +10,19 @@ public interface SpringDataCountryRepository extends JpaRepository<Country, UUID
 
     /** CREATE **/
 
-    /** READ **/
+    /**
+     * READ
+     **/
     Country getCountryByAbbreviation(String abbreviation);
+
     Country getCountryByUuid(UUID uuid);
+
     Boolean existsByAbbreviation(String abbreviation);
 
     /** UPDATE **/
 
-    /** DELETE **/
+    /**
+     * DELETE
+     **/
     void deleteByAbbreviation(String abbreviation);
 }

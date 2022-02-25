@@ -35,7 +35,7 @@ public class Series {
     @Column(name = "label")
     private String label;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="series")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "series")
     @JsonIgnoreProperties("series")
     private List<Bottle> bottleList = new LinkedList<>();
 

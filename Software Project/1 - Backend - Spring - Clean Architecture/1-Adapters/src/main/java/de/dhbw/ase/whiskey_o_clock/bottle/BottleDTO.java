@@ -1,17 +1,13 @@
 package de.dhbw.ase.whiskey_o_clock.bottle;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.series.SeriesDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 @Data

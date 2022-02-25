@@ -7,23 +7,37 @@ import java.util.List;
 import java.util.UUID;
 
 public interface BottleRepository {
-    /** CREATE **/
+    /**
+     * CREATE
+     **/
     Bottle save(Bottle bottle);
 
-    /** READ **/
+    /**
+     * READ
+     **/
     List<Bottle> findAll();
+
     List<Bottle> getBottlesByLabel(String bottleLabel);
+
     Bottle getFirstBottleByLabelAndManufacturer(String bottleLabel, Manufacturer manufacturer);
+
     List<Bottle> getBottlesByLabelAndManufacturer(String bottleLabel, Manufacturer manufacturer);
+
     List<Bottle> getBottlesBySeries(Series series);
+
     Bottle getBottleByUuid(UUID bottleUUID);
+
     boolean existsById(UUID bottleUUID);
+
     boolean existsByLabel(String bottleLabel);
-    boolean existsByLabelAndManufacturer(String bottleLabel,Manufacturer manufacturer);
+
+    boolean existsByLabelAndManufacturer(String bottleLabel, Manufacturer manufacturer);
 
     /** UPDATE **/
 
-    /** DELETE **/
+    /**
+     * DELETE
+     **/
     void delete(Bottle bottleByUUID);
 
 }

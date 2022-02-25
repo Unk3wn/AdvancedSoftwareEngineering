@@ -5,20 +5,31 @@ import java.util.UUID;
 
 public interface CountryRepository {
 
-    /** CREATE **/
+    /**
+     * CREATE
+     **/
     Country save(Country country);
 
-    /** READ **/
+    /**
+     * READ
+     **/
     List<Country> findAll();
+
     Country getCountryByAbbreviation(String abbreviation);
+
     Country getCountryByUuid(UUID countryUUID);
+
     boolean existsByAbbreviation(String abbreviation);
+
     boolean existsById(UUID countryUUID);
 
     /** UPDATE **/
 
-    /** DELETE **/
+    /**
+     * DELETE
+     **/
     void deleteByAbbreviation(String abbreviation);
+
     void deleteById(UUID countryUUID);
 
 

@@ -5,21 +5,33 @@ import java.util.UUID;
 
 public interface ManufacturerRepository {
 
-    /** CREATE **/
+    /**
+     * CREATE
+     **/
     Manufacturer save(Manufacturer manufacturer);
 
-    /** READ **/
+    /**
+     * READ
+     **/
     List<Manufacturer> findAll();
+
     List<Manufacturer> getManufacturerByName(String manufacturerName);
+
     Manufacturer getFirstManufacturerByName(String manufacturerName);
+
     Manufacturer getManufacturerByUuid(UUID manufacturerUUID);
+
     boolean existsByName(String manufacturerName);
+
     boolean existsById(UUID manufacturerUUID);
 
     /** UPDATE **/
 
-    /** DELETE **/
+    /**
+     * DELETE
+     **/
     void deleteByName(String manufacturerName);
+
     void deleteById(UUID manufacturerUUID);
 
 

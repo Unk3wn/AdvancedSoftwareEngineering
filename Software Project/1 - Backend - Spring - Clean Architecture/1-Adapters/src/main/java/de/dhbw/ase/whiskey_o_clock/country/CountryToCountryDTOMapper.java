@@ -14,7 +14,7 @@ public class CountryToCountryDTOMapper implements Function<Country, CountryDTO> 
     }
 
     private CountryDTO map(Country country) {
-        return new CountryDTO(country.getUuid(),country.getAbbreviation(),country.getName());
+        return new CountryDTO(country.getUuid(), country.getAbbreviation(), country.getName());
     }
 
 }

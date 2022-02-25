@@ -1,10 +1,10 @@
 package de.dhbw.ase.whiskey_o_clock.application.bottle;
 
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
-import de.dhbw.ase.whiskey_o_clock.domain.bottle.builder.BottleBuilder;
-import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.BottleRepository;
+import de.dhbw.ase.whiskey_o_clock.domain.bottle.builder.BottleBuilder;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.ManufacturerRepository;
+import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import de.dhbw.ase.whiskey_o_clock.domain.series.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class BottleApplicationService{
+public class BottleApplicationService {
 
     private BottleRepository bottleRepository;
     private ManufacturerRepository manufacturerRepository;
     private SeriesRepository seriesRepository;
 
     @Autowired
-    public BottleApplicationService(ManufacturerRepository manufacturerRepository,BottleRepository bottleRepository,SeriesRepository seriesRepository){
+    public BottleApplicationService(ManufacturerRepository manufacturerRepository, BottleRepository bottleRepository, SeriesRepository seriesRepository) {
         this.bottleRepository = bottleRepository;
         this.manufacturerRepository = manufacturerRepository;
         this.seriesRepository = seriesRepository;
@@ -37,9 +37,8 @@ public class BottleApplicationService{
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-
-    public Bottle createBottle (Bottle bottle){
-       return bottleRepository.save(bottle);
+    public Bottle createBottle(Bottle bottle) {
+        return bottleRepository.save(bottle);
     }
 
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName) {
@@ -58,17 +57,17 @@ public class BottleApplicationService{
         if (bottleRepository.existsByLabelAndManufacturer(label, manufacturerRepository.getFirstManufacturerByName(manufacturerName))) {
             throw new ValidationException(String.format("Bottle '%s' with the Manufacturer '%s' already in Database!", label, manufacturerName));
         }
-        if(!manufacturerRepository.existsByName(manufacturerName)){
+        if (!manufacturerRepository.existsByName(manufacturerName)) {
             throw new ValidationException(String.format("Manufacturer '%s' not known!", manufacturerName));
         }
         Bottle newBottle = new BottleBuilder(label)
-            .price(price)
-            .yearOfManufacture(yearOfManufacture)
-            .manufacturer(manufacturerRepository.getFirstManufacturerByName(manufacturerName))
-            .forSale(isForSale)
-            .favorite(isFavorite)
-            .unsaleable(isUnsaleable)
-            .build();
+                .price(price)
+                .yearOfManufacture(yearOfManufacture)
+                .manufacturer(manufacturerRepository.getFirstManufacturerByName(manufacturerName))
+                .forSale(isForSale)
+                .favorite(isFavorite)
+                .unsaleable(isUnsaleable)
+                .build();
         bottleRepository.save(newBottle);
         return newBottle;
     }
@@ -110,7 +109,7 @@ public class BottleApplicationService{
               |_|
     */
     public Bottle updateBottle(Bottle bottle) {
-        if(bottleRepository.existsById(bottle.getUuid())){
+        if (bottleRepository.existsById(bottle.getUuid())) {
             Bottle foundBottle = bottleRepository.getBottleByUuid(bottle.getUuid());
             foundBottle.setLabel(bottle.getLabel());
             foundBottle.setPrice(bottle.getPrice());
@@ -124,6 +123,7 @@ public class BottleApplicationService{
         }
         throw new ValidationException("Bottle not found!");
     }
+
     public Bottle updateBottleForSale(UUID bottleUUID, Boolean isForSale) {
         return updateBooleanBottleValue(bottleUUID, isForSale, BottleBooleanType.FORSALE);
     }
@@ -138,7 +138,7 @@ public class BottleApplicationService{
 
     public Series updateBottleSeries(UUID bottleUUID, UUID seriesUUID) {
         if (bottleRepository.existsById(bottleUUID)) {
-            if(seriesRepository.existsById(seriesUUID)){
+            if (seriesRepository.existsById(seriesUUID)) {
                 Bottle bottle = bottleRepository.getBottleByUuid(bottleUUID);
                 bottle.setSeries(seriesRepository.getById(seriesUUID));
                 return bottle.getSeries();
@@ -184,7 +184,7 @@ public class BottleApplicationService{
     }
 
     public Bottle deleteSeriesFromBottleByUUID(UUID bottleUUID) {
-        if(bottleRepository.existsById(bottleUUID)){
+        if (bottleRepository.existsById(bottleUUID)) {
             Bottle tempBottle = bottleRepository.getBottleByUuid(bottleUUID);
             tempBottle.setSeries(null);
             bottleRepository.save(tempBottle);

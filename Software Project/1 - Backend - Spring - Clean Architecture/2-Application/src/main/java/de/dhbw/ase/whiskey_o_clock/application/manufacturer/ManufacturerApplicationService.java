@@ -1,8 +1,8 @@
 package de.dhbw.ase.whiskey_o_clock.application.manufacturer;
 
 import de.dhbw.ase.whiskey_o_clock.domain.country.Country;
-import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.domain.country.CountryRepository;
+import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.ManufacturerRepository;
 import org.hibernate.NonUniqueObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class ManufacturerApplicationService {
     private ManufacturerRepository manufacturerRepository;
 
     @Autowired
-    public ManufacturerApplicationService(CountryRepository countryRepository, ManufacturerRepository manufacturerRepository){
+    public ManufacturerApplicationService(CountryRepository countryRepository, ManufacturerRepository manufacturerRepository) {
         this.countryRepository = countryRepository;
         this.manufacturerRepository = manufacturerRepository;
     }
@@ -34,9 +34,10 @@ public class ManufacturerApplicationService {
         | |____| | |  __/ (_| | ||  __/
         \_____|_|  \___|\__,_|\__\___|
      */
-    public Manufacturer createManufacturer(Manufacturer manufacturer){
+    public Manufacturer createManufacturer(Manufacturer manufacturer) {
         return manufacturerRepository.save(manufacturer);
     }
+
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {
         if (!countryRepository.existsByAbbreviation(countryAbbreviation)) {
             throw new ValidationException("Country-Abbreviation is not valid!");
@@ -81,7 +82,7 @@ public class ManufacturerApplicationService {
               |_|
     */
     public Manufacturer updateManufacturer(Manufacturer manufacturer) {
-        if(manufacturerRepository.existsById(manufacturer.getUuid())){
+        if (manufacturerRepository.existsById(manufacturer.getUuid())) {
             Manufacturer targetCountry = manufacturerRepository.getManufacturerByUuid(manufacturer.getUuid());
             targetCountry.setName(manufacturer.getName());
             targetCountry.setOriginCountry(manufacturer.getOriginCountry());

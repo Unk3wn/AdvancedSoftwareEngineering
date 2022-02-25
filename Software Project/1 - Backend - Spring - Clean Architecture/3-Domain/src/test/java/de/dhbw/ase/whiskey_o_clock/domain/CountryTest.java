@@ -8,7 +8,8 @@ import org.mockito.Mockito;
 import javax.validation.ValidationException;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 class CountryTest {
@@ -25,15 +26,15 @@ class CountryTest {
     Country testCountry;
 
     @BeforeEach
-    public void init(){
-        testCountry = new Country(countryAbbreviation,countryName);
+    public void init() {
+        testCountry = new Country(countryAbbreviation, countryName);
     }
 
     @Test
     void getUuid() {
         Country countryMock = Mockito.mock(Country.class);
         when(countryMock.getUuid()).thenReturn(countryUUID);
-        assertEquals(countryMock.getUuid(),countryUUID);
+        assertEquals(countryMock.getUuid(), countryUUID);
     }
 
     @Test
@@ -49,33 +50,33 @@ class CountryTest {
     @Test
     void setUuid() {
         testCountry.setUuid(countryUUIDNEW);
-        assertEquals(testCountry.getUuid(),countryUUIDNEW);
+        assertEquals(testCountry.getUuid(), countryUUIDNEW);
     }
 
     @Test
     void setAbbreviation() {
         testCountry.setAbbreviation(countryAbbreviationNew);
-        assertEquals(testCountry.getAbbreviation(),countryAbbreviationNew);
+        assertEquals(testCountry.getAbbreviation(), countryAbbreviationNew);
     }
 
     @Test
     void setAbbreviationFAIL() {
-        Exception ex = assertThrows(ValidationException.class, () ->  testCountry.setAbbreviation(countryAbbreviationFAIL));
+        Exception ex = assertThrows(ValidationException.class, () -> testCountry.setAbbreviation(countryAbbreviationFAIL));
 
         String expectedMessage = "Abbreviation not valid, only between 1 and 3 are Valid!";
         String actualMessage = ex.getMessage();
 
-        assert(actualMessage.contains(expectedMessage));
+        assert (actualMessage.contains(expectedMessage));
     }
 
     @Test
     void setName() {
         testCountry.setName(countryNameNew);
-        assertEquals(testCountry.getName(),countryNameNew);
+        assertEquals(testCountry.getName(), countryNameNew);
     }
 
     @Test
     void testToString() {
-        assertEquals("CountryName [TES]",testCountry.toString());
+        assertEquals("CountryName [TES]", testCountry.toString());
     }
 }

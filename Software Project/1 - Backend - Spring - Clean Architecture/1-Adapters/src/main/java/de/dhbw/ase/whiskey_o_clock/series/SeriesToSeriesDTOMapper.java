@@ -14,7 +14,7 @@ public class SeriesToSeriesDTOMapper implements Function<Series, SeriesDTO> {
     }
 
     private SeriesDTO map(Series series) {
-        return new SeriesDTO(series.getUuid(),series.getLabel(),null);
+        return new SeriesDTO(series.getUuid(), series.getLabel(), null);
     }
 
 }

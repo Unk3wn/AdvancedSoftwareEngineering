@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class CountryApplicationService{
+public class CountryApplicationService {
 
     private CountryRepository countryRepository;
 
@@ -31,8 +31,9 @@ public class CountryApplicationService{
         \_____|_|  \___|\__,_|\__\___|
      */
     public Country saveCountry(Country country) {
-        return saveCountry(country.getAbbreviation(),country.getName());
+        return saveCountry(country.getAbbreviation(), country.getName());
     }
+
     public Country saveCountry(String abbreviation, String name) throws NonUniqueObjectException {
         if (!countryRepository.existsByAbbreviation(abbreviation)) {
             Country countryToCreate = new Country(abbreviation, name);
@@ -73,7 +74,7 @@ public class CountryApplicationService{
               |_|
     */
     public Country updateCountry(Country country) {
-        if(countryRepository.existsById(country.getUuid())){
+        if (countryRepository.existsById(country.getUuid())) {
             Country targetCountry = countryRepository.getCountryByUuid(country.getUuid());
             targetCountry.setAbbreviation(country.getAbbreviation());
             targetCountry.setName(country.getName());

@@ -1,9 +1,9 @@
 package de.dhbw.ase.whiskey_o_clock.application.series;
 
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
-import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.BottleRepository;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.ManufacturerRepository;
+import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import de.dhbw.ase.whiskey_o_clock.domain.series.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class SeriesApplicationService {
     private ManufacturerRepository manufacturerRepository;
 
     @Autowired
-    public SeriesApplicationService(ManufacturerRepository manufacturerRepository,BottleRepository bottleRepository,SeriesRepository seriesRepository){
+    public SeriesApplicationService(ManufacturerRepository manufacturerRepository, BottleRepository bottleRepository, SeriesRepository seriesRepository) {
         this.manufacturerRepository = manufacturerRepository;
         this.bottleRepository = bottleRepository;
         this.seriesRepository = seriesRepository;
@@ -38,6 +38,7 @@ public class SeriesApplicationService {
     public Series createSeries(Series series) {
         return seriesRepository.save(series);
     }
+
     public Series createSeries(String label, List<Bottle> bottleList) {
         // kein Check, da mehrere Serien mit dem Selben Namen vorhanden sein dürfen
         return createSeries(new Series(label, bottleList));
@@ -89,15 +90,15 @@ public class SeriesApplicationService {
     */
     public void deleteSeries(UUID uuid) {
         //Remove Series from Bottles#
-        if(seriesRepository.existsById(uuid)) {
+        if (seriesRepository.existsById(uuid)) {
             Series targetSeries = seriesRepository.getSeriesByUuid(uuid);
             List<Bottle> bottleList = bottleRepository.getBottlesBySeries(targetSeries);
-            if (null != bottleList){
+            if (null != bottleList) {
                 for (Bottle bottle : bottleList) {
                     bottle.setSeries(null);
                     bottleRepository.save(bottle);
                 }
-            seriesRepository.deleteById(uuid);
+                seriesRepository.deleteById(uuid);
             }
         }
     }

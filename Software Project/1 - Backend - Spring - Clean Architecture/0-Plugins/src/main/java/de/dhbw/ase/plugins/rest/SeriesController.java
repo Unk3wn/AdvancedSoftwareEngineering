@@ -2,9 +2,6 @@ package de.dhbw.ase.plugins.rest;
 
 import de.dhbw.ase.whiskey_o_clock.application.series.SeriesApplicationService;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
-import de.dhbw.ase.whiskey_o_clock.series.SeriesDTO;
-import de.dhbw.ase.whiskey_o_clock.series.SeriesMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +17,7 @@ public class SeriesController {
     private final SeriesApplicationService seriesApplicationService;
 
     @Autowired
-    private SeriesController(SeriesApplicationService seriesApplicationService){
+    private SeriesController(SeriesApplicationService seriesApplicationService) {
         this.seriesApplicationService = seriesApplicationService;
     }
 
@@ -38,6 +35,7 @@ public class SeriesController {
     public Series createSeries(@RequestBody Series series) {
         return seriesApplicationService.createSeries(series);
     }
+
     @PostMapping(value = "/new", params = {"seriesLabel"})
     public Series createSeries(@RequestParam String seriesLabel) {
         return seriesApplicationService.createSeries(seriesLabel, new LinkedList<>());

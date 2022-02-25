@@ -42,53 +42,53 @@ class CountryControllerTest {
     String countryAbbreviation = "TES";
     String countryName = "Testcountry";
 
-    Country countryTest = new Country(countryUUID,countryAbbreviation,countryName);
+    Country countryTest = new Country(countryUUID, countryAbbreviation, countryName);
 
-    Country c1 = new Country("EIN","EINS");
-    Country c2 = new Country("ZWE","ZWEI");
-    Country c3 = new Country("DRE","DREI");
+    Country c1 = new Country("EIN", "EINS");
+    Country c2 = new Country("ZWE", "ZWEI");
+    Country c3 = new Country("DRE", "DREI");
 
     @Test
     void createCountry() throws Exception {
-        when(countryController.createCountry(countryTest)).thenReturn(new Country(countryUUID,countryAbbreviation,countryName));
+        when(countryController.createCountry(countryTest)).thenReturn(new Country(countryUUID, countryAbbreviation, countryName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .post("/country/")
                         .content(objectMapper.writeValueAsString(countryTest))
                         .contentType(MediaType.APPLICATION_JSON))
-                        .andExpect(status().isOk())
-                        .andReturn();
+                .andExpect(status().isOk())
+                .andReturn();
         String responseBody = mvcResult.getResponse().getContentAsString();
-        Country readOutCountry = objectMapper.readValue(responseBody,Country.class);
-        assertEquals(readOutCountry,new Country(readOutCountry.getUuid(),countryAbbreviation,countryName));
+        Country readOutCountry = objectMapper.readValue(responseBody, Country.class);
+        assertEquals(readOutCountry, new Country(readOutCountry.getUuid(), countryAbbreviation, countryName));
     }
 
     @Test
     void testCreateCountry() throws Exception {
-        when(countryController.createCountry(countryAbbreviation,countryName)).thenReturn(new Country(countryUUID,countryAbbreviation,countryName));
+        when(countryController.createCountry(countryAbbreviation, countryName)).thenReturn(new Country(countryUUID, countryAbbreviation, countryName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .post("/country/new")
-                        .param("countryAbbreviation",countryAbbreviation)
-                        .param("countryName",countryName)
+                        .param("countryAbbreviation", countryAbbreviation)
+                        .param("countryName", countryName)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
         String responseBody = mvcResult.getResponse().getContentAsString();
-        Country readOutCountry = objectMapper.readValue(responseBody,Country.class);
-        assertEquals(readOutCountry,new Country(readOutCountry.getUuid(),countryAbbreviation,countryName));
+        Country readOutCountry = objectMapper.readValue(responseBody, Country.class);
+        assertEquals(readOutCountry, new Country(readOutCountry.getUuid(), countryAbbreviation, countryName));
     }
 
     @Test
     void getAllCountrys() throws Exception {
-        List<Country> records = new ArrayList<>(Arrays.asList(c1,c2,c3));
+        List<Country> records = new ArrayList<>(Arrays.asList(c1, c2, c3));
         when(countryController.getAllCountrys()).thenReturn(records);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .get("/country/")
                         .contentType(MediaType.APPLICATION_JSON))
-                        .andExpect(status().isOk())
-                        .andReturn();
+                .andExpect(status().isOk())
+                .andReturn();
 
         String responseBody = mvcResult.getResponse().getContentAsString();
-        assertEquals(Arrays.toString(objectMapper.readValue(responseBody,Country[].class)),Arrays.toString(records.toArray()));
+        assertEquals(Arrays.toString(objectMapper.readValue(responseBody, Country[].class)), Arrays.toString(records.toArray()));
     }
 
     @Test
@@ -96,20 +96,20 @@ class CountryControllerTest {
         when(countryController.getCountryByAbbreviation(countryAbbreviation)).thenReturn(countryTest);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .get("/country/abbreviation/")
-                        .param("abbreviation",countryAbbreviation)
+                        .param("abbreviation", countryAbbreviation)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
 
         String responseBody = mvcResult.getResponse().getContentAsString();
-        assertEquals(objectMapper.readValue(responseBody,Country.class).toString(),countryTest.toString());
+        assertEquals(objectMapper.readValue(responseBody, Country.class).toString(), countryTest.toString());
     }
 
     @Test
     void updateCountry() throws Exception {
         String newAbbreviation = "CHA";
-        String newName = countryName+"CHANGED";
-        Country changedCountry = new Country(countryUUID,newAbbreviation,newName);
+        String newName = countryName + "CHANGED";
+        Country changedCountry = new Country(countryUUID, newAbbreviation, newName);
 
         when(countryController.updateCountry(changedCountry)).thenReturn(changedCountry);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
@@ -120,14 +120,14 @@ class CountryControllerTest {
                 .andReturn();
 
         String responseBody = mvcResult.getResponse().getContentAsString();
-        assertEquals(objectMapper.readValue(responseBody,Country.class).toString(),changedCountry.toString());
+        assertEquals(objectMapper.readValue(responseBody, Country.class).toString(), changedCountry.toString());
     }
 
     @Test
     void delteCountry() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .delete("/country")
-                        .param("abbreviation",countryAbbreviation)
+                        .param("abbreviation", countryAbbreviation)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();

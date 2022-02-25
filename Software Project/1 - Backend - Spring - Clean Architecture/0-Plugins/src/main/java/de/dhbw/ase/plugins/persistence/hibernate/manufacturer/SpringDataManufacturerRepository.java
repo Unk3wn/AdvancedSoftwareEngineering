@@ -11,7 +11,9 @@ public interface SpringDataManufacturerRepository extends JpaRepository<Manufact
 
     /** CREATE **/
 
-    /** READ **/
+    /**
+     * READ
+     **/
     List<Manufacturer> getManufacturerByName(String name);
 
     Manufacturer getFirstManufacturerByName(String name);
@@ -22,6 +24,8 @@ public interface SpringDataManufacturerRepository extends JpaRepository<Manufact
 
     /** UPDATE **/
 
-    /** DELETE **/
+    /**
+     * DELETE
+     **/
     void deleteByName(String name);
 }

@@ -10,7 +10,9 @@ public interface SpringDataSeriesRepository extends JpaRepository<Series, UUID> 
 
     /** CREATE **/
 
-    /** READ **/
+    /**
+     * READ
+     **/
     Series getSeriesByUuid(UUID seriesUUID);
 
     /** UPDATE **/

@@ -15,46 +15,46 @@ public class BottleBuilder {
     boolean unsaleable;
     Series series;
 
-    public BottleBuilder(String label){
+    public BottleBuilder(String label) {
         this.label = label;
     }
 
-    public BottleBuilder price(double price){
+    public BottleBuilder price(double price) {
         this.price = price;
         return this;
     }
 
-    public BottleBuilder yearOfManufacture(int yearOfManufacture){
+    public BottleBuilder yearOfManufacture(int yearOfManufacture) {
         this.yearOfManufacture = yearOfManufacture;
         return this;
     }
 
-    public BottleBuilder manufacturer(Manufacturer manufacturer){
+    public BottleBuilder manufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
         return this;
     }
 
-    public BottleBuilder forSale(boolean forSale){
+    public BottleBuilder forSale(boolean forSale) {
         this.forSale = forSale;
         return this;
     }
 
-    public BottleBuilder favorite(boolean favorite){
+    public BottleBuilder favorite(boolean favorite) {
         this.favorite = favorite;
         return this;
     }
 
-    public BottleBuilder unsaleable(boolean unsaleable){
+    public BottleBuilder unsaleable(boolean unsaleable) {
         this.unsaleable = unsaleable;
         return this;
     }
 
-    public BottleBuilder series(Series series){
+    public BottleBuilder series(Series series) {
         this.series = series;
         return this;
     }
 
-    public Bottle build(){
+    public Bottle build() {
         Bottle bottle = new Bottle(this);
         //Validation
         return bottle;

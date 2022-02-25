@@ -13,7 +13,9 @@ public interface SpringDataBottleRepository extends JpaRepository<Bottle, UUID> 
 
     /** CREATE **/
 
-    /** READ **/
+    /**
+     * READ
+     **/
     List<Bottle> getBottlesByLabel(String label);
 
     List<Bottle> getBottlesByLabelAndManufacturer(String label, Manufacturer manufacturer);
@@ -25,7 +27,8 @@ public interface SpringDataBottleRepository extends JpaRepository<Bottle, UUID> 
     Bottle getBottleByUuid(UUID bottleUUID);
 
     boolean existsByLabel(String label);
-    boolean existsByLabelAndManufacturer(String label,Manufacturer manufacturer);
+
+    boolean existsByLabelAndManufacturer(String label, Manufacturer manufacturer);
 
     /** UPDATE **/
 

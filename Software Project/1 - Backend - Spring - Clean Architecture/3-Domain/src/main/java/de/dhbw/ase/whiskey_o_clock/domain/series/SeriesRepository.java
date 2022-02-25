@@ -7,20 +7,27 @@ public interface SeriesRepository {
 
     // intentionally left blank, see JpaRepository interface definition
 
-    /** CREATE **/
+    /**
+     * CREATE
+     **/
     Series save(Series series);
 
-    /** READ **/
+    /**
+     * READ
+     **/
     Series getSeriesByUuid(UUID seriesUUID);
+
     boolean existsById(UUID seriesUUID);
+
     Series getById(UUID seriesUUID);
+
     List<Series> findAll();
-
-
 
 
     /** UPDATE **/
 
-    /** DELETE **/
+    /**
+     * DELETE
+     **/
     void deleteById(UUID seriesUUID);
 }

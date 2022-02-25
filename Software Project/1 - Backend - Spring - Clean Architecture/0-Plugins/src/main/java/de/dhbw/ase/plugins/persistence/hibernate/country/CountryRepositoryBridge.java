@@ -1,12 +1,9 @@
 package de.dhbw.ase.plugins.persistence.hibernate.country;
 
-import de.dhbw.ase.whiskey_o_clock.country.CountryDTO;
-import de.dhbw.ase.whiskey_o_clock.country.CountryMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.country.Country;
 import de.dhbw.ase.whiskey_o_clock.domain.country.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +14,7 @@ public class CountryRepositoryBridge implements CountryRepository {
     private SpringDataCountryRepository springDataCountryRepository;
 
     @Autowired
-    public CountryRepositoryBridge(SpringDataCountryRepository springDataCountryRepository){
+    public CountryRepositoryBridge(SpringDataCountryRepository springDataCountryRepository) {
         this.springDataCountryRepository = springDataCountryRepository;
     }
 

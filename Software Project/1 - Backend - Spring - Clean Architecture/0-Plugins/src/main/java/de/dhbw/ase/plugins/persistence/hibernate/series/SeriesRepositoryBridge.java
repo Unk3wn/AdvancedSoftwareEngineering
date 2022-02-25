@@ -14,7 +14,7 @@ public class SeriesRepositoryBridge implements SeriesRepository {
     SpringDataSeriesRepository springDataSeriesRepository;
 
     @Autowired
-    public SeriesRepositoryBridge(SpringDataSeriesRepository springDataSeriesRepository){
+    public SeriesRepositoryBridge(SpringDataSeriesRepository springDataSeriesRepository) {
         this.springDataSeriesRepository = springDataSeriesRepository;
     }
 

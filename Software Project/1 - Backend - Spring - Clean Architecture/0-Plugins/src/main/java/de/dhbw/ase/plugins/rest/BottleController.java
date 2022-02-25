@@ -1,8 +1,6 @@
 package de.dhbw.ase.plugins.rest;
 
 import de.dhbw.ase.whiskey_o_clock.application.bottle.BottleApplicationService;
-import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTO;
-import de.dhbw.ase.whiskey_o_clock.bottle.BottleMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +19,7 @@ public class BottleController {
     private BottleApplicationService bottleApplicationService;
 
     @Autowired
-    private BottleController(BottleApplicationService bottleApplicationService){
+    private BottleController(BottleApplicationService bottleApplicationService) {
         this.bottleApplicationService = bottleApplicationService;
     }
 
@@ -39,6 +37,7 @@ public class BottleController {
     public Bottle createBottle(@RequestBody Bottle bottle) {
         return bottleApplicationService.createBottle(bottle);
     }
+
     @PostMapping(value = "/new", params = {"bottleLabel", "bottlePrice", "yearOfManufacture", "manufacturerName"})
     public Bottle createBottle(@RequestParam String bottleLabel, @RequestParam double bottlePrice, @RequestParam int yearOfManufacture, @RequestParam String manufacturerName) {
         return bottleApplicationService.createBottle(bottleLabel, bottlePrice, yearOfManufacture, manufacturerName);
@@ -84,6 +83,7 @@ public class BottleController {
     public Bottle updateBottle(@RequestBody Bottle bottle) {
         return bottleApplicationService.updateBottle(bottle);
     }
+
     @PutMapping(value = "/edit/forSale")
     public Bottle updateBottleForSale(@RequestParam UUID uuid, @RequestParam boolean newValue) {
         return bottleApplicationService.updateBottleForSale(uuid, newValue);
@@ -100,8 +100,8 @@ public class BottleController {
     }
 
     @PutMapping(value = "/edit/series")
-    public Series updateSeriesForBottle(@RequestParam UUID bottleUUID, @RequestParam UUID seriesUUID){
-        return bottleApplicationService.updateBottleSeries(bottleUUID,seriesUUID);
+    public Series updateSeriesForBottle(@RequestParam UUID bottleUUID, @RequestParam UUID seriesUUID) {
+        return bottleApplicationService.updateBottleSeries(bottleUUID, seriesUUID);
     }
 
     /************************************************************************************************************************************/

@@ -1,9 +1,9 @@
 package de.dhbw.ase.plugins.persistence.hibernate.bottle;
 
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
+import de.dhbw.ase.whiskey_o_clock.domain.bottle.BottleRepository;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
-import de.dhbw.ase.whiskey_o_clock.domain.bottle.BottleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +16,7 @@ public class BottleRepositoryBridge implements BottleRepository {
     private SpringDataBottleRepository springDataBottleRepository;
 
     @Autowired
-    public BottleRepositoryBridge(SpringDataBottleRepository springDataBottleRepository){
+    public BottleRepositoryBridge(SpringDataBottleRepository springDataBottleRepository) {
         this.springDataBottleRepository = springDataBottleRepository;
     }
 
@@ -37,12 +37,12 @@ public class BottleRepositoryBridge implements BottleRepository {
 
     @Override
     public Bottle getFirstBottleByLabelAndManufacturer(String bottleLabel, Manufacturer manufacturer) {
-        return springDataBottleRepository.getFirstBottleByLabelAndManufacturer(bottleLabel,manufacturer);
+        return springDataBottleRepository.getFirstBottleByLabelAndManufacturer(bottleLabel, manufacturer);
     }
 
     @Override
     public List<Bottle> getBottlesByLabelAndManufacturer(String bottleLabel, Manufacturer manufacturer) {
-        return springDataBottleRepository.getBottlesByLabelAndManufacturer(bottleLabel,manufacturer);
+        return springDataBottleRepository.getBottlesByLabelAndManufacturer(bottleLabel, manufacturer);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class BottleRepositoryBridge implements BottleRepository {
 
     @Override
     public boolean existsByLabelAndManufacturer(String bottleLabel, Manufacturer manufacturer) {
-        return springDataBottleRepository.existsByLabelAndManufacturer(bottleLabel,manufacturer);
+        return springDataBottleRepository.existsByLabelAndManufacturer(bottleLabel, manufacturer);
     }
 
     @Override
