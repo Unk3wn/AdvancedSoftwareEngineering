@@ -4,8 +4,11 @@ import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 
+import java.util.UUID;
+
 public class BottleBuilder {
 
+    UUID uuid;
     final String label;
     double price;
     int yearOfManufacture;
@@ -15,8 +18,17 @@ public class BottleBuilder {
     boolean unsaleable;
     Series series;
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
     public BottleBuilder(String label) {
         this.label = label;
+    }
+
+    public BottleBuilder uuid(UUID uuid){
+        this.uuid = uuid;
+        return this;
     }
 
     public BottleBuilder price(double price) {
