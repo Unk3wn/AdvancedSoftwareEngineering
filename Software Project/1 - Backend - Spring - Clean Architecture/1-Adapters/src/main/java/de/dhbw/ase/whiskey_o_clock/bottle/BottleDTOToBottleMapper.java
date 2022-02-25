@@ -27,15 +27,22 @@ public class BottleDTOToBottleMapper implements Function<BottleDTO, Bottle> {
     }
 
     private Bottle map(BottleDTO bottleDTO) {
-        return new BottleBuilder(bottleDTO.getLabel())
+        BottleBuilder newBottle = new BottleBuilder(bottleDTO.getLabel());
+        newBottle.uuid(bottleDTO.getUuid())
                 .price(bottleDTO.getPrice())
                 .yearOfManufacture(bottleDTO.getYearOfManufacture())
                 .manufacturer(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer().getUuid()))
-                .forSale(bottleDTO.isForSale())
-                .favorite(bottleDTO.isFavorite())
-                .unsaleable(bottleDTO.isUnsaleable())
-                .series(seriesRepository.getSeriesByUuid(bottleDTO.getSeries().getUuid()))
-                .build();
+                .forSale(bottleDTO.getForSale())
+                .favorite(bottleDTO.getFavorite())
+                .unsaleable(bottleDTO.getUnsaleable());
+
+        if(bottleDTO.getSeries() != null){
+            newBottle.series(seriesRepository.getSeriesByUuid(bottleDTO.getSeries().getUuid()));
+        }else{
+            newBottle.series(null);
+        }
+
+        return newBottle.build();
     }
 
 }
