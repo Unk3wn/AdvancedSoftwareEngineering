@@ -7,10 +7,75 @@
 
 \chapter{Refactoring}
 
-\section{Identifizieren von Codesmells}
-\subsection{Code Smell 1}
-\subsubsection{Begründung}
-\subsubsection{Fix}
-\subsection{Code Smell 2}
-\subsubsection{Begründung}
-\subsubsection{Fix}
+	\section{Codesmell 1 - RSPEC-1128 - Unnecessary imports should be removed \cite{codeSmell1.sonar}}
+	Dieser Codesmell wird in der Regel \hk{RSPEC - 1128} behandelt. Er befasst sich damit, dass ungenutzte Imports (dt. Einbettungen) aus den entsprechenden Klassen entfernt werden sollen.
+	\subsubsection{Begründung}
+	Dieser Fehler soll verhindern, dass der Entwickler durch zu viele Imports in einer Klasse verwirrt wird.
+		
+		\subsection{Fix}
+		Entfernen der ungenutzten Imports. Dies kann oft durch die Option \hk{Code Refactoring} der IDE automatisch übernommen werden.
+		
+		\subsection{Projektbezug}
+		Hierbei wurde der Fehler erkannt (\cref{a.4.backend.codesmell1.before}) und im gleichen durch die Refacrtoring Funktion (\cref{a.4.backend.codesmell1.fix}) der \ac{IDE} beseitigt (\cref{a.4.backend.codesmell1.after}).
+		
+
+	\section{Codesmell 2 - RSPEC-5411 - Boxed \hk{Boolean} should be avoided in boolean expressions \cite{codeSmell2.sonar}}
+	Dieser Codesmell wird in der Regel \hk{RSPEC - 5411} behandelt. Er befasst sich damit, dass Boolean Variablen nicht direkt als Entscheidungskriterium einer Verzweigung verwendet werden sollen.
+		\subsection{Begründung}
+		Dieser Fehler verhindert, dass bei einem Nullwert der Boolean Variable eine \textit{NullPointerException} geworfen wird. Hierbei wird die Robustheit der Anwendung gesteigert.
+		
+		\subsection{Fix}
+		Um diesen Fehler zu vermeiden sollten der Boolean Ausdruck in einen Boolean Wrapper geschrieben werden. Hierbei muss die nicht gültige Version 
+		
+		\begin{lstlisting}[language=java,caption={Non Complient Version - Codesmell 1},gobble=11]
+			Boolean b = getBoolean();
+			if (b) {  // Noncompliant, it will throw NPE when b == null
+				foo();
+			} else {
+				bar();
+			}
+		\end{lstlisting}
+	
+		wie folgt abgewandelt werden.
+	
+		\begin{lstlisting}[language=java,caption={Complient Version - Codesmell 1},gobble=11]
+			Boolean b = getBoolean();
+			if (Boolean.TRUE.equals(b)) {
+				foo();
+			} else {
+				bar();  // will be invoked for both b == false and b == null
+			}
+		\end{lstlisting}
+	
+		\subsection{Projektbezug}
+		Hierbei wurde der Fehler erkannt (\cref{a.4.backend.codesmell2.before}) und im gleichen Zug eine Lösung für den Code Smell implementiert (\cref{a.4.backend.codesmell2.after}).
+		
+	
+	\section{Code Smell 3 - RSPEC-1186 - Functions should not be empty \cite{codeSmell3.sonar}}
+	Dieser Codesmell wird in der Regel \hk{RSPEC - 1186} behandelt. Er befasst sich damit, dass es keine leeren Functionen in Typescript geben sollte.
+		\subsection{Begründung}
+		Leere Funktionen sind allgemein zu entfernen, um ungewollte Verhaltensmuster in der Produktivanwendung zu verhindern. Des weiteren könnte, wenn diese Methode nicht unterstützt oder später entwickelt wird, eine Fehlermeldung geworfen werden. 
+		
+		\subsection{Fix}
+		Hierbei sollten leere Funktionen entweder entfernt oder,
+		\begin{lstlisting}[language=java,caption={Non Complient Version - Codesmell 3},gobble=11]
+			function foo() {
+			}
+			
+			var foo = () => {};
+		\end{lstlisting}
+		
+		wie folgt mit einem Kommentar abgewandelt werden, warum diese Methode einen leeren Rumpf aufweist.
+		
+		\begin{lstlisting}[language=java,caption={Complient Version - Codesmell 3},gobble=11]
+			function foo() {
+				// This is intentional
+			}
+			
+			var foo = () => {
+				do_something();
+			};
+		\end{lstlisting}
+		
+		\subsection{Projektbezug}
+		Hierbei wurde der Fehler erkannt (\cref{a.4.frontend.codesmell1.before}) und im gleichen Zug eine Lösung für den Code Smell implementiert (\cref{a.4.frontend.codesmell1.after}).

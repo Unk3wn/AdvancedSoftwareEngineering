@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrules_sonarsource_com=self.webpackChunkrules_sonarsource_com||[]).push([[948],{3216:function(e,a,n){n.r(a);var u=n(7294),r=(n(778),n(2797)),t=n(8477),l=n(1483);a.default=function(e){var a=e.pageContext;e.ruleKey;return u.createElement(l.Z,null,u.createElement(r.Z,{languages:a.languages,languageKey:a.language.key}),u.createElement(t.Ge,{pageContext:a}))}}}]);
+//# sourceMappingURL=component---src-components-rules-static-route-js-39b6c412e9388e29dfca.js.map

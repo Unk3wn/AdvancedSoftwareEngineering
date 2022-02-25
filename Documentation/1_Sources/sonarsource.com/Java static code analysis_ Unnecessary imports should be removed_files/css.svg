@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #434447;
+      }
+
+      .cls-3 {
+        fill: #8a8c8f;
+      }
+
+      .cls-4 {
+        fill: #ebebeb;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_7714" data-name="Groupe 7714" transform="translate(-281 -271)">
+    <rect id="Rectangle_11537" data-name="Rectangle 11537" class="cls-1" width="24" height="24" transform="translate(281 271)"/>
+    <g id="Groupe_7701" data-name="Groupe 7701" transform="translate(284.475 273.404)">
+      <path id="polygon2989" class="cls-2" d="M92.287,100.62l-1.608,18.018-7.23,2-7.21-2-1.607-18.02Z" transform="translate(-74.633 -100.62)"/>
+      <path id="polygon2991" class="cls-3" d="M261.842,146.291l1.374-15.4H256v17.017Z" transform="translate(-247.173 -129.42)"/>
+      <path id="polygon2993" class="cls-4" d="M150.31,268.217l.2,2.21h4.946v-2.21Z" transform="translate(-146.627 -260.06)"/>
+      <path id="polygon2995" class="cls-4" d="M147.674,176.3h-5.542l.2,2.21h5.341Z" transform="translate(-138.847 -172.621)"/>
+      <path id="polygon2997" class="cls-4" d="M161.256,341.057v-2.3l-.01,0-2.461-.665-.157-1.763h-2.219l.31,3.47,4.527,1.257Z" transform="translate(-152.429 -324.861)"/>
+      <path id="polygon3005" class="cls-5" d="M258.565,182.988l-.257,2.866-2.465.665v2.3l4.531-1.256.033-.373.519-5.819.054-.593.4-4.473h-5.536v2.21h3.114l-.2,2.263h-2.913v2.21Z" transform="translate(-247.023 -172.621)"/>
+    </g>
+  </g>
+</svg>
