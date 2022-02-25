@@ -36,6 +36,7 @@ export class EditComponent implements OnInit {
     this.uuid = this.route.snapshot.params['bottleUUID'];
     this.bottleService.find(this.uuid).subscribe((data: IBottle)=>{
       this.bottle = data;
+      console.log(this.bottle)
     });
     this.form = new FormGroup({
       uuid : new FormControl(this.uuid),

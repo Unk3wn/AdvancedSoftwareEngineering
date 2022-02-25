@@ -9,14 +9,14 @@
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-group">
-      <label for="seriesLabel">Title:</label>
+      <label for="label">Title:</label>
       <input
-        formControlName="seriesLabel"
-        id="seriesLabel"
+        formControlName="label"
+        id="label"
         type="text"
         class="form-control">
-      <div *ngIf="f['seriesLabel'].touched && f['seriesLabel'].invalid" class="alert alert-danger">
-        <div *ngIf="f['seriesLabel'].errors && f['seriesLabel'].errors['required']">Title is required.</div>
+      <div *ngIf="f['label'].touched && f['label'].invalid" class="alert alert-danger">
+        <div *ngIf="f['label'].errors && f['label'].errors['required']">Title is required.</div>
       </div>
     </div>
     <br>
