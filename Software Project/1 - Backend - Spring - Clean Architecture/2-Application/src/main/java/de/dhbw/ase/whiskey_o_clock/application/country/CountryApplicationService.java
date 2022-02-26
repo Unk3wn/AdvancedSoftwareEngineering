@@ -31,14 +31,13 @@ public class CountryApplicationService {
         \_____|_|  \___|\__,_|\__\___|
      */
     public Country saveCountry(Country country) {
-        return saveCountry(country.getAbbreviation(), country.getName());
+        return countryRepository.save(country);
     }
 
     public Country saveCountry(String abbreviation, String name) throws NonUniqueObjectException {
         if (!countryRepository.existsByAbbreviation(abbreviation)) {
             Country countryToCreate = new Country(abbreviation, name);
-            countryRepository.save(countryToCreate);
-            return countryToCreate;
+            return countryRepository.save(countryToCreate);
         }
         throw new ValidationException("Abbreviation is not unique");
     }
