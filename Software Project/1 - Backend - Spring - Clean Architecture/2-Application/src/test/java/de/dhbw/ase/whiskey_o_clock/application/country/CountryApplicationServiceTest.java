@@ -33,23 +33,22 @@ class CountryApplicationServiceTest {
     private UUID countryUUID = UUID.randomUUID();
 
     @Test
-    void saveCountryDTO() {
-        Country country = new Country(countryAbbreviation, countryName);
-
-        when(countryRepository.save(country)).thenReturn(country);
-
-        Country createdCountry = countryRepository.save(country);
-
-        verify(countryRepository).save(any(Country.class));
-        assertThat(createdCountry).isEqualTo(country);
-    }
-
-    @Test
     void saveCountry() {
         Country country = new Country(countryAbbreviation, countryName);
 
         when(countryRepository.save(country)).thenReturn(country);
-        Country createdCountry = countryRepository.save(country);
+        Country createdCountry = countryApplicationService.saveCountry(country);
+
+        verify(countryRepository).save(any(Country.class));
+        assertEquals(country,createdCountry);
+    }
+
+    @Test
+    void saveCountryVariables() {
+        Country country = new Country(countryAbbreviation, countryName);
+
+        when(countryRepository.save(any(Country.class))).thenReturn(country);
+        Country createdCountry = countryApplicationService.saveCountry(countryAbbreviation,countryName);
 
         verify(countryRepository).save(any(Country.class));
         assertThat(createdCountry).isEqualTo(country);
