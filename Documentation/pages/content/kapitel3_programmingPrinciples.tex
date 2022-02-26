@@ -69,12 +69,10 @@
 			
 			\subsection{Low coupling \cite{kohaesion.google}} \label{3.lowCoupling}
 			Das Prinzip \hk{wenig Kopplung} (engl. low coupling) besagt, dass möglichst wenig Abhängigkeiten zwischen den Komponenten bestehen sollte. Die einzelnen Klassen/Objekte/Module sollten möglichst wenig voneinander wissen. Das Ziel ist die Abhängigkeiten zwischen einzelnen Klassen/Objekte/Module so gering wie möglich zu halten. \\
-			Dieses Prinzip wurde im ganzen Projekt umgesetzt. Ein Beispiel ist, dass z.B. der CountryApplicationService kein wissen über andere Repoistory's als das \hk{CountryRepository} benötigt. Hier herscht also \hk{low coupling}. Im Gegenzug benötigt der \hk{BottleApplicationService} drei verschiedene Repository's, was eine hohe Kopplung mit sich bringt.
+			Dieses Prinzip wurde im ganzen Projekt umgesetzt. Ein Beispiel ist, dass z.B. der CountryApplicationService kein Wissen über andere Repoistory's als das \hk{CountryRepository} benötigt. Hier herscht also \hk{low coupling}. Im Gegenzug benötigt der \hk{BottleApplicationService} drei verschiedene Repository's, was eine hohe Kopplung mit sich bringt.
 			
 		\subsection{Schlussfolgerung}
 		Prinzipiell geht die Kohäsion mit der Kopplung einher. Umso mehr Verantwortlichkeiten und Teilaufgaben in andere Klassen ausgelagert werden, umso höher wird die Kohäsion der Ursprungsklasse, da hier eine Spezialisierung stattfindet. Im gleichen Schritt nimmt ebenfalls die Kopplung zu, da die Ursprungsklasse von mehreren Unterklassen abhängig ist. Hierbei gilt es ein gesundes Mittelmaß zu finden und eine überlegte Trennung durchzuführen. Generell gilt jedoch die Kopplung unter Klassen gering und damit die Kohäsion der Klassen hoch zu halten.
-		
-		
 		
 	\section{DRY}
 	Das Programmierprinzip \hk{DRY}, dt. für \hk{wiederholde dich nicht} (engl. \textbf{D}on't \textbf{R}epeat \textbf{Y}ourself), steht für ein Prinzip in der Programmierung. Hierbei sollen Redundanzen vermieden bzw. beseitigt werden. Es ist ein fundamentales Prinzip von Clean Code, dass von Programmieren wie folgt definiert wird :
