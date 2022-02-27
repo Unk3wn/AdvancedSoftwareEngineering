@@ -1,6 +1,11 @@
 <div class="container">
 
   <h1>Bottle's</h1>
+  <div>
+    <a href="#" routerLink="/bottle/create/" class="btn btn-success">Create New Bottle</a>
+  </div>
+
+  <br>
 
   <div *ngIf="bottles.length == 0">
     Error Country could not be loaded! <br>
@@ -9,10 +14,7 @@
     Also take a look into the console ¯\_(ツ)_/¯
   </div>
 
-  <br>
   <div *ngIf="bottles.length > 0">
-    <a href="#" routerLink="/bottle/create/" class="btn btn-success">Create New Bottle</a>
-    <br>
     <table class="table table-striped text-center" *ngIf="bottles.length > 0">
       <tr>
         <th>UUID</th>
@@ -38,8 +40,8 @@
         <td><input type="checkbox" [checked]="bottle.favorite == true" disabled="1"></td>
         <td><input type="checkbox" [checked]="bottle.unsaleable == true" disabled="1"></td>
         <td>
-          <button type="button" (click)="deleteSeries(bottle.uuid)" class="btn btn-danger">Delete</button>
-          <a href="#" [routerLink]="['/bottle/',bottle.uuid,'edit']" class="btn btn-primary">Edit</a>
+          <button type="button" (click)="deleteSeries(bottle.uuid)" class="btn btn-outline-danger">Delete</button>
+          <a href="#" [routerLink]="['/bottle/',bottle.uuid,'edit']" class="btn btn-outline-primary">Edit</a>
         </td>
       </tr>
     </table>

@@ -2,6 +2,12 @@
 
   <h1>Serieses's</h1>
 
+  <div>
+    <a href="#" routerLink="/series/create/" class="btn btn-success">Create New Series</a>
+  </div>
+
+  <br>
+
   <div *ngIf="serieses.length == 0">
     Error Country could not be loaded! <br>
     OR no Data in the Backend ¯\_(ツ)_/¯ <br>
@@ -11,8 +17,6 @@
 
   <br>
   <div *ngIf="serieses.length > 0">
-    <a href="#" routerLink="/series/create/" class="btn btn-success">Create New Series</a>
-    <br>
     <table class="table table-striped text-center">
       <tr>
         <th>UUID</th>
@@ -22,7 +26,7 @@
       <tr *ngFor="let series of serieses">
         <td>{{ series.uuid}}</td>
         <td>{{ series.label }}</td>
-        <td><button type="button" (click)="deleteSeries(series.uuid)" class="btn btn-danger">Delete</button></td>
+        <td><button type="button" (click)="deleteSeries(series.uuid)" class="btn btn-outline-danger">Delete</button></td>
       </tr>
     </table>
   </div>
