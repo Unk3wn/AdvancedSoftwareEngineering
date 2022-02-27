@@ -1,8 +1,8 @@
 package de.dhbw.ase.whiskey_o_clock.bottle;
 
 import com.fasterxml.jackson.annotation.*;
-import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
-import de.dhbw.ase.whiskey_o_clock.SeriesDTO;
+import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTO;
+import de.dhbw.ase.whiskey_o_clock.series.SeriesDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

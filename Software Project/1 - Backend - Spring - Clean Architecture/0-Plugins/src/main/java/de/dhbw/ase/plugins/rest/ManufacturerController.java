@@ -1,7 +1,7 @@
 package de.dhbw.ase.plugins.rest;
 
-import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.application.manufacturer.ManufacturerApplicationService;
+import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTOToManufacturer;
 import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerToManufacturerDTOMapper;
 import lombok.RequiredArgsConstructor;

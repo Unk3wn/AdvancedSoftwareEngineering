@@ -1,6 +1,5 @@
 package de.dhbw.ase.whiskey_o_clock.manufacturer;
 
-import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.country.CountryDTOToCountryMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import org.springframework.beans.factory.annotation.Autowired;

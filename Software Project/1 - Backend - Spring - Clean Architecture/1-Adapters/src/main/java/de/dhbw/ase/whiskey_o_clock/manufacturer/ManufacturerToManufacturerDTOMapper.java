@@ -1,6 +1,5 @@
 package de.dhbw.ase.whiskey_o_clock.manufacturer;
 
-import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.country.CountryToCountryDTOMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import org.springframework.stereotype.Component;

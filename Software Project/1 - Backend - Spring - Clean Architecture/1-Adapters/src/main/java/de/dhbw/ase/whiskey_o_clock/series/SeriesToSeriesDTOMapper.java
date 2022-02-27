@@ -1,6 +1,5 @@
 package de.dhbw.ase.whiskey_o_clock.series;
 
-import de.dhbw.ase.whiskey_o_clock.SeriesDTO;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import org.springframework.stereotype.Component;
 
