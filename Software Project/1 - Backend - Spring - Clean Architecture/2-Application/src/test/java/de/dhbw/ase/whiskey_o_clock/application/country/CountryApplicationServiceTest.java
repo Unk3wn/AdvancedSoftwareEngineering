@@ -20,17 +20,15 @@ import static org.mockito.BDDMockito.*;
 @ExtendWith(MockitoExtension.class)
 class CountryApplicationServiceTest {
 
-    @Mock
-    private CountryRepository countryRepository;
-
-    @InjectMocks
-    private CountryApplicationService countryApplicationService;
-
     private static final String COUNTRY_NAME = "Testland";
     private static final String COUNTRY_ABBREVIATION = "TES";
     private static final String NEW_ABBREVIATION = "NEW";
     private static final String NEW_COUNTRY_NAME = "New Country Name";
     private static final UUID COUNTRY_UUID = UUID.randomUUID();
+    @Mock
+    private CountryRepository countryRepository;
+    @InjectMocks
+    private CountryApplicationService countryApplicationService;
 
     @Test
     void saveCountry() {

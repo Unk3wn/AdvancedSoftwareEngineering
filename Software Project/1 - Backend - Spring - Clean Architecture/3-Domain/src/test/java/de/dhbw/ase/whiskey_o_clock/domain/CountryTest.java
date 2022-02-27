@@ -34,7 +34,7 @@ class CountryTest {
     void getUuid() {
         Country countryMock = Mockito.mock(Country.class);
         when(countryMock.getUuid()).thenReturn(COUNTRY_UUID);
-        assertEquals(COUNTRY_UUID,countryMock.getUuid());
+        assertEquals(COUNTRY_UUID, countryMock.getUuid());
     }
 
     @Test
@@ -50,13 +50,13 @@ class CountryTest {
     @Test
     void setUuid() {
         testCountry.setUuid(COUNTRY_UUID_NEW);
-        assertEquals(COUNTRY_UUID_NEW,testCountry.getUuid());
+        assertEquals(COUNTRY_UUID_NEW, testCountry.getUuid());
     }
 
     @Test
     void setAbbreviation() {
         testCountry.setAbbreviation(COUNTRY_ABBREVIATION_NEW);
-        assertEquals(COUNTRY_ABBREVIATION_NEW,testCountry.getAbbreviation());
+        assertEquals(COUNTRY_ABBREVIATION_NEW, testCountry.getAbbreviation());
     }
 
     @Test
@@ -72,7 +72,7 @@ class CountryTest {
     @Test
     void setName() {
         testCountry.setName(COUNTRY_NAME_NEW);
-        assertEquals(COUNTRY_NAME_NEW,testCountry.getName());
+        assertEquals(COUNTRY_NAME_NEW, testCountry.getName());
     }
 
     @Test

@@ -45,7 +45,6 @@ public class BottleDTO {
     @JsonProperty("unsaleable")
     private Boolean unsaleable;
     @JsonProperty("series")
-    @JsonIgnoreProperties("bottleList")
     private SeriesDTO series;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

@@ -2,8 +2,9 @@ package de.dhbw.ase.whiskey_o_clock.bottle;
 
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.builder.BottleBuilder;
-import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.ManufacturerRepository;
-import de.dhbw.ase.whiskey_o_clock.domain.series.SeriesRepository;
+import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTOToManufacturer;
+import de.dhbw.ase.whiskey_o_clock.series.SeriesDTOToSeriesMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
@@ -11,12 +12,13 @@ import java.util.function.Function;
 @Component
 public class BottleDTOToBottleMapper implements Function<BottleDTO, Bottle> {
 
-    private ManufacturerRepository manufacturerRepository;
-    private SeriesRepository seriesRepository;
+    private ManufacturerDTOToManufacturer manufacturerDTOToManufacturer;
+    private SeriesDTOToSeriesMapper seriesDTOToSeriesMapper;
 
-    public BottleDTOToBottleMapper(ManufacturerRepository manufacturerRepository, SeriesRepository seriesRepository) {
-        this.manufacturerRepository = manufacturerRepository;
-        this.seriesRepository = seriesRepository;
+    @Autowired
+    public BottleDTOToBottleMapper(ManufacturerDTOToManufacturer manufacturerDTOToManufacturer, SeriesDTOToSeriesMapper seriesDTOToSeriesMapper) {
+        this.manufacturerDTOToManufacturer = manufacturerDTOToManufacturer;
+        this.seriesDTOToSeriesMapper = seriesDTOToSeriesMapper;
     }
 
     @Override
@@ -27,19 +29,29 @@ public class BottleDTOToBottleMapper implements Function<BottleDTO, Bottle> {
     private Bottle map(BottleDTO bottleDTO) {
         BottleBuilder newBottle = new BottleBuilder(bottleDTO.getLabel());
         newBottle.uuid(bottleDTO.getUuid())
-                .price(bottleDTO.getPrice())
-                .yearOfManufacture(bottleDTO.getYearOfManufacture())
-                .manufacturer(manufacturerRepository.getManufacturerByUuid(bottleDTO.getManufacturer().getUuid()))
-                .forSale(bottleDTO.getForSale())
-                .favorite(bottleDTO.getFavorite())
-                .unsaleable(bottleDTO.getUnsaleable());
-
+                .price(bottleDTO.getPrice().doubleValue())
+                .yearOfManufacture(bottleDTO.getYearOfManufacture().intValue())
+                .manufacturer(this.manufacturerDTOToManufacturer.apply(bottleDTO.getManufacturer()));
+        if (bottleDTO.getForSale() != null) {
+            newBottle.forSale(bottleDTO.getForSale().booleanValue());
+        } else {
+            newBottle.forSale(false);
+        }
+        if (bottleDTO.getFavorite() != null) {
+            newBottle.favorite(bottleDTO.getFavorite().booleanValue());
+        } else {
+            newBottle.favorite(false);
+        }
+        if (bottleDTO.getUnsaleable() != null) {
+            newBottle.unsaleable(bottleDTO.getUnsaleable().booleanValue());
+        } else {
+            newBottle.unsaleable(false);
+        }
         if (bottleDTO.getSeries() != null) {
-            newBottle.series(seriesRepository.getSeriesByUuid(bottleDTO.getSeries().getUuid()));
+            newBottle.series(this.seriesDTOToSeriesMapper.apply(bottleDTO.getSeries()));
         } else {
             newBottle.series(null);
         }
         return newBottle.build();
     }
-
 }

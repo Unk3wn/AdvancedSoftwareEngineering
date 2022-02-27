@@ -35,7 +35,11 @@ public class ManufacturerApplicationService {
         \_____|_|  \___|\__,_|\__\___|
      */
     public Manufacturer createManufacturer(Manufacturer manufacturer) {
-        return manufacturerRepository.save(manufacturer);
+        if (null == manufacturer.getUuid() || !this.manufacturerRepository.existsById(manufacturer.getUuid()) || this.countryRepository.existsById(manufacturer.getOriginCountry().getUuid())) {
+            manufacturer.setOriginCountry(this.countryRepository.getCountryByUuid(manufacturer.getOriginCountry().getUuid()));
+            return this.manufacturerRepository.save(manufacturer);
+        }
+        throw new ValidationException("Wrong Data!");
     }
 
     public Manufacturer createManufacturer(String name, String countryAbbreviation) throws NonUniqueObjectException {

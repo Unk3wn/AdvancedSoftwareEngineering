@@ -23,7 +23,7 @@ public class ManufacturerDTOToManufacturer implements Function<ManufacturerDTO, 
     }
 
     private Manufacturer map(ManufacturerDTO manufacturerDTO) {
-        return new Manufacturer(manufacturerDTO.getName(), countryDTOToCountryMapper.apply(manufacturerDTO.getOriginCountry()));
+        return new Manufacturer(manufacturerDTO.getUuid(), manufacturerDTO.getName(), countryDTOToCountryMapper.apply(manufacturerDTO.getOriginCountry()));
     }
 
 }

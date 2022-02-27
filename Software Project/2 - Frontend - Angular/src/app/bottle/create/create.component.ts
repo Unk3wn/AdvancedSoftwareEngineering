@@ -36,7 +36,7 @@ export class CreateComponent implements OnInit {
       forSale: new FormControl(''),
       favorite: new FormControl(''),
       unsaleable: new FormControl(''),
-      series: new FormControl('',[Validators.required])
+      series: new FormControl(null)
     });
     this.bottleService.getAllManufacturers().subscribe((data: IManufacturer[])=>{
       this.manufacturers = data;

@@ -2,6 +2,7 @@ package de.dhbw.ase.whiskey_o_clock.manufacturer;
 
 import de.dhbw.ase.whiskey_o_clock.country.CountryToCountryDTOMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
@@ -11,6 +12,7 @@ public class ManufacturerToManufacturerDTOMapper implements Function<Manufacture
 
     private CountryToCountryDTOMapper countryToCountryDTOMapper;
 
+    @Autowired
     public ManufacturerToManufacturerDTOMapper(CountryToCountryDTOMapper countryToCountryDTOMapper) {
         this.countryToCountryDTOMapper = countryToCountryDTOMapper;
     }

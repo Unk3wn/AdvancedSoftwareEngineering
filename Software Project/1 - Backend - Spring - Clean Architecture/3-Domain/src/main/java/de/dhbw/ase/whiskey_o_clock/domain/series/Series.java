@@ -44,10 +44,16 @@ public class Series {
         this.bottleList = new LinkedList<>();
     }
 
+    public Series(UUID uuid, String label) {
+        this(label);
+        this.uuid = uuid;
+    }
+
     public Series(String label, List<Bottle> bottleList) {
         this.label = label;
         this.bottleList = bottleList;
     }
+
 
     public void addBottle(Bottle bottle) {
         this.bottleList.add(bottle);

@@ -39,7 +39,16 @@ public class BottleApplicationService {
         \_____|_|  \___|\__,_|\__\___|
      */
     public Bottle createBottle(Bottle bottle) {
-        return bottleRepository.save(bottle);
+        if (null == bottle.getUuid() || !this.bottleRepository.existsById(bottle.getUuid()) || this.manufacturerRepository.existsById(bottle.getManufacturer().getUuid())) {
+            bottle.setManufacturer(this.manufacturerRepository.getManufacturerByUuid(bottle.getManufacturer().getUuid()));
+            if (null != bottle.getSeries() && this.bottleRepository.existsById(bottle.getSeries().getUuid())) {
+                bottle.setSeries(this.seriesRepository.getSeriesByUuid(bottle.getSeries().getUuid()));
+            } else {
+                bottle.setSeries(null);
+            }
+            return this.bottleRepository.save(bottle);
+        }
+        throw new ValidationException("Wrong Data!");
     }
 
     public Bottle createBottle(String label, double price, int yearOfManufacture, String manufacturerName) {
@@ -115,7 +124,7 @@ public class BottleApplicationService {
             foundBottle.setLabel(bottle.getLabel());
             foundBottle.setPrice(bottle.getPrice());
             foundBottle.setYearOfManufacture(bottle.getYearOfManufacture());
-            foundBottle.setManufacturer(bottle.getManufacturer());
+            foundBottle.setManufacturer(manufacturerRepository.getManufacturerByUuid(bottle.getManufacturer().getUuid()));
             foundBottle.setForSale(bottle.isForSale());
             foundBottle.setFavorite(bottle.isFavorite());
             foundBottle.setUnsaleable(bottle.isUnsaleable());

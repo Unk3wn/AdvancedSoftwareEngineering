@@ -27,31 +27,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class CountryControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @MockBean
-    private CountryController countryController;
-
-    @MockBean
-    private CountryApplicationService countryApplicationService;
-
     private static final UUID COUNTRY_UUID = UUID.randomUUID();
     private static final UUID COUNTRY_UUID_1 = UUID.randomUUID();
     private static final UUID COUNTRY_UUID_2 = UUID.randomUUID();
     private static final UUID COUNTRY_UUID_3 = UUID.randomUUID();
     private static final String COUNTRY_ABBREVIATION = "TES";
     private static final String COUNTRY_NAME = "TestCountry";
-
     private static final Country COUNTRY_TEST = new Country(COUNTRY_UUID, COUNTRY_ABBREVIATION, COUNTRY_NAME);
     private static final CountryDTO COUNTRY_TEST_DTO = new CountryDTO(COUNTRY_UUID, COUNTRY_ABBREVIATION, COUNTRY_NAME);
-
     private static final CountryDTO COUNTRY_DTO_1 = new CountryDTO(COUNTRY_UUID_1, "EIN", "EINS");
     private static final CountryDTO COUNTRY_DTO_2 = new CountryDTO(COUNTRY_UUID_2, "ZWE", "ZWEI");
     private static final CountryDTO COUNTRY_DTO_3 = new CountryDTO(COUNTRY_UUID_3, "DRE", "DREI");
+    @Autowired
+    private MockMvc mockMvc;
+    @Autowired
+    private ObjectMapper objectMapper;
+    @MockBean
+    private CountryController countryController;
+    @MockBean
+    private CountryApplicationService countryApplicationService;
 
     @Test
     void createCountry() throws Exception {
