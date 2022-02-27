@@ -54,6 +54,7 @@
         <option
           *ngFor="let manufacturer of manufacturers"
           [ngValue]="manufacturer"
+          [selected]="this.bottle.manufacturer.name == manufacturer.name"
         >{{manufacturer.name}}</option>
       </select>
     </div>
@@ -94,9 +95,10 @@
     <div>
       <select formControlName="series" id="series" [(ngModel)]="bottle.series">
         <option [ngValue]="null" disabled>Select Series</option>
-        <option [ngValue]="null">No Series</option>
+        <option [ngValue]="undefined">No Series</option>
         <option *ngFor="let series of serieses"
                 [ngValue]="series"
+                [selected]="series == this.bottle2.series"
         >{{series.label}}</option>
       </select>
     </div>
