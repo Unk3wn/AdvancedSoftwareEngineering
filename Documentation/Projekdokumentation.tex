@@ -150,10 +150,13 @@
 	\setcounter{page}{1}
 	\pagestyle{headings} %<- Pagestyle reset 
 	
+	\include{pages/content/kapitel_0_antrag} %done
+	\ifthenelse{\boolean{DEBUG}}{}{\cleardoublepage}
+	
 	\include{pages/content/kapitel1_ddd} %done
 	\ifthenelse{\boolean{DEBUG}}{}{\cleardoublepage}
 	
-	\include{pages/content/kapitel2_cleanArchitecture}
+	\include{pages/content/kapitel2_cleanArchitecture} %done
 	\ifthenelse{\boolean{DEBUG}}{}{\cleardoublepage}
 	
 	\include{pages/content/kapitel3_programmingPrinciples} %done

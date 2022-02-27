@@ -6,10 +6,54 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Clean Architecture} \label{2.cleanArchitecture}
+Die \hk{Clean Architecture} ist in vier Schichten gegliedert.Eine Übersicht ist im Anhang \cref{a.2.cleanArchitecture} zu finden.
 
 	\section{Schichtenarchitektur}
-	In \cref{a.2.cleanArchitecture}
+	\begin{figure}[h]
+		\centering
+		\shadowimage[height=225px]{./zfiles/Bilder/cleanArchitectureVorlesung.png}
+		\caption{Übersicht der Clean Architecture nach \cite{cleanArchitecture.dostmann} und Implementierung im Projekt}
+		\label{2.cleanArchitecture}
+	\end{figure}
+	In unserer Vorlesung wurde die vierte Schicht (Entites) noch einmal weiter in \hk{Domain-} und \hk{Abstractioncode} unterschieden werden. Außerdem erfolgte die Unterteilung der einzelnen Schichten in diesem Projekt in Form von unterschiedlichen Maven-Modulen, die am Ende zu einem vollständigen Projekt \hk{zusammengesetzt} werden. Im Weiteren werden die einzelnen Schichten erläutert.
+
+	\newpage
+
+		\subsection{Abstraction - Schicht}
+		Diese Schicht stellt den eigentlichen Kern der Architektur dar. Hier liegt das domänenübergreifende Wissen, welches bei vielen Programmiersprachen schon gegeben ist. Bekannte Vertreter dieser Grundbausteine in Java könnten die Implementierung eines \hk{Strings} oder einer \hk{Double} sein.
+			\subsubsection{Implementierung im Projekt}
+			Diese grundlegende Schicht wird durch das Spring Boot Framework, welches auf Java aufbaut, geschaffen. Hier sind keine weiteren Anpassungen nötig.
+		
+		\subsection{Domain - Schicht} \label{2.domain}
+		Diese Schicht stellt die ersten \hk{praxistaugliche} Schicht dar. Diese enthält die Business Object der Anwendung und implementiert somit die organisationsweiten Geschäftslogiken. 
+			\subsubsection{Implementierung im Projekt}
+			In dieser Schicht wurden die Buisnessobjekts aus \cref{1.va} und \cref{1.ent} implementiert. Prinzipiell wurde hier auf das trennen von Buisness-Object und einem Persistierungsobjektes mit Hibernate Annotationen verzichtet und diese beiden Typen in Form \textbf{einer} Klasse zusammengefasst. Nach strengem befolgen aller Richtlinien müssten diese beiden Entitäten klar getrennt werden und die Hibernate Implementierung in die \textbf{Plugins-Schicht ausgelagert} und mit einem \textbf{Interface} in die\textbf{ Domainschicht} verbunden werden.
+		
+		\subsection{Application - Schicht}
+		Diese Schicht enthält die Anwendungsfälle (engl. Use-Cases) und daraus indirekt resultierend die Anforderungen an die Applikation. Hier werden anwendungsspezifische Geschäftslogiken implementiert, die den Fluss der Daten in der Anwendung steuern. 
+			\subsubsection{Implementierung im Projekt}
+			In dieser Schicht wurden die Anwendungsfälle aus der \cref{0.themenmitteilung} implementiert. Hierbei sind alle Anwendungsfälle auf einfache \hk{CRUD}-Operationen zurückzuführen, weshalb die Application-Services im Backend diese Funktionen bereitstellen. Diese Services verwenden die bereitgestellten Funktionen der Repository's um mit den Entitäten zu interagieren und die Use-Cases implementieren.
+			
+		\subsection{Adapters - Schicht}
+		Diese Schicht vermittelt Aufrufe und Daten in die inneren Schichten. Hier finden die \textbf{Formatkonvertierungen} statt. Dabei werden externe und interne Formate in das jeweils andere umgewandelt, dass die Gegenseite mit diesem Format arbeiten kann. Hierbei ist das Ziel die inneren Schichten von den äußeren Schichten zu entkoppeln.
+			\subsubsection{Implementierung in diesem Projekt}
+			In diesem Projekt erfolgt in der Schicht die Umwandlung der implementierten Value-Objects (in diesem Fall die DTOs), die eine Entität in serialisierbarer Form darstellen, in eigentlichen Entitäten. Ebenso ist eine Umwandlung von Entitäten in entsprechende DTOs möglich, die an das Frontend geschicht werden können. \\
+			Diese Mapping Operationen erfolgen mit Hilfe der Klasse \class{XxxDTOToXxxMapper} und dem entsprechenden Gegenstück, der Klasse \class{XxxToXxxDTOMapper}.
+		
+		\subsection{Plugins - Schicht}	
+		Diese Schicht greift auf die Adapter und die im inneren implementierten Interfaces zu, um mit Hilfe von Frameworks die geforderten Operationen zu implementieren. Sie enthält somit Frameworks, Datentransportmittel und andere Werkzeuge wie z.B. Swagger, um die API zu testen. Hierbei soll das Schreiben von Code mit Hilfe vorhandener Frameworks etc. minimiert werden.
+			\subsubsection{Implementierung in diesem Projekt}
+			In diesem Projekt ist der wichtigste Part die Datenbankanbindung. Diese wird durch Hibernate umgesetzt. Hierbei werden die Interfaces, welche in der Domainschicht (\cref{2.domain}) entwickelt wurden implementiert. Dies kann z.B. mithilfe des sogenannten Bridge-Musters erfolgen (\cref{5.bridge}). \\
+			Außerdem wird hier die eigentliche Spring-Anwendung instanzieert und die Konfiguration dieser vorgenommen. \\
+			Zuletzt wurden hier weitere Tools eingebunden, die den Entwicklungsprozess vereinfachen, wie z.B.
+			\begin{itemize}
+				\item \textbf{H2-Console} - Zum Debuggen und der Überprüfung der H2 Datenbank
+				\item \textbf{Swagger} - Testen der API und zum Senden von Debug-Anfragen
+			\end{itemize}
+		
+	\section{Frontend}
+	Das Frontend wurde nicht im Sinne der \hk{Clean Architecture} entwickelt, da es nicht in den Spezifikationen für das Projekt gefordert war. \\
+	Implementiert wurde das Frontend zum einfachen Verwenden der geschaffenen Backend-Struktur,dem Durchführen der Anwendungsfälle und der Anzeige der Daten in der Datenbank. Die Implementierung erfolgte mit dem TypeScript-basierten Front-End-Webapplikationsframework \hk{\textbf{Angular}} \cite{angular.angular} \cref{a.2.frontend}.
+			
 	
-	\subsection{Planung}
 	
-	\subsection{Entscheidung anhand von Kriterien}
