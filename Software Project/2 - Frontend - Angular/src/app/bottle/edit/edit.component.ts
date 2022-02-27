@@ -16,6 +16,7 @@ export class EditComponent implements OnInit {
 
   uuid!: string;
   bottle!: IBottle;
+  bottle2!: IBottle;
   form!: FormGroup;
   manufacturers : IManufacturer[] = [];
   serieses : ISeries[] = [];
@@ -36,8 +37,8 @@ export class EditComponent implements OnInit {
     this.uuid = this.route.snapshot.params['bottleUUID'];
     this.bottleService.find(this.uuid).subscribe((data: IBottle)=>{
       this.bottle = data;
-      console.log(this.bottle)
     });
+    this.bottle2 = JSON.parse(JSON.stringify(this.bottle));
     this.form = new FormGroup({
       uuid : new FormControl(this.uuid),
       label: new FormControl(''),
