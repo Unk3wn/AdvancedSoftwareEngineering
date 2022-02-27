@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
       label: new FormControl('', [Validators.required]),
       price: new FormControl('',[Validators.required]),
       yearOfManufacture: new FormControl('',[Validators.required]),
-      manufacturer: new FormControl('',[Validators.required]),
+      manufacturer: new FormControl(null,[Validators.required]),
       forSale: new FormControl(''),
       favorite: new FormControl(''),
       unsaleable: new FormControl(''),

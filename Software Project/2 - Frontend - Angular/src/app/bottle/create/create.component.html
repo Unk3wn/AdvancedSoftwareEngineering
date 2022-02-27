@@ -8,7 +8,7 @@
   <br><br>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <label for="label">Title:</label>
+    <label for="label">Title*:</label>
     <input
       formControlName="label"
       id="label"
@@ -20,7 +20,7 @@
 
     <br>
 
-    <label for="label">Price:</label>
+    <label for="label">Price*:</label>
     <input
       formControlName="price"
       id="price"
@@ -32,7 +32,7 @@
 
     <br>
 
-    <label for="label">Year Of Manufacture:</label>
+    <label for="label">Year Of Manufacture*:</label>
     <input
       formControlName="yearOfManufacture"
       id="yearOfManufacture"
@@ -44,7 +44,7 @@
 
     <br>
 
-    <label for="manufacturer">Manufacturer:</label>
+    <label for="manufacturer">Manufacturer*:</label>
     <div>
       <select formControlName="manufacturer" id="manufacturer">
         <option [ngValue]="null" disabled>Select Manufacturer</option>
@@ -79,10 +79,11 @@
 
     <hr>
 
-    <label for="manufacturer">Series:</label>
+    <label for="manufacturer">Series :</label>
     <div>
       <select formControlName="series" id="series">
         <option [ngValue]="null" disabled>Select Series</option>
+        <option [ngValue]="null">No Series</option>
         <option *ngFor="let series of serieses" [ngValue]="series">{{series.label}}</option>
       </select>
     </div>
