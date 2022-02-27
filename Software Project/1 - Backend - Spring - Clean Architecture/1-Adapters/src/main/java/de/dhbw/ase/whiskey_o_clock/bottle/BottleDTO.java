@@ -1,16 +1,15 @@
 package de.dhbw.ase.whiskey_o_clock.bottle;
 
+import com.fasterxml.jackson.annotation.*;
+import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTO;
+import de.dhbw.ase.whiskey_o_clock.series.SeriesDTO;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import javax.annotation.Generated;
-
-import com.fasterxml.jackson.annotation.*;
-import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
-import de.dhbw.ase.whiskey_o_clock.SeriesDTO;
-import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -50,6 +49,18 @@ public class BottleDTO {
     private SeriesDTO series;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public BottleDTO(UUID uuid, String label, Double price, Integer yearOfManufacture, ManufacturerDTO manufacturer, Boolean forSale, Boolean favorite, Boolean unsaleable, SeriesDTO series) {
+        this.uuid = uuid;
+        this.label = label;
+        this.price = price;
+        this.yearOfManufacture = yearOfManufacture;
+        this.manufacturer = manufacturer;
+        this.forSale = forSale;
+        this.favorite = favorite;
+        this.unsaleable = unsaleable;
+        this.series = series;
+    }
 
     @JsonProperty("uuid")
     public UUID getUuid() {
@@ -149,17 +160,5 @@ public class BottleDTO {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    public BottleDTO(UUID uuid, String label, Double price, Integer yearOfManufacture, ManufacturerDTO manufacturer, Boolean forSale, Boolean favorite, Boolean unsaleable, SeriesDTO series) {
-        this.uuid = uuid;
-        this.label = label;
-        this.price = price;
-        this.yearOfManufacture = yearOfManufacture;
-        this.manufacturer = manufacturer;
-        this.forSale = forSale;
-        this.favorite = favorite;
-        this.unsaleable = unsaleable;
-        this.series = series;
     }
 }

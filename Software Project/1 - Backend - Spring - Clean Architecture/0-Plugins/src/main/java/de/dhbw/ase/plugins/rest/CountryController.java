@@ -1,10 +1,9 @@
-package de.dhbw.ase.whiskey_o_clock.controller;
+package de.dhbw.ase.plugins.rest;
 
 import de.dhbw.ase.whiskey_o_clock.application.country.CountryApplicationService;
 import de.dhbw.ase.whiskey_o_clock.country.CountryDTO;
 import de.dhbw.ase.whiskey_o_clock.country.CountryDTOToCountryMapper;
 import de.dhbw.ase.whiskey_o_clock.country.CountryToCountryDTOMapper;
-import de.dhbw.ase.whiskey_o_clock.domain.country.Country;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,7 @@ public class CountryController {
     private CountryToCountryDTOMapper countryToCountryDTOMapper;
 
     @Autowired
-    private CountryController(CountryApplicationService countryApplicationService, CountryDTOToCountryMapper countryDTOToCountryMapper,CountryToCountryDTOMapper countryToCountryDTOMapper) {
+    private CountryController(CountryApplicationService countryApplicationService, CountryDTOToCountryMapper countryDTOToCountryMapper, CountryToCountryDTOMapper countryToCountryDTOMapper) {
         this.countryApplicationService = countryApplicationService;
         this.countryDTOToCountryMapper = countryDTOToCountryMapper;
         this.countryToCountryDTOMapper = countryToCountryDTOMapper;

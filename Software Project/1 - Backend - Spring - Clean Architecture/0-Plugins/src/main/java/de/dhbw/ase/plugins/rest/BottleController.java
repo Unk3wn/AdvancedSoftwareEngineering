@@ -1,6 +1,5 @@
 package de.dhbw.ase.plugins.rest;
 
-import de.dhbw.ase.whiskey_o_clock.SeriesDTO;
 import de.dhbw.ase.whiskey_o_clock.application.bottle.BottleApplicationService;
 import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTO;
 import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTOToBottleMapper;
@@ -26,7 +25,7 @@ public class BottleController {
     private SeriesToSeriesDTOMapper seriesToSeriesDTOMapper;
 
     @Autowired
-    private BottleController(BottleApplicationService bottleApplicationService,BottleDTOToBottleMapper bottleDTOToBottleMapper,BottleToBottleDTOMapper bottleToBottleDTOMapper,SeriesToSeriesDTOMapper seriesToSeriesDTOMapper) {
+    private BottleController(BottleApplicationService bottleApplicationService, BottleDTOToBottleMapper bottleDTOToBottleMapper, BottleToBottleDTOMapper bottleToBottleDTOMapper, SeriesToSeriesDTOMapper seriesToSeriesDTOMapper) {
         this.bottleApplicationService = bottleApplicationService;
         this.bottleDTOToBottleMapper = bottleDTOToBottleMapper;
         this.bottleToBottleDTOMapper = bottleToBottleDTOMapper;

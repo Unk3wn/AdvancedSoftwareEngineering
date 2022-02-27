@@ -2,7 +2,6 @@ package de.dhbw.ase.whiskey_o_clock.application.series;
 
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.BottleRepository;
-import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.ManufacturerRepository;
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import de.dhbw.ase.whiskey_o_clock.domain.series.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +15,9 @@ public class SeriesApplicationService {
 
     private SeriesRepository seriesRepository;
     private BottleRepository bottleRepository;
-    private ManufacturerRepository manufacturerRepository;
 
     @Autowired
-    public SeriesApplicationService(ManufacturerRepository manufacturerRepository, BottleRepository bottleRepository, SeriesRepository seriesRepository) {
-        this.manufacturerRepository = manufacturerRepository;
+    public SeriesApplicationService(BottleRepository bottleRepository, SeriesRepository seriesRepository) {
         this.bottleRepository = bottleRepository;
         this.seriesRepository = seriesRepository;
     }

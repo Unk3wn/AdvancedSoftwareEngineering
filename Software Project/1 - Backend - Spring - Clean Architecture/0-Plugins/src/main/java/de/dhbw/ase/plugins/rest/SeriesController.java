@@ -1,8 +1,7 @@
 package de.dhbw.ase.plugins.rest;
 
-import de.dhbw.ase.whiskey_o_clock.SeriesDTO;
 import de.dhbw.ase.whiskey_o_clock.application.series.SeriesApplicationService;
-import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
+import de.dhbw.ase.whiskey_o_clock.series.SeriesDTO;
 import de.dhbw.ase.whiskey_o_clock.series.SeriesDTOToSeriesMapper;
 import de.dhbw.ase.whiskey_o_clock.series.SeriesToSeriesDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class SeriesController {
     private SeriesDTOToSeriesMapper seriesDTOToSeriesMapper;
 
     @Autowired
-    private SeriesController(SeriesApplicationService seriesApplicationService,SeriesToSeriesDTOMapper seriesToSeriesDTOMapper,SeriesDTOToSeriesMapper seriesDTOToSeriesMapper) {
+    private SeriesController(SeriesApplicationService seriesApplicationService, SeriesToSeriesDTOMapper seriesToSeriesDTOMapper, SeriesDTOToSeriesMapper seriesDTOToSeriesMapper) {
         this.seriesApplicationService = seriesApplicationService;
         this.seriesToSeriesDTOMapper = seriesToSeriesDTOMapper;
         this.seriesDTOToSeriesMapper = seriesDTOToSeriesMapper;
@@ -41,8 +40,8 @@ public class SeriesController {
         \_____|_|  \___|\__,_|\__\___|
      */
     @PostMapping(value = "")
-    public SeriesDTO createSeries(@RequestBody Series series) {
-        return seriesToSeriesDTOMapper.apply(seriesApplicationService.createSeries(series));
+    public SeriesDTO createSeries(@RequestBody SeriesDTO seriesDTO) {
+        return seriesToSeriesDTOMapper.apply(seriesApplicationService.createSeries(seriesDTOToSeriesMapper.apply(seriesDTO)));
     }
 
     @PostMapping(value = "/new", params = {"seriesLabel"})

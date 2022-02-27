@@ -34,7 +34,7 @@ class CountryControllerTest {
     ObjectMapper objectMapper;
 
     @MockBean
-    de.dhbw.ase.whiskey_o_clock.controller.CountryController countryController;
+    CountryController countryController;
 
     @MockBean
     CountryApplicationService countryApplicationService;
@@ -44,14 +44,14 @@ class CountryControllerTest {
     UUID countryUUID2 = UUID.randomUUID();
     UUID countryUUID3 = UUID.randomUUID();
     String countryAbbreviation = "TES";
-    String countryName = "Testcountry";
+    String countryName = "TestCountry";
 
     Country countryTest = new Country(countryUUID, countryAbbreviation, countryName);
     CountryDTO countryTestDTO = new CountryDTO(countryUUID, countryAbbreviation, countryName);
 
-    CountryDTO c1 = new CountryDTO(countryUUID1,"EIN", "EINS");
-    CountryDTO c2 = new CountryDTO(countryUUID2,"ZWE", "ZWEI");
-    CountryDTO c3 = new CountryDTO(countryUUID3,"DRE", "DREI");
+    CountryDTO c1 = new CountryDTO(countryUUID1, "EIN", "EINS");
+    CountryDTO c2 = new CountryDTO(countryUUID2, "ZWE", "ZWEI");
+    CountryDTO c3 = new CountryDTO(countryUUID3, "DRE", "DREI");
 
     @Test
     void createCountry() throws Exception {
@@ -71,7 +71,7 @@ class CountryControllerTest {
     void testCreateCountry() throws Exception {
         when(countryController.createCountry(countryAbbreviation, countryName)).thenReturn(new CountryDTO(countryUUID, countryAbbreviation, countryName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                        .post("/country/new/"+countryAbbreviation+"/"+countryName)
+                        .post("/country/new/" + countryAbbreviation + "/" + countryName)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -98,7 +98,7 @@ class CountryControllerTest {
     void getCountryByAbbreviation() throws Exception {
         when(countryController.getCountryByAbbreviation(countryAbbreviation)).thenReturn(countryTestDTO);
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                        .get("/country/abbreviation/"+countryAbbreviation)
+                        .get("/country/abbreviation/" + countryAbbreviation)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -113,7 +113,7 @@ class CountryControllerTest {
         String newName = countryName + "CHANGED";
         CountryDTO changedCountry = new CountryDTO(countryUUID, newAbbreviation, newName);
 
-        when(countryController.updateCountry(changedCountry)).thenReturn(new CountryDTO(countryUUID, newAbbreviation,newName));
+        when(countryController.updateCountry(changedCountry)).thenReturn(new CountryDTO(countryUUID, newAbbreviation, newName));
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                         .put("/country/edit/")
                         .content(objectMapper.writeValueAsString(changedCountry))
@@ -129,7 +129,7 @@ class CountryControllerTest {
     @Test
     void deleteCountry() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                        .delete("/country/"+countryAbbreviation)
+                        .delete("/country/" + countryAbbreviation)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();

@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public class BottleBuilder {
 
-    UUID uuid;
     final String label;
+    UUID uuid;
     double price;
     int yearOfManufacture;
     Manufacturer manufacturer;
@@ -18,15 +18,15 @@ public class BottleBuilder {
     boolean unsaleable;
     Series series;
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
     public BottleBuilder(String label) {
         this.label = label;
     }
 
-    public BottleBuilder uuid(UUID uuid){
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public BottleBuilder uuid(UUID uuid) {
         this.uuid = uuid;
         return this;
     }
@@ -67,9 +67,7 @@ public class BottleBuilder {
     }
 
     public Bottle build() {
-        Bottle bottle = new Bottle(this);
-        //Validation
-        return bottle;
+        return new Bottle(this);
     }
 
     public String getLabel() {

@@ -1,6 +1,5 @@
 package de.dhbw.ase.whiskey_o_clock.manufacturer;
 
-import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.country.CountryDTOToCountryMapper;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ public class ManufacturerDTOToManufacturer implements Function<ManufacturerDTO, 
     private CountryDTOToCountryMapper countryDTOToCountryMapper;
 
     @Autowired
-    public ManufacturerDTOToManufacturer(CountryDTOToCountryMapper countryDTOToCountryMapper){
+    public ManufacturerDTOToManufacturer(CountryDTOToCountryMapper countryDTOToCountryMapper) {
         this.countryDTOToCountryMapper = countryDTOToCountryMapper;
     }
 
@@ -24,7 +23,7 @@ public class ManufacturerDTOToManufacturer implements Function<ManufacturerDTO, 
     }
 
     private Manufacturer map(ManufacturerDTO manufacturerDTO) {
-        return new Manufacturer(manufacturerDTO.getName(),countryDTOToCountryMapper.apply(manufacturerDTO.getOriginCountry()));
+        return new Manufacturer(manufacturerDTO.getName(), countryDTOToCountryMapper.apply(manufacturerDTO.getOriginCountry()));
     }
 
 }
