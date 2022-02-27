@@ -64,7 +64,7 @@
 			\end{itemize}
 		
 	\section{Analyse der verwendeten Muster}
-		\subsection{Bridge Pattern}
+		\subsection{Bridge Pattern} \label{5.bridge}
 		Das Bridge Pattern ist in der Klasse der Strukturmuster, in der Sektion Objektmuster angesiedelt. Es befasst sich somit mit der Struktur im Projekt. Hierbei werden Objekte zu größeren Strukturen zusammengefasst. Konkret erfolgt die Anwendung dieses Muster im \modul{0 - Plugins} angwendet. Hierbei werden die eigentlichen \hk{JPA - Repository} über eine Bridge Klasse an die vorhandenen Repositorys im \modul{3 - Domain} angebunden. Diese Bridge Klassen implementieren so mit Hilfe der JPA-Repositorys die Interfaces, welche durch die Domain vorgegeben werden. \\
 		Dadurch wird die Implementierung von der Abstraktion entkoppelt. Konkret bedeutet dass, eine Entkopplung der eigentlichen Geschäftslogik von der Persistierung erfolgt. Hierbei kann die Persistierungslogik leicht ausgetauscht. Hierzu müsste die neue Lösung nur die gegebenen Methoden der Interfaces aus den Interfaces des \modul{3 - Domain} implementieren.
 	

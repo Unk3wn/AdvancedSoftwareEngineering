@@ -36,7 +36,7 @@
   <p align="center">
     Project for the course Advanced Software Engineering @ DHBW Karlsruhe
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the documentation »</strong></a>
+    <a href="https://github.com/Unk3wn/AdvancedSoftwareEngineering/blob/master/Documentation/!!_Abgabe_!!/Rohfassung_Projekdokumentation.pdf"><strong>Explore the documentation »</strong></a>
     <br />
   </p>
 </div>
