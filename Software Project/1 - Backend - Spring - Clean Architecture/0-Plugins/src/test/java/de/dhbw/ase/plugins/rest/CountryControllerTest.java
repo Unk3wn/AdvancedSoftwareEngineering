@@ -34,7 +34,7 @@ class CountryControllerTest {
     ObjectMapper objectMapper;
 
     @MockBean
-    de.dhbw.ase.whiskey_o_clock.controller.CountryController countryController;
+    CountryController countryController;
 
     @MockBean
     CountryApplicationService countryApplicationService;
@@ -44,7 +44,7 @@ class CountryControllerTest {
     UUID countryUUID2 = UUID.randomUUID();
     UUID countryUUID3 = UUID.randomUUID();
     String countryAbbreviation = "TES";
-    String countryName = "Testcountry";
+    String countryName = "TestCountry";
 
     Country countryTest = new Country(countryUUID, countryAbbreviation, countryName);
     CountryDTO countryTestDTO = new CountryDTO(countryUUID, countryAbbreviation, countryName);
