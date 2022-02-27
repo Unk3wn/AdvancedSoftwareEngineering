@@ -21,7 +21,6 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.countryService.getAll().subscribe((data: ICountry[])=>{
       this.countrys = data;
-      console.log(this.countrys);
     })
   }
 

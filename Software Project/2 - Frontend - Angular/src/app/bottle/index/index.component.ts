@@ -21,7 +21,6 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.bottleService.getAll().subscribe((data: IBottle[])=>{
       this.bottles = data;
-      console.log(this.bottles);
     })
   }
 

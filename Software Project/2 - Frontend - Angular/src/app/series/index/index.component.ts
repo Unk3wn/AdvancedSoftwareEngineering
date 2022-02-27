@@ -22,7 +22,6 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.seriesService.getAll().subscribe((data: ISeries[])=>{
       this.serieses = data;
-      console.log(this.serieses);
     })
   }
 

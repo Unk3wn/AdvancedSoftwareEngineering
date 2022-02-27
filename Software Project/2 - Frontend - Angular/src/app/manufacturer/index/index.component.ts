@@ -21,7 +21,6 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.manufacturerService.getAll().subscribe((data: IManufacturer[])=>{
       this.manufacturers = data;
-      console.log(this.manufacturers);
     })
   }
 

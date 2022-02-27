@@ -40,11 +40,9 @@ export class CreateComponent implements OnInit {
     });
     this.bottleService.getAllManufacturers().subscribe((data: IManufacturer[])=>{
       this.manufacturers = data;
-      console.log(this.manufacturers);
     })
     this.bottleService.getAllSeries().subscribe((data: ISeries[])=>{
       this.serieses = data;
-      console.log(this.serieses);
     })
   }
 
