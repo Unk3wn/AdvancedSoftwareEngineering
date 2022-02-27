@@ -14,54 +14,54 @@ import static org.mockito.Mockito.when;
 
 class CountryTest {
 
-    String countryName = "CountryName";
-    String countryNameNew = "CountryName NEW";
-    String countryAbbreviation = "TES";
-    String countryAbbreviationNew = "TEA";
-    String countryAbbreviationFAIL = "TEAS";
+    private static final String COUNTRY_NAME = "CountryName";
+    private static final String COUNTRY_NAME_NEW = "CountryName NEW";
+    private static final String COUNTRY_ABBREVIATION = "TES";
+    private static final String COUNTRY_ABBREVIATION_NEW = "TEA";
+    private static final String COUNTRY_ABBREVIATION_FAIL = "TEAS";
 
-    UUID countryUUID = UUID.randomUUID();
-    UUID countryUUIDNEW = UUID.randomUUID();
+    private static final UUID COUNTRY_UUID = UUID.randomUUID();
+    private static final UUID COUNTRY_UUID_NEW = UUID.randomUUID();
 
-    Country testCountry;
+    private Country testCountry;
 
     @BeforeEach
     public void init() {
-        testCountry = new Country(countryAbbreviation, countryName);
+        testCountry = new Country(COUNTRY_ABBREVIATION, COUNTRY_NAME);
     }
 
     @Test
     void getUuid() {
         Country countryMock = Mockito.mock(Country.class);
-        when(countryMock.getUuid()).thenReturn(countryUUID);
-        assertEquals(countryMock.getUuid(), countryUUID);
+        when(countryMock.getUuid()).thenReturn(COUNTRY_UUID);
+        assertEquals(COUNTRY_UUID,countryMock.getUuid());
     }
 
     @Test
     void getAbbreviation() {
-        assertEquals(countryAbbreviation, testCountry.getAbbreviation());
+        assertEquals(COUNTRY_ABBREVIATION, testCountry.getAbbreviation());
     }
 
     @Test
     void getName() {
-        assertEquals(countryName, testCountry.getName());
+        assertEquals(COUNTRY_NAME, testCountry.getName());
     }
 
     @Test
     void setUuid() {
-        testCountry.setUuid(countryUUIDNEW);
-        assertEquals(testCountry.getUuid(), countryUUIDNEW);
+        testCountry.setUuid(COUNTRY_UUID_NEW);
+        assertEquals(COUNTRY_UUID_NEW,testCountry.getUuid());
     }
 
     @Test
     void setAbbreviation() {
-        testCountry.setAbbreviation(countryAbbreviationNew);
-        assertEquals(testCountry.getAbbreviation(), countryAbbreviationNew);
+        testCountry.setAbbreviation(COUNTRY_ABBREVIATION_NEW);
+        assertEquals(COUNTRY_ABBREVIATION_NEW,testCountry.getAbbreviation());
     }
 
     @Test
     void setAbbreviationFAIL() {
-        Exception ex = assertThrows(ValidationException.class, () -> testCountry.setAbbreviation(countryAbbreviationFAIL));
+        Exception ex = assertThrows(ValidationException.class, () -> testCountry.setAbbreviation(COUNTRY_ABBREVIATION_FAIL));
 
         String expectedMessage = "Abbreviation not valid, only between 1 and 3 are Valid!";
         String actualMessage = ex.getMessage();
@@ -71,8 +71,8 @@ class CountryTest {
 
     @Test
     void setName() {
-        testCountry.setName(countryNameNew);
-        assertEquals(testCountry.getName(), countryNameNew);
+        testCountry.setName(COUNTRY_NAME_NEW);
+        assertEquals(COUNTRY_NAME_NEW,testCountry.getName());
     }
 
     @Test

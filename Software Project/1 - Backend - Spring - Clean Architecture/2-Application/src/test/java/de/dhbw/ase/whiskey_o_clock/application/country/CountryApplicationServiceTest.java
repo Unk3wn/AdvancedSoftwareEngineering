@@ -21,20 +21,20 @@ import static org.mockito.BDDMockito.*;
 class CountryApplicationServiceTest {
 
     @Mock
-    CountryRepository countryRepository;
+    private CountryRepository countryRepository;
 
     @InjectMocks
-    CountryApplicationService countryApplicationService;
+    private CountryApplicationService countryApplicationService;
 
-    private String countryName = "Testland";
-    private String countryAbbreviation = "TES";
-    private String newAbbreviation = "NEW";
-    private String newCountryName = "New Country Name";
-    private UUID countryUUID = UUID.randomUUID();
+    private static final String COUNTRY_NAME = "Testland";
+    private static final String COUNTRY_ABBREVIATION = "TES";
+    private static final String NEW_ABBREVIATION = "NEW";
+    private static final String NEW_COUNTRY_NAME = "New Country Name";
+    private static final UUID COUNTRY_UUID = UUID.randomUUID();
 
     @Test
     void saveCountry() {
-        Country country = new Country(countryAbbreviation, countryName);
+        Country country = new Country(COUNTRY_ABBREVIATION, COUNTRY_NAME);
 
         when(countryRepository.save(country)).thenReturn(country);
         Country createdCountry = countryApplicationService.saveCountry(country);
@@ -45,10 +45,10 @@ class CountryApplicationServiceTest {
 
     @Test
     void saveCountryVariables() {
-        Country country = new Country(countryAbbreviation, countryName);
+        Country country = new Country(COUNTRY_ABBREVIATION, COUNTRY_NAME);
 
         when(countryRepository.save(any(Country.class))).thenReturn(country);
-        Country createdCountry = countryApplicationService.saveCountry(countryAbbreviation, countryName);
+        Country createdCountry = countryApplicationService.saveCountry(COUNTRY_ABBREVIATION, COUNTRY_NAME);
 
         verify(countryRepository).save(any(Country.class));
         assertThat(createdCountry).isEqualTo(country);
@@ -73,34 +73,34 @@ class CountryApplicationServiceTest {
     @Test
     void updateCountry() {
 
-        Country country = new Country(countryUUID, countryAbbreviation, countryName);
+        Country country = new Country(COUNTRY_UUID, COUNTRY_ABBREVIATION, COUNTRY_NAME);
 
         countryRepository.save(country);
 
-        when(countryRepository.getCountryByUuid(countryUUID)).thenReturn(country);
+        when(countryRepository.getCountryByUuid(COUNTRY_UUID)).thenReturn(country);
         when(countryRepository.save(country)).thenReturn(country);
-        when(countryRepository.existsById(countryUUID)).thenReturn(true);
+        when(countryRepository.existsById(COUNTRY_UUID)).thenReturn(true);
 
-        country.setAbbreviation(newAbbreviation);
-        country.setName(newAbbreviation);
+        country.setAbbreviation(NEW_ABBREVIATION);
+        country.setName(NEW_ABBREVIATION);
 
-        when(countryRepository.save(country)).thenReturn(new Country(countryUUID, newAbbreviation, newCountryName));
+        when(countryRepository.save(country)).thenReturn(new Country(COUNTRY_UUID, NEW_ABBREVIATION, NEW_COUNTRY_NAME));
         country = countryApplicationService.updateCountry(country);
 
-        assertEquals(newCountryName, country.getName());
-        assertEquals(newAbbreviation, country.getAbbreviation());
+        assertEquals(NEW_COUNTRY_NAME, country.getName());
+        assertEquals(NEW_ABBREVIATION, country.getAbbreviation());
         verify(countryRepository, times(2)).save(any(Country.class));
     }
 
     @Test
     void deleteCountry() {
-        countryApplicationService.deleteCountry(countryAbbreviation);
-        verify(countryRepository, times(1)).deleteByAbbreviation(countryAbbreviation);
+        countryApplicationService.deleteCountry(COUNTRY_ABBREVIATION);
+        verify(countryRepository, times(1)).deleteByAbbreviation(COUNTRY_ABBREVIATION);
     }
 
     @Test
     void testDeleteCountry() {
-        countryApplicationService.deleteCountry(countryUUID);
-        verify(countryRepository).deleteById(countryUUID);
+        countryApplicationService.deleteCountry(COUNTRY_UUID);
+        verify(countryRepository).deleteById(COUNTRY_UUID);
     }
 }
