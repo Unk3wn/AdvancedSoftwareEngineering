@@ -67,9 +67,7 @@ public class BottleBuilder {
     }
 
     public Bottle build() {
-        Bottle bottle = new Bottle(this);
-        //Validation
-        return bottle;
+        return new Bottle(this);
     }
 
     public String getLabel() {

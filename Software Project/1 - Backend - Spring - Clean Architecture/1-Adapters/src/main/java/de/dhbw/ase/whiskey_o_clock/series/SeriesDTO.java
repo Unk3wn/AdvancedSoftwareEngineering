@@ -1,4 +1,4 @@
-package de.dhbw.ase.whiskey_o_clock;
+package de.dhbw.ase.whiskey_o_clock.series;
 
 import com.fasterxml.jackson.annotation.*;
 import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTO;

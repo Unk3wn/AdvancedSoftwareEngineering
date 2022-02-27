@@ -15,6 +15,8 @@ import java.util.UUID;
 @Service
 public class BottleApplicationService {
 
+    private static final String BOTTLE_NOT_FOUND = "Bottle not found!";
+
     private BottleRepository bottleRepository;
     private ManufacturerRepository manufacturerRepository;
     private SeriesRepository seriesRepository;
@@ -120,7 +122,7 @@ public class BottleApplicationService {
             foundBottle.setSeries(bottle.getSeries());
             return bottleRepository.save(foundBottle);
         }
-        throw new ValidationException("Bottle not found!");
+        throw new ValidationException(BOTTLE_NOT_FOUND);
     }
 
     public Bottle updateBottleForSale(UUID bottleUUID, Boolean isForSale) {
@@ -145,7 +147,7 @@ public class BottleApplicationService {
             }
             throw new ValidationException("Series not found!");
         }
-        throw new ValidationException("Bottle not found!");
+        throw new ValidationException(BOTTLE_NOT_FOUND);
     }
 
     private Bottle updateBooleanBottleValue(UUID bottleUUID, Boolean value, BottleBooleanType type) {
@@ -188,7 +190,7 @@ public class BottleApplicationService {
             bottleRepository.save(tempBottle);
             return tempBottle;
         }
-        throw new ValidationException("Bottle not found!");
+        throw new ValidationException(BOTTLE_NOT_FOUND);
     }
     /************************************************************************************************************************************/
 }

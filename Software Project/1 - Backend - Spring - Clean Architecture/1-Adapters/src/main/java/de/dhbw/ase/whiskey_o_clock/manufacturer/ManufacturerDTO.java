@@ -1,4 +1,4 @@
-package de.dhbw.ase.whiskey_o_clock;
+package de.dhbw.ase.whiskey_o_clock.manufacturer;
 
 import com.fasterxml.jackson.annotation.*;
 import de.dhbw.ase.whiskey_o_clock.country.CountryDTO;
