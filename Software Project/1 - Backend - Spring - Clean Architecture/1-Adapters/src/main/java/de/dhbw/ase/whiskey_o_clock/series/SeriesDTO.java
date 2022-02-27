@@ -1,12 +1,12 @@
 package de.dhbw.ase.whiskey_o_clock;
 
-import java.util.*;
-import javax.annotation.Generated;
-
 import com.fasterxml.jackson.annotation.*;
 import de.dhbw.ase.whiskey_o_clock.bottle.BottleDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.annotation.Generated;
+import java.util.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -27,6 +27,12 @@ public class SeriesDTO {
     private List<BottleDTO> bottleList = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public SeriesDTO(UUID uuid, String label) {
+        this.uuid = uuid;
+        this.label = label;
+        this.bottleList = new LinkedList<>();
+    }
 
     @JsonProperty("uuid")
     public UUID getUuid() {
@@ -66,11 +72,5 @@ public class SeriesDTO {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    public SeriesDTO(UUID uuid, String label) {
-        this.uuid = uuid;
-        this.label = label;
-        this.bottleList = new LinkedList<>();
     }
 }

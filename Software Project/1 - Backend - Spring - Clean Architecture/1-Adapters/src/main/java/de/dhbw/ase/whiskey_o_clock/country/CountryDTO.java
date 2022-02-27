@@ -1,17 +1,13 @@
 package de.dhbw.ase.whiskey_o_clock.country;
 
+import com.fasterxml.jackson.annotation.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @JsonPropertyOrder({
         "uuid",
@@ -31,6 +27,12 @@ public class CountryDTO {
     private String name;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public CountryDTO(UUID uuid, String abbreviation, String name) {
+        this.uuid = uuid.toString();
+        this.abbreviation = abbreviation;
+        this.name = name;
+    }
 
     @JsonProperty("uuid")
     public UUID getUuid() {
@@ -70,11 +72,5 @@ public class CountryDTO {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    public CountryDTO(UUID uuid, String abbreviation, String name) {
-        this.uuid = uuid.toString();
-        this.abbreviation = abbreviation;
-        this.name = name;
     }
 }

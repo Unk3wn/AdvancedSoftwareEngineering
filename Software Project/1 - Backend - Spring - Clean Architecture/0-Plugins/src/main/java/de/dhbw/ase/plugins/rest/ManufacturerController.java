@@ -2,9 +2,6 @@ package de.dhbw.ase.plugins.rest;
 
 import de.dhbw.ase.whiskey_o_clock.ManufacturerDTO;
 import de.dhbw.ase.whiskey_o_clock.application.manufacturer.ManufacturerApplicationService;
-import de.dhbw.ase.whiskey_o_clock.country.CountryDTOToCountryMapper;
-import de.dhbw.ase.whiskey_o_clock.country.CountryToCountryDTOMapper;
-import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerDTOToManufacturer;
 import de.dhbw.ase.whiskey_o_clock.manufacturer.ManufacturerToManufacturerDTOMapper;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +24,7 @@ public class ManufacturerController {
     private ManufacturerToManufacturerDTOMapper manufacturerToManufacturerDTOMapper;
 
     @Autowired
-    private ManufacturerController(ManufacturerApplicationService manufacturerApplicationService,ManufacturerDTOToManufacturer manufacturerDTOToManufacturer,ManufacturerToManufacturerDTOMapper manufacturerToManufacturerDTOMapper) {
+    private ManufacturerController(ManufacturerApplicationService manufacturerApplicationService, ManufacturerDTOToManufacturer manufacturerDTOToManufacturer, ManufacturerToManufacturerDTOMapper manufacturerToManufacturerDTOMapper) {
         this.manufacturerApplicationService = manufacturerApplicationService;
         this.manufacturerDTOToManufacturer = manufacturerDTOToManufacturer;
         this.manufacturerToManufacturerDTOMapper = manufacturerToManufacturerDTOMapper;

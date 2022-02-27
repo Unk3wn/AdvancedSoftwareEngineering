@@ -40,7 +40,7 @@ class CountryApplicationServiceTest {
         Country createdCountry = countryApplicationService.saveCountry(country);
 
         verify(countryRepository).save(any(Country.class));
-        assertEquals(country,createdCountry);
+        assertEquals(country, createdCountry);
     }
 
     @Test
@@ -48,7 +48,7 @@ class CountryApplicationServiceTest {
         Country country = new Country(countryAbbreviation, countryName);
 
         when(countryRepository.save(any(Country.class))).thenReturn(country);
-        Country createdCountry = countryApplicationService.saveCountry(countryAbbreviation,countryName);
+        Country createdCountry = countryApplicationService.saveCountry(countryAbbreviation, countryName);
 
         verify(countryRepository).save(any(Country.class));
         assertThat(createdCountry).isEqualTo(country);

@@ -1,18 +1,14 @@
 package de.dhbw.ase.whiskey_o_clock;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 import de.dhbw.ase.whiskey_o_clock.country.CountryDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.annotation.Generated;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -33,6 +29,12 @@ public class ManufacturerDTO {
     private CountryDTO originCountry;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public ManufacturerDTO(UUID uuid, String name, CountryDTO originCountry) {
+        this.uuid = uuid;
+        this.name = name;
+        this.originCountry = originCountry;
+    }
 
     @JsonProperty("uuid")
     public UUID getUuid() {
@@ -72,11 +74,5 @@ public class ManufacturerDTO {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    public ManufacturerDTO(UUID uuid, String name,CountryDTO originCountry) {
-        this.uuid = uuid;
-        this.name = name;
-        this.originCountry = originCountry;
     }
 }

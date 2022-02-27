@@ -24,7 +24,7 @@ public class SeriesController {
     private SeriesDTOToSeriesMapper seriesDTOToSeriesMapper;
 
     @Autowired
-    private SeriesController(SeriesApplicationService seriesApplicationService,SeriesToSeriesDTOMapper seriesToSeriesDTOMapper,SeriesDTOToSeriesMapper seriesDTOToSeriesMapper) {
+    private SeriesController(SeriesApplicationService seriesApplicationService, SeriesToSeriesDTOMapper seriesToSeriesDTOMapper, SeriesDTOToSeriesMapper seriesDTOToSeriesMapper) {
         this.seriesApplicationService = seriesApplicationService;
         this.seriesToSeriesDTOMapper = seriesToSeriesDTOMapper;
         this.seriesDTOToSeriesMapper = seriesDTOToSeriesMapper;

@@ -60,7 +60,7 @@ public class Bottle {
     }
 
     public Bottle(BottleBuilder bottleBuilder) {
-        this(bottleBuilder.getUuid(),bottleBuilder.getLabel(), bottleBuilder.getPrice(), bottleBuilder.getYearOfManufacture(), bottleBuilder.getManufacturer(), bottleBuilder.isForSale(), bottleBuilder.isFavorite(), bottleBuilder.isUnsaleable(),bottleBuilder.getSeries());
+        this(bottleBuilder.getUuid(), bottleBuilder.getLabel(), bottleBuilder.getPrice(), bottleBuilder.getYearOfManufacture(), bottleBuilder.getManufacturer(), bottleBuilder.isForSale(), bottleBuilder.isFavorite(), bottleBuilder.isUnsaleable(), bottleBuilder.getSeries());
     }
 
     public Bottle(String label, double price, int yearOfManufacture, Manufacturer manufacturer, Series series, boolean isForSale, boolean isFavorite, boolean isUnsaleable) {

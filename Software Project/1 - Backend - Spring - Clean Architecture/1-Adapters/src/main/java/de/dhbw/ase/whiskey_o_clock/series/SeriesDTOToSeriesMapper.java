@@ -13,7 +13,7 @@ public class SeriesDTOToSeriesMapper implements Function<SeriesDTO, Series> {
 
     private BottleDTOToBottleMapper bottleDTOToBottleMapper;
 
-    public SeriesDTOToSeriesMapper(BottleDTOToBottleMapper bottleDTOToBottleMapper){
+    public SeriesDTOToSeriesMapper(BottleDTOToBottleMapper bottleDTOToBottleMapper) {
         this.bottleDTOToBottleMapper = bottleDTOToBottleMapper;
     }
 
@@ -23,9 +23,8 @@ public class SeriesDTOToSeriesMapper implements Function<SeriesDTO, Series> {
     }
 
     private Series map(SeriesDTO seriesDTO) {
-        return new Series(seriesDTO.getUuid(),seriesDTO.getLabel(),seriesDTO.getBottleList().stream().map(bottleDTOToBottleMapper).collect(Collectors.toList()));
+        return new Series(seriesDTO.getUuid(), seriesDTO.getLabel(), seriesDTO.getBottleList().stream().map(bottleDTOToBottleMapper).collect(Collectors.toList()));
     }
-
 
 
 }

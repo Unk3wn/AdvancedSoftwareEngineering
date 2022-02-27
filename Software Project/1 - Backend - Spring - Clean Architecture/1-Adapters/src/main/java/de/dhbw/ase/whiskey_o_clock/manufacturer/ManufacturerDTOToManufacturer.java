@@ -14,7 +14,7 @@ public class ManufacturerDTOToManufacturer implements Function<ManufacturerDTO, 
     private CountryDTOToCountryMapper countryDTOToCountryMapper;
 
     @Autowired
-    public ManufacturerDTOToManufacturer(CountryDTOToCountryMapper countryDTOToCountryMapper){
+    public ManufacturerDTOToManufacturer(CountryDTOToCountryMapper countryDTOToCountryMapper) {
         this.countryDTOToCountryMapper = countryDTOToCountryMapper;
     }
 
@@ -24,7 +24,7 @@ public class ManufacturerDTOToManufacturer implements Function<ManufacturerDTO, 
     }
 
     private Manufacturer map(ManufacturerDTO manufacturerDTO) {
-        return new Manufacturer(manufacturerDTO.getName(),countryDTOToCountryMapper.apply(manufacturerDTO.getOriginCountry()));
+        return new Manufacturer(manufacturerDTO.getName(), countryDTOToCountryMapper.apply(manufacturerDTO.getOriginCountry()));
     }
 
 }
