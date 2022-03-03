@@ -74,7 +74,7 @@
 			Entitäten stellen im Domänemodell Objekte da, welche nicht nur durch die darin enthaltenen Attribute definiert, sondern primär durch ihre Identität, Kontinuität und Persistenz im Laufe der Zeit definiert werden. Entitäten sind im Domänenmodell sehr wichtig, da sie die Basis eines Modells darstellen.
 			
 			\subsubsection{Aggregates \cite{domainModell.microsoft}} \label{1.aggregates}
-			Ein Aggregat umfasst mindestens eine Entität: den sogennanten Aggregatstamm, der auch als Stammentität oder primäre Entität bezeichnet wird. Darüber hinaus kann es über mehrere untergeordnete Entitäten und Wertobjekte verfügen, wobei alle Entitäten und Objekte zusammenarbeiten, um erforderliche Verhaltensweisen und Transaktionen zu implementieren. \cref{a.1.aggregate}
+			Ein Aggregat umfasst mindestens eine Entität: den sogenannten Aggregatstamm, der auch als Stammentität oder primäre Entität bezeichnet wird. Darüber hinaus kann es über mehrere untergeordnete Entitäten und Wertobjekte verfügen, wobei alle Entitäten und Objekte zusammenarbeiten, um erforderliche Verhaltensweisen und Transaktionen zu implementieren. \cref{a.1.aggregate}
 			
 			\subsubsection{Repositories \cite{repository.medium}}
 			Ein Repository vermittelt zwischen der Domänen- und der Datenzuordnungsebene mithilfe einer sammlungsähnlichen Schnittstelle für den Zugriff auf Domänenobjekte. Hierbei kann die Anwendung einfach vorhandene Entitäten aus der Persistenzebene laden, speichern, updaten oder löschen.
@@ -102,11 +102,11 @@
 			Diese werden durch ihre Identität selbst beschriebene, werden persistiert und haben veränderliche Attribute.
 			
 			\subsubsection{Aggregates}
-			Aggregate sind in diesem Projekt im eigentlichen Sinne nicht vorhanden. Jedoch sind nach der Definition in \cref{1.aggregates} auch einzelne Entitäten ein Aggregatstamm und samit ein Aggregate im jeweiligen Bereich. Folgen wir diesem Prinzip gibt es in diesem Projekt \textbf{vier} Aggregate.
+			Aggregate sind in diesem Projekt im eigentlichen Sinne nicht vorhanden. Jedoch sind nach der Definition in \cref{1.aggregates} auch einzelne Entitäten ein Aggregatstamm und somit ein Aggregate im jeweiligen Bereich. Folgen wir diesem Prinzip gibt es in diesem Projekt \textbf{vier} Aggregate.
 			
 			\subsubsection{Repositories}
 			In diesem Projekt sind Repositories im Backend zu finden. Hierbei werden sie durch Implementierungen des Interfaces \interface{JpaRepository<Object,PrimaryKey>} umgesetzt. Mit der Hilfe von Hibernate wird so die Persistierungsschicht mit der Applikationsschicht verbunden und Methoden geschaffen, um Objekte aus der Datenbasis zu filtern.
 			
 			\subsubsection{Domain Service}
 			Service's finden in diesem Projekt ebenfalls im Backend ihre Anwendung. Hierbei wird die Logik in sogenannte Services ausgelagert, die bestimmte Entitäten oder Beziehungen anhand eines \ac{UC} bearbeiten. Hierbei sind in Spring Boot oft die \ac{API} Aufrufe einzelne gekapselte Logiken, welche durch einen entsprechenden Serviceaufruf umgesetzt werden. \\ 
-			Desweiteren sind Security oder Transaktionale Komponenten denkbare Services für eine Spring Anwendung.
+			Des weiteren sind Security oder Transaktionale Komponenten denkbare Services für eine Spring Anwendung.
