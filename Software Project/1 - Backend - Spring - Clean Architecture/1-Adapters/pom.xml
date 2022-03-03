@@ -32,6 +32,7 @@
     </properties>
 
     <dependencies>
+        <!-- Dependency für die darunterliegende Schicht -->
         <dependency>
             <groupId>de.dhbw.ase.whiskey_o_clock</groupId>
             <artifactId>application</artifactId>
@@ -39,6 +40,7 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Lombok Annotationen -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
