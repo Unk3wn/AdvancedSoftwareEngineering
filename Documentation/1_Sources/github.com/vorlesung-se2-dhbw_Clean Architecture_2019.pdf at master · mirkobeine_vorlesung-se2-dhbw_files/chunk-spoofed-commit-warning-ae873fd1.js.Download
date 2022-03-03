@@ -1,0 +1,2 @@
+System.register(["./chunk-vendor.js"],function(){"use strict";var n;return{setters:[function(o){n=o.o}],execute:function(){var o=Object.defineProperty,r=(e,t)=>o(e,"name",{value:t,configurable:!0});n("#js-spoofed-commit-warning-trigger",{add:r(()=>{const e=document.getElementById("spoof-warning");if(!e)return;const t=document.querySelector(".commit-title");t&&t.classList.add("pb-1"),e.hidden=!1,e.removeAttribute("aria-hidden")},"showSpoofCommitBanner")})}}});
+//# sourceMappingURL=chunk-spoofed-commit-warning-70ad2a82.js.map
