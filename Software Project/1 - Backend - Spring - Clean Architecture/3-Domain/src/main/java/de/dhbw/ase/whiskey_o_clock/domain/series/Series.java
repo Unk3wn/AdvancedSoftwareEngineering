@@ -55,15 +55,6 @@ public class Series {
     }
 
 
-    public void addBottle(Bottle bottle) {
-        this.bottleList.add(bottle);
-    }
-
-    public void removeBottle(Bottle bottle) {
-        this.bottleList.remove(bottle);
-        bottle.setSeries(null);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,7 +68,4 @@ public class Series {
         return getClass().hashCode();
     }
 
-    public void clearBottleList() {
-        this.bottleList.clear();
-    }
 }
