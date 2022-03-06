@@ -40,20 +40,10 @@ public class ManufacturerDTO {
     public UUID getUuid() {
         return uuid;
     }
-
-    @JsonProperty("uuid")
-    public void setUuid(String uuid) {
-        this.uuid = UUID.fromString(uuid);
-    }
-
+    
     @JsonProperty("name")
     public String getName() {
         return name;
-    }
-
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
     }
 
     @JsonProperty("originCountry")
@@ -61,18 +51,8 @@ public class ManufacturerDTO {
         return originCountry;
     }
 
-    @JsonProperty("originCountry")
-    public void setOriginCountry(CountryDTO originCountry) {
-        this.originCountry = originCountry;
-    }
-
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 }

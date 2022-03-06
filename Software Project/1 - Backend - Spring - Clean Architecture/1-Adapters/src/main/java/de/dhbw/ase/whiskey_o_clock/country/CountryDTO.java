@@ -39,19 +39,9 @@ public class CountryDTO {
         return UUID.fromString(uuid);
     }
 
-    @JsonProperty("uuid")
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
     @JsonProperty("abbreviation")
     public String getAbbreviation() {
         return abbreviation;
-    }
-
-    @JsonProperty("abbreviation")
-    public void setAbbreviation(String abbreviation) {
-        this.abbreviation = abbreviation;
     }
 
     @JsonProperty("name")
@@ -59,18 +49,8 @@ public class CountryDTO {
         return name;
     }
 
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 }

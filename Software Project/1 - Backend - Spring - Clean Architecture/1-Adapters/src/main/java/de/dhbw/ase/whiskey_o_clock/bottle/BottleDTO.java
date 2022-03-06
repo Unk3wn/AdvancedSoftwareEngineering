@@ -66,19 +66,9 @@ public class BottleDTO {
         return uuid;
     }
 
-    @JsonProperty("uuid")
-    public void setUuid(String uuid) {
-        this.uuid = UUID.fromString(uuid);
-    }
-
     @JsonProperty("label")
     public String getLabel() {
         return label;
-    }
-
-    @JsonProperty("label")
-    public void setLabel(String label) {
-        this.label = label;
     }
 
     @JsonProperty("price")
@@ -86,19 +76,9 @@ public class BottleDTO {
         return price;
     }
 
-    @JsonProperty("price")
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     @JsonProperty("yearOfManufacture")
     public Integer getYearOfManufacture() {
         return yearOfManufacture;
-    }
-
-    @JsonProperty("yearOfManufacture")
-    public void setYearOfManufacture(Integer yearOfManufacture) {
-        this.yearOfManufacture = yearOfManufacture;
     }
 
     @JsonProperty("manufacturer")
@@ -106,19 +86,9 @@ public class BottleDTO {
         return manufacturer;
     }
 
-    @JsonProperty("manufacturer")
-    public void setManufacturer(ManufacturerDTO manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
     @JsonProperty("forSale")
     public Boolean getForSale() {
         return forSale;
-    }
-
-    @JsonProperty("forSale")
-    public void setForSale(Boolean forSale) {
-        this.forSale = forSale;
     }
 
     @JsonProperty("favorite")
@@ -126,19 +96,9 @@ public class BottleDTO {
         return favorite;
     }
 
-    @JsonProperty("favorite")
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
-    }
-
     @JsonProperty("unsaleable")
     public Boolean getUnsaleable() {
         return unsaleable;
-    }
-
-    @JsonProperty("unsaleable")
-    public void setUnsaleable(Boolean unsaleable) {
-        this.unsaleable = unsaleable;
     }
 
     @JsonProperty("series")
@@ -146,18 +106,8 @@ public class BottleDTO {
         return series;
     }
 
-    @JsonProperty("series")
-    public void setSeries(SeriesDTO series) {
-        this.series = series;
-    }
-
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 }
