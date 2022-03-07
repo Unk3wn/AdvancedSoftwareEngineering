@@ -22,7 +22,7 @@
 		\subsection{Open-Closed-Prinzip}
 		Das Open-Closed-Prinzip besagt, dass Objekte einfach erweiterbar sind und die bestehende Logik nicht in ihren fundamentalen Bestandteilen modifiziert werden muss. 
 			\subsubsection{Einsatz im Projekt}
-			Ein Beispiel ist hier der \hk{BottleApplicationService}, der mit Hilfe der Klasse \hk{BottleBooleanType} eine Unterscheidung der \hk{checkbaren} Boolean Werte ermöglicht. Kommt hier ein neuer hinzu muss nur das Enum erweitert werden und im Switch-Case ein neuer Fall implementiert werden.
+			Ein Beispiel ist hier der \hk{BottleBuilder}. Kommt hier ein neues Attribut zur Entität hinzu, muss nur der \hk{Builder} um eine entsprechende Methode erweitert werden, um das Attribut nutzen zu können.
 		
 		\subsection{Liskov’sche Substitutions-Prinzip}
 		Das Liskov'sche Substitutions Prinzip findet keine Anwendung, da keine Vererbung implementiert wurde.

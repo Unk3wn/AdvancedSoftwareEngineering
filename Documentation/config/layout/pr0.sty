@@ -1,0 +1,74 @@
+\newcommand{\newcolor}[4]{\definecolor{#1}{RGB}{#2,#3,#4}} % Ja ich bin faul...
+
+% Farbdefinitionen für pr0gramm.com (Von https://holzmaster.github.io/userscripts/eckdaten/)
+
+% Allgemeine Farben
+\newcolor{pr0RichtigesGrau}{22}{22}{24} 		% Richtiges Grau
+\newcolor{pr0Orange}{238}{77}{46} 			% pr0gramm-Orange
+\newcolor{pr0LogoOrange}{210}{60}{34} 		% pr0gramm-Logo-Orange
+\newcolor{pr0StandardText}{242}{245}{244} 	% Standard-Schriftfarbe
+\newcolor{pr0StandardTextGrau}{136}{136}{136}	 % Standard-Schriftfarbe (ausgegraut)
+\newcolor{pr0Link}{117}{192}{199} 			% Linkfarbe
+\newcolor{pr0Fehlermeldung}{252}{136}{51}		% "IRGENDWAS DOOFES IST PASSIERT"-Farbe
+\newcolor{pr0cha0sGrau}{33}{33}{33}			% Alternative Hintergrundfarbe (cha0s-Grau)
+\newcolor{pr0pr0miumPost}{247}{197}{22}		% Gelb vom pr0mium-Post
+\newcolor{pr0sfw}{92}{184}{92}			% SFW-Grün
+\newcolor{pr0nsfw}{240}{173}{78}			% NSFW-Orange
+\newcolor{pr0nsfl}{217}{83}{79}			% NSFL-Rot
+\newcolor{pr0pr0miumAuswahl}{34}{34}{34}		% pr0mium-Auswahlteile
+\newcolor{pr0KommentareAlt}{42}{46}{49}		% Ehemalige Hintergrundfarbe der Kommentare
+\newcolor{pr0AltesPr0gramm}{255}{0}{130}		% Altes pr0gramm <3
+
+% Farbthemes
+\newcolor{pr0BewaehrtesOrange}{22}{22}{24}	% Richtiges Grau
+\newcolor{pr0AngenehmesGruen}{29}{217}{146}	% Angenehmes Grün
+\newcolor{pr0OlivgruenDesFriedens}{191}{188}{6}	% Olivgrün des Friedens
+\newcolor{pr0MegaEpischesBlau}{0}{143}{255}	% Mega episches Blau
+\newcolor{pr0AltesPink}{255}{0}{130}			% Altes Pink
+
+% Farbenkrieg 2.0
+\newcolor{pr0TeamRotschwuchteln}{197}{43}{47}	% Team Rotschwuchteln
+\newcolor{pr0TeamBlauschwuchteln}{51}{127}{210}% Team Blauschwuchteln
+\newcolor{pr0TeamBlauschwuchtelnAlt}{68}{68}{68}% Team Blauschwuchteln, alternativ
+
+% Benutzertitel
+\newcolor{pr0BenutzerGebannt}{68}{68}{68}		% Gebannt
+\newcolor{pr0BenutzerFliesentisch}{108}{67}{43}	% Fliesentisch
+\newcolor{pr0BenutzerNeuschwuchtel}{225}{8}{233}% Neuschwuchtel
+\newcolor{pr0BenutzerSchwuchtel}{255}{255}{255}	% Schwuchtel
+\newcolor{pr0BenutzerEdlerSpender}{28}{185}{146}% Edler Spender
+\newcolor{pr0BenutzerAltschwuchtel}{91}{185}{28} % Altschwuchtel
+\newcolor{pr0BenutzerMittelaltschwuchtel}{173}{220}{141} % Mittelaltschwuchtel
+\newcolor{pr0BenutzerWichtel}{28}{185}{146}	% Wichtel
+\newcolor{pr0BenutzerModerator}{0}{143}{255}	% Moderator
+\newcolor{pr0BenutzerAltModerator}{127}{199}{255} % Altmoderator
+\newcolor{pr0BenutzerAdministrator}{255}{153}{0}	% Administrator
+\newcolor{pr0BenutzerSystemBot}{255}{193}{102}	% System-Bot
+\newcolor{pr0BenutzerNutzerBot}{16}{54}{111}	% Nutzer-Bot
+\newcolor{pr0BenutzerLebendeLegende}{28}{185}{146} % Lebende Legende
+\newcolor{pr0BenutzerCommunityHelfer}{197}{43}{47} % Community-Helfer
+\newcolor{pr0BenutzerAltHelfer}{234}{159}{161}	% Alt-Helfer
+
+% Hintergrundfarbe
+\pagecolor{pr0RichtigesGrau}
+
+% Textfarbe
+\color{pr0StandardText}
+
+% Neuer Befehl um die Titelfarbe für Section zu ändern
+\newcommand{\setsectioncolor}[1]{
+\titleformat{\section}
+{\color{#1}\normalfont\Large\bfseries}
+{\color{#1}\thesection}{1em}{}
+}
+\newcommand{\setsubsectioncolor}[1]{
+\titleformat{\subsection}
+{\color{#1}\normalfont\Large\bfseries}
+{\color{#1}\thesection}{1em}{}
+
+}
+
+
+% Default für Titelfarbe: pr0StandardText
+\setsectioncolor{pr0LogoOrange}
+\setsubsectioncolor{pr0LogoOrange}
