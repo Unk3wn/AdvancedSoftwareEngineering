@@ -1,4 +1,4 @@
-package de.dhbw.ase.plugins.rest;
+package de.dhbw.ase.whiskey_o_clock.plugins.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.dhbw.ase.whiskey_o_clock.application.country.CountryApplicationService;

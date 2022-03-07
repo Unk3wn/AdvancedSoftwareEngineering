@@ -1,4 +1,4 @@
-package de.dhbw.ase.plugins.persistence.hibernate.series;
+package de.dhbw.ase.whiskey_o_clock.plugins.persistence.hibernate.series;
 
 import de.dhbw.ase.whiskey_o_clock.domain.series.Series;
 import org.springframework.data.jpa.repository.JpaRepository;

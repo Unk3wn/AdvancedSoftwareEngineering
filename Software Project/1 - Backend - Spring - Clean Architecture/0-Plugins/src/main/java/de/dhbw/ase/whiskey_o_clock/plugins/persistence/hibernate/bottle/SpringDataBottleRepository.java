@@ -1,4 +1,4 @@
-package de.dhbw.ase.plugins.persistence.hibernate.bottle;
+package de.dhbw.ase.whiskey_o_clock.plugins.persistence.hibernate.bottle;
 
 import de.dhbw.ase.whiskey_o_clock.domain.bottle.Bottle;
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;

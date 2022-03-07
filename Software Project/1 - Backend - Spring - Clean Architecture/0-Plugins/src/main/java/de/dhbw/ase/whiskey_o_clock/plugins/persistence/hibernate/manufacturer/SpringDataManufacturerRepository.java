@@ -1,4 +1,4 @@
-package de.dhbw.ase.plugins.persistence.hibernate.manufacturer;
+package de.dhbw.ase.whiskey_o_clock.plugins.persistence.hibernate.manufacturer;
 
 import de.dhbw.ase.whiskey_o_clock.domain.manufacturer.Manufacturer;
 import org.springframework.data.jpa.repository.JpaRepository;

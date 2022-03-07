@@ -1,4 +1,4 @@
-package de.dhbw.ase.plugins.persistence.hibernate.country;
+package de.dhbw.ase.whiskey_o_clock.plugins.persistence.hibernate.country;
 
 import de.dhbw.ase.whiskey_o_clock.domain.country.Country;
 import de.dhbw.ase.whiskey_o_clock.domain.country.CountryRepository;

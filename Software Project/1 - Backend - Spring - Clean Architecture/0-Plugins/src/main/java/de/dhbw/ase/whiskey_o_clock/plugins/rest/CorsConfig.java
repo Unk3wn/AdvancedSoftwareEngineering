@@ -1,4 +1,4 @@
-package de.dhbw.ase.plugins.rest;
+package de.dhbw.ase.whiskey_o_clock.plugins.rest;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

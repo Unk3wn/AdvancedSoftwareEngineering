@@ -1,4 +1,4 @@
-package de.dhbw.ase.plugins.rest;
+package de.dhbw.ase.whiskey_o_clock.plugins.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
