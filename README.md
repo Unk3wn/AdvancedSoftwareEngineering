@@ -29,7 +29,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Unk3wn/AdvancedSoftwareEngineering">
-    <img src="Documentation/config/layout/header.png" alt="Logo" width="768" height="384">
+    <img src="Software Project/2 - Frontend - Angular/src/assets/whiskey.png" alt="Logo">
   </a>
 
 <h3 align="center">Whiskey o' clock</h3>
