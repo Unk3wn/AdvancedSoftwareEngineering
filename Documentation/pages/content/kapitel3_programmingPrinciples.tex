@@ -12,12 +12,12 @@
 	\begin{itemize}
 		\item \textbf{SRP} Single-Responsibility-Prinzip
 		\item \textbf{OCP} Open-Closed-Prinzip
-		\item \textbf{LSP} Liskov’sche Substitutions-Prinzip
+		\item \textbf{LSP} Liskov’sches Substitutions-Prinzip
 		\item \textbf{ISP} Interface-Segregation-Prinzip
 		\item \textbf{DIP} Dependency-Inversion-Prinzip
 	\end{itemize}
 		\subsection{Single-Responsibility-Prinzip}
-		Dieses Prinzip findet zum Beispiel in den Repository's seinen Nutzen. Diese haben nur eine fest definierte Funktion, die Schnittstelle zur Datenbank darzustellen. Dies ist ihr einziger definierter Aufgabenbereich.
+		Dieses Prinzip findet zum Beispiel in den Repositories seinen Nutzen. Diese haben nur eine fest definierte Funktion, die Schnittstelle zur Datenbank darzustellen. Dies ist ihr einziger definierter Aufgabenbereich.
 		
 		\subsection{Open-Closed-Prinzip}
 		Das Open-Closed-Prinzip besagt, dass Objekte einfach erweiterbar sind und die bestehende Logik nicht in ihren fundamentalen Bestandteilen modifiziert werden muss. 
@@ -25,17 +25,17 @@
 			Ein Beispiel ist hier der \hk{BottleBuilder}. Kommt hier ein neues Attribut zur Entität hinzu, muss nur der \hk{Builder} um eine entsprechende Methode erweitert werden, um das Attribut nutzen zu können.
 		
 		\subsection{Liskov’sche Substitutions-Prinzip}
-		Das Liskov'sche Substitutions Prinzip findet keine Anwendung, da keine Vererbung implementiert wurde.
+		Das Liskov'sche Substitutions-Prinzip findet keine Anwendung, da keine Vererbung implementiert wurde.
 		
 		\subsection{Interface-Segregation-Prinzip}
-		Das Interface-Segregation-Prinzip besagt, dass Entwickler nicht dazu gezwungen werden sollen Teile von Schnittstellen zu implementieren, die später nicht verwendet werden. 
+		Das Interface-Segregation-Prinzip besagt, dass Entwickler nicht dazu gezwungen werden sollen, Teile von Schnittstellen zu implementieren, die später nicht verwendet werden. 
 			\subsubsection{Einsatz im Projekt}
 			Prinzipiell wurde dieses Prinzip, durch den Aufbau der Interfaces in verschiedene Zuständigkeitsbereiche, direkt umgesetzt und die Interfaces müssen nicht weiter aufgeteilt werden.
 		
 		\subsection{Dependency-Inversion-Prinzip}
 		Das Dependency-Inversion-Prinzip besagt, dass Systeme am flexibelsten sind, wenn Codeabhängigkeiten ausschließlich auf Abstraktion beziehen, statt auf Konkretionen. In Java soll sich hier bei der Nutzung von import nur auf abstrakte Quellmodule bezogen werden, wie z.B Schnittstellen, abstrakte Klassen oder Module, die jede andere Form der Abstraktion gewährleisten.
 			\subsubsection{Einsatz im Projekt}
-			In der Praxis ist diese Regel aber kaum umsetzbar, da Softwaresysteme auch von konkreten Entitäten abhängig sind. Im groben folgen die Module der \cref{2.cleanArchitecture} diesem Prinzip, da nur Module von höhren Schichten die Interfaces aus den niedrigeren Schichten implementieren. Somit liegen die Regeln in der inneren Schicht, wohingegen die Implementierung in den äußeren Schichten vorgenommen werden.
+			In der Praxis ist diese Regel aber kaum umsetzbar, da Softwaresysteme auch von konkreten Entitäten abhängig sind. Im groben folgen die Module der \cref{2.cleanArchitecture} diesem Prinzip, da nur Module von höheren Schichten die Interfaces aus den niedrigeren Schichten implementieren. Somit liegen die Regeln in der inneren Schicht, wohingegen die Implementierung in den äußeren Schichten vorgenommen werden.
 
 	\section{GRASP (insb. Kopplung/Kohäsion)}
 	Unter der Bezeichnung \hk{GRASP} (\textbf{G}eneral \textbf{R}esponsibility \textbf{A}ssignment \textbf{S}oftware \textbf{P}rinciples) versteht man neun grundlegende Muster
@@ -70,22 +70,22 @@
 			\subsection{High cohesion \cite{kohaesion.google}} \label{3.highCohesion}
 			Das Prinzip \hk{Hohe Kohäsion} (engl. high cohension) besagt, dass darauf geachtet werden soll, dass diese Klasse nicht mehrere Verantwortlichkeiten in sich trägt. Die Kohäsion ist ein Maß für den logischen Zusammenhang der Daten und Methoden der Klasse. So sollten keine Verantwortlichkeiten und Aufgaben \textbf{in} einer Klasse vermischt werden.
 				\subsubsection{Einsatz im Projekt}
-				Dieses Prinzip wurde im Projekt umgesetzt. Einige Beispiele hierfür sind die JPA-Repository's, die nur Kenntnisse von ihrer Anbindung an die Datenbasis haben und keine weiteren Verbindungen zu anderen Objekten benötigen, oder die Controller, die nur Events entgegennehmen und sie entsprechend mit Hilfe der Services verarbeiten. Hier ist jeweils eine hohe Kohäsion gegeben.
+				Dieses Prinzip wurde im Projekt umgesetzt. Einige Beispiele hierfür sind die JPA-Repositoryies, die nur Kenntnisse von ihrer Anbindung an die Datenbasis haben und keine weiteren Verbindungen zu anderen Objekten benötigen, oder die Controller, die nur Events entgegennehmen und sie entsprechend mithilfe der Services verarbeiten. Hier ist jeweils eine hohe Kohäsion gegeben.
 			
 			\subsection{Low coupling \cite{kohaesion.google}} \label{3.lowCoupling}
-			Das Prinzip \hk{wenig Kopplung} (engl. low coupling) besagt, dass möglichst wenig Abhängigkeiten zwischen den Komponenten bestehen sollte. Die einzelnen Klassen/Objekte/Module sollten möglichst wenig voneinander wissen. Das Ziel ist die Abhängigkeiten zwischen einzelnen Klassen/Objekte/Module so gering wie möglich zu halten.
+			Das Prinzip \hk{wenig Kopplung} (engl. low coupling) besagt, dass möglichst wenig Abhängigkeiten zwischen den Komponenten bestehen sollte. Die einzelnen Klassen/Objekte/Module sollten möglichst wenig voneinander wissen. Das Ziel ist, die Abhängigkeiten zwischen einzelnen Klassen/Objekte/Module so gering wie möglich zu halten.
 				\subsubsection{Einsatz im Projekt}
-				Dieses Prinzip wurde im Projekt umgesetzt. Ein Beispiel ist, dass z.B. der CountryApplicationService kein Wissen über andere Repoistory's als das \hk{CountryRepository} benötigt. Hier herscht also \hk{low coupling}. Im Gegenzug benötigt der \hk{BottleApplicationService} drei verschiedene Repository's, was eine hohe Kopplung mit sich bringt.
+				Dieses Prinzip wurde im Projekt umgesetzt. Ein Beispiel ist, dass z.B. der CountryApplicationService kein Wissen über andere Repoistories als das \hk{CountryRepository} benötigt. Hier herrscht also \hk{low coupling}. Im Gegenzug benötigt der \hk{BottleApplicationService} drei verschiedene Repositories, was eine hohe Kopplung mit sich bringt.
 			
 		\subsection{Schlussfolgerung}
-		Prinzipiell geht die Kohäsion mit der Kopplung einher. Umso mehr Verantwortlichkeiten und Teilaufgaben in andere Klassen ausgelagert werden, umso höher wird die Kohäsion der Ursprungsklasse, da hier eine Spezialisierung stattfindet. Im gleichen Schritt nimmt ebenfalls die Kopplung zu, da die Ursprungsklasse von mehreren Unterklassen abhängig ist. Hierbei gilt es ein gesundes Mittelmaß zu finden und eine überlegte Trennung durchzuführen. Generell gilt jedoch die Kopplung unter Klassen gering und damit die Kohäsion der Klassen hoch zu halten.
+		Prinzipiell geht die Kohäsion mit der Kopplung einher. Je mehr Verantwortlichkeiten und Teilaufgaben in andere Klassen ausgelagert werden, umso höher wird die Kohäsion der Ursprungsklasse, da hier eine Spezialisierung stattfindet. Im gleichen Schritt nimmt ebenfalls die Kopplung zu, da die Ursprungsklasse von mehreren Unterklassen abhängig ist. Hierbei gilt e,s ein gesundes Mittelmaß zu finden und eine überlegte Trennung durchzuführen. Generell gilt jedoch, die Kopplung unter Klassen gering und damit die Kohäsion der Klassen hoch zu halten.
 		
 	\section{DRY}
-	Das Programmierprinzip \hk{DRY}, dt. für \hk{wiederholde dich nicht} (engl. \textbf{D}on't \textbf{R}epeat \textbf{Y}ourself), steht für ein Prinzip in der Programmierung. Hierbei sollen Redundanzen vermieden bzw. beseitigt werden. Es ist ein fundamentales Prinzip von Clean Code, dass von Programmieren wie folgt definiert wird :
+	Das Prinzip \hk{DRY}, dt. für \hk{wiederholde dich nicht} (engl. \textbf{D}on't \textbf{R}epeat \textbf{Y}ourself), steht für ein Prinzip in der Programmierung. Hierbei sollen Redundanzen vermieden bzw. beseitigt werden. Es ist ein fundamentales Prinzip von Clean Code, dass von Programmieren wie folgt definiert wird :
 	\par Every piece of knowledge must have a single, unambiguous, authoritative representation within a system. \cite{dry.thevaluable}
 	\\
 		\subsection{Analyse}
-		DRY ist ein grundlegendes Prinzip in der Programmierung und prinzipiell überall im Projekt zu finden. So wurde Beispielsweise die Konstruktoren der \class{Bottle} ineinander verzahnt, um die Zuweisung lediglich einmal entwickeln zu müssen. Ebenso wurden Mapper geschaffen, um die Umwandlungslogik zentral an einem Ort abzulegen und nicht an jeder Stelle, an der diese Logik benötigt wird eine eigene Implementierung zu benötigen.
+		DRY ist ein grundlegendes Prinzip in der Programmierung und prinzipiell überall im Projekt zu finden. So wurde beispielsweise die Konstruktoren der \class{Bottle} ineinander verzahnt, um die Zuweisung lediglich einmal entwickeln zu müssen. Ebenso wurden Mapper geschaffen, um die Umwandlungslogik zentral an einem Ort abzulegen und nicht an jeder Stelle, an der diese Logik benötigt wird eine eigene Implementierung zu benötigen.
 		
 		\subsection{Begründung}
-		Die Anwendung der \hk{DRY} Prinzipien bringt einige Vorteile mit sich. So ist weniger Code generell besser da es Zeit und Aufwand mit sich bringt diesen Code zu warten. Außerdem werden Fehler durch weniger Code vermieden, da schlichtweg weniger Platz vorhanden ist um Fehler zu machen. Des weiteren hilft es dabei, wenn bestimmte Logiken ausgelagert werden, wie z.B die Mapper Logiken da diese an vielen Stellen in der Anwendung verwendet und dadurch wiederverwendet werden können. Zuletzt muss, wenn ein Logikfehler auftritt nicht jede Codestelle einzeln angepasst werden, wenn die \hk{DRY}-Logiken umgesetzt wurden.
+		Die Anwendung der \hk{DRY} Prinzipien bringt einige Vorteile mit sich. So ist weniger Code generell besser, da es Zeit und Aufwand mit sich bringt, diesen Code zu warten. Außerdem werden Fehler durch weniger Code vermieden, da schlichtweg weniger Platz vorhanden ist, um Fehler zu machen. Des Weiteren hilft es dabei, wenn bestimmte Logiken ausgelagert werden, wie z.B die Mapper Logiken, da diese an vielen Stellen in der Anwendung verwendet und dadurch wiederverwendet werden können. Zuletzt muss, wenn ein Logikfehler auftritt, nicht jede Codestelle einzeln angepasst werden, wenn die \hk{DRY}-Logiken umgesetzt wurden.
