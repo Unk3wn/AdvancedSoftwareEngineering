@@ -75,7 +75,7 @@
 			\subsection{Low coupling \cite{kohaesion.google}} \label{3.lowCoupling}
 			Das Prinzip \hk{wenig Kopplung} (engl. low coupling) besagt, dass möglichst wenig Abhängigkeiten zwischen den Komponenten bestehen sollte. Die einzelnen Klassen/Objekte/Module sollten möglichst wenig voneinander wissen. Das Ziel ist, die Abhängigkeiten zwischen einzelnen Klassen/Objekte/Module so gering wie möglich zu halten.
 				\subsubsection{Einsatz im Projekt}
-				Dieses Prinzip wurde im Projekt umgesetzt. Ein Beispiel ist, dass z.B. der CountryApplicationService kein Wissen über andere Repoistories als das \hk{CountryRepository} benötigt. Hier herrscht also \hk{low coupling}. Im Gegenzug benötigt der \hk{BottleApplicationService} drei verschiedene Repositories, was eine hohe Kopplung mit sich bringt.
+				Dieses Prinzip wurde im Projekt umgesetzt. Ein Beispiel ist, dass z.B. der CountryApplicationService kein Wissen über andere Repositories als das \hk{CountryRepository} benötigt. Hier herrscht also \hk{low coupling}. Im Gegenzug benötigt der \hk{BottleApplicationService} drei verschiedene Repositories, was eine hohe Kopplung mit sich bringt.
 			
 		\subsection{Schlussfolgerung}
 		Prinzipiell geht die Kohäsion mit der Kopplung einher. Je mehr Verantwortlichkeiten und Teilaufgaben in andere Klassen ausgelagert werden, umso höher wird die Kohäsion der Ursprungsklasse, da hier eine Spezialisierung stattfindet. Im gleichen Schritt nimmt ebenfalls die Kopplung zu, da die Ursprungsklasse von mehreren Unterklassen abhängig ist. Hierbei gilt e,s ein gesundes Mittelmaß zu finden und eine überlegte Trennung durchzuführen. Generell gilt jedoch, die Kopplung unter Klassen gering und damit die Kohäsion der Klassen hoch zu halten.
